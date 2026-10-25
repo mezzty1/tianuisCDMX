@@ -302,7 +302,33 @@ Salida JSON resultante:
 
 ---
 
-## 6. Conclusiones y Relevancia para el Reto 1
+## 6. Sistema Visual e Iconografía de Puestos por Giro (`assets/icons/puestos/`)
+
+Para la representación cartográfica en mapas interactivos (Leaflet, MapLibre, dashboards urbanos) y catálogos comerciales, se diseñó un **sistema de iconografía isométrica en alta definición y con transparencia alfa limpia** a partir del puesto tradicional de tianguis:
+
+- **Archivo Maestro Transparente**: [`puesto_tianguis.png`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/puesto_tianguis.png) (903 x 952 px).
+- **Catálogo de Íconos y Metadatos**: [`assets/icons/puestos/iconos_catalogo.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/assets/icons/puestos/iconos_catalogo.json).
+- **Showcase Interactivo**: [`catalogo_iconos_puestos.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/catalogo_iconos_puestos.html).
+- **Generador Reproducible**: [`scripts/generate_tianguis_icons.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/generate_tianguis_icons.py).
+
+### 6.1. Matriz de Variantes Cromáticas por Macro-Categoría y Sector
+
+| ID Categoría | Sector SEDECO | Nombre del Giro | Color Hex | Toldo / Faldón | Archivo HD (Master) | Archivo Leaflet (128px) |
+|---|---|---|:---:|---|---|---|
+| `CAT_ALIM_FRESCOS` | `basico` | Alimentos Frescos y Perecederos | `#059669` | Verde Esmeralda | `puesto_cat_alim_frescos_verde.png` | `128/puesto_cat_alim_frescos_verde_128px.png` |
+| `CAT_ABARROTES_CANASTA` | `basico` | Abarrotes, Granos y Canasta Básica | `#D97706` | Ámbar / Oro Maíz | `puesto_cat_abarrotes_canasta_ambar.png` | `128/puesto_cat_abarrotes_canasta_ambar_128px.png` |
+| `CAT_COMIDA_PREPARADA` | `alimentos_preparados` | Comida Preparada y Antojitos | `#EA580C` | Naranja Cempasúchil | `puesto_cat_comida_preparada_naranja.png` | `128/puesto_cat_comida_preparada_naranja_128px.png` |
+| `CAT_ROPA_CALZADO_TEXTIL` | `complementario` | Ropa, Calzado y Textiles | `#2563EB` | Azul Rey | `puesto_cat_ropa_calzado_textil_azul.png` | `128/puesto_cat_ropa_calzado_textil_azul_128px.png` |
+| `CAT_HOGAR_FERRETERIA` | `complementario` | Artículos del Hogar y Limpieza | `#0891B2` | Cian Turquesa | `puesto_cat_hogar_ferreteria_cian.png` | `128/puesto_cat_hogar_ferreteria_cian_128px.png` |
+| `CAT_SALUD_BELLEZA` | `servicios` | Salud, Cuidado Personal y Belleza | `#DB2777` | Rosa Mexicano | `puesto_cat_salud_belleza_rosa.png` | `128/puesto_cat_salud_belleza_rosa_128px.png` |
+| `CAT_PAPELERIA_TECNOLOGIA` | `complementario` | Papelería, Juguetes y Tecnología | `#7C3AED` | Morado Eléctrico | `puesto_cat_papeleria_tecnologia_morado.png` | `128/puesto_cat_papeleria_tecnologia_morado_128px.png` |
+| `CAT_OFICIOS_SERVICIOS` | `servicios` | Oficios y Reparaciones Barriales | `#65A30D` | Verde Olivo | `puesto_cat_oficios_servicios_olivo.png` | `128/puesto_cat_oficios_servicios_olivo_128px.png` |
+| `CAT_BAZAR_CHACHARAS` | `mixto` | Chácharas y Segunda Mano | `#9F1239` | Terracota / Vino | `puesto_cat_bazar_chacharas_terracota.png` | `128/puesto_cat_bazar_chacharas_terracota_128px.png` |
+| *(Original)* | `basico` | Puesto Rojo Tradicional CDMX | `#DC2626` | Rojo Carmesí | `puesto_original_rojo.png` | `128/puesto_original_rojo_128px.png` |
+
+---
+
+## 7. Conclusiones y Relevancia para el Reto 1
 
 1. **Interoperabilidad Total**: Homologa cédulas de mercados públicos, rutas de tianguis, compras con vales Mercomuna y beneficiarios de créditos microempresariales de Fondeso bajo un mismo marco conceptual.
 2. **Offline-First & Ligero**: La clasificación utiliza patrones y reglas semánticas precompiladas de alta velocidad sin dependencias pesadas de modelos de lenguaje en la nube, operando 100% en local y en milisegundos para decenas de miles de registros.
