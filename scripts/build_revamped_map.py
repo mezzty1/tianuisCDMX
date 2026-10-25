@@ -512,6 +512,7 @@ def build_map_html():
       font-size: 13px;
       transition: transform 0.15s ease;
       cursor: pointer;
+      position: relative;
     }
 
     .marker-pin:hover {
@@ -532,6 +533,44 @@ def build_map_html():
     .marker-closed {
       background: var(--slate-400);
       color: #ffffff;
+    }
+
+    /* BADGES DE GOBERNANZA COMUNITARIA EN PINES DE LEAFLET */
+    .marker-gov-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      font-size: 9px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      border: 1.5px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+      z-index: 10;
+    }
+
+    .marker-gov-confirmed {
+      background: #059669;
+    }
+
+    .marker-gov-dispute {
+      background: #d97706;
+      animation: pulse-gov-dispute 1.5s infinite;
+    }
+
+    .marker-gov-active {
+      background: #2563eb;
+    }
+
+    @keyframes pulse-gov-dispute {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
     }
 
     /* CLUSTERS PERSONALIZADOS */
@@ -1818,7 +1857,18 @@ def build_map_html():
           const status = getLiveStatus(t, state.activeDay);
           if (status.isOpenNow) openCount++;
 
-          const iconHtml = `<div class="marker-pin ${status.markerClass}" title="${t.nombre_popular}">${t.escala_icono || '🎪'}</div>`;
+          // Insignia de gobernanza comunitaria (Módulo 5.4)
+          let govBadgeHtml = '';
+          let govTooltipHtml = '';
+          if (window.GovernanceEngine) {
+            const govStatus = window.GovernanceEngine.getMarkerCommunityStatus(t.id_tianguis);
+            if (govStatus) {
+              govBadgeHtml = `<span class="marker-gov-badge marker-gov-${govStatus.badgeType}" title="${escapeHtml(govStatus.text)}">${govStatus.icon}</span>`;
+              govTooltipHtml = `<div style="font-size: 10px; font-weight: 700; color: ${govStatus.color}; margin-top: 3px; display: flex; align-items: center; gap: 3px;"><span>${govStatus.icon}</span> ${escapeHtml(govStatus.text)}</div>`;
+            }
+          }
+
+          const iconHtml = `<div class="marker-pin ${status.markerClass}" title="${escapeHtml(t.nombre_popular)}">${t.escala_icono || '🎪'}${govBadgeHtml}</div>`;
           const customIcon = L.divIcon({
             html: iconHtml,
             className: 'tianguis-marker-icon',
@@ -1830,8 +1880,9 @@ def build_map_html():
 
           // Tooltip sobrio
           marker.bindTooltip(`
-            <div style="font-weight: 700; font-size: 12px; color: #0f172a;">${t.nombre_popular}</div>
-            <div style="font-size: 10.5px; color: #64748b;">${status.headline} · ${t.oferentes} oferentes</div>
+            <div style="font-weight: 700; font-size: 12px; color: #0f172a;">${escapeHtml(t.nombre_popular)}</div>
+            <div style="font-size: 10.5px; color: #64748b;">${escapeHtml(status.headline)} · ${t.oferentes} oferentes</div>
+            ${govTooltipHtml}
           `, { direction: 'top', offset: [0, -10] });
 
           marker.on('click', function() {
@@ -1979,6 +2030,218 @@ def build_map_html():
       }
 
       document.getElementById('btn-close-sidebar').addEventListener('click', closeTianguisSidebar);
+
+      // =========================================================================
+      // MOTOR DE RENDERIZADO: GOBERNANZA BARRIAL Y AUDITORÍA COMUNITARIA (MÓDULO 5.4)
+      // =========================================================================
+      function renderCommunityAuditSections(t) {
+        if (!window.GovernanceEngine || !t) return;
+        const audit = window.GovernanceEngine.getTianguisAuditData(t);
+        if (!audit) return;
+
+        // 1. Ámbito A: Estatus en vivo hoy ("¿Se instaló hoy?")
+        const liveBadge = document.getElementById('gov-live-epistemic-badge');
+        const balanceBox = document.getElementById('gov-live-balance-text');
+        const btnYes = document.getElementById('btn-gov-live-yes');
+        const btnNo = document.getElementById('btn-gov-live-no');
+
+        liveBadge.className = `badge-epistemic ${audit.statusLive.badgeClass}`;
+        liveBadge.textContent = `${audit.statusLive.icon} ${audit.statusLive.statusLabel}`;
+
+        const isSim = window.GovernanceEngine.isSimulateTerritory();
+        const proxHint = isSim ? '📍 Validado en territorio (+3 pts activado)' : '🌐 Validación ciudadana (+1 pt sin GPS)';
+
+        if (audit.statusLive.yesScore === 0 && audit.statusLive.noScore === 0) {
+          balanceBox.innerHTML = `<div>Sin reportes vecinales hoy todavía. ¡Sé el primero en validar!</div><div style="font-size: 10px; color: var(--slate-500); margin-top: 2px;">${proxHint}</div>`;
+        } else if (audit.statusLive.status === 'EN_DISPUTA') {
+          balanceBox.innerHTML = `<div style="color: #92400e; font-weight: 700;">⚠️ Estatus en disputa comunitaria</div><div>Reportes contradictorios (+${audit.statusLive.yesScore} pts a favor vs +${audit.statusLive.noScore} pts en contra).</div>`;
+        } else if (audit.statusLive.status === 'CONFIRMADO') {
+          balanceBox.innerHTML = `<div style="color: #065f46; font-weight: 700;">✓ Instalación confirmada por vecinos y oferentes</div><div>Balance neto: <strong>+${audit.statusLive.netScore} pts</strong> ponderados (${audit.statusLive.yesScore} a favor).</div>`;
+        } else {
+          balanceBox.innerHTML = `<div>Reporte propuesto (Score: <strong>${audit.statusLive.netScore > 0 ? '+' : ''}${audit.statusLive.netScore} pts</strong>). Faltan validaciones para quórum oficial.</div>`;
+        }
+
+        if (audit.statusLive.hasVotedToday) {
+          btnYes.disabled = true;
+          btnNo.disabled = true;
+          balanceBox.innerHTML += `<div style="font-size: 10px; color: var(--slate-500); margin-top: 3px; border-top: 1px solid var(--slate-200); padding-top: 3px;">✓ Ya registraste tu auditoría de hoy (Cooldown 24h activo).</div>`;
+        } else {
+          btnYes.disabled = false;
+          btnNo.disabled = false;
+        }
+
+        btnYes.onclick = () => {
+          window.GovernanceEngine.submitLiveStatusVote(t, 'yes').then(res => {
+            showToast(res.message);
+            renderCommunityAuditSections(t);
+            renderMapMarkers();
+          });
+        };
+
+        btnNo.onclick = () => {
+          window.GovernanceEngine.submitLiveStatusVote(t, 'no').then(res => {
+            showToast(res.message);
+            renderCommunityAuditSections(t);
+            renderMapMarkers();
+          });
+        };
+
+        // 2. Ámbito B: Medios de Pago Reales
+        const payList = document.getElementById('gov-payments-list');
+        payList.innerHTML = '';
+        Object.keys(audit.pagos).forEach(k => {
+          const p = audit.pagos[k];
+          const itemDiv = document.createElement('div');
+          itemDiv.className = 'gov-payment-item';
+          
+          const userHasVoted = audit.userVotes && audit.userVotes[`pago_${p.id}`];
+
+          itemDiv.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span>${p.icon}</span>
+              <div>
+                <strong style="color: var(--slate-800);">${p.label}</strong>
+                <div style="font-size: 10px; color: var(--slate-500);">${p.score} pts acumulados</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span class="badge-epistemic ${p.badgeClass}">${p.iconStatus} ${p.status === 'CONFIRMADO' ? 'Confirmado' : 'Propuesto'}</span>
+              <button class="btn-gov-small" ${userHasVoted ? 'disabled' : ''} title="${userHasVoted ? 'Ya votaste recientemente' : 'Respaldar este medio de pago'}">
+                ${userHasVoted ? '✓ Votado' : '+ Validar'}
+              </button>
+            </div>
+          `;
+
+          const valBtn = itemDiv.querySelector('button');
+          if (!userHasVoted) {
+            valBtn.addEventListener('click', () => {
+              window.GovernanceEngine.submitPaymentVote(t, p.id).then(res => {
+                showToast(res.message);
+                renderCommunityAuditSections(t);
+                renderMapMarkers();
+              });
+            });
+          }
+
+          payList.appendChild(itemDiv);
+        });
+
+        // 3. Ámbito C: Especialidades y Artículos del Tianguis ("¿Qué se vende aquí?")
+        const tagsContainer = document.getElementById('side-product-tags');
+        tagsContainer.innerHTML = '';
+
+        audit.especialidades.forEach(sp => {
+          const chip = document.createElement('span');
+          const chipClass = (sp.status === 'CONFIRMADO')
+            ? 'chip-confirmed'
+            : (sp.status === 'EN_DISPUTA' ? 'chip-dispute' : 'chip-proposed');
+          
+          chip.className = `product-tag-chip ${chipClass}`;
+          
+          if (sp.status === 'CONFIRMADO') {
+            chip.innerHTML = `✓ #${sp.nombre} <span style="font-size: 9.5px; opacity: 0.85;">(${sp.score} pts)</span>`;
+          } else if (sp.status === 'EN_DISPUTA') {
+            chip.innerHTML = `⚠️ #${sp.nombre} <span style="font-size: 9.5px;">(${sp.score} pts)</span>`;
+          } else {
+            chip.innerHTML = `? #${sp.nombre} <span style="font-size: 9.5px; color: #b45309;">(${sp.score} pt · ¿Confirmas?)</span>`;
+          }
+
+          chip.title = `Clic para respaldar #${sp.nombre} (+1 o +3 pts)`;
+          chip.addEventListener('click', () => {
+            window.GovernanceEngine.submitSpecialtyVote(t, sp.nombre).then(res => {
+              showToast(res.message);
+              renderCommunityAuditSections(t);
+              renderMapMarkers();
+            });
+          });
+
+          tagsContainer.appendChild(chip);
+        });
+
+        // Toggle formulario de propuesta
+        const formBox = document.getElementById('gov-propose-form');
+        const toggleBtn = document.getElementById('btn-toggle-propose');
+        const submitBtn = document.getElementById('btn-submit-propose');
+        const inputSpec = document.getElementById('input-new-specialty');
+
+        toggleBtn.onclick = () => {
+          formBox.style.display = (formBox.style.display === 'none' || !formBox.style.display) ? 'block' : 'none';
+          if (formBox.style.display === 'block') inputSpec.focus();
+        };
+
+        submitBtn.onclick = () => {
+          const val = inputSpec.value.trim();
+          if (!val) {
+            showToast('Escribe un producto o giro para proponer.');
+            return;
+          }
+          window.GovernanceEngine.proposeNewSpecialty(t, val).then(res => {
+            showToast(res.message);
+            inputSpec.value = '';
+            formBox.style.display = 'none';
+            renderCommunityAuditSections(t);
+            renderMapMarkers();
+          });
+        };
+
+        // 4. Barra Cívica y Testing de Auditoría Abierta
+        const btnSim = document.getElementById('btn-toggle-simulate');
+        const updateSimBtn = () => {
+          const isSimNow = window.GovernanceEngine.isSimulateTerritory();
+          if (isSimNow) {
+            btnSim.textContent = '📍 En territorio ≤300m (+3 pts)';
+            btnSim.style.background = '#d1fae5';
+            btnSim.style.color = '#065f46';
+            btnSim.style.borderColor = '#10b981';
+          } else {
+            btnSim.textContent = '🌐 Remoto / Sin GPS (+1 pt)';
+            btnSim.style.background = '#ffffff';
+            btnSim.style.color = 'var(--slate-700)';
+            btnSim.style.borderColor = 'var(--slate-300)';
+          }
+        };
+        updateSimBtn();
+
+        btnSim.onclick = () => {
+          const next = !window.GovernanceEngine.isSimulateTerritory();
+          window.GovernanceEngine.setSimulateTerritory(next);
+          updateSimBtn();
+          renderCommunityAuditSections(t);
+          showToast(next
+            ? '📍 Modo Territorio ACTIVADO (+3 pts por Proof of Location)'
+            : '🌐 Modo Remoto (+1 pt validación ciudadana)');
+        };
+
+        document.getElementById('btn-reload-demo').onclick = () => {
+          window.GovernanceEngine.initializeOrSeed(state.tianguis, true);
+          renderCommunityAuditSections(t);
+          renderMapMarkers();
+          showToast('🎲 Datos demo de gobernanza comunitaria recargados.');
+        };
+
+        document.getElementById('btn-reset-votes').onclick = () => {
+          window.GovernanceEngine.resetLocalData();
+          renderCommunityAuditSections(t);
+          renderMapMarkers();
+          showToast('🔄 Votos y datos locales restablecidos.');
+        };
+
+        document.getElementById('btn-view-json').onclick = () => {
+          const jsonStr = window.GovernanceEngine.exportAuditJSON();
+          document.getElementById('json-modal-content').textContent = jsonStr;
+          document.getElementById('json-modal-backdrop').style.display = 'flex';
+        };
+      }
+
+      // Cerrar modal de JSON
+      document.getElementById('btn-close-json-modal').addEventListener('click', () => {
+        document.getElementById('json-modal-backdrop').style.display = 'none';
+      });
+      document.getElementById('json-modal-backdrop').addEventListener('click', (e) => {
+        if (e.target.id === 'json-modal-backdrop') {
+          document.getElementById('json-modal-backdrop').style.display = 'none';
+        }
+      });
 
       // =========================================================================
       // OMNIBOX UNIFICADO INTELIGENTE

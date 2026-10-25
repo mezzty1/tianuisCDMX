@@ -736,7 +736,7 @@ def run():
         }
       });'''
 
-    if 'renderCommunityAuditSections' not in content:
+    if 'function renderCommunityAuditSections' not in content:
         assert fn_target in content, "No se encontró el target para fn"
         content = content.replace(fn_target, fn_replacement, 1)
 
