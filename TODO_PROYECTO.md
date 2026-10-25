@@ -163,12 +163,13 @@ graph TD
 
 ---
 
-### MÓDULO 5: Accesibilidad Viva y Sinergia con RTPonky (Cero Fricción)
+### MÓDULO 5: Accesibilidad Viva y Sinergia Comunitaria (Cero Fricción)
 
-> Principio rector: Entre menos fricción para el usuario, mayor adopción. No exigir reportes pesados ni formularios complejos; en su lugar, habilitar consultas de un solo clic y sinergias directas con proyectos comunitarios existentes.
+> Principio rector: Entre menos fricción para el usuario, mayor adopción. No exigir reportes pesados ni formularios complejos; en su lugar, habilitar consultas de un solo clic y fuentes directas oficiales.
 
-- [x] **5.1 Sinergia directa con RTPonky (`rtponky.lat`)** `[Implementado en Visor v2]`
-  - Botón de 1 clic en la ficha de cada mercado o tianguis para abrir la app de RTPonky y consultar si viene el autobús en tiempo real sin descargas ni registros.
+- [x] **5.1 Depuración de ruido visual en el visor** `[Hecho]`
+  - Omitida la sinergia externa con RTPonky en el visor web para mantener la interfaz limpia, profesional y libre de ruido visual.
+  - La tarjeta de detalle de cada mercado y tianguis cuenta con un botón único y directo: `[ 🎯 Planificar Ruta hacia aquí ]`.
 - [x] **5.2 Conexión con paradas y rutas de RTP oficiales** `[Hecho]`
   - 30 rutas clave y cálculo de distancia a paradas de RTP cercanas a centros de abasto.
 - [ ] **5.3 Indicador ligero de estatus de tianguis (Sin fricción)** `[Dificultad: Baja]`

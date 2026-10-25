@@ -447,21 +447,6 @@ def generate():
       color: var(--cdmx-text-muted);
     }}
 
-    .rtponky-link-btn {{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: #15803d;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 8px;
-      border-radius: 6px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      transition: background 0.2s;
-    }}
-
     /* Accesos Rápidos */
     .goto-row {{
       display: grid;
@@ -816,13 +801,11 @@ def generate():
           <div id="panel-conn" style="color:#334155;">Cargando estación o corredor cercano...</div>
         </div>
 
-        <div style="display:flex; gap:6px;">
-          <button onclick="setAsRouteDestination()" style="flex:1; background:#0f5953; color:#fff; border:none; padding:7px; border-radius:6px; font-size:0.72rem; font-weight:700; cursor:pointer;">
-            🎯 Ir hacia aquí
+        <div>
+          <button onclick="setAsRouteDestination()" style="width:100%; background:#0f5953; color:#fff; border:none; padding:9px 12px; border-radius:8px; font-size:0.78rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;">
+            <span>🎯</span>
+            <span>Planificar Ruta hacia aquí</span>
           </button>
-          <a href="https://rtponky.lat/" target="_blank" class="rtponky-link-btn" style="flex:1;" id="panel-rtponky-btn">
-            <span>RTPonky ↗</span>
-          </a>
         </div>
       </div>
 
@@ -926,13 +909,6 @@ def generate():
             </div>
             <div class="goto-btn-lbl">Secundarias</div>
           </div>
-
-          <a href="https://rtponky.lat/" target="_blank" class="goto-btn">
-            <div class="goto-btn-circle" style="background:#15803d;">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
-            </div>
-            <div class="goto-btn-lbl">RTPonky</div>
-          </a>
         </div>
       </div>
 
