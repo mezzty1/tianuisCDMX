@@ -180,8 +180,9 @@ graph TD
   - La tarjeta de detalle de cada mercado y tianguis cuenta con un botón único y directo: `[ 🎯 Planificar Ruta hacia aquí ]`.
 - [x] **5.2 Conexión con paradas y rutas de RTP oficiales** `[Hecho]`
   - 30 rutas clave y cálculo de distancia a paradas de RTP cercanas a centros de abasto.
-- [ ] **5.3 Indicador ligero de estatus de tianguis (Sin fricción)** `[Dificultad: Baja]`
-  - Cálculo automático basado en reloj/horario oficial (ej. "En operación", "Próximo a desmontar", "Vía liberada") sin depender de reportes manuales obligatorios.
+- [x] **5.3 Indicador ligero de estatus de tianguis (Sin fricción)** `[Hecho]`
+  - Cálculo automático basado en reloj/horario oficial (ej. `🟢 Abierto hoy · Horario de venta activo`, `🟡 En instalación y montaje (06:00 a 08:00 hrs)`, `🟡 En desmontaje y aseo vial (17:00 a 19:00 hrs)`, `🔴 No opera hoy`) sin depender de reportes manuales obligatorios.
+  - Integrado de forma reactiva en la ficha lateral de cada tianguis, MSR y concentración en [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html).
 
 ---
 
@@ -225,3 +226,20 @@ graph TD
     - **Nivel Micro (Búsqueda predictiva de productos concretos):** Entrada interactiva *"¿Qué quieres comprar hoy? (ej. jitomate, barbacoa, tenis, clavos, útiles...)"* con autocompletado predictivo en tiempo real sobre 159 términos populares y resolución de sinónimos hacia subgiros y macrocategorías.
     - **Filtros rápidos de política social:** Conmutadores para *"Canasta Básica SEDECO"* y *"Acepta Vales Mercomuna"*.
     - **Reactividad geoespacial:** Actualización instantánea de clusters y marcadores de Leaflet (mercados, tianguis, MSR), panel lateral detallado con oferta de giros por espacio, insignias oficiales y contadores dinámicos de oferta disponible con gestión de píldoras activas y botón de reseteo.
+- [x] **7.6 Pivote Estratégico a Comercio Popular y Barrial Itinerante (Tianguis, MSR y Concentraciones)** `[Hecho]`
+  - **Enfoque 100% en Comercio Popular y Barrial:** Rediseño integral de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) y [`scripts/build_revamped_map.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/build_revamped_map.py) para priorizar el abasto popular en vía pública: 1,365 tianguis itinerantes, 51 mercados sobre ruedas (MSR) y 169 concentraciones de comerciantes barriales (SEDECO).
+  - **Desactivación de Ruido de Transporte Masivo:** Ocultamiento total de las capas de Metro, Metrobús, RTP, Trolebús y concesionados en la interfaz gráfica (manteniendo los datasets intactos en el backend) y eliminación del planificador multimodal y pestañas de tarifas para una experiencia de usuario limpia y especializada.
+  - **Selector por Día de la Semana con Botón "🧺 Abiertos Hoy":** Filtro rápido de Lunes a Domingo con detección automática del día actual de la semana en la CDMX y conteo en tiempo real de espacios abiertos.
+  - **Filtro por Demarcación Territorial:** Selector de las 16 alcaldías oficiales de la CDMX en mayúsculas con auto-encuadre espacial (`fitBounds`) a los tianguis de la zona.
+  - **Buscador Predictivo Especializado:** Búsqueda en tiempo real sobre nombres populares (ej. "La Piloto", "El Salado", "Lagunilla"), calles y entrecalles ocupadas, colonias y giros comerciales.
+  - **Ficha Lateral (Sidebar) de Tianguis:**
+    * Nombre popular y oficial con distintivo de espacio.
+    * Estatus en vivo (`🟢 Abierto hoy`, `🟡 En instalación/desmontaje`, `🔴 No opera hoy`).
+    * Desglose horario operativo: Montaje (06:00 a 08:00), Venta (08:00 a 17:00), Desmontaje y aseo (17:00 a 19:00).
+    * Ubicación y entrecalles afectadas por cierre vial.
+    * Número estimado de puestos/oferentes y giros de canasta básica / MERCOMUNA.
+    * Acciones: Copia de coordenadas GPS WGS84 y enlace directo a Google Maps.
+  - **Modal Ejecutivo de "Afectaciones y Calles Ocupadas Hoy":**
+    * Pestaña interactiva con métricas del día (tianguis instalados, km de vía pública ocupada, oferentes totales y tipos de cierres).
+    * Tabla de las top avenidas y corredores afectados hoy.
+    * Pestaña con el resumen semanal acumulado de la CDMX (330 km de calles ocupadas por semana, 239,628 oferentes semanales) y principios normativos de SEDECO.

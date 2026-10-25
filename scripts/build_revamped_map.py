@@ -1,43 +1,760 @@
 import os
 import json
+import re
 
-# Read data/processed/cierres_viales_por_dia.json if available to get exact numbers
-cierres_stats = {}
-try:
-    with open('data/processed/cierres_viales_por_dia.json', 'r', encoding='utf-8') as f:
-        cierres_data = json.load(f)
-        cierres_stats = cierres_data.get('resumen_semanal', {})
-except Exception as e:
-    print("Notice: cierres_viales_por_dia.json error", e)
+def build_map_html():
+    print("Iniciando generación de mapa_comercio_movilidad_cdmx.html 100% enfocado en Comercio Popular y Barrial...")
 
-# Read base HTML to extract core theme styles
-html_source = 'mapa_comercio_movilidad_cdmx.html'
-with open(html_source, 'r', encoding='utf-8') as f:
-    orig = f.read()
+    # Cargar estadísticas de cierres viales
+    cierres_stats = {}
+    cierres_dias = {}
+    if os.path.exists('data/processed/cierres_viales_por_dia.json'):
+        try:
+            with open('data/processed/cierres_viales_por_dia.json', 'r', encoding='utf-8') as f:
+                c_data = json.load(f)
+                cierres_stats = c_data.get('resumen_semanal', {})
+                cierres_dias = c_data.get('dias', {})
+        except Exception as e:
+            print("Notice: error al leer cierres_viales_por_dia.json:", e)
 
-# Base HTML leído
+    cierres_json_str = json.dumps({'resumen_semanal': cierres_stats, 'dias': cierres_dias}, ensure_ascii=False)
 
-# Extract existing style content up to UX/UI revamp marker
-start_style = orig.find('<style>') + len('<style>')
-revamp_marker = orig.find('/* ==========================================================================\n       UX/UI REVAMP')
-if revamp_marker != -1 and revamp_marker > start_style:
-    existing_style = orig[start_style:revamp_marker].strip()
-else:
-    end_style = orig.find('</style>')
-    existing_style = orig[start_style:end_style].strip()
+    html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comercio Popular y Barrial CDMX · Tianguis, MSR y Concentraciones</title>
 
-# Compose extra styles
-extra_styles = """
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <!-- Leaflet MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+  <style>
+    :root {{
+      --cdmx-green-dark: #0f5953;
+      --cdmx-green-primary: #116962;
+      --cdmx-green-light: #eef7f6;
+      --cdmx-green-chip: #d5ece9;
+      --cdmx-teal: #0f766e;
+      --cdmx-teal-light: #ccfbf1;
+      --cdmx-amber: #d97706;
+      --cdmx-amber-light: #fef3c7;
+      --cdmx-purple: #6d28d9;
+      --cdmx-purple-light: #ede9fe;
+      --cdmx-wine: #9f2241;
+      --cdmx-gold: #bc955c;
+      --cdmx-bg: #f8fafc;
+      --cdmx-text-dark: #092c29;
+      --cdmx-text-muted: #527370;
+      --cdmx-border: #d4e7e5;
+      --shadow-sidebar: 4px 0 24px rgba(15, 89, 83, 0.12);
+      --shadow-card: 0 4px 16px rgba(15, 89, 83, 0.08);
+      --shadow-fab: 0 4px 14px rgba(0, 0, 0, 0.16);
+      --font-main: 'Montserrat', sans-serif;
+    }}
+
+    * {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }}
+
+    body {{
+      font-family: var(--font-main);
+      background: #eef2f6;
+      color: var(--cdmx-text-dark);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+    }}
+
     /* ==========================================================================
-       UX/UI REVAMP: CLUSTERING, AUTOCOMPLETE, MODAL, TOASTS & DETAIL CARD
+       SIDEBAR PRINCIPAL (ESCRITORIO & MÓVIL)
        ========================================================================== */
+    #sidebar {{
+      width: 440px;
+      height: 100vh;
+      background: #ffffff;
+      border-right: 1px solid var(--cdmx-border);
+      box-shadow: var(--shadow-sidebar);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.3s ease;
+      flex-shrink: 0;
+    }}
 
-    /* MarkerCluster Custom Styles */
-    .cluster-wrapper {
+    #sidebar.collapsed {{
+      margin-left: -440px;
+    }}
+
+    .sidebar-header {{
+      background: linear-gradient(135deg, var(--cdmx-green-dark) 0%, #15736c 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--cdmx-gold);
+      flex-shrink: 0;
+    }}
+
+    .sidebar-brand-title {{
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+
+    .sidebar-brand-sub {{
+      font-size: 0.68rem;
+      color: #e0f2f1;
+      font-weight: 500;
+      margin-top: 2px;
+      letter-spacing: 0.2px;
+    }}
+
+    .btn-toggle-sidebar {{
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background 0.2s ease;
+    }}
+    .btn-toggle-sidebar:hover {{
+      background: rgba(255, 255, 255, 0.28);
+    }}
+
+    .sidebar-scroll {{
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }}
+
+    /* Botón flotante para reabrir sidebar cuando está colapsado */
+    #btn-open-sidebar {{
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      background: var(--cdmx-green-dark);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-fab);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }}
+    #btn-open-sidebar:hover {{
+      background: var(--cdmx-green-primary);
+      transform: translateY(-1px);
+    }}
+
+    /* ==========================================================================
+       TARJETAS Y MÓDULOS DE CONTROL
+       ========================================================================== */
+    .section-card {{
+      background: #ffffff;
+      border: 1px solid var(--cdmx-border);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: var(--shadow-card);
+    }}
+
+    .section-title {{
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--cdmx-green-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }}
+
+    /* Selector de Día de la Semana */
+    .btn-today-highlight {{
+      width: 100%;
+      background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: var(--font-main);
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.24);
+      margin-bottom: 10px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }}
+    .btn-today-highlight:hover {{
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(15, 118, 110, 0.32);
+    }}
+    .btn-today-highlight.active {{
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+      border: 2px solid #a7f3d0;
+    }}
+
+    .days-grid {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }}
+    .day-btn {{
+      background: var(--cdmx-bg);
+      border: 1px solid var(--cdmx-border);
+      color: var(--cdmx-text-dark);
+      padding: 7px 4px;
+      border-radius: 8px;
+      font-family: var(--font-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }}
+    .day-btn:hover {{
+      background: var(--cdmx-green-chip);
+      border-color: var(--cdmx-green-primary);
+    }}
+    .day-btn.active {{
+      background: var(--cdmx-green-dark);
+      color: #ffffff;
+      border-color: var(--cdmx-green-dark);
+      box-shadow: 0 2px 6px rgba(15, 89, 83, 0.25);
+    }}
+
+    /* Selector de Alcaldía */
+    .alcaldia-select-wrapper {{
+      position: relative;
+      margin-top: 6px;
+    }}
+    .alcaldia-select {{
+      width: 100%;
+      padding: 9px 12px;
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cdmx-text-dark);
+      background: #ffffff;
+      border: 1.5px solid var(--cdmx-border);
+      border-radius: 9px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.2s ease;
+    }}
+    .alcaldia-select:focus {{
+      border-color: var(--cdmx-green-primary);
+      box-shadow: 0 0 0 3px rgba(17, 105, 98, 0.12);
+    }}
+    .alcaldia-select-arrow {{
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--cdmx-green-dark);
+      font-size: 0.75rem;
+    }}
+
+    /* Buscador Predictivo */
+    .search-input-container {{
+      position: relative;
+    }}
+    .search-input-box {{
+      width: 100%;
+      padding: 10px 38px 10px 12px;
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      border: 1.5px solid var(--cdmx-border);
+      border-radius: 9px;
+      background: #ffffff;
+      color: var(--cdmx-text-dark);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }}
+    .search-input-box:focus {{
+      border-color: var(--cdmx-green-primary);
+      box-shadow: 0 0 0 3px rgba(17, 105, 98, 0.12);
+    }}
+    .search-clear-btn {{
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: none;
+    }}
+
+    /* Dropdown de Autocompletado */
+    .autocomplete-dropdown {{
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border: 1px solid var(--cdmx-border);
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 2000;
+      display: none;
+    }}
+    .autocomplete-item {{
+      padding: 9px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      cursor: pointer;
+      font-size: 0.77rem;
+      transition: background 0.12s ease;
+    }}
+    .autocomplete-item:last-child {{
+      border-bottom: none;
+    }}
+    .autocomplete-item:hover, .autocomplete-item.selected {{
+      background: var(--cdmx-green-light);
+    }}
+    .autocomplete-title {{
+      font-weight: 700;
+      color: var(--cdmx-text-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+    .autocomplete-sub {{
+      font-size: 0.69rem;
+      color: var(--cdmx-text-muted);
+      margin-top: 2px;
+    }}
+    .autocomplete-badge {{
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ffffff;
+    }}
+
+    /* Conmutadores de Capas de Comercio */
+    .layers-toggle-grid {{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }}
+    .layer-toggle-btn {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--cdmx-bg);
+      border: 1px solid var(--cdmx-border);
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--cdmx-text-dark);
+      transition: all 0.15s ease;
+    }}
+    .layer-toggle-btn:hover {{
+      background: #f1f5f9;
+    }}
+    .layer-toggle-btn.active {{
+      background: var(--cdmx-green-chip);
+      border-color: var(--cdmx-green-primary);
+      color: var(--cdmx-green-dark);
+      font-weight: 700;
+    }}
+    .layer-pill-dot {{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }}
+
+    /* Banderas de Política Pública y Abasto */
+    .policy-toggle-row {{
+      display: flex;
+      gap: 8px;
+    }}
+    .policy-toggle-btn {{
+      flex: 1;
+      padding: 7px 8px;
+      border-radius: 7px;
+      background: #ffffff;
+      border: 1px solid var(--cdmx-border);
+      font-family: var(--font-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: var(--cdmx-text-dark);
+      transition: all 0.15s ease;
+    }}
+    .policy-toggle-btn.active {{
+      background: var(--cdmx-green-dark);
+      color: #ffffff;
+      border-color: var(--cdmx-green-dark);
+    }}
+
+    /* Contador y Filtros Activos */
+    .results-counter-bar {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 4px;
+      font-size: 0.74rem;
+      color: var(--cdmx-text-muted);
+    }}
+    .btn-reset-filters {{
+      background: none;
+      border: none;
+      color: #dc2626;
+      font-family: var(--font-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+    }}
+    .btn-reset-filters:hover {{
+      text-decoration: underline;
+    }}
+
+    /* ==========================================================================
+       FICHA DE DETALLE EN EL SIDEBAR (DETAIL CARD)
+       ========================================================================== */
+    #detail-card {{
+      background: #ffffff;
+      border: 1.5px solid var(--cdmx-green-dark);
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 8px 24px rgba(15, 89, 83, 0.12);
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }}
+
+    @keyframes fadeIn {{
+      from {{ opacity: 0; transform: translateY(6px); }}
+      to {{ opacity: 1; transform: translateY(0); }}
+    }}
+
+    .detail-card-header {{
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }}
+    .detail-space-badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #ffffff;
+    }}
+    .btn-close-card {{
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.1rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 4px;
+    }}
+    .btn-close-card:hover {{
+      color: var(--cdmx-text-dark);
+    }}
+
+    .detail-name {{
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--cdmx-text-dark);
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }}
+    .detail-sub {{
+      font-size: 0.74rem;
+      color: var(--cdmx-text-muted);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }}
+
+    /* Estatus en Vivo */
+    .status-live-banner {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }}
+    .status-open {{
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }}
+    .status-montaje {{
+      background: #fefce8;
+      color: #854d0e;
+      border: 1px solid #fde047;
+    }}
+    .status-closed {{
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }}
+    .status-dot-pulse {{
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }}
+    .status-open .status-dot-pulse {{
+      background: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    }}
+    .status-montaje .status-dot-pulse {{
+      background: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+    }}
+    .status-closed .status-dot-pulse {{
+      background: #ef4444;
+    }}
+
+    /* Caja de Afectación Vial y Entrecalles */
+    .closure-box {{
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.74rem;
+      color: #92400e;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }}
+    .closure-box-title {{
+      font-weight: 800;
+      color: #78350f;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }}
+
+    /* Grid de Estadísticas */
+    .detail-stats-grid {{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }}
+    .stat-box {{
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 7px;
+      padding: 6px;
+      text-align: center;
+    }}
+    .stat-box-val {{
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--cdmx-green-dark);
+    }}
+    .stat-box-lbl {{
+      font-size: 0.62rem;
+      color: #64748b;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 1px;
+    }}
+
+    /* Desglose de Horarios Operativos */
+    .oper-schedule-box {{
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      margin-bottom: 10px;
+    }}
+    .oper-schedule-row {{
+      display: flex;
+      justify-content: space-between;
+      padding: 2px 0;
+      color: #334155;
+    }}
+
+    /* Botones de Acción en Ficha */
+    .detail-actions-row {{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }}
+    .btn-detail-action {{
+      padding: 8px;
+      border-radius: 7px;
+      font-family: var(--font-main);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }}
+    .btn-action-primary {{
+      background: var(--cdmx-green-dark);
+      color: #ffffff;
+    }}
+    .btn-action-primary:hover {{
+      background: var(--cdmx-green-primary);
+    }}
+    .btn-action-secondary {{
+      background: #f1f5f9;
+      color: var(--cdmx-text-dark);
+      border-color: #cbd5e1;
+    }}
+    .btn-action-secondary:hover {{
+      background: #e2e8f0;
+    }}
+
+    /* Botón Calles Ocupadas Hoy */
+    .btn-open-cierres-modal {{
+      background: linear-gradient(135deg, #b45309 0%, #78350f 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-family: var(--font-main);
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(180, 83, 9, 0.22);
+      transition: transform 0.15s ease;
+    }}
+    .btn-open-cierres-modal:hover {{
+      transform: translateY(-1px);
+    }}
+
+    /* ==========================================================================
+       MAPA Y CONTROLES FLOTANTES
+       ========================================================================== */
+    #map-container {{
+      flex: 1;
+      height: 100vh;
+      position: relative;
+    }}
+    #map {{
+      width: 100%;
+      height: 100%;
+    }}
+
+    /* Barra Superior Flotante */
+    .top-floating-bar {{
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }}
+    .top-bar-left {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+    }}
+    .top-bar-right {{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+    }}
+
+    .btn-fab {{
+      background: #ffffff;
+      color: var(--cdmx-text-dark);
+      border: 1px solid var(--cdmx-border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-family: var(--font-main);
+      font-size: 0.78rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-fab);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }}
+    .btn-fab:hover {{
+      background: var(--cdmx-green-light);
+      border-color: var(--cdmx-green-primary);
+    }}
+
+    /* ==========================================================================
+       MARKER CLUSTERS ESTILIZADOS
+       ========================================================================== */
+    .cluster-wrapper {{
       background: transparent !important;
       border: none !important;
-    }
-    .custom-cluster-badge {
+    }}
+    .custom-cluster-badge {{
       display: flex;
       align-items: center;
       justify-content: center;
@@ -46,990 +763,495 @@ extra_styles = """
       font-weight: 800;
       color: #ffffff;
       box-shadow: 0 4px 14px rgba(0,0,0,0.28), 0 0 0 3px rgba(255,255,255,0.9);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
       user-select: none;
-    }
-    .custom-cluster-badge:hover {
+    }}
+    .custom-cluster-badge:hover {{
       transform: scale(1.12);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.36), 0 0 0 4px #ffffff;
-    }
-    .cluster-tianguis {
-      background: radial-gradient(circle at 35% 35%, #14b8a6, #0f5953);
-    }
-    .cluster-mercados {
-      background: radial-gradient(circle at 35% 35%, #fbbf24, #b45309);
-    }
-    .cluster-metro {
-      background: radial-gradient(circle at 35% 35%, #f87171, #dc2626);
-    }
-    .cluster-metrobus {
-      background: radial-gradient(circle at 35% 35%, #f472b6, #db2777);
-    }
+    }}
+    .cluster-tianguis {{
+      background: radial-gradient(circle at 35% 35%, #0f766e, #064e3b);
+    }}
+    .cluster-msr {{
+      background: radial-gradient(circle at 35% 35%, #d97706, #92400e);
+    }}
+    .cluster-concentraciones {{
+      background: radial-gradient(circle at 35% 35%, #6d28d9, #4c1d95);
+    }}
+    .cluster-mercados {{
+      background: radial-gradient(circle at 35% 35%, #ca8a04, #854d0e);
+    }}
 
-    .cluster-small {
-      width: 38px;
-      height: 38px;
-      font-size: 0.72rem;
-    }
-    .cluster-medium {
-      width: 46px;
-      height: 46px;
+    .cluster-small {{ width: 36px; height: 36px; font-size: 0.72rem; }}
+    .cluster-medium {{ width: 44px; height: 44px; font-size: 0.78rem; }}
+    .cluster-large {{ width: 52px; height: 52px; font-size: 0.84rem; }}
+
+    /* ==========================================================================
+       MODAL DE AFECTACIONES Y CALLES OCUPADAS
+       ========================================================================== */
+    .modal-overlay {{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }}
+    .modal-card {{
+      background: #ffffff;
+      width: 100%;
+      max-width: 760px;
+      max-height: 88vh;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--cdmx-border);
+      animation: modalPop 0.22s ease-out;
+    }}
+    @keyframes modalPop {{
+      from {{ transform: scale(0.95); opacity: 0; }}
+      to {{ transform: scale(1); opacity: 1; }}
+    }}
+
+    .modal-header {{
+      background: linear-gradient(135deg, var(--cdmx-green-dark) 0%, #15736c 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--cdmx-gold);
+    }}
+    .modal-title {{
+      font-size: 1.05rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+    .modal-close-btn {{
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #ffffff;
+      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }}
+
+    .modal-tabs {{
+      display: flex;
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--cdmx-border);
+      padding: 0 16px;
+    }}
+    .modal-tab-btn {{
+      padding: 10px 14px;
+      font-family: var(--font-main);
       font-size: 0.78rem;
-    }
-    .cluster-large {
-      width: 54px;
-      height: 54px;
-      font-size: 0.85rem;
-    }
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      transition: all 0.15s ease;
+    }}
+    .modal-tab-btn.active {{
+      color: var(--cdmx-green-dark);
+      border-bottom-color: var(--cdmx-green-dark);
+      background: #ffffff;
+    }}
 
-    /* Skeleton Loader */
-    .map-loader-overlay {
+    .modal-body {{
+      padding: 20px;
+      overflow-y: auto;
+      flex: 1;
+    }}
+
+    /* KPI Cards dentro del Modal */
+    .kpi-row {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }}
+    .kpi-card {{
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+    }}
+    .kpi-val {{
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--cdmx-green-dark);
+    }}
+    .kpi-lbl {{
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }}
+
+    /* Tablas de Corredores y Afectaciones */
+    .corredores-table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.74rem;
+      margin-top: 10px;
+    }}
+    .corredores-table th {{
+      background: #f1f5f9;
+      color: var(--cdmx-text-dark);
+      padding: 8px 10px;
+      text-align: left;
+      font-weight: 800;
+      border-bottom: 2px solid var(--cdmx-border);
+    }}
+    .corredores-table td {{
+      padding: 8px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #334155;
+    }}
+    .corredores-table tr:hover td {{
+      background: var(--cdmx-green-light);
+    }}
+
+    /* Loader Inicial */
+    .map-loader-overlay {{
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       background: rgba(248, 250, 252, 0.94);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 1500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-    }
-    .map-loader-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-    .map-loader-card {
-      background: #ffffff;
-      padding: 32px 36px;
-      border-radius: 18px;
-      box-shadow: 0 20px 45px rgba(15, 89, 83, 0.14);
-      text-align: center;
-      max-width: 440px;
-      width: 90%;
-      border: 1px solid var(--cdmx-border);
-      animation: popIn 0.3s ease;
-    }
-    @keyframes popIn {
-      from { transform: scale(0.92); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .map-loader-icon-pulse {
-      display: inline-flex;
-      padding: 16px;
-      border-radius: 50%;
-      background: var(--cdmx-green-light);
-      animation: pulseIcon 1.6s infinite ease-in-out;
-      margin-bottom: 14px;
-    }
-    @keyframes pulseIcon {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(15, 89, 83, 0.3); }
-      70% { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(15, 89, 83, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(15, 89, 83, 0); }
-    }
-    .map-loader-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--cdmx-green-dark);
-      margin-bottom: 6px;
-    }
-    .map-loader-subtitle {
-      font-size: 0.78rem;
-      color: #64748b;
-      margin-bottom: 18px;
-      line-height: 1.45;
-    }
-    .map-loader-bar {
-      width: 100%;
-      height: 6px;
-      background: #e2e8f0;
-      border-radius: 999px;
-      overflow: hidden;
-      position: relative;
-      margin-bottom: 12px;
-    }
-    .map-loader-progress {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 45%;
-      background: linear-gradient(90deg, #10b981, #0f5953);
-      border-radius: 999px;
-      animation: indeterminateBar 1.4s infinite ease-in-out;
-    }
-    @keyframes indeterminateBar {
-      0% { left: -40%; width: 40%; }
-      50% { left: 20%; width: 70%; }
-      100% { left: 100%; width: 40%; }
-    }
-    .map-loader-tip {
-      font-size: 0.68rem;
-      color: #94a3b8;
-      font-weight: 500;
-    }
-
-    /* Autocomplete Dropdown */
-    .search-autocomplete-dropdown {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      right: 0;
-      background: #ffffff;
-      border-radius: 10px;
-      border: 1px solid var(--cdmx-border);
-      box-shadow: 0 14px 32px rgba(15, 89, 83, 0.16);
-      max-height: 310px;
-      overflow-y: auto;
-      z-index: 1200;
-    }
-    .autocomplete-item {
-      padding: 10px 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid #f1f5f9;
-      transition: background 0.15s;
-    }
-    .autocomplete-item:last-child {
-      border-bottom: none;
-    }
-    .autocomplete-item:hover, .autocomplete-item.selected {
-      background: var(--cdmx-green-light);
-    }
-    .autocomplete-badge {
-      font-size: 0.62rem;
-      font-weight: 800;
-      color: #fff;
-      padding: 3px 6px;
-      border-radius: 4px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      letter-spacing: 0.3px;
-    }
-    .autocomplete-text {
-      flex: 1;
-      min-width: 0;
-    }
-    .autocomplete-title {
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: #0f172a;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .autocomplete-sub {
-      font-size: 0.7rem;
-      color: #64748b;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .autocomplete-highlight {
-      background: #fef08a;
-      color: #854d0e;
-      border-radius: 2px;
-      padding: 0 1px;
-    }
-
-    /* Detail Card Redesign */
-    .panel-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-      line-height: 1.2;
-    }
-    .status-open {
-      background: #dcfce7;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
-    }
-    .status-closed {
-      background: #fee2e2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
-    }
-    .status-warning {
-      background: #fef3c7;
-      color: #b45309;
-      border: 1px solid #fde68a;
-    }
-    .status-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-    .status-open .status-indicator { background: #16a34a; }
-    .status-closed .status-indicator { background: #dc2626; }
-    .status-warning .status-indicator { background: #f59e0b; }
-
-    /* Modern Modal Dialog */
-    .cdmx-modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(15, 23, 42, 0.65);
       backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
       z-index: 2500;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }}
+    .map-loader-overlay.hidden {{
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: opacity 0.25s ease;
-      padding: 16px;
-    }
-    .cdmx-modal-overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .cdmx-modal-dialog {
+    }}
+    .loader-card {{
       background: #ffffff;
-      width: 100%;
-      max-width: 660px;
-      max-height: 88vh;
-      border-radius: 18px;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transform: scale(0.94);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .cdmx-modal-overlay.active .cdmx-modal-dialog {
-      transform: scale(1);
-    }
-    .cdmx-modal-header {
-      background: var(--cdmx-green-dark);
-      color: #ffffff;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-    }
-    .cdmx-modal-title {
-      font-size: 1.08rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-    }
-    .cdmx-modal-sub {
-      font-size: 0.72rem;
-      color: #bbf7d0;
-      font-weight: 500;
-      margin-top: 2px;
-    }
-    .cdmx-modal-close {
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
-      color: #ffffff;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      font-size: 1.15rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-    .cdmx-modal-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-    .cdmx-modal-tabs {
-      display: flex;
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
-      overflow-x: auto;
-      flex-shrink: 0;
-    }
-    .modal-tab-btn {
-      flex: 1;
-      min-width: 130px;
-      padding: 13px 14px;
-      border: none;
-      background: transparent;
-      font-family: var(--font-main);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #64748b;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.2s;
-      border-bottom: 3px solid transparent;
-      white-space: nowrap;
-    }
-    .modal-tab-btn:hover {
-      color: var(--cdmx-green-dark);
-      background: rgba(255, 255, 255, 0.8);
-    }
-    .modal-tab-btn.active {
-      color: var(--cdmx-green-dark);
-      background: #ffffff;
-      border-bottom: 3px solid var(--cdmx-green-dark);
-    }
-    .cdmx-modal-body {
-      padding: 22px;
-      overflow-y: auto;
-      font-size: 0.82rem;
-      color: #334155;
-      line-height: 1.55;
-    }
-    .modal-tab-pane {
-      display: none;
-    }
-    .modal-tab-pane.active {
-      display: block;
-      animation: fadeInPane 0.2s ease;
-    }
-    @keyframes fadeInPane {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Modal Component Elements */
-    .modal-section-title {
-      font-weight: 800;
-      color: #0f172a;
-      font-size: 0.92rem;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .modal-alert-box {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-bottom: 14px;
-      font-size: 0.78rem;
-      color: #166534;
-      line-height: 1.45;
-    }
-    .modal-alert-box.alert-amber {
-      background: #fffbeb;
-      border-color: #fde68a;
-      color: #92400e;
-    }
-    .modal-grid-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .modal-card-mini {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 12px;
-    }
-    .modal-card-mini-title {
-      font-weight: 700;
-      font-size: 0.78rem;
-      color: #0f5953;
-      margin-bottom: 4px;
-    }
-    .modal-card-mini-val {
-      font-size: 0.72rem;
-      color: #475569;
-      line-height: 1.4;
-    }
-    .modal-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 16px;
-      font-size: 0.76rem;
-    }
-    .modal-table th {
-      background: #f1f5f9;
-      color: #475569;
-      font-weight: 700;
-      text-align: left;
-      padding: 8px 10px;
-      border-bottom: 1px solid #cbd5e1;
-    }
-    .modal-table td {
-      padding: 8px 10px;
-      border-bottom: 1px solid #f1f5f9;
-      color: #334155;
-    }
-    .modal-table tr:hover td {
-      background: #f8fafc;
-    }
-
-    /* Toast Container */
-    .toast-container {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 3000;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      pointer-events: none;
-    }
-    .toast-item {
-      pointer-events: auto;
-      min-width: 290px;
-      max-width: 390px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: #ffffff;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.18), 0 3px 8px rgba(0,0,0,0.08);
-      font-size: 0.78rem;
-      color: #1e293b;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      border-left: 4px solid var(--cdmx-green-dark);
-      line-height: 1.4;
-    }
-    .toast-item.toast-success { border-left-color: #10b981; }
-    .toast-item.toast-warning { border-left-color: #f59e0b; }
-    .toast-item.toast-error { border-left-color: #ef4444; }
-    .toast-item.toast-info { border-left-color: #0284c7; }
-    @keyframes toastSlideIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ==========================================================================
-       FILTRO JERÁRQUICO DE COMPRAS (MICRO, MESO, MACRO & POLÍTICA SOCIAL)
-       ========================================================================== */
-    .badge-policy {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-    .badge-canasta {
-      background: #dcfce7;
-      color: #15803d;
-      border: 1px solid #86efac;
-    }
-    .badge-mercomuna {
-      background: #f3e8ff;
-      color: #7e22ce;
-      border: 1px solid #d8b4fe;
-    }
-    .badge-cat-mini {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      background: #f1f5f9;
-      color: #334155;
-      border: 1px solid #e2e8f0;
-    }
-    .subgiro-pill {
-      display: inline-block;
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-size: 0.66rem;
-      font-weight: 600;
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #a7f3d0;
-    }
-    .macro-chips-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 6px;
-    }
-    .macro-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 8px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      background: #f8fafc;
-      color: #334155;
-      border: 1px solid #cbd5e1;
+      padding: 28px 34px;
       border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      font-family: inherit;
-    }
-    .macro-chip:hover {
-      background: #e2e8f0;
-      border-color: #94a3b8;
-    }
-    .macro-chip.active {
-      background: #0f5953;
+      box-shadow: 0 15px 35px rgba(15, 89, 83, 0.15);
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      border: 1px solid var(--cdmx-border);
+    }}
+    .spinner-ring {{
+      width: 40px;
+      height: 40px;
+      border: 3.5px solid #d5ece9;
+      border-top-color: var(--cdmx-green-dark);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 14px;
+    }}
+    @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
+
+    /* Toasts */
+    .toast-container {{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 4000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }}
+    .toast-msg {{
+      background: #0f172a;
       color: #ffffff;
-      border-color: #0f5953;
-      box-shadow: 0 2px 6px rgba(15,89,83,0.3);
-      font-weight: 700;
-    }
-    .subgiro-select-input {
-      width: 100%;
-      padding: 6px 10px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      font-size: 0.74rem;
-      background: #ffffff;
-      color: #334155;
-      font-family: inherit;
-      outline: none;
-      cursor: pointer;
-    }
-    .subgiro-select-input:focus {
-      border-color: #0f5953;
-      box-shadow: 0 0 0 2px rgba(15,89,83,0.15);
-    }
-    .policy-toggle-btn {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      padding: 6px 8px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      color: #475569;
-      font-size: 0.68rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s;
-      font-family: inherit;
-    }
-    .policy-toggle-btn:hover {
-      background: #f8fafc;
-    }
-    .policy-toggle-btn.active-canasta {
-      background: #ecfdf5;
-      color: #065f46;
-      border-color: #10b981;
-      font-weight: 800;
-      box-shadow: 0 1px 3px rgba(16,185,129,0.2);
-    }
-    .policy-toggle-btn.active-mercomuna {
-      background: #faf5ff;
-      color: #6b21a8;
-      border-color: #a855f7;
-      font-weight: 800;
-      box-shadow: 0 1px 3px rgba(168,85,247,0.2);
-    }
-    .compras-autocomplete-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      z-index: 2100;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
       border-radius: 8px;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.18);
-      max-height: 280px;
-      overflow-y: auto;
-    }
-    .compras-item {
-      padding: 7px 10px;
-      cursor: pointer;
-      border-bottom: 1px solid #f1f5f9;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.12s;
-    }
-    .compras-item:hover, .compras-item.selected {
-      background: #ecfdf5;
-    }
-    .compras-term-title {
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 0.78rem;
-    }
-    .compras-term-sub {
-      font-size: 0.68rem;
-      color: #64748b;
-      display: flex;
-      gap: 4px;
-      align-items: center;
-      margin-top: 2px;
-    }
-    .compras-badge {
-      font-size: 0.6rem;
-      font-weight: 700;
-      padding: 1px 4px;
-      border-radius: 3px;
-    }
-    .active-filter-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 1px solid #bae6fd;
-      border-radius: 12px;
-      padding: 2px 7px;
-      font-size: 0.65rem;
-      font-weight: 700;
-    }
-    .active-filter-pill .remove-pill {
-      cursor: pointer;
-      margin-left: 2px;
-      font-weight: 800;
-      color: #0284c7;
-    }
-    .active-filter-pill .remove-pill:hover {
-      color: #b91c1c;
-    }
-"""
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      pointer-events: auto;
+      animation: toastIn 0.2s ease;
+    }}
+    @keyframes toastIn {{
+      from {{ transform: translateY(10px); opacity: 0; }}
+      to {{ transform: translateY(0); opacity: 1; }}
+    }}
 
-html_head = f"""<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movilidad y Comercio CDMX · Portal de Datos</title>
-  
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <!-- Leaflet MarkerCluster CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-  <!-- Google Fonts: Montserrat -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
-
-  <style>
-{existing_style}
-{extra_styles}
+    /* Responsive */
+    @media (max-width: 768px) {{
+      #sidebar {{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        max-width: 380px;
+        z-index: 2001;
+      }}
+      #sidebar.collapsed {{
+        margin-left: -100vw;
+      }}
+      #btn-open-sidebar {{
+        display: flex;
+      }}
+      .kpi-row {{
+        grid-template-columns: repeat(2, 1fr);
+      }}
+    }}
   </style>
 </head>
-"""
+<body>
 
-html_body = """<body>
-
+  <!-- Botón para reabrir panel en móvil o vista colapsada -->
   <button id="btn-open-sidebar" onclick="toggleSidebar()">
     <span>☰</span>
-    <span>Abrir Menú</span>
+    <span>Abrir Directorio</span>
   </button>
 
+  <!-- SIDEBAR LATERAL -->
   <aside id="sidebar">
     <div class="sidebar-header">
       <div>
-        <div class="sidebar-brand-title">Movilidad y Comercio CDMX</div>
-        <div class="sidebar-brand-sub">Chilangatón 2026 · Reto 1</div>
+        <div class="sidebar-brand-title">
+          <span>🧺</span> Comercio Popular CDMX
+        </div>
+        <div class="sidebar-brand-sub">Tianguis · MSR · Concentraciones Barriales</div>
       </div>
       <button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Colapsar panel lateral">◀</button>
     </div>
 
     <div class="sidebar-scroll">
 
-      <!-- Planificador de Rutas Interactivo (A -> B) -->
-      <div class="route-planner-card">
-        <div class="route-planner-title">
-          <span>🧭 Planificar Ruta (Punto A ➔ B)</span>
-          <span style="font-size:0.65rem; background:#bbf7d0; color:#166534; padding:2px 6px; border-radius:4px;">MULTIMODAL</span>
+      <!-- 1. SELECTOR RÁPIDO DE DÍA DE LA SEMANA -->
+      <div class="section-card">
+        <div class="section-title">
+          <span>📅 Día de Instalación</span>
+          <span id="active-day-badge" style="font-size:0.65rem; background:var(--cdmx-green-chip); color:var(--cdmx-green-dark); padding:2px 6px; border-radius:4px;">TODOS</span>
         </div>
 
-        <div class="route-input-group">
-          <div class="route-input-row">
-            <span class="route-dot-indicator" style="background:#2563eb;"></span>
-            <input type="text" id="route-from" placeholder="Origen: 'Mi ubicación' o lugar (ej. Zócalo, Bellas Artes)" value="Mi ubicación">
-          </div>
-          <div class="route-input-row">
-            <span class="route-dot-indicator" style="background:#ef4444;"></span>
-            <input type="text" id="route-to" placeholder="Destino: Mercado, Tianguis o Lugar (ej. Jamaica)" value="Mercado Jamaica">
-          </div>
-        </div>
-
-        <button class="btn-calc-route" onclick="calculateRouteUI()">
-          <span>⚡</span>
-          <span>Calcular Ruta Óptima</span>
+        <!-- Botón destacado "Abiertos Hoy" -->
+        <button id="btn-today-filter" class="btn-today-highlight" onclick="filterByToday()">
+          <span style="display:flex; align-items:center; gap:6px;">
+            <span>🧺</span>
+            <span id="btn-today-text">Abiertos Hoy ({'LUNES'})</span>
+          </span>
+          <span id="btn-today-count" style="background:rgba(255,255,255,0.22); padding:2px 8px; border-radius:12px; font-size:0.75rem;">--</span>
         </button>
 
-        <div id="route-result-box">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-            <div style="font-weight:800; color:#15803d; font-size:0.85rem;" id="route-summary-title">Ruta Calculada</div>
-            <span style="font-size:0.65rem; background:#dcfce7; color:#166534; font-weight:800; padding:2px 6px; border-radius:4px;">RUTA LIMPIA</span>
-          </div>
-          <div id="route-summary-content" style="color:#334155; line-height:1.45; font-size:0.78rem;"></div>
-          <button class="btn-clear-route-box" onclick="exitRouteFocusMode()">
-            <span>✕</span>
-            <span>Limpiar ruta y restaurar todas las capas</span>
-          </button>
+        <!-- Selector de Días -->
+        <div class="days-grid">
+          <button class="day-btn active" id="day-TODOS" onclick="filterByDay('TODOS')">Todos</button>
+          <button class="day-btn" id="day-LUNES" onclick="filterByDay('LUNES')">Lun</button>
+          <button class="day-btn" id="day-MARTES" onclick="filterByDay('MARTES')">Mar</button>
+          <button class="day-btn" id="day-MIERCOLES" onclick="filterByDay('MIERCOLES')">Mié</button>
+          <button class="day-btn" id="day-JUEVES" onclick="filterByDay('JUEVES')">Jue</button>
+          <button class="day-btn" id="day-VIERNES" onclick="filterByDay('VIERNES')">Vie</button>
+          <button class="day-btn" id="day-SABADO" onclick="filterByDay('SABADO')">Sáb</button>
+          <button class="day-btn" id="day-DOMINGO" onclick="filterByDay('DOMINGO')">Dom</button>
         </div>
       </div>
 
-      <!-- Ficha de Detalle Dinámica -->
-      <div id="detail-card">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-          <span class="detail-tag" id="panel-tag" style="background:var(--cdmx-green-dark);">MERCADO PÚBLICO</span>
-          <button style="border:none; background:transparent; cursor:pointer; font-size:1.15rem; color:#64748b;" onclick="closeDetailCard()" title="Cerrar ficha">✕</button>
+      <!-- 2. FILTRO POR ALCALDÍA -->
+      <div class="section-card">
+        <div class="section-title">
+          <span>🏛️ Alcaldía Oficial</span>
+          <span id="alcaldia-count-badge" style="font-size:0.65rem; color:#64748b;">16 demarcaciones</span>
         </div>
-
-        <div id="panel-status-pill" class="panel-status-pill status-open">
-          <span class="status-indicator"></span>
-          <span id="panel-status-text">Abierto hoy hasta 18:00</span>
-        </div>
-
-        <div class="detail-name" id="panel-name">Mercado</div>
-        <div class="detail-loc" id="panel-sub">Alcaldía · Colonia</div>
-
-        <div class="stats-2col">
-          <div class="stat-pill">
-            <div class="stat-pill-val" id="panel-stat1">--</div>
-            <div class="stat-pill-lbl" id="panel-lbl1">Locales</div>
-          </div>
-          <div class="stat-pill">
-            <div class="stat-pill-val" id="panel-stat2">--</div>
-            <div class="stat-pill-lbl" id="panel-lbl2">Superficie</div>
-          </div>
-        </div>
-
-        <!-- Categorías y Banderas de Política Pública -->
-        <div id="panel-policy-badges" style="display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px;"></div>
-        
-        <!-- Subgiros y Oferta Comercial Disponibles -->
-        <div id="panel-subgiros-box" style="display:none; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:8px; margin-bottom:8px; font-size:0.73rem;">
-          <div style="font-weight:700; color:#0f5953; margin-bottom:4px; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.3px;">
-            🛍️ Oferta Comercial y Giros Disponibles:
-          </div>
-          <div id="panel-subgiros-content" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
-        </div>
-
-        <!-- Alerta de Cierre Vial -->
-        <div id="panel-closure-box" style="display:none; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px; margin-bottom:8px; font-size:0.75rem; color:#92400e;">
-          <div style="font-weight:700; margin-bottom:2px; display:flex; align-items:center; gap:4px;">
-            <span>⚠️ Afectación Vial Programada:</span>
-          </div>
-          <div id="panel-closure-text" style="color:#78350f; line-height:1.35;"></div>
-        </div>
-
-        <!-- Conexión de Transporte -->
-        <div style="background:#ffffff; padding:10px; border-radius:8px; border:1px solid #dbeae8; margin-bottom:10px; font-size:0.75rem;">
-          <div style="font-weight:700; color:var(--cdmx-green-dark); margin-bottom:3px; display:flex; align-items:center; gap:4px;">
-            <span>🚇 Conexión de Movilidad Integrada:</span>
-          </div>
-          <div id="panel-conn" style="color:#334155; line-height:1.4;">Cargando estación o corredor cercano...</div>
-        </div>
-
-        <div style="display:flex; gap:6px;">
-          <button onclick="setAsRouteDestination()" style="flex:1.2; background:#0f5953; color:#fff; border:none; padding:8px; border-radius:6px; font-size:0.74rem; font-weight:700; cursor:pointer;" title="Fijar como destino de viaje">
-            🎯 Ir hacia aquí
-          </button>
-          <button onclick="copyCurrentCoords()" style="flex:1; background:#f1f5f9; color:#334155; border:1px solid #cbd5e1; padding:8px; border-radius:6px; font-size:0.72rem; font-weight:700; cursor:pointer;" title="Copiar coordenadas geográficas">
-            📋 Copiar GPS
-          </button>
-          <a href="https://rtponky.lat/" target="_blank" class="rtponky-link-btn" style="flex:0.9;" id="panel-rtponky-btn" title="Consultar en RTPonky">
-            <span>RTPonky ↗</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Buscador Unificado con Autocompletado Predictivo -->
-      <div class="section-block">
-        <div class="section-heading">
-          <span>Buscador Unificado</span>
-          <span style="font-size:0.65rem; background:#dcfce7; color:#166534; font-weight:700; padding:2px 6px; border-radius:4px;">PREDICTIVO</span>
-        </div>
-        <div class="search-input-box" style="position:relative;">
-          <svg class="search-icon-svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
-          <input type="text" id="market-search" placeholder="Buscar mercado, tianguis, metro, RTP..." autocomplete="off">
-          <button id="clear-search-btn" onclick="clearUnifiedSearch()" style="display:none; background:transparent; border:none; color:#94a3b8; cursor:pointer; padding:4px 8px; font-size:0.9rem;" title="Limpiar búsqueda">✕</button>
-        </div>
-        <div id="search-autocomplete-dropdown" class="search-autocomplete-dropdown" style="display:none;"></div>
-      </div>
-
-      <!-- Filtro Jerárquico de Compras Populares (Micro -> Meso -> Macro) -->
-      <div class="section-block" id="compras-filter-section" style="background:#ffffff; border:1px solid #d1fae5; border-radius:10px; padding:12px; margin-bottom:12px; box-shadow:0 2px 6px rgba(15,89,83,0.06);">
-        <div class="section-heading" style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-          <div style="display:flex; align-items:center; gap:6px;">
-            <span style="font-size:1.05rem;">🛒</span>
-            <span style="font-weight:800; color:#0f5953; font-size:0.85rem;">Filtro de Compras Barriales</span>
-          </div>
-          <span style="font-size:0.62rem; background:#ecfdf5; color:#047857; font-weight:800; padding:2px 6px; border-radius:4px; border:1px solid #a7f3d0;">3 NIVELES</span>
-        </div>
-
-        <!-- 1. NIVEL MICRO: Búsqueda predictiva de productos concretos -->
-        <div style="font-size:0.7rem; font-weight:700; color:#475569; margin-bottom:4px; display:flex; justify-content:space-between;">
-          <span>1. ¿QUÉ QUIERES COMPRAR HOY?</span>
-          <span style="color:#0f5953; font-size:0.65rem;">Nivel Micro</span>
-        </div>
-        <div class="search-input-box" style="position:relative; margin-bottom:8px;">
-          <svg class="search-icon-svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
-          <input type="text" id="compras-search-input" placeholder="Ej. jitomate, barbacoa, tenis, clavos, útiles..." autocomplete="off">
-          <button id="clear-compras-btn" onclick="clearComprasSearch()" style="display:none; background:transparent; border:none; color:#94a3b8; cursor:pointer; padding:4px 8px; font-size:0.9rem;" title="Limpiar término">✕</button>
-        </div>
-        <div id="compras-autocomplete-dropdown" class="compras-autocomplete-dropdown" style="display:none;"></div>
-
-        <!-- 2. NIVEL MACRO: 9 Macro-Categorías -->
-        <div style="font-size:0.7rem; font-weight:700; color:#475569; margin-bottom:4px; display:flex; justify-content:space-between;">
-          <span>2. MACRO-CATEGORÍAS</span>
-          <span style="color:#0f5953; font-size:0.65rem;">9 Sectores</span>
-        </div>
-        <div class="macro-chips-container" id="macro-chips-container"></div>
-
-        <!-- 3. NIVEL MESO: 67 Subgiros del Catálogo -->
-        <div style="font-size:0.7rem; font-weight:700; color:#475569; margin:8px 0 4px 0; display:flex; justify-content:space-between;">
-          <span>3. SUBGIRO ESPECÍFICO</span>
-          <span style="color:#0f5953; font-size:0.65rem;">67 Giros Oficiales</span>
-        </div>
-        <div style="position:relative; margin-bottom:8px;">
-          <select id="subgiro-select" class="subgiro-select-input" onchange="onSubgiroSelectChange(this.value)">
-            <option value="">Todos los subgiros comerciales...</option>
+        <div class="alcaldia-select-wrapper">
+          <select id="alcaldia-select" class="alcaldia-select" onchange="onAlcaldiaSelectChange(this.value)">
+            <option value="TODAS">Todas las Alcaldías (CDMX)</option>
+            <option value="ALVARO OBREGON">Álvaro Obregón</option>
+            <option value="AZCAPOTZALCO">Azcapotzalco</option>
+            <option value="BENITO JUAREZ">Benito Juárez</option>
+            <option value="COYOACAN">Coyoacán</option>
+            <option value="CUAJIMALPA DE MORELOS">Cuajimalpa de Morelos</option>
+            <option value="CUAUHTEMOC">Cuauhtémoc</option>
+            <option value="GUSTAVO A. MADERO">Gustavo A. Madero</option>
+            <option value="IZTACALCO">Iztacalco</option>
+            <option value="IZTAPALAPA">Iztapalapa</option>
+            <option value="LA MAGDALENA CONTRERAS">La Magdalena Contreras</option>
+            <option value="MIGUEL HIDALGO">Miguel Hidalgo</option>
+            <option value="MILPA ALTA">Milpa Alta</option>
+            <option value="TLAHUAC">Tláhuac</option>
+            <option value="TLALPAN">Tlalpan</option>
+            <option value="VENUSTIANO CARRANZA">Venustiano Carranza</option>
+            <option value="XOCHIMILCO">Xochimilco</option>
           </select>
-        </div>
-
-        <!-- 4. CONMUTADORES DE POLÍTICA PÚBLICA -->
-        <div style="display:flex; flex-direction:column; gap:5px; margin-top:8px; padding-top:8px; border-top:1px dashed #e2e8f0;">
-          <div style="display:flex; gap:6px;">
-            <button class="policy-toggle-btn" id="btn-toggle-canasta" onclick="toggleFilterCanasta()">
-              <span class="p-icon">🛒</span>
-              <span class="p-txt">Canasta Básica SEDECO</span>
-            </button>
-            <button class="policy-toggle-btn" id="btn-toggle-mercomuna" onclick="toggleFilterMercomuna()">
-              <span class="p-icon">💳</span>
-              <span class="p-txt">Vales Mercomuna</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- CONTADOR DE RESULTADOS Y ETIQUETAS ACTIVAS -->
-        <div id="compras-feedback-box" style="margin-top:10px; padding:6px 8px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span id="compras-results-counter" style="font-size:0.72rem; font-weight:800; color:#0f5953;">Mostrando 1,747 espacios</span>
-            <button id="compras-reset-all-btn" onclick="resetAllCommerceFilters()" style="display:none; background:#fee2e2; color:#b91c1c; border:none; border-radius:4px; padding:2px 6px; font-size:0.65rem; font-weight:700; cursor:pointer;">Limpiar Filtros ✕</button>
-          </div>
-          <div id="compras-active-pills" style="display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;"></div>
+          <span class="alcaldia-select-arrow">▼</span>
         </div>
       </div>
 
-      <!-- Capas de Comercio Barrial -->
-      <div class="section-block">
-        <div class="section-heading">
-          <span>Comercio Popular</span>
+      <!-- 3. BUSCADOR PREDICTIVO ESPECIALIZADO -->
+      <div class="section-card">
+        <div class="section-title">
+          <span>🔍 Búsqueda Rápida</span>
+          <span style="font-size:0.65rem; color:#64748b;">Predictivo</span>
         </div>
-        <div class="chips-flow">
-          <button class="chip-btn active" id="chip-mercados" onclick="toggleLayer('mercados')">🏪 Mercados (329)</button>
-          <button class="chip-btn active" id="chip-tianguis" onclick="toggleLayer('tianguis')">🧺 Tianguis (1,367)</button>
-          <button class="chip-btn active" id="chip-msr" onclick="toggleLayer('msr')">🚚 Rutas MSR (51)</button>
-          <button class="chip-btn" id="chip-dia-hoy" onclick="filterByToday()">📅 Abrir Hoy</button>
+        <div class="search-input-container">
+          <input type="text" id="commerce-search-input" class="search-input-box"
+                 placeholder="Tianguis, calle, entrecalle, colonia o giro (ej. El Salado, Texcoco, Frutas)..."
+                 autocomplete="off"
+                 oninput="onCommerceSearchInput(this.value)">
+          <button id="commerce-search-clear" class="search-clear-btn" onclick="clearCommerceSearch()">✕</button>
+          <div id="commerce-autocomplete-dropdown" class="autocomplete-dropdown"></div>
         </div>
       </div>
 
-      <!-- Capas de Transporte -->
-      <div class="section-block">
-        <div class="section-heading">
-          <span>Red de Transporte</span>
-          <button class="btn-dropdown-main" onclick="toggleTransportDropdown(event)">
-            <span>Líneas MI</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M7 10l5 5 5-5z"/></svg>
+      <!-- 4. TIPOS DE COMERCIO POPULAR Y BANDERAS -->
+      <div class="section-card">
+        <div class="section-title">
+          <span>🛒 Espacios Comerciales</span>
+        </div>
+        <div class="layers-toggle-grid">
+          <div class="layer-toggle-btn active" id="chip-tianguis" onclick="toggleSpaceLayer('tianguis')">
+            <span><span class="layer-pill-dot" style="background:#0f766e;"></span>🧺 Tianguis Itinerantes</span>
+            <span id="badge-count-tianguis" style="font-size:0.7rem; color:#64748b;">1,365</span>
+          </div>
+          <div class="layer-toggle-btn active" id="chip-msr" onclick="toggleSpaceLayer('msr')">
+            <span><span class="layer-pill-dot" style="background:#d97706;"></span>🚚 Mercados Sobre Ruedas (MSR)</span>
+            <span id="badge-count-msr" style="font-size:0.7rem; color:#64748b;">51</span>
+          </div>
+          <div class="layer-toggle-btn active" id="chip-concentraciones" onclick="toggleSpaceLayer('concentraciones')">
+            <span><span class="layer-pill-dot" style="background:#6d28d9;"></span>🏬 Concentraciones Barriales</span>
+            <span id="badge-count-concentraciones" style="font-size:0.7rem; color:#64748b;">169</span>
+          </div>
+          <div class="layer-toggle-btn" id="chip-mercados" onclick="toggleSpaceLayer('mercados')">
+            <span><span class="layer-pill-dot" style="background:#ca8a04;"></span>🏪 Mercados Públicos Fijos</span>
+            <span id="badge-count-mercados" style="font-size:0.7rem; color:#64748b;">329 (Oculto)</span>
+          </div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <div class="policy-toggle-row">
+            <button class="policy-toggle-btn" id="btn-toggle-canasta" onclick="toggleCanastaFilter()">
+              <span>🧺</span>
+              <span>Canasta Básica</span>
+            </button>
+            <button class="policy-toggle-btn" id="btn-toggle-mercomuna" onclick="toggleMercomunaFilter()">
+              <span>💳</span>
+              <span>MERCOMUNA</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. CONTADOR Y RESET -->
+      <div class="results-counter-bar">
+        <span id="results-counter-text">Cargando espacios...</span>
+        <button id="btn-reset-filters" class="btn-reset-filters" onclick="resetAllFilters()">↺ Limpiar filtros</button>
+      </div>
+
+      <!-- 6. BOTÓN DESTACADO CALLLES OCUPADAS HOY -->
+      <button class="btn-open-cierres-modal" onclick="openCierresModal()">
+        <span>⚠️</span>
+        <span>Afectaciones y Calles Ocupadas Hoy</span>
+      </button>
+
+      <!-- 7. FICHA DE DETALLE DINÁMICA (AL SELECCIONAR TIANGUIS / ESPACIO) -->
+      <div id="detail-card">
+        <div class="detail-card-header">
+          <span class="detail-space-badge" id="card-tag" style="background:#0f766e;">🧺 TIANGUIS ITINERANTE</span>
+          <button class="btn-close-card" onclick="closeDetailCard()" title="Cerrar ficha">✕</button>
+        </div>
+
+        <div id="card-status-banner" class="status-live-banner status-open">
+          <span class="status-dot-pulse"></span>
+          <span id="card-status-text">🟢 En operación hoy</span>
+        </div>
+
+        <div class="detail-name" id="card-name">Tianguis</div>
+        <div class="detail-sub" id="card-sub">Alcaldía · Colonia</div>
+
+        <!-- Ubicación exacta y entrecalles -->
+        <div class="closure-box">
+          <div class="closure-box-title">
+            <span>📍</span>
+            <span>Ubicación y Entrecalles Ocupadas:</span>
+          </div>
+          <div id="card-street-text" style="font-weight:600; color:#1e293b; margin-bottom:4px;">
+            Tramo vial principal
+          </div>
+          <div id="card-closure-impact" style="font-size:0.7rem; color:#b45309;">
+            🚗 Cierre temporal de calle vehicular durante el horario de venta.
+          </div>
+        </div>
+
+        <!-- Estadísticas clave -->
+        <div class="detail-stats-grid">
+          <div class="stat-box">
+            <div class="stat-box-val" id="card-stat-dia">--</div>
+            <div class="stat-box-lbl">Día</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-val" id="card-stat-horario">8:00-17:00</div>
+            <div class="stat-box-lbl">Horario Venta</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-val" id="card-stat-puestos">--</div>
+            <div class="stat-box-lbl">Puestos Est.</div>
+          </div>
+        </div>
+
+        <!-- Horarios operativos -->
+        <div class="oper-schedule-box">
+          <div style="font-weight:700; color:var(--cdmx-green-dark); margin-bottom:4px; font-size:0.69rem; text-transform:uppercase;">
+            ⏰ Dinámica Horaria en Vía Pública:
+          </div>
+          <div class="oper-schedule-row">
+            <span>🛠️ Montaje de estructuras:</span>
+            <span style="font-weight:700;" id="card-time-montaje">06:00 a 08:00 hrs</span>
+          </div>
+          <div class="oper-schedule-row">
+            <span>🧺 Venta al público:</span>
+            <span style="font-weight:700; color:#065f46;" id="card-time-venta">08:00 a 17:00 hrs</span>
+          </div>
+          <div class="oper-schedule-row">
+            <span>🧹 Desmontaje y limpieza vial:</span>
+            <span style="font-weight:700;" id="card-time-desmontaje">17:00 a 19:00 hrs</span>
+          </div>
+        </div>
+
+        <!-- Giros y Etiquetas -->
+        <div style="margin-bottom:12px;">
+          <div style="font-size:0.69rem; font-weight:700; color:#64748b; text-transform:uppercase; margin-bottom:4px;">
+            🛍️ Giros y Abasto Popular:
+          </div>
+          <div id="card-tags-container" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="detail-actions-row">
+          <button class="btn-detail-action btn-action-primary" onclick="copyCardCoords()">
+            <span>📋</span>
+            <span>Copiar GPS</span>
           </button>
-        </div>
-
-        <div class="chips-flow">
-          <button class="chip-btn active" id="chip-metro_icons" onclick="toggleLayer('metro_icons')">🚇 Íconos Metro (195)</button>
-          <button class="chip-btn active" id="chip-metrobus_icons" onclick="toggleLayer('metrobus_icons')">🚍 Íconos Metrobús (324)</button>
-          <button class="chip-btn active" id="chip-concesionado" onclick="toggleLayer('concesionado')">🚐 Rutas Secundarias (331)</button>
-          <button class="chip-btn active" id="chip-alcaldias" onclick="toggleLayer('alcaldias')">🗺️ Alcaldías CDMX</button>
-          <button class="chip-btn active" id="chip-zmvm" onclick="toggleLayer('zmvm')">🌐 Área Metropolitana</button>
-        </div>
-
-        <div id="transport-dropdown-menu">
-          <div class="t-opt" onclick="toggleSubsystem('METRO')">
-            <div class="t-badge" style="background:#ef4444;">M</div>
-            <span>Metro (Líneas 1-12)</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('MB')">
-            <div class="t-badge" style="background:#ec4899;">MB</div>
-            <span>Metrobús (L1-L7)</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('TROLE')">
-            <div class="t-badge" style="background:#10b981;">TE</div>
-            <span>Trolebús</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('CBB')">
-            <div class="t-badge" style="background:#06b6d4;">CB</div>
-            <span>Cablebús</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('RTP')">
-            <div class="t-badge" style="background:#15803d;">RTP</div>
-            <span>RTP Pasajeros</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('TL')">
-            <div class="t-badge" style="background:#3b82f6;">TL</div>
-            <span>Tren Ligero</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('CC')">
-            <div class="t-badge" style="background:#8e24aa;">CC</div>
-            <span>Corredores Concesionados</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Accesos Rápidos -->
-      <div class="section-block">
-        <div class="section-heading">
-          <span>Accesos Rápidos</span>
-        </div>
-        <div class="goto-row">
-          <div class="goto-btn" onclick="openInfoModal('closures')" title="Ver detalle de cierres viales">
-            <div class="goto-btn-circle">
-              <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
-            </div>
-            <div class="goto-btn-lbl">Cierres Vías</div>
-          </div>
-
-          <div class="goto-btn" onclick="openInfoModal('hours')" title="Consultar horarios semanales">
-            <div class="goto-btn-circle">
-              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-            </div>
-            <div class="goto-btn-lbl">Horarios</div>
-          </div>
-
-          <div class="goto-btn" onclick="openInfoModal('fares')" title="Consultar tarifas de Movilidad Integrada">
-            <div class="goto-btn-circle">
-              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-            </div>
-            <div class="goto-btn-lbl">Tarifas MI</div>
-          </div>
-
-          <a href="https://rtponky.lat/" target="_blank" class="goto-btn" title="Abrir RTPonky en ventana nueva">
-            <div class="goto-btn-circle" style="background:#15803d;">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
-            </div>
-            <div class="goto-btn-lbl">RTPonky</div>
+          <a id="card-gmaps-link" class="btn-detail-action btn-action-secondary" href="#" target="_blank" rel="noopener">
+            <span>📍</span>
+            <span>Google Maps</span>
           </a>
         </div>
       </div>
@@ -1037,268 +1259,74 @@ html_body = """<body>
     </div>
   </aside>
 
-  <main id="map-wrapper">
+  <!-- CONTENEDOR DEL MAPA Y CONTROLES FLOTANTES -->
+  <main id="map-container">
+    
+    <!-- Barra Superior Flotante -->
+    <div class="top-floating-bar">
+      <div class="top-bar-left">
+        <button class="btn-fab" onclick="toggleSidebar()" title="Alternar panel de búsqueda">
+          <span>☰</span>
+          <span style="display:none;" class="mobile-hide">Menú</span>
+        </button>
+      </div>
+
+      <div class="top-bar-right">
+        <button class="btn-fab" onclick="locateUser()" title="Ubicar mi posición actual">
+          <span>📍</span>
+          <span>Mi Ubicación</span>
+        </button>
+        <button class="btn-fab" onclick="toggleBaseMap()" title="Cambiar capa base">
+          <span>🗺️</span>
+          <span>Mapa</span>
+        </button>
+        <button class="btn-fab" onclick="resetMapView()" title="Centrar mapa en la CDMX">
+          <span>↺</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Div Mapa Leaflet -->
     <div id="map"></div>
 
     <!-- Skeleton Loader Inicial -->
     <div id="map-loader" class="map-loader-overlay">
-      <div class="map-loader-card">
-        <div class="map-loader-icon-pulse">
-          <svg width="42" height="42" viewBox="0 0 24 24" fill="#0f5953">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-          </svg>
+      <div class="loader-card">
+        <div class="spinner-ring"></div>
+        <div style="font-size:1.05rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:6px;">
+          Comercio Popular y Barrial CDMX
         </div>
-        <div class="map-loader-title">Movilidad y Comercio CDMX</div>
-        <div class="map-loader-subtitle" id="loader-sub">Inicializando 329 mercados, 1,367 tianguis, 519 estaciones y red MI...</div>
-        <div class="map-loader-bar">
-          <div class="map-loader-progress"></div>
-        </div>
-        <div class="map-loader-tip">Chilangatón 2026 · Plataforma Barrial y Movilidad Sustentable</div>
-      </div>
-    </div>
-
-    <!-- Banner Flotante de Modo Ruta Limpia -->
-    <div id="route-focus-banner" class="route-focus-banner">
-      <div style="display:flex; align-items:center; gap:8px;">
-        <span class="focus-pulse-dot"></span>
-        <div>
-          <div style="font-size:0.65rem; font-weight:800; color:#0f5953; letter-spacing:0.5px;">MODO RUTA LIMPIA ACTIVO</div>
-          <div style="font-size:0.82rem; font-weight:700; color:#0f172a;" id="focus-banner-text">Mostrando únicamente el trayecto origen ➔ destino</div>
+        <div id="loader-sub" style="font-size:0.75rem; color:#64748b;">
+          Cargando 1,365 tianguis, mercados sobre ruedas y concentraciones...
         </div>
       </div>
-      <button class="btn-exit-focus" onclick="exitRouteFocusMode()" title="Restaurar capas completas">
-        <span>✕</span>
-        <span>Restaurar mapa completo</span>
-      </button>
-    </div>
-
-    <div class="map-floating-actions">
-      <button class="map-fab" onclick="locateUser()" title="Mi ubicación GPS (Punto Azul)">
-        <svg viewBox="0 0 24 24" fill="#0d9488"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
-      </button>
-      <button class="map-fab" onclick="resetMapView()" title="Centrar CDMX">
-        <svg viewBox="0 0 24 24" fill="#0f5953"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
-      </button>
-      <button class="map-fab" onclick="toggleBaseMap()" title="Alternar Mapa Base">
-        <svg viewBox="0 0 24 24" fill="#0284c7"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9.07l-9-7-9 7 1.63 1.2L12 16z"/></svg>
-      </button>
     </div>
   </main>
 
-  <!-- Modal Flotante / Drawer con Pestañas -->
-  <div id="info-modal-overlay" class="cdmx-modal-overlay" onclick="handleModalOverlayClick(event)">
-    <div class="cdmx-modal-dialog">
-      <div class="cdmx-modal-header">
-        <div>
-          <div class="cdmx-modal-title">Movilidad y Comercio Popular CDMX</div>
-          <div class="cdmx-modal-sub">Chilangatón 2026 · Información Operativa y Barrial</div>
+  <!-- MODAL DE AFECTACIONES Y CALLES OCUPADAS HOY -->
+  <div id="cierres-modal-overlay" class="modal-overlay" onclick="handleModalOverlayClick(event)">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>⚠️</span>
+          <span>Afectaciones y Calles Ocupadas por Comercio Popular</span>
         </div>
-        <button class="cdmx-modal-close" onclick="closeInfoModal()" title="Cerrar ventana">✕</button>
+        <button class="modal-close-btn" onclick="closeCierresModal()">✕</button>
       </div>
 
-      <div class="cdmx-modal-tabs">
-        <button class="modal-tab-btn active" id="tab-btn-closures" onclick="switchModalTab('closures')">
-          <span>🚧 Cierres Viales</span>
-        </button>
-        <button class="modal-tab-btn" id="tab-btn-hours" onclick="switchModalTab('hours')">
-          <span>⏰ Horarios Semanales</span>
-        </button>
-        <button class="modal-tab-btn" id="tab-btn-fares" onclick="switchModalTab('fares')">
-          <span>💳 Tarifas MI</span>
-        </button>
-        <button class="modal-tab-btn" id="tab-btn-today" onclick="switchModalTab('today')">
-          <span>📅 Aviso Hoy</span>
-        </button>
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" id="modal-tab-hoy" onclick="switchModalTab('hoy')">🧺 Ocupación Vial Hoy</button>
+        <button class="modal-tab-btn" id="modal-tab-semana" onclick="switchModalTab('semana')">📅 Calendario Semanal CDMX</button>
+        <button class="modal-tab-btn" id="modal-tab-normativa" onclick="switchModalTab('normativa')">ℹ️ Horarios y Montaje</button>
       </div>
 
-      <div class="cdmx-modal-body">
-        <!-- Tab 1: Cierres Viales -->
-        <div id="tab-pane-closures" class="modal-tab-pane active">
-          <div class="modal-section-title">
-            <span>🚧 Afectaciones y Reducciones Viales por Tianguis</span>
-          </div>
-          <div class="modal-alert-box alert-amber">
-            <b>1,367 tianguis semanales</b> operan sobre el arroyo vehicular en las 16 alcaldías de la CDMX, generando cortes programados y reducciones viales en horarios de <b>07:00 a 18:30 hrs</b>.
-          </div>
-
-          <div style="font-weight:700; color:#0f5953; margin-bottom:8px; font-size:0.8rem;">Distribución Semanal de Tianguis en Vía Pública:</div>
-          <div class="modal-grid-2col">
-            <div class="modal-card-mini">
-              <div class="modal-card-mini-title">📅 Domingo (Pico Máximo)</div>
-              <div class="modal-card-mini-val"><b>341 tianguis</b> · Alta afectación barrial en Iztapalapa, GAM y Cuauhtémoc.</div>
-            </div>
-            <div class="modal-card-mini">
-              <div class="modal-card-mini-title">📅 Sábado (Pico Comercial)</div>
-              <div class="modal-card-mini-val"><b>283 tianguis</b> · Zonas de abastecimiento familiar y abasto fresco.</div>
-            </div>
-            <div class="modal-card-mini">
-              <div class="modal-card-mini-title">📅 Viernes</div>
-              <div class="modal-card-mini-val"><b>215 tianguis</b> · Conexión directa con corredores y paraderos.</div>
-            </div>
-            <div class="modal-card-mini">
-              <div class="modal-card-mini-title">📅 Jueves</div>
-              <div class="modal-card-mini-val"><b>201 tianguis</b> · Actividad regular en colonias populares.</div>
-            </div>
-            <div class="modal-card-mini">
-              <div class="modal-card-mini-title">📅 Miércoles</div>
-              <div class="modal-card-mini-val"><b>198 tianguis</b> · Operación barrial coordinada con SEDECO.</div>
-            </div>
-            <div class="modal-card-mini">
-              <div class="modal-card-mini-title">📅 Martes y Lunes</div>
-              <div class="modal-card-mini-val"><b>172 tianguis (Mar)</b> / <b>89 tianguis (Lun)</b> · Menor impacto vial en la red.</div>
-            </div>
-          </div>
-
-          <div style="font-weight:700; color:#334155; margin-bottom:6px; font-size:0.78rem;">💡 Recomendaciones para la Ciudadanía:</div>
-          <ul style="padding-left:18px; line-height:1.5; color:#64748b; font-size:0.75rem;">
-            <li>Toca cualquier tianguis en el mapa para ver la calle exacta ocupada.</li>
-            <li>En días domingo y sábado, priorizar traslados en Metro, Metrobús o Cablebús para evitar desvíos vehiculares.</li>
-            <li>El horario de carga y descarga pesada ocurre de 06:30 a 08:00 hrs y de 17:30 a 18:30 hrs.</li>
-          </ul>
-        </div>
-
-        <!-- Tab 2: Horarios Semanales -->
-        <div id="tab-pane-hours" class="modal-tab-pane">
-          <div class="modal-section-title">
-            <span>⏰ Horarios Oficiales de la Red y Comercio Popular</span>
-          </div>
-
-          <table class="modal-table">
-            <thead>
-              <tr>
-                <th>Sistema / Comercio</th>
-                <th>Lunes a Viernes</th>
-                <th>Sábados</th>
-                <th>Domingos / Festivos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>🚇 Metro CDMX</b></td>
-                <td>05:00 - 24:00 hrs</td>
-                <td>06:00 - 24:00 hrs</td>
-                <td>07:00 - 24:00 hrs <i>(Bici en Metro)</i></td>
-              </tr>
-              <tr>
-                <td><b>🚍 Metrobús CDMX</b></td>
-                <td>04:30 - 24:00 hrs</td>
-                <td>04:30 - 24:00 hrs</td>
-                <td>05:00 - 24:00 hrs</td>
-              </tr>
-              <tr>
-                <td><b>🚎 Trolebús</b></td>
-                <td>05:00 - 00:00 hrs</td>
-                <td>05:00 - 00:00 hrs</td>
-                <td>05:30 - 23:30 hrs</td>
-              </tr>
-              <tr>
-                <td><b>🚡 Cablebús (L1, L2, L3)</b></td>
-                <td>05:00 - 23:00 hrs</td>
-                <td>06:00 - 23:00 hrs</td>
-                <td>07:00 - 23:00 hrs</td>
-              </tr>
-              <tr>
-                <td><b>🏪 Mercados Públicos (329)</b></td>
-                <td>08:00 - 18:00 hrs</td>
-                <td>08:00 - 18:00 hrs</td>
-                <td>08:00 - 17:00 hrs</td>
-              </tr>
-              <tr>
-                <td><b>🧺 Tianguis y MSR</b></td>
-                <td>08:30 - 17:30 hrs</td>
-                <td>08:30 - 17:30 hrs</td>
-                <td>08:30 - 17:30 hrs</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="modal-alert-box">
-            <b>Nota sobre Mercados:</b> Las naves de comida corrida, antojitos y recauderías suelen iniciar servicio desde las 07:30 hrs para abastecer a trabajadoras y trabajadores de la zona.
-          </div>
-        </div>
-
-        <!-- Tab 3: Tarifas MI -->
-        <div id="tab-pane-fares" class="modal-tab-pane">
-          <div class="modal-section-title">
-            <span>💳 Tarifas Oficiales · Sistema de Movilidad Integrada (MI)</span>
-          </div>
-
-          <table class="modal-table">
-            <thead>
-              <tr>
-                <th>Modo de Transporte</th>
-                <th>Tarifa Oficial</th>
-                <th>Medio de Pago</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><b>🚇 Metro CDMX</b></td>
-                <td>$5.00 MXN</td>
-                <td>Tarjeta MI</td>
-              </tr>
-              <tr>
-                <td><b>🚍 Metrobús</b></td>
-                <td>$6.00 MXN (L1-L7) / $30.00 (Aeropuerto)</td>
-                <td>Tarjeta MI / CoDi / Bancaria</td>
-              </tr>
-              <tr>
-                <td><b>🚡 Cablebús</b></td>
-                <td>$7.00 MXN</td>
-                <td>Tarjeta MI</td>
-              </tr>
-              <tr>
-                <td><b>🚎 Trolebús</b></td>
-                <td>$4.00 MXN regular / $7.00 (Elevado)</td>
-                <td>Tarjeta MI</td>
-              </tr>
-              <tr>
-                <td><b>🚌 RTP Pasajeros</b></td>
-                <td>$2.00 (Atenea / Ordinario) / $4.00 (Expreso) / $5.00 (Ecobús)</td>
-                <td>Tarjeta MI / Efectivo exacto</td>
-              </tr>
-              <tr>
-                <td><b>🚋 Tren Ligero</b></td>
-                <td>$3.00 MXN</td>
-                <td>Tarjeta MI</td>
-              </tr>
-              <tr>
-                <td><b>🚐 Corredores Concesionados</b></td>
-                <td>$6.00 - $8.50 MXN (según distancia y tipo de unidad)</td>
-                <td>Efectivo / Tarjeta MI (algunas rutas)</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="modal-alert-box">
-            <b>Exenciones de Pago (Gratuidad):</b> Personas adultas mayores (60+ años con credencial INAPAM), personas con discapacidad y menores de 5 años viajan gratis en toda la red pública de la CDMX.
-          </div>
-        </div>
-
-        <!-- Tab 4: Aviso Hoy -->
-        <div id="tab-pane-today" class="modal-tab-pane">
-          <div class="modal-section-title">
-            <span>📅 Estado y Operación Comercial de Hoy</span>
-          </div>
-          <div id="modal-today-banner" class="modal-alert-box">
-            Calculando tianguis y mercados operando en este momento...
-          </div>
-
-          <div style="display:flex; gap:10px; margin-top:16px;">
-            <button onclick="filterByToday(); closeInfoModal();" style="flex:1; background:var(--cdmx-green-dark); color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:0.78rem; cursor:pointer;">
-              🔍 Filtrar Mapa a Tianguis de Hoy
-            </button>
-            <button onclick="renderTianguisMarkers(null); closeInfoModal();" style="flex:1; background:#f1f5f9; color:#334155; border:1px solid #cbd5e1; padding:12px; border-radius:8px; font-weight:700; font-size:0.78rem; cursor:pointer;">
-              🌐 Ver Todos los Días (1,367)
-            </button>
-          </div>
-        </div>
-
+      <div class="modal-body" id="modal-body-content">
+        <!-- Contenido generado dinámicamente -->
       </div>
     </div>
   </div>
 
-  <!-- Toast Container -->
+  <!-- Contenedor de Toasts -->
   <div id="toast-container" class="toast-container"></div>
 
   <!-- Leaflet JS -->
@@ -1306,1995 +1334,1050 @@ html_body = """<body>
   <!-- Leaflet MarkerCluster JS -->
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-  <!-- Bundle de datos optimizado para modo local y offline -->
-  <script src="data/processed/map_bundle.js" onerror="console.log('map_bundle.js no cargado localmente, se intentará fetch asíncrono')"></script>
+  <!-- Bundle de datos unificado -->
+  <script src="data/processed/map_bundle.js" onerror="console.log('map_bundle.js no cargado localmente, usando fetch')"></script>
 
   <script>
     // =========================================================================
-    // INICIALIZACIÓN DEL MAPA Y MAPAS BASE
+    // DATOS DE CIERRES VIALES EMBEBIDOS PARA RENDERING OFFLINE INMEDIATO
     // =========================================================================
-    const map = L.map('map', {
+    const EMBEDDED_CIERRES = {cierres_json_str};
+
+    // =========================================================================
+    // INICIALIZACIÓN DEL MAPA LEAFLET (WGS84)
+    // =========================================================================
+    const map = L.map('map', {{
       center: [19.4326, -99.1332],
       zoom: 12,
       minZoom: 9,
       maxZoom: 18,
       zoomControl: false
-    });
+    }});
 
-    L.control.zoom({ position: 'topright' }).addTo(map);
+    L.control.zoom({{ position: 'bottomright' }}).addTo(map);
 
     let currentBase = 'esri';
-    const esriLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+    const esriLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{{z}}/{{y}}/{{x}}', {{
+      attribution: 'Esri, HERE &copy; OpenStreetMap contributors',
       maxZoom: 18
-    }).addTo(map);
+    }}).addTo(map);
 
-    const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const osmLayer = L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{y}}/{{x}}.png', {{
       attribution: '&copy; OpenStreetMap contributors',
       maxZoom: 19
-    });
+    }});
 
-    function toggleBaseMap() {
-      if (currentBase === 'esri') {
+    function toggleBaseMap() {{
+      if (currentBase === 'esri') {{
         map.removeLayer(esriLayer);
         osmLayer.addTo(map);
         currentBase = 'osm';
         showToast('Mapa base cambiado a OpenStreetMap.', 'info');
-      } else {
+      }} else {{
         map.removeLayer(osmLayer);
         esriLayer.addTo(map);
         currentBase = 'esri';
         showToast('Mapa base cambiado a Esri Light Gray.', 'info');
-      }
-    }
+      }}
+    }}
+
+    function resetMapView() {{
+      map.flyTo([19.4326, -99.1332], 12, {{ duration: 0.8 }});
+    }}
 
     // =========================================================================
-    // SISTEMA DE CAPAS CON CLUSTERING INTELIGENTE (LEAFLET.MARKERCLUSTER)
+    // CLUSTERS Y CAPAS DE COMERCIO POPULAR
     // =========================================================================
-    const clusterOptionsBase = {
-      disableClusteringAtZoom: 14,
-      maxClusterRadius: 45,
+    const clusterOptionsBase = {{
+      spiderfyOnMaxZoom: true,
       showCoverageOnHover: false,
       zoomToBoundsOnClick: true,
-      spiderfyOnMaxZoom: true,
-      animate: true
-    };
+      disableClusteringAtZoom: 16
+    }};
 
-    const layers = {
-      zmvm: L.geoJSON(null, {
-        style: {
-          color: '#94a3b8',
-          weight: 1,
-          dashArray: '3, 4',
-          fillColor: '#f1f5f9',
-          fillOpacity: 0.15
-        },
-        onEachFeature: (feature, layer) => {
-          const nom = feature.properties.NOMGEO || 'Municipio Metropolitano';
-          layer.bindTooltip(nom + ' (Edomex / ZMVM)', { sticky: true });
-        }
-      }),
-      alcaldias: L.geoJSON(null, {
-        style: {
+    const layers = {{
+      alcaldias: L.geoJSON(null, {{
+        style: {{
           color: '#0f5953',
-          weight: 2,
-          dashArray: '4, 4',
+          weight: 1.5,
+          opacity: 0.7,
           fillColor: '#0f5953',
-          fillOpacity: 0.03
-        },
-        onEachFeature: (feature, layer) => {
-          const nom = feature.properties.nomgeo || feature.properties.alcaldia || 'Alcaldía';
-          layer.bindTooltip('Alcaldía ' + nom, { sticky: true });
-        }
-      }),
-      metro: L.featureGroup(),
-      metro_icons: L.markerClusterGroup({
+          fillOpacity: 0.03,
+          dashArray: '4, 4'
+        }}
+      }}),
+      tianguis: L.markerClusterGroup({{
+        ...clusterOptionsBase,
+        maxClusterRadius: 38,
+        iconCreateFunction: function(cluster) {{
+          const count = cluster.getChildCount();
+          let sz = count < 15 ? 'cluster-small' : (count < 40 ? 'cluster-medium' : 'cluster-large');
+          return L.divIcon({{
+            html: `<div class="custom-cluster-badge cluster-tianguis ${{sz}}"><span>${{count}}</span></div>`,
+            className: 'cluster-wrapper',
+            iconSize: L.point(40, 40)
+          }});
+        }}
+      }}),
+      msr: L.markerClusterGroup({{
         ...clusterOptionsBase,
         maxClusterRadius: 36,
-        iconCreateFunction: function(cluster) {
+        iconCreateFunction: function(cluster) {{
           const count = cluster.getChildCount();
-          let size = count < 10 ? 'small' : (count < 20 ? 'medium' : 'large');
-          return L.divIcon({
-            html: `<div class="custom-cluster-badge cluster-metro cluster-${size}">🚇 ${count}</div>`,
+          let sz = count < 10 ? 'cluster-small' : 'cluster-medium';
+          return L.divIcon({{
+            html: `<div class="custom-cluster-badge cluster-msr ${{sz}}"><span>${{count}}</span></div>`,
             className: 'cluster-wrapper',
-            iconSize: L.point(44, 44)
-          });
-        }
-      }),
-      metrobus: L.featureGroup(),
-      metrobus_icons: L.markerClusterGroup({
+            iconSize: L.point(38, 38)
+          }});
+        }}
+      }}),
+      concentraciones: L.markerClusterGroup({{
         ...clusterOptionsBase,
         maxClusterRadius: 36,
-        iconCreateFunction: function(cluster) {
+        iconCreateFunction: function(cluster) {{
           const count = cluster.getChildCount();
-          let size = count < 10 ? 'small' : (count < 20 ? 'medium' : 'large');
-          return L.divIcon({
-            html: `<div class="custom-cluster-badge cluster-metrobus cluster-${size}">🚍 ${count}</div>`,
+          let sz = count < 10 ? 'cluster-small' : 'cluster-medium';
+          return L.divIcon({{
+            html: `<div class="custom-cluster-badge cluster-concentraciones ${{sz}}"><span>${{count}}</span></div>`,
             className: 'cluster-wrapper',
-            iconSize: L.point(44, 44)
-          });
-        }
-      }),
-      rtp: L.featureGroup(),
-      cablebus: L.featureGroup(),
-      trolebus: L.featureGroup(),
-      tren: L.featureGroup(),
-      concesionado: L.featureGroup(),
-      mercados: L.markerClusterGroup({
+            iconSize: L.point(38, 38)
+          }});
+        }}
+      }}),
+      mercados: L.markerClusterGroup({{
         ...clusterOptionsBase,
-        maxClusterRadius: 40,
-        iconCreateFunction: function(cluster) {
+        maxClusterRadius: 36,
+        iconCreateFunction: function(cluster) {{
           const count = cluster.getChildCount();
-          let size = count < 10 ? 'small' : (count < 25 ? 'medium' : 'large');
-          return L.divIcon({
-            html: `<div class="custom-cluster-badge cluster-mercados cluster-${size}">🏪 ${count}</div>`,
+          let sz = count < 10 ? 'cluster-small' : 'cluster-medium';
+          return L.divIcon({{
+            html: `<div class="custom-cluster-badge cluster-mercados ${{sz}}"><span>${{count}}</span></div>`,
             className: 'cluster-wrapper',
-            iconSize: L.point(44, 44)
-          });
-        }
-      }),
-      msr: L.featureGroup(),
-      tianguis: L.markerClusterGroup({
-        ...clusterOptionsBase,
-        maxClusterRadius: 48,
-        iconCreateFunction: function(cluster) {
-          const count = cluster.getChildCount();
-          let size = count < 20 ? 'small' : (count < 60 ? 'medium' : 'large');
-          return L.divIcon({
-            html: `<div class="custom-cluster-badge cluster-tianguis cluster-${size}">🧺 ${count}</div>`,
-            className: 'cluster-wrapper',
-            iconSize: L.point(44, 44)
-          });
-        }
-      }),
-      routeLines: L.featureGroup(),
-      userLocation: L.featureGroup()
-    };
+            iconSize: L.point(38, 38)
+          }});
+        }}
+      }})
+    }};
 
-    layers.routeLines.addTo(map);
-    layers.userLocation.addTo(map);
+    // =========================================================================
+    // ESTADO DE FILTRADO Y GESTIÓN DE VISTA
+    // =========================================================================
+    const filterState = {{
+      day: 'TODOS',          // 'TODOS' o 'LUNES', 'MARTES', etc.
+      isTodayActive: false,
+      alcaldia: 'TODAS',
+      showTianguis: true,
+      showMSR: true,
+      showConcentraciones: true,
+      showMercados: false,  // Oculto por defecto
+      canastaBasica: false,
+      mercomuna: false,
+      searchQuery: ''
+    }};
 
-    const transportMapping = {
-      'METRO': layers.metro,
-      'MB': layers.metrobus,
-      'RTP': layers.rtp,
-      'CBB': layers.cablebus,
-      'TROLE': layers.trolebus,
-      'TL': layers.tren,
-      'CC': layers.concesionado
-    };
-
-    let currentSelectedTarget = null;
     let SEARCH_INDEX = [];
+    let currentSelectedCardData = null;
+
+    const DIAS_SEMANA = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
+    const NOMBRE_DIAS = {{
+      'DOMINGO': 'Domingo',
+      'LUNES': 'Lunes',
+      'MARTES': 'Martes',
+      'MIERCOLES': 'Miércoles',
+      'JUEVES': 'Jueves',
+      'VIERNES': 'Viernes',
+      'SABADO': 'Sábado'
+    }};
+
+    function getTodayDayName() {{
+      const d = new Date().getDay();
+      return DIAS_SEMANA[d];
+    }}
 
     // =========================================================================
-    // CARGA ASÍNCRONA DE DATOS Y CONSTRUCCIÓN DE CAPAS
+    // CARGA DE DATOS E INICIALIZACIÓN
     // =========================================================================
-    async function loadDataBundle() {
-      if (typeof window.MAP_DATA !== 'undefined' && window.MAP_DATA && window.MAP_DATA.mercados) {
-        return window.MAP_DATA;
-      }
-      try {
-        const res = await fetch('data/processed/map_bundle.json');
-        if (!res.ok) throw new Error('Status ' + res.status);
-        const data = await res.json();
-        window.MAP_DATA = data;
-        return data;
-      } catch (err) {
-        console.error("Error al cargar map_bundle.json", err);
-        showToast('Aviso: cargando capas con modo de contingencia.', 'warning');
-        return window.MAP_DATA || {};
-      }
-    }
-
-    async function initApplication() {
+    async function initApplication() {{
       const loader = document.getElementById('map-loader');
       const loaderSub = document.getElementById('loader-sub');
 
-      try {
-        loaderSub.innerText = "Descargando geometrías y directorio de comercio...";
-        const data = await loadDataBundle();
+      try {{
+        let data = window.MAP_DATA;
+        if (!data) {{
+          loaderSub.innerText = "Descargando directorio de comercio popular...";
+          const res = await fetch('data/processed/map_bundle.json');
+          data = await res.json();
+          window.MAP_DATA = data;
+        }}
 
-        loaderSub.innerText = "Construyendo capas base y polígonos...";
-        if (data.zmvm) {
-          layers.zmvm.addData(data.zmvm);
-          layers.zmvm.addTo(map);
-        }
-        if (data.alcaldias) {
+        // Capas base de alcaldías
+        if (data.alcaldias) {{
           layers.alcaldias.addData(data.alcaldias);
           layers.alcaldias.addTo(map);
-        }
+        }}
 
-        // Trazados de Red de Transporte
-        if (data.transport) {
-          Object.keys(transportMapping).forEach(agency => {
-            const tData = data.transport[agency];
-            if (tData && tData.features) {
-              const fg = transportMapping[agency];
-              tData.features.forEach(f => {
-                const polyline = L.polyline(
-                  f.geometry.coordinates.map(c => [c[1], c[0]]),
-                  {
-                    color: f.properties.color,
-                    weight: f.properties.weight,
-                    opacity: 0.9
-                  }
-                );
-                polyline.on('click', () => {
-                  showTransportInDetail(f.properties);
-                });
-                fg.addLayer(polyline);
-              });
-              fg.addTo(map);
-            }
-          });
-        }
+        // Configurar botón "Abiertos Hoy"
+        const todayName = getTodayDayName();
+        document.getElementById('btn-today-text').innerText = `Abiertos Hoy (${{NOMBRE_DIAS[todayName]}})`;
 
-        loaderSub.innerText = "Configurando clusters para estaciones y comercio popular...";
+        // Calcular conteo inicial de hoy
+        const countToday = countSpacesForDay(todayName, data);
+        document.getElementById('btn-today-count').innerText = `${{countToday}} espacios`;
 
-        // Estaciones de Metro
-        if (data.metro_stations) {
-          data.metro_stations.forEach(st => {
-            let glyphHtml = st.has_glyph ? `<em class="${st.icon_class}"></em>` : `<span style="font-size:8.5px; font-weight:800; color:#fff;">${st.fallback_text || 'M'}</span>`;
-            const iconHtml = `<div class="metro-station-badge" style="background:${st.color};" title="${st.nombre} (Línea ${st.linea})">${glyphHtml}</div>`;
-            const customIcon = L.divIcon({
-              className: 'custom-metro-icon-container',
-              html: iconHtml,
-              iconSize: [22, 22],
-              iconAnchor: [11, 11]
-            });
-            const marker = L.marker([st.lat, st.lon], { icon: customIcon });
-            marker.on('click', () => {
-              currentSelectedTarget = { name: 'Metro ' + st.nombre, lat: st.lat, lon: st.lon };
-              map.flyTo([st.lat, st.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-              showMetroStationInDetail(st);
-            });
-            layers.metro_icons.addLayer(marker);
-          });
-          layers.metro_icons.addTo(map);
-        }
+        // Construir índice de búsqueda predictiva
+        buildSearchIndex(data);
 
-        // Estaciones de Metrobús
-        if (data.metrobus_stations) {
-          data.metrobus_stations.forEach(st => {
-            const iconHtml = `<div class="mb-station-badge" title="${st.nombre} (${st.linea})">MB</div>`;
-            const customIcon = L.divIcon({
-              className: 'custom-mb-icon-container',
-              html: iconHtml,
-              iconSize: [20, 20],
-              iconAnchor: [10, 10]
-            });
-            const marker = L.marker([st.lat, st.lon], { icon: customIcon });
-            marker.on('click', () => {
-              currentSelectedTarget = { name: 'Metrobús ' + st.nombre, lat: st.lat, lon: st.lon };
-              map.flyTo([st.lat, st.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-              showMetroStationInDetail({
-                nombre: st.nombre,
-                linea: st.linea,
-                alcaldia: st.alcaldia,
-                color: '#ec4899',
-                tipo: 'Metrobús CDMX'
-              });
-            });
-            layers.metrobus_icons.addLayer(marker);
-          });
-          layers.metrobus_icons.addTo(map);
-        }
+        // Renderizar marcadores con filtros iniciales
+        applyAllFilters();
 
-        // Inicializar Filtro Jerárquico de Compras y desplegar marcadores reactivos
-        initCommerceFilters();
-        applyCommerceFilters();
-
-        // Indexador para Buscador Unificado
-        buildUnifiedSearchIndex(data);
-
-        // Actualizar datos del día en Modal
-        updateTodayModalInfo();
-
-        // Finalizar carga
-        setTimeout(() => {
+        // Ocultar loader
+        setTimeout(() => {{
           loader.classList.add('hidden');
-          showToast('Portal listo · 1,367 tianguis y 329 mercados sincronizados.', 'success', 3500);
-        }, 300);
+          showToast(`Directorio cargado · ${{countToday}} espacios abiertos hoy en CDMX.`, 'success', 3500);
+        }}, 250);
 
-      } catch (err) {
-        console.error("Error inicializando mapa:", err);
+      }} catch (err) {{
+        console.error("Error al inicializar aplicación:", err);
         loader.classList.add('hidden');
-        showToast('Se cargó el mapa con funcionalidad básica.', 'warning');
-      }
-    }
+        showToast('Error cargando el directorio de comercio.', 'error');
+      }}
+    }}
+
+    function countSpacesForDay(dayName, data) {{
+      if (!data) return 0;
+      let count = 0;
+      if (data.tianguis) {{
+        count += data.tianguis.filter(t => t.dia && t.dia.toUpperCase().includes(dayName)).length;
+      }}
+      if (data.msr) {{
+        count += data.msr.filter(m => m.dia && m.dia.toUpperCase().includes(dayName)).length;
+      }}
+      if (data.concentraciones) {{
+        count += data.concentraciones.filter(c => c.dias_operacion_lista && c.dias_operacion_lista.includes(dayName)).length;
+      }}
+      return count;
+    }}
 
     // =========================================================================
-    // ESTADO Y SISTEMA DE FILTRADO JERÁRQUICO DE COMPRAS (MICRO, MESO, MACRO)
+    // FILTROS: DÍA, ALCALDÍA, TIPOS Y BANDERAS
     // =========================================================================
-    const filterState = {
-      macroCategory: null,
-      subgiro: null,
-      product: null,
-      canastaBasica: false,
-      mercomuna: false,
-      openToday: false
-    };
+    function filterByToday() {{
+      const today = getTodayDayName();
+      const btn = document.getElementById('btn-today-filter');
 
-    let COMPRAS_VOCAB = [];
-    let highlightedComprasIdx = -1;
+      if (filterState.isTodayActive) {{
+        // Desactivar
+        filterState.isTodayActive = false;
+        filterState.day = 'TODOS';
+        btn.classList.remove('active');
+        setActiveDayUI('TODOS');
+        showToast('Mostrando todos los días de la semana', 'info');
+      }} else {{
+        // Activar hoy
+        filterState.isTodayActive = true;
+        filterState.day = today;
+        btn.classList.add('active');
+        setActiveDayUI(today);
+        showToast(`Filtrado a espacios abiertos hoy (${{NOMBRE_DIAS[today]}})`, 'success');
+      }}
+      applyAllFilters();
+    }}
 
-    function initCommerceFilters() {
-      if (!window.MAP_DATA) return;
-      COMPRAS_VOCAB = window.MAP_DATA.vocabulario_compras || [];
+    function filterByDay(day) {{
+      filterState.day = day;
+      filterState.isTodayActive = (day === getTodayDayName());
+      const btnToday = document.getElementById('btn-today-filter');
+      if (filterState.isTodayActive) {{
+        btnToday.classList.add('active');
+      }} else {{
+        btnToday.classList.remove('active');
+      }}
+      setActiveDayUI(day);
+      applyAllFilters();
+    }}
 
-      // 1. Render Macro Chips (9 Categorías)
-      const chipsContainer = document.getElementById('macro-chips-container');
-      if (chipsContainer && window.MAP_DATA.catalog_categorias) {
-        chipsContainer.innerHTML = '';
-        window.MAP_DATA.catalog_categorias.forEach(c => {
-          const chip = document.createElement('button');
-          chip.className = 'macro-chip';
-          chip.id = 'macro-chip-' + c.id;
-          const shortName = c.nombre.split(',')[0];
-          chip.innerHTML = `<span>${c.icono}</span> <span>${shortName}</span>`;
-          chip.title = `${c.nombre}: ${c.descripcion || ''}`;
-          chip.onclick = () => toggleMacroCategory(c.id);
-          chipsContainer.appendChild(chip);
-        });
-      }
+    function setActiveDayUI(day) {{
+      document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('day-' + day);
+      if (activeBtn) activeBtn.classList.add('active');
+      document.getElementById('active-day-badge').innerText = day === 'TODOS' ? 'TODOS' : NOMBRE_DIAS[day].toUpperCase();
+    }}
 
-      // 2. Poblar selector de 67 Subgiros agrupados por categoría
-      const subgiroSel = document.getElementById('subgiro-select');
-      if (subgiroSel && window.MAP_DATA.catalog_subgiros && window.MAP_DATA.catalog_categorias) {
-        subgiroSel.innerHTML = '<option value="">Todos los subgiros comerciales (67 opciones)...</option>';
-        window.MAP_DATA.catalog_categorias.forEach(c => {
-          const optGroup = document.createElement('optgroup');
-          optGroup.label = `${c.icono} ${c.nombre}`;
-          const subgiros = window.MAP_DATA.catalog_subgiros.filter(sg => sg.categoria_id === c.id);
-          subgiros.forEach(sg => {
-            const opt = document.createElement('option');
-            opt.value = sg.id;
-            opt.textContent = (sg.canasta_basica ? '🛒 ' : '') + sg.nombre;
-            optGroup.appendChild(opt);
-          });
-          subgiroSel.appendChild(optGroup);
-        });
-      }
+    function onAlcaldiaSelectChange(alc) {{
+      filterState.alcaldia = alc;
+      applyAllFilters();
 
-      // 3. Listeners de Búsqueda Predictiva Nivel Micro
-      const comprasInput = document.getElementById('compras-search-input');
-      const comprasDropdown = document.getElementById('compras-autocomplete-dropdown');
-      const clearBtn = document.getElementById('clear-compras-btn');
+      if (alc !== 'TODAS' && window.MAP_DATA && window.MAP_DATA.alcaldias) {{
+        // Zoom suave a la alcaldía seleccionada
+        const feat = window.MAP_DATA.alcaldias.features.find(f => {{
+          const nom = (f.properties.NOMGEO || f.properties.nomgeo || f.properties.name || '').toUpperCase();
+          return nom.includes(alc) || alc.includes(nom);
+        }});
+        if (feat) {{
+          const bbox = L.geoJSON(feat).getBounds();
+          map.fitBounds(bbox, {{ padding: [30, 30], maxZoom: 14 }});
+        }}
+      }}
+    }}
 
-      if (comprasInput && comprasDropdown) {
-        comprasInput.addEventListener('input', (e) => {
-          const query = e.target.value.trim();
-          if (!query) {
-            comprasDropdown.style.display = 'none';
-            if (clearBtn) clearBtn.style.display = 'none';
-            if (filterState.product) {
-              filterState.product = null;
-              applyCommerceFilters();
-            }
-            return;
-          }
-          if (clearBtn) clearBtn.style.display = 'block';
-          renderComprasAutocompleteDropdown(query);
-        });
+    function toggleSpaceLayer(layerKey) {{
+      if (layerKey === 'tianguis') filterState.showTianguis = !filterState.showTianguis;
+      if (layerKey === 'msr') filterState.showMSR = !filterState.showMSR;
+      if (layerKey === 'concentraciones') filterState.showConcentraciones = !filterState.showConcentraciones;
+      if (layerKey === 'mercados') filterState.showMercados = !filterState.showMercados;
 
-        comprasInput.addEventListener('focus', (e) => {
-          const query = e.target.value.trim();
-          if (query) renderComprasAutocompleteDropdown(query);
-        });
+      const chip = document.getElementById('chip-' + layerKey);
+      if (chip) {{
+        const isActive = filterState[layerKey === 'tianguis' ? 'showTianguis' : (layerKey === 'msr' ? 'showMSR' : (layerKey === 'concentraciones' ? 'showConcentraciones' : 'showMercados'))];
+        if (isActive) chip.classList.add('active');
+        else chip.classList.remove('active');
+      }}
+      applyAllFilters();
+    }}
 
-        comprasInput.addEventListener('keydown', (e) => {
-          const items = comprasDropdown.querySelectorAll('.compras-item');
-          if (items.length === 0 || comprasDropdown.style.display === 'none') return;
-
-          if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            highlightedComprasIdx = (highlightedComprasIdx + 1) % items.length;
-            updateHighlightedCompras(items);
-          } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            highlightedComprasIdx = (highlightedComprasIdx - 1 + items.length) % items.length;
-            updateHighlightedCompras(items);
-          } else if (e.key === 'Enter') {
-            e.preventDefault();
-            if (highlightedComprasIdx >= 0 && highlightedComprasIdx < items.length) {
-              items[highlightedComprasIdx].click();
-            }
-          } else if (e.key === 'Escape') {
-            comprasDropdown.style.display = 'none';
-          }
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!e.target.closest('#compras-filter-section')) {
-            comprasDropdown.style.display = 'none';
-          }
-        });
-      }
-    }
-
-    function updateHighlightedCompras(items) {
-      items.forEach((el, idx) => {
-        if (idx === highlightedComprasIdx) {
-          el.classList.add('selected');
-          el.scrollIntoView({ block: 'nearest' });
-        } else {
-          el.classList.remove('selected');
-        }
-      });
-    }
-
-    function renderComprasAutocompleteDropdown(query) {
-      const dropdown = document.getElementById('compras-autocomplete-dropdown');
-      if (!dropdown || !COMPRAS_VOCAB.length) return;
-
-      const normQ = query.toLowerCase().trim();
-      const tokens = normQ.split(/\\s+/).filter(Boolean);
-
-      const matches = [];
-      COMPRAS_VOCAB.forEach(item => {
-        let matched = false;
-        let score = item.peso || 50;
-
-        const termLower = item.termino.toLowerCase();
-        if (termLower.startsWith(normQ)) score += 40;
-        else if (termLower.includes(normQ)) score += 20;
-
-        const allTokens = item.tokens_busqueda || [];
-        const matchesAll = tokens.every(t => allTokens.some(tok => tok.includes(t)));
-        if (matchesAll) {
-          matched = true;
-          if (item.canasta_basica) score += 5;
-          if (item.mercomuna) score += 5;
-          matches.push({ item, score });
-        }
-      });
-
-      matches.sort((a, b) => b.score - a.score);
-      const topMatches = matches.slice(0, 8).map(m => m.item);
-
-      if (topMatches.length === 0) {
-        dropdown.innerHTML = `
-          <div style="padding:10px; font-size:0.75rem; color:#64748b; text-align:center;">
-            No se encontró el producto "<b>${query}</b>". Prueba con jitomate, barbacoa, tenis, clavos, útiles...
-          </div>
-        `;
-        dropdown.style.display = 'block';
-        return;
-      }
-
-      dropdown.innerHTML = topMatches.map((m, idx) => `
-        <div class="compras-item" onclick="selectComprasItem('${m.id}')" data-idx="${idx}">
-          <div>
-            <div class="compras-term-title">${m.termino}</div>
-            <div class="compras-term-sub">
-              <span>${m.categoria_icono}</span>
-              <span>${m.subgiro_nombre}</span>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
-            ${m.canasta_basica ? '<span class="compras-badge badge-canasta">🛒 Canasta Básica</span>' : ''}
-            ${m.mercomuna ? '<span class="compras-badge badge-mercomuna">💳 Mercomuna</span>' : ''}
-          </div>
-        </div>
-      `).join('');
-
-      dropdown.style.display = 'block';
-      highlightedComprasIdx = -1;
-    }
-
-    function selectComprasItem(itemId) {
-      const item = COMPRAS_VOCAB.find(v => v.id === itemId);
-      if (!item) return;
-
-      filterState.product = item;
-      filterState.subgiro = item.subgiro_id;
-      filterState.macroCategory = item.categoria_id;
-
-      const input = document.getElementById('compras-search-input');
-      if (input) input.value = item.termino;
-      const clearBtn = document.getElementById('clear-compras-btn');
-      if (clearBtn) clearBtn.style.display = 'block';
-      const dropdown = document.getElementById('compras-autocomplete-dropdown');
-      if (dropdown) dropdown.style.display = 'none';
-
-      // Sincronizar select de subgiro y chip de macro-categoría
-      const subgiroSel = document.getElementById('subgiro-select');
-      if (subgiroSel) subgiroSel.value = item.subgiro_id;
-
-      updateMacroChipsUI();
-      applyCommerceFilters();
-      showToast(`Filtrando por: ${item.termino} (${item.categoria_icono} ${item.subgiro_nombre})`, 'success', 3000);
-    }
-
-    function clearComprasSearch() {
-      const input = document.getElementById('compras-search-input');
-      if (input) input.value = '';
-      const clearBtn = document.getElementById('clear-compras-btn');
-      if (clearBtn) clearBtn.style.display = 'none';
-      const dropdown = document.getElementById('compras-autocomplete-dropdown');
-      if (dropdown) dropdown.style.display = 'none';
-
-      filterState.product = null;
-      applyCommerceFilters();
-    }
-
-    function toggleMacroCategory(catId) {
-      if (filterState.macroCategory === catId) {
-        filterState.macroCategory = null;
-      } else {
-        filterState.macroCategory = catId;
-      }
-      if (filterState.subgiro && filterState.macroCategory && window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
-        const sg = window.MAP_DATA.catalog_subgiros.find(s => s.id === filterState.subgiro);
-        if (sg && sg.categoria_id !== filterState.macroCategory) {
-          filterState.subgiro = null;
-          const subgiroSel = document.getElementById('subgiro-select');
-          if (subgiroSel) subgiroSel.value = '';
-        }
-      }
-      filterState.product = null;
-      const input = document.getElementById('compras-search-input');
-      if (input) input.value = '';
-      const clearBtn = document.getElementById('clear-compras-btn');
-      if (clearBtn) clearBtn.style.display = 'none';
-
-      updateMacroChipsUI();
-      applyCommerceFilters();
-    }
-
-    function updateMacroChipsUI() {
-      const chips = document.querySelectorAll('.macro-chip');
-      chips.forEach(chip => {
-        const cid = chip.id.replace('macro-chip-', '');
-        if (filterState.macroCategory === cid) {
-          chip.classList.add('active');
-        } else {
-          chip.classList.remove('active');
-        }
-      });
-    }
-
-    function onSubgiroSelectChange(subgiroId) {
-      if (!subgiroId) {
-        filterState.subgiro = null;
-      } else {
-        filterState.subgiro = subgiroId;
-        if (window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
-          const sg = window.MAP_DATA.catalog_subgiros.find(s => s.id === subgiroId);
-          if (sg) {
-            filterState.macroCategory = sg.categoria_id;
-            updateMacroChipsUI();
-          }
-        }
-      }
-      filterState.product = null;
-      const input = document.getElementById('compras-search-input');
-      if (input) input.value = '';
-      const clearBtn = document.getElementById('clear-compras-btn');
-      if (clearBtn) clearBtn.style.display = 'none';
-
-      applyCommerceFilters();
-    }
-
-    function toggleFilterCanasta() {
+    function toggleCanastaFilter() {{
       filterState.canastaBasica = !filterState.canastaBasica;
       const btn = document.getElementById('btn-toggle-canasta');
-      if (btn) {
-        btn.classList.toggle('active-canasta', filterState.canastaBasica);
-      }
-      applyCommerceFilters();
-      showToast(filterState.canastaBasica ? '🛒 Canasta Básica SEDECO: Activado' : 'Canasta Básica: Desactivado', 'info', 2000);
-    }
+      if (filterState.canastaBasica) btn.classList.add('active');
+      else btn.classList.remove('active');
+      applyAllFilters();
+    }}
 
-    function toggleFilterMercomuna() {
+    function toggleMercomunaFilter() {{
       filterState.mercomuna = !filterState.mercomuna;
       const btn = document.getElementById('btn-toggle-mercomuna');
-      if (btn) {
-        btn.classList.toggle('active-mercomuna', filterState.mercomuna);
-      }
-      applyCommerceFilters();
-      showToast(filterState.mercomuna ? '💳 Vales Mercomuna: Activado' : 'Vales Mercomuna: Desactivado', 'info', 2000);
-    }
+      if (filterState.mercomuna) btn.classList.add('active');
+      else btn.classList.remove('active');
+      applyAllFilters();
+    }}
 
-    function resetAllCommerceFilters() {
-      filterState.macroCategory = null;
-      filterState.subgiro = null;
-      filterState.product = null;
+    function resetAllFilters() {{
+      filterState.day = 'TODOS';
+      filterState.isTodayActive = false;
+      filterState.alcaldia = 'TODAS';
+      filterState.showTianguis = true;
+      filterState.showMSR = true;
+      filterState.showConcentraciones = true;
+      filterState.showMercados = false;
       filterState.canastaBasica = false;
       filterState.mercomuna = false;
-      filterState.openToday = false;
+      filterState.searchQuery = '';
 
-      const input = document.getElementById('compras-search-input');
-      if (input) input.value = '';
-      const clearBtn = document.getElementById('clear-compras-btn');
-      if (clearBtn) clearBtn.style.display = 'none';
+      document.getElementById('commerce-search-input').value = '';
+      document.getElementById('commerce-search-clear').style.display = 'none';
+      document.getElementById('alcaldia-select').value = 'TODAS';
+      document.getElementById('btn-today-filter').classList.remove('active');
+      document.getElementById('btn-toggle-canasta').classList.remove('active');
+      document.getElementById('btn-toggle-mercomuna').classList.remove('active');
+      document.getElementById('chip-tianguis').classList.add('active');
+      document.getElementById('chip-msr').classList.add('active');
+      document.getElementById('chip-concentraciones').classList.add('active');
+      document.getElementById('chip-mercados').classList.remove('active');
+      setActiveDayUI('TODOS');
 
-      const sel = document.getElementById('subgiro-select');
-      if (sel) sel.value = '';
+      applyAllFilters();
+      resetMapView();
+      showToast('Filtros restablecidos', 'info');
+    }}
 
-      const btnCanasta = document.getElementById('btn-toggle-canasta');
-      if (btnCanasta) btnCanasta.classList.remove('active-canasta');
-
-      const btnMercomuna = document.getElementById('btn-toggle-mercomuna');
-      if (btnMercomuna) btnMercomuna.classList.remove('active-mercomuna');
-
-      const chipHoy = document.getElementById('chip-dia-hoy');
-      if (chipHoy) chipHoy.classList.remove('active');
-
-      updateMacroChipsUI();
-      applyCommerceFilters();
-      showToast('Filtros de compras restablecidos.', 'info', 2000);
-    }
-
-    function removeProductFilter() {
-      filterState.product = null;
-      const input = document.getElementById('compras-search-input');
-      if (input) input.value = '';
-      const clearBtn = document.getElementById('clear-compras-btn');
-      if (clearBtn) clearBtn.style.display = 'none';
-      applyCommerceFilters();
-    }
-
-    function removeSubgiroFilter() {
-      filterState.subgiro = null;
-      const sel = document.getElementById('subgiro-select');
-      if (sel) sel.value = '';
-      applyCommerceFilters();
-    }
-
-    function removeCategoryFilter() {
-      filterState.macroCategory = null;
-      updateMacroChipsUI();
-      applyCommerceFilters();
-    }
-
-    function applyCommerceFilters() {
+    // =========================================================================
+    // APLICACIÓN DE FILTROS Y RENDERIZADO DE MARCADORES
+    // =========================================================================
+    function applyAllFilters() {{
       if (!window.MAP_DATA) return;
+      const data = window.MAP_DATA;
 
-      const days = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
-      const today = days[new Date().getDay()];
+      const q = filterState.searchQuery.toLowerCase().trim();
+      const currentDay = filterState.day;
+      const currentAlc = filterState.alcaldia;
 
-      let matchingMercados = [];
-      let matchingTianguis = [];
-      let matchingMSR = [];
+      // 1. Filtrar Tianguis
+      let filteredTianguis = [];
+      if (filterState.showTianguis && data.tianguis) {{
+        filteredTianguis = data.tianguis.filter(t => {{
+          if (currentDay !== 'TODOS' && (!t.dia || !t.dia.toUpperCase().includes(currentDay))) return false;
+          if (currentAlc !== 'TODAS' && t.alcaldia && !t.alcaldia.toUpperCase().includes(currentAlc)) return false;
+          if (filterState.canastaBasica && !t.canasta_basica) return false;
+          if (filterState.mercomuna && !t.mercomuna) return false;
+          if (q) {{
+            const searchStr = `${{t.nombre_popular || ''}} ${{t.nombre || ''}} ${{t.colonia || ''}} ${{t.ubicacion || ''}} ${{t.alcaldia || ''}} ${{t.giro || ''}}`.toLowerCase();
+            if (!searchStr.includes(q)) return false;
+          }}
+          return true;
+        }});
+      }}
 
-      // 1. Mercados
-      if (window.MAP_DATA.mercados) {
-        window.MAP_DATA.mercados.forEach(m => {
-          if (filterState.macroCategory && (!m.cats || !m.cats.includes(filterState.macroCategory))) return;
-          if (filterState.subgiro && (!m.subgiros || !m.subgiros.includes(filterState.subgiro))) return;
-          if (filterState.product && (!m.subgiros || !m.subgiros.includes(filterState.product.subgiro_id))) return;
-          if (filterState.canastaBasica && !m.canasta_basica) return;
-          if (filterState.mercomuna && !m.mercomuna) return;
-          matchingMercados.push(m);
-        });
-      }
+      // 2. Filtrar MSR
+      let filteredMSR = [];
+      if (filterState.showMSR && data.msr) {{
+        filteredMSR = data.msr.filter(m => {{
+          if (currentDay !== 'TODOS' && (!m.dia || !m.dia.toUpperCase().includes(currentDay))) return false;
+          if (currentAlc !== 'TODAS' && m.alcaldia && !m.alcaldia.toUpperCase().includes(currentAlc)) return false;
+          if (filterState.canastaBasica && !m.canasta_basica) return false;
+          if (filterState.mercomuna && !m.mercomuna) return false;
+          if (q) {{
+            const searchStr = `${{m.nombre || ''}} ${{m.ruta || ''}} ${{m.colonia || ''}} ${{m.direccion || ''}} ${{m.alcaldia || ''}}`.toLowerCase();
+            if (!searchStr.includes(q)) return false;
+          }}
+          return true;
+        }});
+      }}
 
-      // 2. Tianguis
-      if (window.MAP_DATA.tianguis) {
-        window.MAP_DATA.tianguis.forEach(t => {
-          if (filterState.macroCategory && (!t.cats || !t.cats.includes(filterState.macroCategory))) return;
-          if (filterState.subgiro && (!t.subgiros || !t.subgiros.includes(filterState.subgiro))) return;
-          if (filterState.product && (!t.subgiros || !t.subgiros.includes(filterState.product.subgiro_id))) return;
-          if (filterState.canastaBasica && !t.canasta_basica) return;
-          if (filterState.mercomuna && !t.mercomuna) return;
-          if (filterState.openToday && (!t.dia || !t.dia.toUpperCase().includes(today))) return;
-          matchingTianguis.push(t);
-        });
-      }
+      // 3. Filtrar Concentraciones
+      let filteredConcentraciones = [];
+      if (filterState.showConcentraciones && data.concentraciones) {{
+        filteredConcentraciones = data.concentraciones.filter(c => {{
+          if (currentDay !== 'TODOS' && c.dias_operacion_lista && !c.dias_operacion_lista.includes(currentDay)) return false;
+          if (currentAlc !== 'TODAS' && c.alcaldia && !c.alcaldia.toUpperCase().includes(currentAlc)) return false;
+          if (filterState.canastaBasica && !c.canasta_basica) return false;
+          if (filterState.mercomuna && !c.mercomuna) return false;
+          if (q) {{
+            const searchStr = `${{c.nombre || ''}} ${{c.colonia || ''}} ${{c.ubicacion || ''}} ${{c.alcaldia || ''}} ${{c.giro || ''}}`.toLowerCase();
+            if (!searchStr.includes(q)) return false;
+          }}
+          return true;
+        }});
+      }}
 
-      // 3. MSR
-      if (window.MAP_DATA.msr) {
-        window.MAP_DATA.msr.forEach(m => {
-          if (filterState.macroCategory && (!m.cats || !m.cats.includes(filterState.macroCategory))) return;
-          if (filterState.subgiro && (!m.subgiros || !m.subgiros.includes(filterState.subgiro))) return;
-          if (filterState.product && (!m.subgiros || !m.subgiros.includes(filterState.product.subgiro_id))) return;
-          if (filterState.canastaBasica && !m.canasta_basica) return;
-          if (filterState.mercomuna && !m.mercomuna) return;
-          if (filterState.openToday && (!m.dia || !m.dia.toUpperCase().includes(today))) return;
-          matchingMSR.push(m);
-        });
-      }
+      // 4. Filtrar Mercados Fijos (Opcional)
+      let filteredMercados = [];
+      if (filterState.showMercados && data.mercados) {{
+        filteredMercados = data.mercados.filter(m => {{
+          if (currentAlc !== 'TODAS' && m.alcaldia && !m.alcaldia.toUpperCase().includes(currentAlc)) return false;
+          if (filterState.canastaBasica && !m.canasta_basica) return false;
+          if (filterState.mercomuna && !m.mercomuna) return false;
+          if (q) {{
+            const searchStr = `${{m.nombre || ''}} ${{m.colonia || ''}} ${{m.alcaldia || ''}} ${{m.giro || ''}}`.toLowerCase();
+            if (!searchStr.includes(q)) return false;
+          }}
+          return true;
+        }});
+      }}
 
-      // Render Mercados en Cluster
-      layers.mercados.clearLayers();
-      matchingMercados.forEach(m => {
-        const marker = L.circleMarker([m.lat, m.lon], {
-          radius: m.radio || 7,
-          fillColor: '#f59e0b',
-          color: '#ffffff',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.88
-        });
-        marker.on('click', () => {
-          currentSelectedTarget = { name: 'Mercado ' + m.nombre, lat: m.lat, lon: m.lon };
-          map.flyTo([m.lat, m.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-          showMarketInDetail(m);
-        });
-        layers.mercados.addLayer(marker);
-      });
-      if (!map.hasLayer(layers.mercados)) layers.mercados.addTo(map);
-
-      // Render Tianguis en Cluster
+      // Render Tianguis Markers
       layers.tianguis.clearLayers();
-      matchingTianguis.forEach(t => {
-        const marker = L.circleMarker([t.lat, t.lon], {
-          radius: 5.5,
-          fillColor: '#0f5953',
+      filteredTianguis.forEach(t => {{
+        const marker = L.circleMarker([t.lat, t.lon], {{
+          radius: 6,
+          fillColor: '#0f766e',
           color: '#ffffff',
           weight: 1.5,
           opacity: 1,
-          fillOpacity: 0.85
-        });
-        marker.on('click', () => {
-          currentSelectedTarget = { name: 'Tianguis ' + t.colonia, lat: t.lat, lon: t.lon };
-          map.flyTo([t.lat, t.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-          showTianguisInDetail(t);
-        });
+          fillOpacity: 0.88
+        }});
+        marker.on('click', () => {{
+          showSpaceDetail(t, 'tianguis');
+        }});
         layers.tianguis.addLayer(marker);
-      });
-      if (!map.hasLayer(layers.tianguis)) layers.tianguis.addTo(map);
+      }});
+      if (filterState.showTianguis) {{
+        if (!map.hasLayer(layers.tianguis)) layers.tianguis.addTo(map);
+      }} else {{
+        if (map.hasLayer(layers.tianguis)) map.removeLayer(layers.tianguis);
+      }}
 
-      // Render MSR
+      // Render MSR Markers
       layers.msr.clearLayers();
-      matchingMSR.forEach(m => {
-        const marker = L.circleMarker([m.lat, m.lon], {
-          radius: m.radio || 6,
-          fillColor: '#10b981',
+      filteredMSR.forEach(m => {{
+        const marker = L.circleMarker([m.lat, m.lon], {{
+          radius: 7,
+          fillColor: '#d97706',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.9
+        }});
+        marker.on('click', () => {{
+          showSpaceDetail(m, 'msr');
+        }});
+        layers.msr.addLayer(marker);
+      }});
+      if (filterState.showMSR) {{
+        if (!map.hasLayer(layers.msr)) layers.msr.addTo(map);
+      }} else {{
+        if (map.hasLayer(layers.msr)) map.removeLayer(layers.msr);
+      }}
+
+      // Render Concentraciones Markers
+      layers.concentraciones.clearLayers();
+      filteredConcentraciones.forEach(c => {{
+        const marker = L.circleMarker([c.lat, c.lon], {{
+          radius: 6.5,
+          fillColor: '#6d28d9',
+          color: '#ffffff',
+          weight: 1.8,
+          opacity: 1,
+          fillOpacity: 0.88
+        }});
+        marker.on('click', () => {{
+          showSpaceDetail(c, 'concentracion');
+        }});
+        layers.concentraciones.addLayer(marker);
+      }});
+      if (filterState.showConcentraciones) {{
+        if (!map.hasLayer(layers.concentraciones)) layers.concentraciones.addTo(map);
+      }} else {{
+        if (map.hasLayer(layers.concentraciones)) map.removeLayer(layers.concentraciones);
+      }}
+
+      // Render Mercados Markers
+      layers.mercados.clearLayers();
+      filteredMercados.forEach(m => {{
+        const marker = L.circleMarker([m.lat, m.lon], {{
+          radius: m.radio || 7,
+          fillColor: '#ca8a04',
           color: '#ffffff',
           weight: 2,
           opacity: 1,
           fillOpacity: 0.88
-        });
-        marker.on('click', () => {
-          currentSelectedTarget = { name: 'MSR ' + m.ruta, lat: m.lat, lon: m.lon };
-          map.flyTo([m.lat, m.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-          showMSRInDetail(m);
-        });
-        layers.msr.addLayer(marker);
-      });
-      if (!map.hasLayer(layers.msr)) layers.msr.addTo(map);
+        }});
+        marker.on('click', () => {{
+          showSpaceDetail(m, 'mercado');
+        }});
+        layers.mercados.addLayer(marker);
+      }});
+      if (filterState.showMercados) {{
+        if (!map.hasLayer(layers.mercados)) layers.mercados.addTo(map);
+      }} else {{
+        if (map.hasLayer(layers.mercados)) map.removeLayer(layers.mercados);
+      }}
 
-      const total = matchingMercados.length + matchingTianguis.length + matchingMSR.length;
-      updateFilterCounterAndPills(total, matchingMercados.length, matchingTianguis.length, matchingMSR.length);
-    }
+      // Actualizar Badges y Contadores
+      const totalActivos = filteredTianguis.length + filteredMSR.length + filteredConcentraciones.length + filteredMercados.length;
+      document.getElementById('badge-count-tianguis').innerText = filteredTianguis.length.toLocaleString();
+      document.getElementById('badge-count-msr').innerText = filteredMSR.length.toLocaleString();
+      document.getElementById('badge-count-concentraciones').innerText = filteredConcentraciones.length.toLocaleString();
+      document.getElementById('badge-count-mercados').innerText = filterState.showMercados ? filteredMercados.length.toLocaleString() : 'Inactivo';
 
-    function updateFilterCounterAndPills(total, countM, countT, countMSR) {
-      const counterEl = document.getElementById('compras-results-counter');
-      const resetBtn = document.getElementById('compras-reset-all-btn');
-      const pillsContainer = document.getElementById('compras-active-pills');
+      const counterText = document.getElementById('results-counter-text');
+      const resetBtn = document.getElementById('btn-reset-filters');
+      counterText.innerHTML = `Mostrando <b>${{totalActivos.toLocaleString()}}</b> espacios de abasto popular`;
 
-      if (counterEl) {
-        counterEl.innerHTML = `Mostrando <b>${total.toLocaleString()}</b> espacios (${countM} merc, ${countT} tian, ${countMSR} MSR)`;
-      }
-
-      const isAnyActive = filterState.macroCategory || filterState.subgiro || filterState.product || filterState.canastaBasica || filterState.mercomuna || filterState.openToday;
-
-      if (resetBtn) {
-        resetBtn.style.display = isAnyActive ? 'inline-block' : 'none';
-      }
-
-      if (pillsContainer) {
-        let pillsHtml = '';
-        if (filterState.product) {
-          pillsHtml += `<span class="active-filter-pill">🛍️ ${filterState.product.termino} <span class="remove-pill" onclick="removeProductFilter()" title="Quitar">✕</span></span>`;
-        }
-        if (filterState.subgiro && window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
-          const sg = window.MAP_DATA.catalog_subgiros.find(s => s.id === filterState.subgiro);
-          const sgName = sg ? sg.nombre.split(',')[0] : filterState.subgiro;
-          pillsHtml += `<span class="active-filter-pill">⚙️ ${sgName} <span class="remove-pill" onclick="removeSubgiroFilter()" title="Quitar">✕</span></span>`;
-        }
-        if (filterState.macroCategory && window.MAP_DATA && window.MAP_DATA.catalog_categorias) {
-          const cat = window.MAP_DATA.catalog_categorias.find(c => c.id === filterState.macroCategory);
-          const catName = cat ? `${cat.icono} ${cat.nombre.split(',')[0]}` : filterState.macroCategory;
-          pillsHtml += `<span class="active-filter-pill">${catName} <span class="remove-pill" onclick="removeCategoryFilter()" title="Quitar">✕</span></span>`;
-        }
-        if (filterState.canastaBasica) {
-          pillsHtml += `<span class="active-filter-pill" style="background:#ecfdf5; color:#065f46; border-color:#86efac;">🛒 Canasta Básica <span class="remove-pill" onclick="toggleFilterCanasta()" title="Quitar">✕</span></span>`;
-        }
-        if (filterState.mercomuna) {
-          pillsHtml += `<span class="active-filter-pill" style="background:#faf5ff; color:#6b21a8; border-color:#d8b4fe;">💳 Mercomuna <span class="remove-pill" onclick="toggleFilterMercomuna()" title="Quitar">✕</span></span>`;
-        }
-        if (filterState.openToday) {
-          pillsHtml += `<span class="active-filter-pill" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">📅 Abierto Hoy <span class="remove-pill" onclick="filterByToday()" title="Quitar">✕</span></span>`;
-        }
-        pillsContainer.innerHTML = pillsHtml;
-      }
-    }
-
-    function renderDetailPolicyAndSubgiros(item) {
-      const policyBox = document.getElementById('panel-policy-badges');
-      const subgirosBox = document.getElementById('panel-subgiros-box');
-      const subgirosContent = document.getElementById('panel-subgiros-content');
-      if (!policyBox || !subgirosContent) return;
-
-      // 1. Badges de políticas y categorías
-      let badgesHtml = '';
-      if (item.canasta_basica) {
-        badgesHtml += '<span class="badge-policy badge-canasta">🛒 Canasta Básica Oficial SEDECO</span>';
-      }
-      if (item.mercomuna) {
-        badgesHtml += '<span class="badge-policy badge-mercomuna">💳 Acepta Vales Mercomuna</span>';
-      }
-
-      // Macro-categorías presentes
-      if (item.cats && window.MAP_DATA && window.MAP_DATA.catalog_categorias) {
-        const catMap = {};
-        window.MAP_DATA.catalog_categorias.forEach(c => { catMap[c.id] = c; });
-        item.cats.forEach(cid => {
-          const c = catMap[cid];
-          if (c) {
-            badgesHtml += `<span class="badge-cat-mini" title="${c.nombre}">${c.icono} ${c.nombre.split(',')[0]}</span>`;
-          }
-        });
-      }
-      policyBox.innerHTML = badgesHtml;
-
-      // 2. Subgiros disponibles
-      if (item.subgiros && window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
-        subgirosBox.style.display = 'block';
-        const sgMap = {};
-        window.MAP_DATA.catalog_subgiros.forEach(s => { sgMap[s.id] = s; });
-        let subHtml = '';
-        const displaySg = item.subgiros.slice(0, 10);
-        displaySg.forEach(sid => {
-          const s = sgMap[sid];
-          if (s) {
-            subHtml += `<span class="subgiro-pill">${s.canasta_basica ? '🛒 ' : ''}${s.nombre}</span>`;
-          }
-        });
-        if (item.subgiros.length > 10) {
-          subHtml += `<span class="subgiro-pill" style="background:#f1f5f9; color:#64748b;">+${item.subgiros.length - 10} giros más...</span>`;
-        }
-        subgirosContent.innerHTML = subHtml;
-      } else {
-        subgirosBox.style.display = 'none';
-      }
-    }
-
-    // Tianguis con filtrado por día (retrocompatibilidad)
-    function renderTianguisMarkers(filterDay = null) {
-      if (filterDay) {
-        filterState.openToday = true;
-      }
-      applyCommerceFilters();
-    }
+      const isFilterModified = filterState.day !== 'TODOS' || filterState.alcaldia !== 'TODAS' || !filterState.showTianguis || !filterState.showMSR || !filterState.showConcentraciones || filterState.showMercados || filterState.canastaBasica || filterState.mercomuna || filterState.searchQuery !== '';
+      resetBtn.style.display = isFilterModified ? 'inline-block' : 'none';
+    }}
 
     // =========================================================================
-    // BUSCADOR UNIFICADO CON AUTOCOMPLETADO PREDICTIVO
+    // FICHA DE DETALLE (SIDEBAR)
     // =========================================================================
-    function buildUnifiedSearchIndex(data) {
+    function showSpaceDetail(item, type) {{
+      currentSelectedCardData = item;
+      const card = document.getElementById('detail-card');
+      card.style.display = 'block';
+
+      // Abrir sidebar en pantallas móviles
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar.classList.contains('collapsed')) {{
+        sidebar.classList.remove('collapsed');
+      }}
+
+      // Centrar mapa suavemente
+      map.flyTo([item.lat, item.lon], Math.max(map.getZoom(), 15), {{ duration: 0.7 }});
+
+      // Configurar badge y colores
+      const tagEl = document.getElementById('card-tag');
+      if (type === 'tianguis') {{
+        tagEl.innerText = '🧺 TIANGUIS ITINERANTE';
+        tagEl.style.background = '#0f766e';
+      }} else if (type === 'msr') {{
+        tagEl.innerText = '🚚 MERCADO SOBRE RUEDAS';
+        tagEl.style.background = '#d97706';
+      }} else if (type === 'concentracion') {{
+        tagEl.innerText = '🏬 CONCENTRACIÓN BARRIAL';
+        tagEl.style.background = '#6d28d9';
+      }} else {{
+        tagEl.innerText = '🏪 MERCADO PÚBLICO';
+        tagEl.style.background = '#ca8a04';
+      }}
+
+      // Título y subtítulo
+      const popularName = item.nombre_popular || item.nombre || 'Tianguis Popular';
+      document.getElementById('card-name').innerText = popularName;
+      document.getElementById('card-sub').innerText = `${{item.alcaldia || 'CDMX'}} · Col. ${{item.colonia || 'Sin colonia'}}`;
+
+      // Ubicación exacta y entrecalles
+      const street = item.ubicacion || item.direccion || 'Vía pública local';
+      document.getElementById('card-street-text').innerText = street;
+
+      // Calcular Estatus en Vivo
+      const statusBanner = document.getElementById('card-status-banner');
+      const statusText = document.getElementById('card-status-text');
+
+      const now = new Date();
+      const currentHour = now.getHours() + (now.getMinutes() / 60);
+      const today = getTodayDayName();
+
+      let operatesToday = false;
+      if (type === 'tianguis' || type === 'msr') {{
+        operatesToday = item.dia && item.dia.toUpperCase().includes(today);
+      }} else if (type === 'concentracion') {{
+        operatesToday = item.dias_operacion_lista ? item.dias_operacion_lista.includes(today) : true;
+      }} else {{
+        operatesToday = true;
+      }}
+
+      const horaApertura = item.hora_apertura || 8.0;
+      const horaCierre = item.hora_cierre || 17.0;
+
+      if (!operatesToday) {{
+        statusBanner.className = 'status-live-banner status-closed';
+        statusText.innerText = `🔴 No opera hoy · Días habituales: ${{item.dia || item.dias_operacion || 'Programado'}}`;
+      }} else {{
+        if (currentHour >= horaApertura && currentHour <= horaCierre) {{
+          statusBanner.className = 'status-live-banner status-open';
+          statusText.innerText = `🟢 Abierto hoy · En venta hasta las ${{Math.floor(horaCierre)}}:00 hrs`;
+        }} else if (currentHour >= (horaApertura - 2) && currentHour < horaApertura) {{
+          statusBanner.className = 'status-live-banner status-montaje';
+          statusText.innerText = `🟡 En instalación y montaje de puestos (Abre a las ${{Math.floor(horaApertura)}}:00 hrs)`;
+        }} else if (currentHour > horaCierre && currentHour <= (horaCierre + 2)) {{
+          statusBanner.className = 'status-live-banner status-montaje';
+          statusText.innerText = `🟡 En desmontaje y aseo vial (Cerró a las ${{Math.floor(horaCierre)}}:00 hrs)`;
+        }} else {{
+          statusBanner.className = 'status-live-banner status-closed';
+          statusText.innerText = `🔴 Cerrado por hoy (Horario regular: ${{Math.floor(horaApertura)}}:00 a ${{Math.floor(horaCierre)}}:00 hrs)`;
+        }}
+      }}
+
+      // Estadísticas
+      document.getElementById('card-stat-dia').innerText = item.dia || (item.dias_operacion ? 'L-D' : 'Semanal');
+      document.getElementById('card-stat-horario').innerText = item.horario || `${{Math.floor(horaApertura)}}:00-${{Math.floor(horaCierre)}}:00`;
+      document.getElementById('card-stat-puestos').innerText = item.oferentes ? `~${{item.oferentes}}` : (item.num_oferentes ? `~${{item.num_oferentes}}` : '--');
+
+      // Horarios operativos
+      document.getElementById('card-time-montaje').innerText = `${{Math.max(0, Math.floor(horaApertura - 2))}}:00 a ${{Math.floor(horaApertura)}}:00 hrs`;
+      document.getElementById('card-time-venta').innerText = `${{Math.floor(horaApertura)}}:00 a ${{Math.floor(horaCierre)}}:00 hrs`;
+      document.getElementById('card-time-desmontaje').innerText = `${{Math.floor(horaCierre)}}:00 a ${{Math.min(24, Math.floor(horaCierre + 2))}}:00 hrs`;
+
+      // Giros y Banderas
+      const tagsBox = document.getElementById('card-tags-container');
+      tagsBox.innerHTML = '';
+
+      if (item.canasta_basica) {{
+        tagsBox.innerHTML += `<span style="background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:700;">🧺 Canasta Básica</span>`;
+      }}
+      if (item.mercomuna) {{
+        tagsBox.innerHTML += `<span style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:700;">💳 MERCOMUNA</span>`;
+      }}
+
+      const tags = item.tags || ['Frutas y Verduras', 'Abarrotes', 'Ropa', 'Comida'];
+      tags.slice(0, 6).forEach(tg => {{
+        tagsBox.innerHTML += `<span style="background:#f1f5f9; color:#334155; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:600;">${{tg}}</span>`;
+      }});
+
+      // Enlace a Google Maps
+      const gmapsLink = document.getElementById('card-gmaps-link');
+      gmapsLink.href = `https://www.google.com/maps/search/?api=1&query=${{item.lat}},${{item.lon}}`;
+
+      // Scroll hacia la ficha en el sidebar
+      card.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+    }}
+
+    function closeDetailCard() {{
+      const card = document.getElementById('detail-card');
+      card.style.display = 'none';
+      currentSelectedCardData = null;
+    }}
+
+    function copyCardCoords() {{
+      if (!currentSelectedCardData) return;
+      const coords = `${{currentSelectedCardData.lat.toFixed(6)}}, ${{currentSelectedCardData.lon.toFixed(6)}}`;
+      navigator.clipboard.writeText(coords).then(() => {{
+        showToast(`Coordenadas GPS copiadas: ${{coords}}`, 'success');
+      }}).catch(() => {{
+        showToast(`Coordenadas: ${{coords}}`, 'info');
+      }});
+    }}
+
+    // =========================================================================
+    // BUSCADOR PREDICTIVO UNIFICADO
+    // =========================================================================
+    function buildSearchIndex(data) {{
       SEARCH_INDEX = [];
-      if (data.mercados) {
-        data.mercados.forEach(m => {
-          SEARCH_INDEX.push({
-            type: 'mercado',
-            icon: '🏪',
-            badge: 'MERCADO',
-            badgeColor: '#d97706',
-            title: 'Mercado ' + m.nombre,
-            subtitle: m.alcaldia + ' · ' + m.colonia,
-            lat: m.lat,
-            lon: m.lon,
-            data: m,
-            searchStr: `mercado ${m.nombre} ${m.alcaldia} ${m.colonia}`.toLowerCase()
-          });
-        });
-      }
-      if (data.tianguis) {
-        data.tianguis.forEach(t => {
-          SEARCH_INDEX.push({
+      if (data.tianguis) {{
+        data.tianguis.forEach(t => {{
+          SEARCH_INDEX.push({{
             type: 'tianguis',
-            icon: '🧺',
             badge: 'TIANGUIS',
-            badgeColor: '#0f5953',
-            title: 'Tianguis ' + t.colonia,
-            subtitle: t.alcaldia + ' · ' + t.dia + (t.ubicacion ? ' (' + t.ubicacion + ')' : ''),
+            badgeColor: '#0f766e',
+            title: t.nombre_popular || `Tianguis ${{t.colonia}}`,
+            subtitle: `${{t.alcaldia}} · ${{t.dia}} · ${{t.ubicacion || t.colonia}}`,
             lat: t.lat,
             lon: t.lon,
             data: t,
-            searchStr: `tianguis ${t.colonia} ${t.alcaldia} ${t.dia} ${t.ubicacion || ''}`.toLowerCase()
-          });
-        });
-      }
-      if (data.msr) {
-        data.msr.forEach(m => {
-          SEARCH_INDEX.push({
+            searchStr: `tianguis ${{t.nombre_popular || ''}} ${{t.nombre || ''}} ${{t.colonia || ''}} ${{t.ubicacion || ''}} ${{t.alcaldia || ''}} ${{t.dia || ''}} ${{t.giro || ''}}`.toLowerCase()
+          }});
+        }});
+      }}
+      if (data.msr) {{
+        data.msr.forEach(m => {{
+          SEARCH_INDEX.push({{
             type: 'msr',
-            icon: '🚚',
             badge: 'MSR',
-            badgeColor: '#10b981',
-            title: 'MSR ' + m.ruta,
-            subtitle: m.alcaldia + ' · ' + m.colonia + ' · ' + m.dia,
+            badgeColor: '#d97706',
+            title: m.nombre || `MSR ${{m.ruta}}`,
+            subtitle: `${{m.alcaldia}} · ${{m.dia}} · ${{m.colonia}}`,
             lat: m.lat,
             lon: m.lon,
             data: m,
-            searchStr: `msr ruta mercado sobre ruedas ${m.ruta} ${m.alcaldia} ${m.colonia} ${m.dia}`.toLowerCase()
-          });
-        });
-      }
-      if (data.metro_stations) {
-        data.metro_stations.forEach(st => {
-          SEARCH_INDEX.push({
-            type: 'metro',
-            icon: '🚇',
-            badge: 'METRO',
-            badgeColor: st.color || '#ef4444',
-            title: 'Metro ' + st.nombre,
-            subtitle: 'Línea ' + st.linea + ' · Alcaldía ' + st.alcaldia,
-            lat: st.lat,
-            lon: st.lon,
-            data: st,
-            searchStr: `metro estacion ${st.nombre} linea ${st.linea} ${st.alcaldia}`.toLowerCase()
-          });
-        });
-      }
-      if (data.metrobus_stations) {
-        data.metrobus_stations.forEach(st => {
-          SEARCH_INDEX.push({
-            type: 'metrobus',
-            icon: '🚍',
-            badge: 'METROBÚS',
-            badgeColor: '#ec4899',
-            title: 'Metrobús ' + st.nombre,
-            subtitle: st.linea + ' · Alcaldía ' + st.alcaldia,
-            lat: st.lat,
-            lon: st.lon,
-            data: st,
-            searchStr: `metrobus estacion ${st.nombre} ${st.linea} ${st.alcaldia}`.toLowerCase()
-          });
-        });
-      }
-    }
+            searchStr: `msr mercado sobre ruedas ${{m.nombre || ''}} ${{m.ruta || ''}} ${{m.colonia || ''}} ${{m.direccion || ''}} ${{m.alcaldia || ''}} ${{m.dia || ''}}`.toLowerCase()
+          }});
+        }});
+      }}
+      if (data.concentraciones) {{
+        data.concentraciones.forEach(c => {{
+          SEARCH_INDEX.push({{
+            type: 'concentracion',
+            badge: 'CONCENTRACIÓN',
+            badgeColor: '#6d28d9',
+            title: c.nombre_popular || c.nombre,
+            subtitle: `${{c.alcaldia}} · Col. ${{c.colonia}}`,
+            lat: c.lat,
+            lon: c.lon,
+            data: c,
+            searchStr: `concentracion comerciante ${{c.nombre || ''}} ${{c.colonia || ''}} ${{c.ubicacion || ''}} ${{c.alcaldia || ''}} ${{c.giro || ''}}`.toLowerCase()
+          }});
+        }});
+      }}
+    }}
 
-    const searchInput = document.getElementById('market-search');
-    const searchDropdown = document.getElementById('search-autocomplete-dropdown');
-    const clearSearchBtn = document.getElementById('clear-search-btn');
-    let highlightedItemIdx = -1;
+    function onCommerceSearchInput(val) {{
+      filterState.searchQuery = val;
+      const clearBtn = document.getElementById('commerce-search-clear');
+      clearBtn.style.display = val.length > 0 ? 'block' : 'none';
 
-    searchInput.addEventListener('input', (e) => {
-      const term = e.target.value.trim();
-      if (!term) {
-        searchDropdown.style.display = 'none';
-        clearSearchBtn.style.display = 'none';
+      const dropdown = document.getElementById('commerce-autocomplete-dropdown');
+      if (val.trim().length < 2) {{
+        dropdown.style.display = 'none';
+        applyAllFilters();
         return;
-      }
-      clearSearchBtn.style.display = 'block';
-      renderAutocompleteDropdown(term);
-    });
+      }}
 
-    searchInput.addEventListener('focus', (e) => {
-      const term = e.target.value.trim();
-      if (term) renderAutocompleteDropdown(term);
-    });
+      const q = val.toLowerCase().trim();
+      const matches = SEARCH_INDEX.filter(item => item.searchStr.includes(q)).slice(0, 8);
 
-    searchInput.addEventListener('keydown', (e) => {
-      const items = searchDropdown.querySelectorAll('.autocomplete-item');
-      if (items.length === 0 || searchDropdown.style.display === 'none') return;
+      if (matches.length === 0) {{
+        dropdown.innerHTML = `<div style="padding:10px; font-size:0.75rem; color:#64748b; text-align:center;">No se encontraron tianguis o calles con "${{val}}"</div>`;
+        dropdown.style.display = 'block';
+      }} else {{
+        dropdown.innerHTML = matches.map((m, idx) => `
+          <div class="autocomplete-item" onclick="selectSearchMatch(${{idx}})">
+            <div class="autocomplete-title">
+              <span class="autocomplete-badge" style="background:${{m.badgeColor}};">${{m.badge}}</span>
+              <span>${{highlightMatch(m.title, q)}}</span>
+            </div>
+            <div class="autocomplete-sub">${{highlightMatch(m.subtitle, q)}}</div>
+          </div>
+        `).join('');
+        dropdown.style.display = 'block';
+        window._currentMatches = matches;
+      }}
 
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        highlightedItemIdx = (highlightedItemIdx + 1) % items.length;
-        updateHighlightedItem(items);
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        highlightedItemIdx = (highlightedItemIdx - 1 + items.length) % items.length;
-        updateHighlightedItem(items);
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        if (highlightedItemIdx >= 0 && highlightedItemIdx < items.length) {
-          items[highlightedItemIdx].click();
-        }
-      } else if (e.key === 'Escape') {
-        searchDropdown.style.display = 'none';
-      }
-    });
+      applyAllFilters();
+    }}
 
-    function updateHighlightedItem(items) {
-      items.forEach((el, idx) => {
-        if (idx === highlightedItemIdx) {
-          el.classList.add('selected');
-          el.scrollIntoView({ block: 'nearest' });
-        } else {
-          el.classList.remove('selected');
-        }
-      });
-    }
+    function highlightMatch(text, q) {{
+      if (!text) return '';
+      const idx = text.toLowerCase().indexOf(q);
+      if (idx === -1) return text;
+      return text.substring(0, idx) + '<b style="color:#0f5953; background:#ccfbf1;">' + text.substring(idx, idx + q.length) + '</b>' + text.substring(idx + q.length);
+    }}
 
-    function renderAutocompleteDropdown(query) {
-      if (!SEARCH_INDEX || SEARCH_INDEX.length === 0) return;
-      const terms = query.toLowerCase().split(/\\s+/).filter(Boolean);
+    function selectSearchMatch(idx) {{
+      if (!window._currentMatches || !window._currentMatches[idx]) return;
+      const item = window._currentMatches[idx];
+      document.getElementById('commerce-search-input').value = item.title;
+      document.getElementById('commerce-autocomplete-dropdown').style.display = 'none';
 
-      const matches = [];
-      for (let item of SEARCH_INDEX) {
-        const matchesAll = terms.every(t => item.searchStr.includes(t));
-        if (matchesAll) {
-          let score = 0;
-          if (item.title.toLowerCase().startsWith(terms[0])) score += 30;
-          if (item.title.toLowerCase().includes(terms[0])) score += 15;
-          matches.push({ item, score });
-        }
-      }
+      showSpaceDetail(item.data, item.type);
+    }}
 
-      matches.sort((a, b) => b.score - a.score);
-      const topMatches = matches.slice(0, 6).map(m => m.item);
+    function clearCommerceSearch() {{
+      document.getElementById('commerce-search-input').value = '';
+      document.getElementById('commerce-search-clear').style.display = 'none';
+      document.getElementById('commerce-autocomplete-dropdown').style.display = 'none';
+      filterState.searchQuery = '';
+      applyAllFilters();
+    }}
 
-      if (topMatches.length === 0) {
-        searchDropdown.innerHTML = `
-          <div style="padding:14px; text-align:center; color:#94a3b8; font-size:0.75rem;">
-            No se encontraron coincidencias para "${query}".
+    // Cerrar autocomplete si se hace click fuera
+    document.addEventListener('click', (e) => {{
+      const container = document.querySelector('.search-input-container');
+      if (container && !container.contains(e.target)) {{
+        const dropdown = document.getElementById('commerce-autocomplete-dropdown');
+        if (dropdown) dropdown.style.display = 'none';
+      }}
+    }});
+
+    // =========================================================================
+    // MODAL DE AFECTACIONES Y CALLES OCUPADAS
+    // =========================================================================
+    function openCierresModal() {{
+      const overlay = document.getElementById('cierres-modal-overlay');
+      overlay.style.display = 'flex';
+      switchModalTab('hoy');
+    }}
+
+    function closeCierresModal() {{
+      document.getElementById('cierres-modal-overlay').style.display = 'none';
+    }}
+
+    function handleModalOverlayClick(e) {{
+      if (e.target.id === 'cierres-modal-overlay') {{
+        closeCierresModal();
+      }}
+    }}
+
+    function switchModalTab(tabKey) {{
+      document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('modal-tab-' + tabKey);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const contentBox = document.getElementById('modal-body-content');
+      const today = getTodayDayName();
+
+      const cierres = (window.MAP_DATA && window.MAP_DATA.cierres_viales) ? window.MAP_DATA.cierres_viales : EMBEDDED_CIERRES;
+      const dayData = (cierres.dias && cierres.dias[today]) ? cierres.dias[today] : {{}};
+      const semStats = cierres.resumen_semanal || {{}};
+
+      if (tabKey === 'hoy') {{
+        const tianguisCount = dayData.total_tianguis || 194;
+        const kmOcupados = dayData.km_lineales_ocupados || 42.15;
+        const oferentesTot = dayData.oferentes_totales || 29070;
+        const corredores = dayData.top_corredores || [];
+
+        let corredoresHtml = '';
+        if (corredores.length > 0) {{
+          corredoresHtml = corredores.map(c => `
+            <tr>
+              <td><b>${{c.corredor}}</b></td>
+              <td>${{c.alcaldias ? c.alcaldias.join(', ') : 'CDMX'}}</td>
+              <td><b>${{c.oferentes ? c.oferentes.toLocaleString() : '--'}}</b> puestos</td>
+              <td>~${{c.km_lineales ? c.km_lineales.toFixed(2) : '--'}} km</td>
+              <td><span style="background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px; font-weight:700;">${{c.tipo_afectacion || 'Cierre de calle'}}</span></td>
+            </tr>
+          `).join('');
+        }} else {{
+          corredoresHtml = `<tr><td colspan="5" style="text-align:center; color:#64748b;">No hay corredores viales reportados.</td></tr>`;
+        }}
+
+        contentBox.innerHTML = `
+          <div style="margin-bottom:14px;">
+            <div style="font-size:0.95rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:2px;">
+              Ocupación de Espacio Público Hoy (${{NOMBRE_DIAS[today]}})
+            </div>
+            <div style="font-size:0.75rem; color:#64748b;">
+              Datos derivados del Padrón de Tianguis y Mercados Sobre Ruedas de la Ciudad de México.
+            </div>
+          </div>
+
+          <div class="kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-val">${{tianguisCount}}</div>
+              <div class="kpi-lbl">Tianguis Hoy</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">${{kmOcupados}} km</div>
+              <div class="kpi-lbl">Vía Ocupada</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">${{oferentesTot.toLocaleString()}}</div>
+              <div class="kpi-lbl">Oferentes Hoy</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">100%</div>
+              <div class="kpi-lbl">Comunitario</div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;">
+            <div style="font-size:0.82rem; font-weight:800; color:#334155; margin-bottom:6px;">
+              🚦 Top Avenidas y Corredores con Cierre Vial Hoy:
+            </div>
+            <table class="corredores-table">
+              <thead>
+                <tr>
+                  <th>Avenida / Calle</th>
+                  <th>Alcaldía</th>
+                  <th>Puestos Est.</th>
+                  <th>Longitud</th>
+                  <th>Tipo Afectación</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${{corredoresHtml}}
+              </tbody>
+            </table>
           </div>
         `;
-        searchDropdown.style.display = 'block';
-        return;
-      }
 
-      searchDropdown.innerHTML = topMatches.map((item, idx) => `
-        <div class="autocomplete-item" onclick="selectSearchItem(${idx})" data-idx="${idx}">
-          <div class="autocomplete-badge" style="background:${item.badgeColor};">
-            <span>${item.icon}</span>
-            <span>${item.badge}</span>
+      }} else if (tabKey === 'semana') {{
+        const totalTianguis = semStats.total_tianguis_catalogo || 1367;
+        const totalKmSem = semStats.km_lineales_acumulados_semana || 330.0;
+        const totalOferentes = semStats.oferentes_acumulados_semana || 239628;
+        const top10 = semStats.top_10_corredores_cdmx || [];
+
+        let top10Html = top10.map((c, i) => `
+          <tr>
+            <td><b>#${{i+1}} ${{c.corredor}}</b></td>
+            <td>${{c.alcaldias ? c.alcaldias.join(', ') : 'CDMX'}}</td>
+            <td>${{c.tianguis_instalaciones_semana || 1}} por sem</td>
+            <td><b>${{c.oferentes_totales ? c.oferentes_totales.toLocaleString() : '--'}}</b> oferentes</td>
+            <td>${{c.km_ocupados_semana || '--'}} km</td>
+          </tr>
+        `).join('');
+
+        contentBox.innerHTML = `
+          <div style="margin-bottom:14px;">
+            <div style="font-size:0.95rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:2px;">
+              Impacto Semanal del Comercio Popular en la CDMX
+            </div>
+            <div style="font-size:0.75rem; color:#64748b;">
+              Balance acumulado semanal de tianguis en las 16 demarcaciones territoriales.
+            </div>
           </div>
-          <div class="autocomplete-text">
-            <div class="autocomplete-title">${highlightMatch(item.title, query)}</div>
-            <div class="autocomplete-sub">${highlightMatch(item.subtitle, query)}</div>
+
+          <div class="kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-val">${{totalTianguis}}</div>
+              <div class="kpi-lbl">Tianguis en Padrón</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">${{totalKmSem}} km</div>
+              <div class="kpi-lbl">Km Lineales / Sem</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">${{totalOferentes.toLocaleString()}}</div>
+              <div class="kpi-lbl">Oferentes / Sem</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">16</div>
+              <div class="kpi-lbl">Alcaldías</div>
+            </div>
           </div>
-        </div>
-      `).join('');
 
-      highlightedItemIdx = -1;
-      searchDropdown.style.display = 'block';
-      window._currentTopMatches = topMatches;
-    }
-
-    function highlightMatch(text, query) {
-      if (!query) return text;
-      const terms = query.split(/\\s+/).filter(Boolean);
-      let res = text;
-      terms.forEach(t => {
-        const reg = new RegExp('(' + t.replace(/[-\\/\\\\^$*+?.()|[\\]{}]/g, '\\\\$&') + ')', 'gi');
-        res = res.replace(reg, '<span class="autocomplete-highlight">$1</span>');
-      });
-      return res;
-    }
-
-    function selectSearchItem(idx) {
-      if (!window._currentTopMatches || !window._currentTopMatches[idx]) return;
-      const item = window._currentTopMatches[idx];
-      searchInput.value = item.title;
-      searchDropdown.style.display = 'none';
-
-      currentSelectedTarget = { name: item.title, lat: item.lat, lon: item.lon };
-      map.flyTo([item.lat, item.lon], 16, { duration: 1.0 });
-
-      if (item.type === 'mercado') {
-        showMarketInDetail(item.data);
-      } else if (item.type === 'tianguis') {
-        showTianguisInDetail(item.data);
-      } else if (item.type === 'msr') {
-        showMSRInDetail(item.data);
-      } else if (item.type === 'metro' || item.type === 'metrobus') {
-        showMetroStationInDetail(item.data);
-      }
-
-      openSidebarIfClosed();
-      showToast(`Ubicado: ${item.title}`, 'info');
-    }
-
-    function clearUnifiedSearch() {
-      searchInput.value = '';
-      clearSearchBtn.style.display = 'none';
-      searchDropdown.style.display = 'none';
-      searchInput.focus();
-    }
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-input-box') && !e.target.closest('#search-autocomplete-dropdown')) {
-        searchDropdown.style.display = 'none';
-      }
-    });
-
-    // =========================================================================
-    // FICHA LATERAL (DETAIL CARD) REDISEÑADA Y DINÁMICA
-    // =========================================================================
-    function showMarketInDetail(m) {
-      const card = document.getElementById('detail-card');
-      card.style.display = 'block';
-
-      document.getElementById('panel-tag').innerText = 'MERCADO PÚBLICO';
-      document.getElementById('panel-tag').style.background = '#d97706';
-
-      // Estado operativo dinámico
-      const now = new Date();
-      const hour = now.getHours();
-      const pill = document.getElementById('panel-status-pill');
-      const text = document.getElementById('panel-status-text');
-      if (hour >= 8 && hour < 18) {
-        pill.className = 'panel-status-pill status-open';
-        text.innerText = '🟢 Abierto hoy hasta las 18:00 hrs';
-      } else {
-        pill.className = 'panel-status-pill status-closed';
-        text.innerText = '🔴 Cerrado en este momento (Abre a las 08:00 hrs)';
-      }
-
-      document.getElementById('panel-name').innerText = 'Mercado ' + m.nombre;
-      document.getElementById('panel-sub').innerText = m.alcaldia + ' · ' + m.colonia;
-
-      document.getElementById('panel-stat1').innerText = m.locales || '--';
-      document.getElementById('panel-lbl1').innerText = 'Locales';
-
-      document.getElementById('panel-stat2').innerText = m.superficie_m2 > 0 ? (m.superficie_m2.toLocaleString() + ' m²') : 'N/D';
-      document.getElementById('panel-lbl2').innerText = 'Superficie';
-
-      document.getElementById('panel-closure-box').style.display = 'none';
-      renderDetailPolicyAndSubgiros(m);
-
-      // Conexión calculada con estación de metro más cercana
-      const nearest = findClosestMetro(m.lat, m.lon);
-      if (nearest && nearest.station) {
-        const distM = Math.round(nearest.distance);
-        const mins = Math.max(1, Math.round(distM / 75));
-        document.getElementById('panel-conn').innerHTML = `
-          <div style="font-weight:700; color:#0f5953; margin-bottom:2px;">
-            🚇 Metro ${nearest.station.nombre} (Línea ${nearest.station.linea})
-          </div>
-          <div style="color:#64748b; font-size:0.72rem;">
-            A pie: <b>${distM} metros (~${mins} min)</b> · Tarifa MI: $5.00 MXN.
+          <div style="margin-top:16px;">
+            <div style="font-size:0.82rem; font-weight:800; color:#334155; margin-bottom:6px;">
+              🏆 Los 10 Corredores Populares Más Extensos de la CDMX:
+            </div>
+            <table class="corredores-table">
+              <thead>
+                <tr>
+                  <th>Corredor</th>
+                  <th>Alcaldías</th>
+                  <th>Instalaciones</th>
+                  <th>Oferentes Semanales</th>
+                  <th>Km Ocupados</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${{top10Html}}
+              </tbody>
+            </table>
           </div>
         `;
-      } else {
-        document.getElementById('panel-conn').innerHTML = `🚇 Conectado a la Red de Movilidad Integrada (MI).`;
-      }
 
-      openSidebarIfClosed();
-    }
+      }} else if (tabKey === 'normativa') {{
+        contentBox.innerHTML = `
+          <div style="font-size:0.82rem; line-height:1.6; color:#334155;">
+            <div style="font-size:0.95rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:8px;">
+              Protocolos de Convivencia y Operación en Vía Pública
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px; margin-bottom:12px;">
+              <div style="font-weight:700; color:#0f766e; margin-bottom:4px;">⏰ Horarios Normativos Habituales (SEDECO):</div>
+              <ul style="margin-left:18px; font-size:0.75rem; color:#475569;">
+                <li><b>Montaje de estructuras:</b> 06:00 a 08:00 hrs.</li>
+                <li><b>Horario de atención al público:</b> 08:00 a 17:00 hrs.</li>
+                <li><b>Desmontaje, retiro y aseo barrial:</b> 17:00 a 19:00 hrs.</li>
+              </ul>
+            </div>
 
-    function showTianguisInDetail(t) {
-      const card = document.getElementById('detail-card');
-      card.style.display = 'block';
-
-      document.getElementById('panel-tag').innerText = 'TIANGUIS BARRIAL';
-      document.getElementById('panel-tag').style.background = '#0f5953';
-
-      const now = new Date();
-      const days = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
-      const today = days[now.getDay()];
-      const opensToday = t.dia && t.dia.toUpperCase().includes(today);
-
-      const pill = document.getElementById('panel-status-pill');
-      const text = document.getElementById('panel-status-text');
-      if (opensToday) {
-        pill.className = 'panel-status-pill status-open';
-        text.innerText = `🟢 En operación hoy (${t.horario || '08:30 - 17:30'})`;
-      } else {
-        pill.className = 'panel-status-pill status-closed';
-        text.innerText = `🔴 No opera hoy · Días asignados: ${t.dia}`;
-      }
-
-      document.getElementById('panel-name').innerText = 'Tianguis ' + t.colonia;
-      document.getElementById('panel-sub').innerText = t.alcaldia + ' · ' + t.colonia;
-
-      document.getElementById('panel-stat1').innerText = t.dia || '--';
-      document.getElementById('panel-lbl1').innerText = 'Día de Instalación';
-
-      document.getElementById('panel-stat2').innerText = t.horario || '08:30 - 17:30';
-      document.getElementById('panel-lbl2').innerText = 'Horario de Venta';
-
-      // Alerta de afectación vial
-      const closureBox = document.getElementById('panel-closure-box');
-      closureBox.style.display = 'block';
-      document.getElementById('panel-closure-text').innerHTML = `
-        <b>Vía ocupada:</b> ${t.ubicacion || 'Tramo barrial asignado'}<br>
-        <span style="font-size:0.71rem; color:#78350f;">⚠️ Reducción y corte de circulación vehicular en día de tianguis.</span>
-      `;
-      renderDetailPolicyAndSubgiros(t);
-
-      // Conexión calculada
-      const nearest = findClosestMetro(t.lat, t.lon);
-      if (nearest && nearest.station) {
-        const distM = Math.round(nearest.distance);
-        const mins = Math.max(1, Math.round(distM / 75));
-        document.getElementById('panel-conn').innerHTML = `
-          <div style="font-weight:700; color:#0f5953; margin-bottom:2px;">
-            🚇 Metro ${nearest.station.nombre} (Línea ${nearest.station.linea})
-          </div>
-          <div style="color:#64748b; font-size:0.72rem;">
-            A pie: <b>${distM} metros (~${mins} min)</b> · Tarifa MI: $5.00 MXN.
+            <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:10px; padding:12px; margin-bottom:12px;">
+              <div style="font-weight:700; color:#065f46; margin-bottom:4px;">🛡️ Principios Éticos y Soberanía Comunitaria:</div>
+              <p style="font-size:0.75rem; color:#065f46; margin-bottom:6px;">
+                Este portal reconoce la gobernanza histórica de las mesas directivas, comisiones electas en asamblea y dinámicas barriales de los tianguis de la Ciudad de México.
+              </p>
+              <p style="font-size:0.75rem; color:#065f46;">
+                <b>No al extractivismo de datos:</b> Esta herramienta es de consulta libre para las familias y los comerciantes, sin intermediarios ni vigilancia punitiva.
+              </p>
+            </div>
           </div>
         `;
-      } else {
-        document.getElementById('panel-conn').innerHTML = `Conexión con rutas secundarias de transporte concesionado.`;
-      }
-
-      openSidebarIfClosed();
-    }
-
-    function showMSRInDetail(m) {
-      const card = document.getElementById('detail-card');
-      card.style.display = 'block';
-
-      document.getElementById('panel-tag').innerText = 'MERCADO SOBRE RUEDAS';
-      document.getElementById('panel-tag').style.background = '#10b981';
-
-      const now = new Date();
-      const days = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
-      const today = days[now.getDay()];
-      const opensToday = m.dia && m.dia.toUpperCase().includes(today);
-
-      const pill = document.getElementById('panel-status-pill');
-      const text = document.getElementById('panel-status-text');
-      if (opensToday) {
-        pill.className = 'panel-status-pill status-open';
-        text.innerText = `🟢 En ruta hoy (${m.dia})`;
-      } else {
-        pill.className = 'panel-status-pill status-closed';
-        text.innerText = `🔴 Sede inactiva hoy · Día: ${m.dia}`;
-      }
-
-      document.getElementById('panel-name').innerText = m.ruta + ' (' + m.colonia + ')';
-      document.getElementById('panel-sub').innerText = m.alcaldia + ' · ' + (m.direccion || m.colonia);
-
-      document.getElementById('panel-stat1').innerText = m.dia || '--';
-      document.getElementById('panel-lbl1').innerText = 'Día en esta Sede';
-
-      document.getElementById('panel-stat2').innerText = m.oferentes ? (m.oferentes + ' puestos') : 'Itinerante';
-      document.getElementById('panel-lbl2').innerText = 'Oferentes';
-
-      document.getElementById('panel-closure-box').style.display = 'none';
-      renderDetailPolicyAndSubgiros(m);
-
-      document.getElementById('panel-conn').innerHTML = `
-        <b>Circuito Itinerante SEDECO:</b> Se traslada diariamente de colonia para llevar abasto a precio accesible.
-      `;
-
-      openSidebarIfClosed();
-    }
-
-    function showMetroStationInDetail(st) {
-      const card = document.getElementById('detail-card');
-      card.style.display = 'block';
-
-      const pol = document.getElementById('panel-policy-badges');
-      if (pol) pol.innerHTML = '';
-      const sgBox = document.getElementById('panel-subgiros-box');
-      if (sgBox) sgBox.style.display = 'none';
-
-      document.getElementById('panel-tag').innerText = st.tipo || 'ESTACIÓN RED MI';
-      document.getElementById('panel-tag').style.background = st.color || '#ef4444';
-
-      const pill = document.getElementById('panel-status-pill');
-      const text = document.getElementById('panel-status-text');
-      pill.className = 'panel-status-pill status-open';
-      text.innerText = '🟢 En servicio · Tarjeta MI';
-
-      document.getElementById('panel-name').innerText = (st.tipo ? st.tipo + ' ' : 'Estación ') + st.nombre;
-      document.getElementById('panel-sub').innerText = (st.linea ? st.linea + ' · ' : '') + 'Alcaldía ' + (st.alcaldia || 'CDMX');
-
-      document.getElementById('panel-stat1').innerText = st.color === '#ec4899' ? '$6.00 MXN' : '$5.00 MXN';
-      document.getElementById('panel-lbl1').innerText = 'Tarifa Oficial';
-
-      document.getElementById('panel-stat2').innerText = st.linea || 'Red MI';
-      document.getElementById('panel-lbl2').innerText = 'Línea / Corredor';
-
-      document.getElementById('panel-closure-box').style.display = 'none';
-
-      document.getElementById('panel-conn').innerHTML = `
-        Estación clave de transbordo e interconexión con mercados públicos y tianguis barriales.
-      `;
-
-      openSidebarIfClosed();
-    }
-
-    function showTransportInDetail(p) {
-      const card = document.getElementById('detail-card');
-      card.style.display = 'block';
-
-      document.getElementById('panel-tag').innerText = p.agency_name || 'TRANSPORTE CONCESIONADO';
-      document.getElementById('panel-tag').style.background = p.color || '#64748b';
-
-      const pill = document.getElementById('panel-status-pill');
-      const text = document.getElementById('panel-status-text');
-      pill.className = 'panel-status-pill status-open';
-      text.innerText = '🟢 Corredor en operación continua';
-
-      document.getElementById('panel-name').innerText = (p.route_short || '') + ' ' + (p.route_long || 'Corredor');
-      document.getElementById('panel-sub').innerText = 'Destino: ' + (p.headsign || 'Servicio de Conexión Barrial');
-
-      document.getElementById('panel-stat1').innerText = p.agency === 'METRO' ? '$5.00' : (p.agency === 'MB' ? '$6.00' : (p.agency === 'CC' ? '$6.00-$8.50' : '$2.00-$4.00'));
-      document.getElementById('panel-lbl1').innerText = 'Tarifa';
-
-      document.getElementById('panel-stat2').innerText = p.agency === 'CC' ? 'Efectivo / Tarjeta MI' : 'Tarjeta MI';
-      document.getElementById('panel-lbl2').innerText = 'Método de Pago';
-
-      document.getElementById('panel-closure-box').style.display = 'none';
-
-      document.getElementById('panel-conn').innerHTML = `
-        <b>Corredor Alimentador:</b> Brinda cobertura de última milla penetrando en colonias para conectar hogares con mercados.
-      `;
-
-      openSidebarIfClosed();
-    }
-
-    function closeDetailCard() {
-      document.getElementById('detail-card').style.display = 'none';
-    }
-
-    function copyCurrentCoords() {
-      if (currentSelectedTarget && currentSelectedTarget.lat && currentSelectedTarget.lon) {
-        const text = `${currentSelectedTarget.lat.toFixed(5)}, ${currentSelectedTarget.lon.toFixed(5)}`;
-        navigator.clipboard.writeText(text).then(() => {
-          showToast(`Coordenadas copiadas: ${text}`, 'success', 3000);
-        }).catch(() => {
-          showToast(`Coordenadas: ${text}`, 'info', 4000);
-        });
-      } else {
-        showToast('Selecciona primero un mercado o tianguis en el mapa.', 'warning');
-      }
-    }
+      }}
+    }}
 
     // =========================================================================
-    // MODALES MODERNOS CON PESTAÑAS (REEMPLAZO TOTAL DE WINDOW.ALERT)
+    // UTILIDADES: TOASTS, GEOLOCALIZACIÓN Y UI
     // =========================================================================
-    function openInfoModal(initialTab = 'closures') {
-      const modal = document.getElementById('info-modal-overlay');
-      modal.classList.add('active');
-      switchModalTab(initialTab);
-    }
+    function toggleSidebar() {{
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+      const btnOpen = document.getElementById('btn-open-sidebar');
+      if (sidebar.classList.contains('collapsed')) {{
+        btnOpen.style.display = 'flex';
+      }} else {{
+        btnOpen.style.display = 'none';
+      }}
+      setTimeout(() => map.invalidateSize(), 320);
+    }}
 
-    function closeInfoModal() {
-      const modal = document.getElementById('info-modal-overlay');
-      modal.classList.remove('active');
-    }
+    function locateUser() {{
+      showToast('Buscando ubicación actual...', 'info');
+      map.locate({{ setView: true, maxZoom: 15, timeout: 10000, enableHighAccuracy: true }});
+    }}
 
-    function handleModalOverlayClick(e) {
-      if (e.target.id === 'info-modal-overlay') {
-        closeInfoModal();
-      }
-    }
+    map.on('locationfound', (e) => {{
+      const marker = L.circleMarker(e.latlng, {{
+        radius: 8,
+        fillColor: '#2563eb',
+        color: '#ffffff',
+        weight: 2.5,
+        opacity: 1,
+        fillOpacity: 0.95
+      }}).addTo(map);
+      marker.bindPopup('<b>Tu ubicación actual</b>').openPopup();
+      showToast('Ubicación encontrada.', 'success');
+    }});
 
-    function switchModalTab(tabName) {
-      const tabs = ['closures', 'hours', 'fares', 'today'];
-      tabs.forEach(t => {
-        const btn = document.getElementById('tab-btn-' + t);
-        const pane = document.getElementById('tab-pane-' + t);
-        if (btn) btn.classList.toggle('active', t === tabName);
-        if (pane) pane.classList.toggle('active', t === tabName);
-      });
-    }
+    map.on('locationerror', (e) => {{
+      showToast('No se pudo acceder a tu ubicación actual.', 'warning');
+    }});
 
-    function updateTodayModalInfo() {
-      const banner = document.getElementById('modal-today-banner');
-      if (!banner) return;
-      const now = new Date();
-      const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-      const today = days[now.getDay()];
-      const todayUpper = today.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-      let countToday = 0;
-      if (window.MAP_DATA && window.MAP_DATA.tianguis) {
-        countToday = window.MAP_DATA.tianguis.filter(t => t.dia && t.dia.toUpperCase().includes(todayUpper)).length;
-      }
-
-      banner.innerHTML = `
-        <div style="font-weight:800; font-size:0.95rem; color:#0f5953; margin-bottom:4px;">
-          📅 Hoy es ${today}: ${countToday} tianguis en operación
-        </div>
-        <div style="font-size:0.75rem; color:#334155; line-height:1.45;">
-          Los 329 mercados públicos están abiertos en su horario habitual (08:00 a 18:00 hrs). Puedes enfocar el mapa únicamente en los puntos que abren hoy pulsando el botón inferior.
-        </div>
-      `;
-    }
-
-    function filterByToday() {
-      filterState.openToday = !filterState.openToday;
-      const chip = document.getElementById('chip-dia-hoy');
-      if (chip) chip.classList.toggle('active', filterState.openToday);
-      applyCommerceFilters();
-      const days = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
-      const today = days[new Date().getDay()];
-      showToast(filterState.openToday ? `Filtro activo: mostrando espacios que abren hoy (${today}).` : 'Filtro de día desactivado.', 'info', 3000);
-    }
-
-    // =========================================================================
-    // SISTEMA DE NOTIFICACIONES TOAST FLOTANTES
-    // =========================================================================
-    function showToast(message, type = 'info', duration = 3500) {
+    function showToast(msg, type = 'info', duration = 3000) {{
       const container = document.getElementById('toast-container');
-      if (!container) return;
-
-      const icons = {
-        success: '✅',
-        warning: '⚠️',
-        error: '❌',
-        info: 'ℹ️'
-      };
-
       const toast = document.createElement('div');
-      toast.className = `toast-item toast-${type}`;
-      toast.innerHTML = `
-        <span style="font-size:1.1rem; flex-shrink:0;">${icons[type] || 'ℹ️'}</span>
-        <span style="flex:1;">${message}</span>
-      `;
+      toast.className = 'toast-msg';
 
+      let borderCol = '#0f766e';
+      if (type === 'success') borderCol = '#10b981';
+      if (type === 'warning') borderCol = '#f59e0b';
+      if (type === 'error') borderCol = '#ef4444';
+
+      toast.style.borderLeft = `4px solid ${{borderCol}}`;
+      toast.innerText = msg;
       container.appendChild(toast);
 
-      setTimeout(() => {
+      setTimeout(() => {{
         toast.style.opacity = '0';
-        toast.style.transform = 'translateY(15px)';
-        setTimeout(() => toast.remove(), 300);
-      }, duration);
-    }
+        toast.style.transform = 'translateY(8px)';
+        toast.style.transition = 'all 0.25s ease';
+        setTimeout(() => toast.remove(), 260);
+      }}, duration);
+    }}
 
-    // =========================================================================
-    // GEOLOCALIZACIÓN Y MI UBICACIÓN (PUNTO AZUL PULSANTE)
-    // =========================================================================
-    let userCurrentCoords = [19.4326, -99.1332]; // Default Zócalo si no activa GPS
-    function locateUser() {
-      showToast('Obteniendo tu ubicación GPS...', 'info', 2000);
-      map.locate({ setView: true, maxZoom: 15, enableHighAccuracy: true });
-    }
-
-    map.on('locationfound', function(e) {
-      userCurrentCoords = [e.latlng.lat, e.latlng.lng];
-      layers.userLocation.clearLayers();
-
-      const blueDotHtml = `
-        <div style="position:relative; width:16px; height:16px;">
-          <div class="user-gps-pulse-halo"></div>
-          <div class="user-gps-blue-dot"></div>
-        </div>
-      `;
-      const blueDotIcon = L.divIcon({
-        className: 'user-gps-container',
-        html: blueDotHtml,
-        iconSize: [16, 16],
-        iconAnchor: [8, 8]
-      });
-
-      const marker = L.marker(e.latlng, { icon: blueDotIcon });
-      marker.on('click', () => {
-        showToast(`📍 Tu ubicación actual (Precisión +/- ${Math.round(e.accuracy)} m)`, 'info');
-      });
-
-      const radiusCircle = L.circle(e.latlng, {
-        radius: e.accuracy,
-        color: '#2563eb',
-        weight: 1,
-        fillColor: '#3b82f6',
-        fillOpacity: 0.12
-      });
-
-      layers.userLocation.addLayer(radiusCircle);
-      layers.userLocation.addLayer(marker);
-      showToast('Ubicación fijada con éxito en el mapa.', 'success', 3000);
-    });
-
-    map.on('locationerror', function(err) {
-      showToast('Activa los permisos de ubicación en tu navegador para ver tu punto azul.', 'warning', 4500);
-    });
-
-    // =========================================================================
-    // GESTIÓN DE CAPAS Y MODO RUTA LIMPIA (FOCUS MODE)
-    // =========================================================================
-    const ALL_DATA_LAYERS = [
-      'zmvm', 'alcaldias', 'metro', 'metro_icons', 'metrobus', 'metrobus_icons',
-      'rtp', 'cablebus', 'trolebus', 'tren', 'concesionado',
-      'mercados', 'msr', 'tianguis'
-    ];
-    let isFocusRouteMode = false;
-    let savedActiveLayers = [];
-
-    function enterRouteFocusMode(originLabel, destLabel) {
-      if (!isFocusRouteMode) {
-        savedActiveLayers = ALL_DATA_LAYERS.filter(k => layers[k] && map.hasLayer(layers[k]));
-        savedActiveLayers.forEach(k => map.removeLayer(layers[k]));
-        isFocusRouteMode = true;
-      }
-      document.getElementById('route-focus-banner').style.display = 'flex';
-      document.getElementById('focus-banner-text').innerText = `${originLabel} ➔ ${destLabel}`;
-    }
-
-    function exitRouteFocusMode() {
-      if (isFocusRouteMode) {
-        savedActiveLayers.forEach(k => {
-          if (layers[k]) map.addLayer(layers[k]);
-        });
-        isFocusRouteMode = false;
-      }
-      layers.routeLines.clearLayers();
-      document.getElementById('route-focus-banner').style.display = 'none';
-      document.getElementById('route-result-box').style.display = 'none';
-      resetMapView();
-      showToast('Mapa completo restaurado con todas las capas.', 'info', 3000);
-    }
-
-    // =========================================================================
-    // GRAFO DEL METRO CDMX Y PLANIFICADOR DE RUTAS INTERACTIVO (A -> B)
-    // =========================================================================
-    const METRO_GRAPH = {
-      lines: {},
-      adj: {},
-      built: false,
-      build: function() {
-        if (this.built || !window.MAP_DATA || !window.MAP_DATA.metro_stations) return;
-        
-        window.MAP_DATA.metro_stations.forEach(st => {
-          if (!this.lines[st.linea]) this.lines[st.linea] = [];
-          this.lines[st.linea].push(st);
-        });
-
-        const addEdge = (u, v, cost, line) => {
-          if (!this.adj[u]) this.adj[u] = [];
-          if (!this.adj[v]) this.adj[v] = [];
-          this.adj[u].push({ target: v, cost: cost, line: line });
-          this.adj[v].push({ target: u, cost: cost, line: line });
-        };
-
-        Object.keys(this.lines).forEach(lId => {
-          const stList = this.lines[lId];
-          for (let i = 0; i < stList.length - 1; i++) {
-            const u = stList[i].nombre + '||' + lId;
-            const v = stList[i+1].nombre + '||' + lId;
-            addEdge(u, v, 1.8, lId);
-          }
-        });
-
-        const nameMap = {};
-        window.MAP_DATA.metro_stations.forEach(st => {
-          const baseName = st.nombre.split('/')[0].trim().toLowerCase();
-          if (!nameMap[baseName]) nameMap[baseName] = [];
-          nameMap[baseName].push(st);
-        });
-
-        Object.keys(nameMap).forEach(base => {
-          const list = nameMap[base];
-          if (list.length > 1) {
-            for (let i = 0; i < list.length; i++) {
-              for (let j = i + 1; j < list.length; j++) {
-                const u = list[i].nombre + '||' + list[i].linea;
-                const v = list[j].nombre + '||' + list[j].linea;
-                addEdge(u, v, 3.5, 'TRANSB');
-              }
-            }
-          }
-        });
-
-        this.built = true;
-      },
-      findPath: function(startStation, endStation) {
-        this.build();
-        const startKey = startStation.nombre + '||' + startStation.linea;
-        const endKey = endStation.nombre + '||' + endStation.linea;
-
-        if (startKey === endKey) return [startStation];
-
-        const dist = {};
-        const prev = {};
-        const visited = new Set();
-        dist[startKey] = 0;
-        const pq = [{ node: startKey, cost: 0 }];
-
-        while (pq.length > 0) {
-          let minIdx = 0;
-          for (let i = 1; i < pq.length; i++) {
-            if (pq[i].cost < pq[minIdx].cost) minIdx = i;
-          }
-          const { node: u, cost: c } = pq.splice(minIdx, 1)[0];
-          if (visited.has(u)) continue;
-          visited.add(u);
-
-          if (u === endKey) {
-            const pathKeys = [];
-            let curr = u;
-            while (curr) {
-              pathKeys.unshift(curr);
-              curr = prev[curr];
-            }
-            return pathKeys.map(k => {
-              const [n, l] = k.split('||');
-              return window.MAP_DATA.metro_stations.find(st => st.nombre === n && st.linea === l);
-            }).filter(Boolean);
-          }
-
-          const neighbors = this.adj[u] || [];
-          for (let edge of neighbors) {
-            const v = edge.target;
-            const newCost = c + edge.cost;
-            if (dist[v] === undefined || newCost < dist[v]) {
-              dist[v] = newCost;
-              prev[v] = u;
-              pq.push({ node: v, cost: newCost });
-            }
-          }
-        }
-        return null;
-      }
-    };
-
-    function setAsRouteDestination() {
-      if (currentSelectedTarget) {
-        document.getElementById('route-to').value = currentSelectedTarget.name;
-        openSidebarIfClosed();
-        calculateRouteUI();
-      }
-    }
-
-    function findDestinationTarget(query) {
-      const q = query.toLowerCase().trim();
-      if (!q) return null;
-
-      if (currentSelectedTarget && currentSelectedTarget.name.toLowerCase().includes(q)) {
-        return {
-          name: currentSelectedTarget.name,
-          lat: currentSelectedTarget.lat,
-          lon: currentSelectedTarget.lon,
-          type: 'Seleccionado'
-        };
-      }
-
-      if (window.MAP_DATA) {
-        for (let m of (window.MAP_DATA.mercados || [])) {
-          if (m.nombre.toLowerCase().includes(q) || q.includes(m.nombre.toLowerCase())) {
-            return {
-              name: 'Mercado ' + m.nombre,
-              lat: m.lat,
-              lon: m.lon,
-              type: 'Mercado Público'
-            };
-          }
-        }
-        for (let t of (window.MAP_DATA.tianguis || [])) {
-          if (t.colonia.toLowerCase().includes(q) || (t.ubicacion && t.ubicacion.toLowerCase().includes(q))) {
-            return {
-              name: 'Tianguis ' + t.colonia,
-              lat: t.lat,
-              lon: t.lon,
-              type: 'Tianguis Móvil'
-            };
-          }
-        }
-        for (let m of (window.MAP_DATA.msr || [])) {
-          if (m.ruta.toLowerCase().includes(q) || m.colonia.toLowerCase().includes(q)) {
-            return {
-              name: 'MSR ' + m.ruta,
-              lat: m.lat,
-              lon: m.lon,
-              type: 'Mercado Sobre Ruedas'
-            };
-          }
-        }
-        for (let st of (window.MAP_DATA.metro_stations || [])) {
-          if (st.nombre.toLowerCase().includes(q)) {
-            return {
-              name: 'Metro ' + st.nombre,
-              lat: st.lat,
-              lon: st.lon,
-              type: 'Estación Metro'
-            };
-          }
-        }
-      }
-
-      return {
-        name: query,
-        lat: 19.4168,
-        lon: -99.1252,
-        type: 'Mercado Jamaica (Default)'
-      };
-    }
-
-    function calculateRouteUI() {
-      const fromVal = document.getElementById('route-from').value.trim();
-      const toVal = document.getElementById('route-to').value.trim();
-      const resultBox = document.getElementById('route-result-box');
-      const titleEl = document.getElementById('route-summary-title');
-      const contentEl = document.getElementById('route-summary-content');
-
-      let startCoords = userCurrentCoords;
-      let originName = 'Tu Ubicación Actual';
-      if (fromVal.toLowerCase() !== 'mi ubicación' && fromVal.length > 0) {
-        const customOrigin = findDestinationTarget(fromVal);
-        if (customOrigin) {
-          startCoords = [customOrigin.lat, customOrigin.lon];
-          originName = customOrigin.name;
-        }
-      }
-
-      let destTarget = findDestinationTarget(toVal);
-      if (!destTarget) {
-        showToast('Por favor escribe un destino válido (ej. Mercado Jamaica, Tepito).', 'warning');
-        return;
-      }
-      const endCoords = [destTarget.lat, destTarget.lon];
-
-      let nearestMetroStart = findClosestMetro(startCoords[0], startCoords[1]);
-      let nearestMetroEnd = findClosestMetro(endCoords[0], endCoords[1]);
-
-      if (!nearestMetroStart || !nearestMetroEnd) {
-        showToast('No se encontraron estaciones cercanas para trazar la ruta.', 'error');
-        return;
-      }
-
-      enterRouteFocusMode(originName, destTarget.name);
-      layers.routeLines.clearLayers();
-
-      const metroPath = METRO_GRAPH.findPath(nearestMetroStart.station, nearestMetroEnd.station);
-      const stationSequence = (metroPath && metroPath.length > 0) ? metroPath : [nearestMetroStart.station, nearestMetroEnd.station];
-
-      // Pin Origen
-      const originMarker = L.marker(startCoords, {
-        icon: L.divIcon({
-          className: 'route-pin-container',
-          html: '<div style="background:#2563eb; color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; border:2px solid #fff; box-shadow:0 3px 8px rgba(0,0,0,0.3); font-size:12px;">A</div>',
-          iconSize: [26, 26],
-          iconAnchor: [13, 13]
-        })
-      });
-      layers.routeLines.addLayer(originMarker);
-
-      // Tramo 1: Caminata inicial
-      const walkDist1 = Math.round(getDistMeters(startCoords[0], startCoords[1], nearestMetroStart.station.lat, nearestMetroStart.station.lon));
-      const walkMin1 = Math.max(1, Math.round(walkDist1 / 75));
-      const walk1 = L.polyline([startCoords, [nearestMetroStart.station.lat, nearestMetroStart.station.lon]], {
-        color: '#2563eb',
-        weight: 4,
-        dashArray: '6, 6',
-        opacity: 0.95
-      });
-      layers.routeLines.addLayer(walk1);
-
-      // Estación de abordaje
-      const boardGlyph = nearestMetroStart.station.has_glyph ? `<em class="${nearestMetroStart.station.icon_class}"></em>` : `<span style="font-size:9px; font-weight:800; color:#fff;">M</span>`;
-      const boardMarker = L.marker([nearestMetroStart.station.lat, nearestMetroStart.station.lon], {
-        icon: L.divIcon({
-          className: 'route-station-container',
-          html: `<div style="background:${nearestMetroStart.station.color}; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; border:2px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.3);">${boardGlyph}</div>`,
-          iconSize: [28, 28],
-          iconAnchor: [14, 14]
-        })
-      });
-      layers.routeLines.addLayer(boardMarker);
-
-      // Trazado de metro y transbordos
-      const lineSegments = [];
-      let currentSegment = [];
-      let currentLine = stationSequence[0].linea;
-      let currentColor = stationSequence[0].color || '#ef4444';
-      let transfersCount = 0;
-      let transferSteps = [];
-
-      for (let i = 0; i < stationSequence.length; i++) {
-        const st = stationSequence[i];
-        if (st.linea !== currentLine) {
-          transfersCount++;
-          transferSteps.push(`Transbordo en <b>${st.nombre}</b> hacia Línea ${st.linea}`);
-          lineSegments.push({ line: currentLine, color: currentColor, coords: currentSegment });
-          currentSegment = [[st.lat, st.lon]];
-          currentLine = st.linea;
-          currentColor = st.color || '#ef4444';
-
-          const transbMarker = L.marker([st.lat, st.lon], {
-            icon: L.divIcon({
-              className: 'route-transb-container',
-              html: `<div style="background:#ffffff; color:#0f172a; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; border:2px solid ${currentColor}; font-size:10px; box-shadow:0 2px 6px rgba(0,0,0,0.25);">⇄</div>`,
-              iconSize: [22, 22],
-              iconAnchor: [11, 11]
-            })
-          });
-          layers.routeLines.addLayer(transbMarker);
-        } else {
-          currentSegment.push([st.lat, st.lon]);
-          if (i > 0 && i < stationSequence.length - 1) {
-            const dotMarker = L.circleMarker([st.lat, st.lon], {
-              radius: 4,
-              fillColor: '#ffffff',
-              color: currentColor,
-              weight: 2,
-              fillOpacity: 1
-            });
-            layers.routeLines.addLayer(dotMarker);
-          }
-        }
-      }
-      if (currentSegment.length > 0) {
-        lineSegments.push({ line: currentLine, color: currentColor, coords: currentSegment });
-      }
-
-      lineSegments.forEach(seg => {
-        if (seg.coords.length >= 2) {
-          const tLine = L.polyline(seg.coords, {
-            color: seg.color,
-            weight: 6,
-            opacity: 0.95
-          });
-          layers.routeLines.addLayer(tLine);
-        }
-      });
-
-      // Estación de descenso
-      const alightGlyph = nearestMetroEnd.station.has_glyph ? `<em class="${nearestMetroEnd.station.icon_class}"></em>` : `<span style="font-size:9px; font-weight:800; color:#fff;">M</span>`;
-      const alightMarker = L.marker([nearestMetroEnd.station.lat, nearestMetroEnd.station.lon], {
-        icon: L.divIcon({
-          className: 'route-station-container',
-          html: `<div style="background:${nearestMetroEnd.station.color}; width:28px; height:28px; border-radius:6px; display:flex; align-items:center; justify-content:center; border:2px solid #fff; box-shadow:0 4px 10px rgba(0,0,0,0.3);">${alightGlyph}</div>`,
-          iconSize: [28, 28],
-          iconAnchor: [14, 14]
-        })
-      });
-      layers.routeLines.addLayer(alightMarker);
-
-      // Tramo final
-      const walkDist2 = Math.round(getDistMeters(nearestMetroEnd.station.lat, nearestMetroEnd.station.lon, endCoords[0], endCoords[1]));
-      const walkMin2 = Math.max(1, Math.round(walkDist2 / 75));
-      const walk2 = L.polyline([[nearestMetroEnd.station.lat, nearestMetroEnd.station.lon], endCoords], {
-        color: '#16a34a',
-        weight: 4,
-        dashArray: '6, 6',
-        opacity: 0.95
-      });
-      layers.routeLines.addLayer(walk2);
-
-      // Pin Destino
-      const destMarker = L.marker(endCoords, {
-        icon: L.divIcon({
-          className: 'route-pin-container',
-          html: '<div style="background:#16a34a; color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; border:2px solid #fff; box-shadow:0 3px 8px rgba(0,0,0,0.3); font-size:12px;">B</div>',
-          iconSize: [26, 26],
-          iconAnchor: [13, 13]
-        })
-      });
-      layers.routeLines.addLayer(destMarker);
-
-      const bounds = L.latLngBounds([startCoords, endCoords, [nearestMetroStart.station.lat, nearestMetroStart.station.lon], [nearestMetroEnd.station.lat, nearestMetroEnd.station.lon]]);
-      map.fitBounds(bounds, { padding: [60, 60] });
-
-      const transitTimeMin = Math.round(stationSequence.length * 2.2 + transfersCount * 4.5);
-      const totalTimeMin = walkMin1 + transitTimeMin + walkMin2;
-      const co2Kg = (totalTimeMin * 0.025).toFixed(2);
-
-      titleEl.innerText = `${totalTimeMin} min · Ruta Sustentable`;
-      let stepsHtml = `
-        <div style="margin-bottom:8px;">
-          <b>Trayecto:</b> ${originName} ➔ ${destTarget.name}
-        </div>
-        <div style="display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap;">
-          <span style="background:#e0e7ff; color:#3730a3; font-weight:700; font-size:0.7rem; padding:2px 6px; border-radius:4px;">🚶 ${walkDist1}m (${walkMin1} min)</span>
-          <span style="background:#fce7f3; color:#9d174d; font-weight:700; font-size:0.7rem; padding:2px 6px; border-radius:4px;">🚇 ${stationSequence.length} estaciones (${transitTimeMin} min)</span>
-          <span style="background:#dcfce7; color:#166534; font-weight:700; font-size:0.7rem; padding:2px 6px; border-radius:4px;">🚶 ${walkDist2}m (${walkMin2} min)</span>
-        </div>
-        <ol style="padding-left:18px; margin-bottom:8px; font-size:0.75rem; color:#475569;">
-          <li>Camina hacia <b>Metro ${nearestMetroStart.station.nombre}</b> (${walkDist1}m).</li>
-          <li>Aborda en dirección adecuada (Línea ${nearestMetroStart.station.linea}).</li>
-          ${transferSteps.map(s => `<li>${s}</li>`).join('')}
-          <li>Desciende en <b>Metro ${nearestMetroEnd.station.nombre}</b>.</li>
-          <li>Camina <b>${walkDist2}m</b> hasta llegar a <b>${destTarget.name}</b>.</li>
-        </ol>
-        <div style="background:#f8fafc; padding:6px 8px; border-radius:6px; border:1px solid #e2e8f0; font-size:0.7rem; color:#64748b;">
-          🌱 <b>Impacto:</b> Ahorras ~${co2Kg} kg de CO2 comparado con uso de automóvil particular. Tarifa: <b>$5.00 MXN</b>.
-        </div>
-      `;
-      contentEl.innerHTML = stepsHtml;
-      resultBox.style.display = 'block';
-      showToast(`Ruta calculada: ${totalTimeMin} min hacia ${destTarget.name}`, 'success');
-    }
-
-    function findClosestMetro(lat, lon) {
-      if (!window.MAP_DATA || !window.MAP_DATA.metro_stations) return null;
-      let nearest = null;
-      let minD = Infinity;
-      window.MAP_DATA.metro_stations.forEach(st => {
-        const d = getDistMeters(lat, lon, st.lat, st.lon);
-        if (d < minD) {
-          minD = d;
-          nearest = st;
-        }
-      });
-      return nearest ? { station: nearest, distance: minD } : null;
-    }
-
-    function getDistMeters(lat1, lon1, lat2, lon2) {
-      const R = 6371e3;
-      const phi1 = lat1 * Math.PI/180;
-      const phi2 = lat2 * Math.PI/180;
-      const deltaPhi = (lat2-lat1) * Math.PI/180;
-      const deltaLambda = (lon2-lon1) * Math.PI/180;
-      const a = Math.sin(deltaPhi/2) * Math.sin(deltaPhi/2) +
-                Math.cos(phi1) * Math.cos(phi2) *
-                Math.sin(deltaLambda/2) * Math.sin(deltaLambda/2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      return R * c;
-    }
-
-    // =========================================================================
-    // CONTROLES DE INTERFAZ Y SIDEBAR
-    // =========================================================================
-    function toggleSidebar() {
-      const sb = document.getElementById('sidebar');
-      const btn = document.getElementById('btn-open-sidebar');
-      sb.classList.toggle('collapsed');
-      if (sb.classList.contains('collapsed')) {
-        btn.style.display = 'flex';
-      } else {
-        btn.style.display = 'none';
-      }
-      setTimeout(() => map.invalidateSize(), 300);
-    }
-
-    function openSidebarIfClosed() {
-      const sb = document.getElementById('sidebar');
-      const btn = document.getElementById('btn-open-sidebar');
-      if (sb.classList.contains('collapsed')) {
-        sb.classList.remove('collapsed');
-        btn.style.display = 'none';
-        setTimeout(() => map.invalidateSize(), 300);
-      }
-    }
-
-    function resetMapView() {
-      map.setView([19.4326, -99.1332], 12);
-    }
-
-    function toggleTransportDropdown(e) {
-      e.stopPropagation();
-      const menu = document.getElementById('transport-dropdown-menu');
-      if (menu.style.display === 'flex') {
-        menu.style.display = 'none';
-      } else {
-        const btn = e.currentTarget;
-        const rect = btn.getBoundingClientRect();
-        menu.style.top = (rect.bottom + 6) + 'px';
-        menu.style.left = Math.min(rect.left, window.innerWidth - 240) + 'px';
-        menu.style.display = 'flex';
-      }
-    }
-
-    document.addEventListener('click', (e) => {
-      const menu = document.getElementById('transport-dropdown-menu');
-      if (menu && menu.style.display === 'flex' && !e.target.closest('#transport-dropdown-menu') && !e.target.closest('.btn-dropdown-main')) {
-        menu.style.display = 'none';
-      }
-    });
-
-    function toggleSubsystem(agency) {
-      const fg = transportMapping[agency];
-      if (map.hasLayer(fg)) {
-        map.removeLayer(fg);
-        showToast(`Capa oculta: ${agency}`, 'info', 2000);
-      } else {
-        map.addLayer(fg);
-        showToast(`Capa visible: ${agency}`, 'success', 2000);
-      }
-    }
-
-    function toggleLayer(layerKey) {
-      const chip = document.getElementById('chip-' + layerKey);
-      const fg = layers[layerKey];
-      if (!fg) return;
-
-      if (map.hasLayer(fg)) {
-        map.removeLayer(fg);
-        if (chip) chip.classList.remove('active');
-        showToast(`Capa oculta: ${layerKey}`, 'info', 2000);
-      } else {
-        map.addLayer(fg);
-        if (chip) chip.classList.add('active');
-        showToast(`Capa activa: ${layerKey}`, 'success', 2000);
-      }
-    }
-
-    // Iniciar aplicación
-    window.addEventListener('DOMContentLoaded', () => {
+    // Iniciar aplicación al cargar el DOM
+    window.addEventListener('DOMContentLoaded', () => {{
       initApplication();
-    });
+    }});
   </script>
 </body>
 </html>
 """
 
-full_html = html_head + html_body
-with open('mapa_comercio_movilidad_cdmx.html', 'w', encoding='utf-8') as f:
-    f.write(full_html)
+    with open('mapa_comercio_movilidad_cdmx.html', 'w', encoding='utf-8') as f:
+        f.write(html)
 
-print("Generated mapa_comercio_movilidad_cdmx.html successfully! Size:", len(full_html))
+    print(f"mapa_comercio_movilidad_cdmx.html generado exitosamente ({len(html)} bytes).")
+
+if __name__ == '__main__':
+    build_map_html()
