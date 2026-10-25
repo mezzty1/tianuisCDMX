@@ -311,6 +311,32 @@ def build_map_html():
       color: var(--slate-900);
     }
 
+    .btn-dashboard-action {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cdmx-green-primary);
+      border: 1px solid var(--cdmx-green-dark);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-dashboard-action:hover {
+      background: var(--cdmx-green-dark);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
     /* =========================================================================
        BARRA DE FILTROS Y SELECTOR SEMANAL
        ========================================================================= */
@@ -1300,6 +1326,9 @@ def build_map_html():
       </div>
 
       <div class="header-actions">
+        <a href="dashboard_gobernanza_cdmx.html" class="btn-dashboard-action" title="Abrir Tablero de Inteligencia Estratégica del Administrador">
+          <span>📊</span> Tablero de Inteligencia
+        </a>
         <button class="btn-info-action" id="btn-open-info">
           <span>ℹ️</span> Metodología
         </button>

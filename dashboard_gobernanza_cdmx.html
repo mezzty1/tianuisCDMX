@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablero de Inteligencia Estratégica del Administrador · Tianguis y Comercio Popular CDMX</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    :root {
+      --cdmx-green-dark: #093c37;
+      --cdmx-green-primary: #0f5953;
+      --cdmx-green-accent: #116962;
+      --cdmx-green-light: #e6f3f1;
+      --cdmx-green-chip: #cbe5e1;
+      --cdmx-amber: #d97706;
+      --cdmx-amber-light: #fef3c7;
+      --cdmx-red: #dc2626;
+      --cdmx-red-light: #fee2e2;
+      --cdmx-emerald: #059669;
+      --cdmx-emerald-light: #d1fae5;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--slate-100);
+      color: var(--slate-800);
+      line-height: 1.5;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER EJECUTIVO CDMX */
+    #dashboard-header {
+      background: linear-gradient(135deg, var(--cdmx-green-dark) 0%, var(--cdmx-green-primary) 100%);
+      color: #ffffff;
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-md);
+      border-bottom: 3px solid var(--cdmx-amber);
+    }
+
+    .header-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-badge {
+      background-color: #ffffff;
+      color: var(--cdmx-green-primary);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      font-size: 11.5px;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-return-map {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #ffffff;
+      color: var(--cdmx-green-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,0.4);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .btn-return-map:hover {
+      background-color: var(--cdmx-green-chip);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .status-dot-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* CONTENEDOR PRINCIPAL */
+    .dashboard-container {
+      max-width: 1440px;
+      margin: 20px auto 40px auto;
+      padding: 0 20px;
+    }
+
+    /* RESUMEN KPIS */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--cdmx-green-primary);
+    }
+
+    .kpi-card.amber::before { background: var(--cdmx-amber); }
+    .kpi-card.emerald::before { background: var(--cdmx-emerald); }
+    .kpi-card.blue::before { background: #2563eb; }
+    .kpi-card.purple::before { background: #7c3aed; }
+    .kpi-card.terracota::before { background: #9f1239; }
+
+    .kpi-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .kpi-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--slate-500);
+    }
+
+    .kpi-icon {
+      font-size: 18px;
+      background: var(--slate-100);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+    }
+
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1.1;
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .kpi-footer {
+      font-size: 11.5px;
+      color: var(--slate-600);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-trend-up {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      color: var(--cdmx-emerald);
+      font-weight: 700;
+    }
+
+    /* BARRA DE NAVEGACIÓN DE SECCIONES */
+    .section-nav-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+    }
+
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-600);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab-btn:hover {
+      background-color: var(--slate-100);
+      color: var(--slate-900);
+    }
+
+    .nav-tab-btn.active {
+      background-color: var(--cdmx-green-primary);
+      color: #ffffff;
+    }
+
+    /* TARJETAS DE SECCIÓN */
+    .section-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--slate-200);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-number {
+      background: var(--cdmx-green-chip);
+      color: var(--cdmx-green-dark);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--slate-500);
+      margin-top: 2px;
+    }
+
+    /* GRID DE 2 COLUMNAS */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    /* GRÁFICAS */
+    .chart-container-box {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      position: relative;
+    }
+
+    .chart-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-700);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .canvas-wrap {
+      position: relative;
+      height: 280px;
+      width: 100%;
+    }
+
+    /* TABLA INTERACTIVA DE TIANGUIS */
+    .table-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      padding: 8px 12px 8px 36px;
+      font-family: inherit;
+      font-size: 13px;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      outline: none;
+      background: #ffffff;
+      transition: border 0.2s;
+    }
+
+    .search-input-box input:focus {
+      border-color: var(--cdmx-green-primary);
+      box-shadow: 0 0 0 3px var(--cdmx-green-chip);
+    }
+
+    .search-icon-pos {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--slate-400);
+    }
+
+    .filter-select-box {
+      min-width: 220px;
+    }
+
+    .filter-select-box select {
+      width: 100%;
+      padding: 8px 12px;
+      font-family: inherit;
+      font-size: 13px;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      outline: none;
+      color: var(--slate-700);
+      font-weight: 500;
+    }
+
+    .table-scroll-container {
+      overflow-x: auto;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      background: #ffffff;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+      text-align: left;
+    }
+
+    .admin-table th {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--slate-200);
+      white-space: nowrap;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .admin-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--slate-200);
+      color: var(--slate-700);
+      vertical-align: middle;
+    }
+
+    .admin-table tr:hover td {
+      background-color: var(--slate-50);
+    }
+
+    .rank-cell {
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--cdmx-green-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--cdmx-green-chip);
+      border-radius: 50%;
+    }
+
+    .tianguis-name-cell {
+      font-weight: 700;
+      color: var(--slate-900);
+      font-size: 13px;
+    }
+
+    .tianguis-sub-cell {
+      font-size: 11px;
+      color: var(--slate-500);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    /* BADGES */
+    .badge-scale {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .badge-mega { background-color: #fee2e2; color: #b91c1c; }
+    .badge-mediano { background-color: #fef3c7; color: #b45309; }
+    .badge-barrial { background-color: #e0f2fe; color: #0369a1; }
+
+    .badge-afluencia {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .badge-masiva { background: #fee2e2; color: #991b1b; }
+    .badge-muy-alta { background: #ffedd5; color: #c2410c; }
+    .badge-alta { background: #dcfce7; color: #15803d; }
+    .badge-regular { background: #f1f5f9; color: #475569; }
+
+    .badge-status {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .badge-confirmado { background-color: #d1fae5; color: #065f46; }
+    .badge-propuesto { background-color: #fef3c7; color: #92400e; }
+
+    .proof-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--cdmx-green-dark);
+      background: var(--cdmx-green-light);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    /* PAGINACIÓN */
+    .table-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--slate-50);
+      border-top: 1px solid var(--slate-200);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      font-size: 12px;
+      color: var(--slate-600);
+    }
+
+    .pagination-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-page {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-page:hover:not(:disabled) {
+      background-color: var(--slate-100);
+    }
+
+    .btn-page:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* CARDS DE CATEGORÍAS */
+    .category-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      position: relative;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .cat-name-icon {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .cat-pct-pill {
+      font-weight: 800;
+      font-size: 13px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+    }
+
+    .cat-metric-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      margin-bottom: 6px;
+      color: var(--slate-600);
+    }
+
+    .cat-progress-bar {
+      height: 8px;
+      background: var(--slate-200);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 8px 0 12px 0;
+      display: flex;
+    }
+
+    .bar-segment-efectivo { background: var(--cdmx-emerald); }
+    .bar-segment-spei { background: #2563eb; }
+    .bar-segment-tarjeta { background: var(--cdmx-amber); }
+
+    .cat-items-list {
+      list-style: none;
+      font-size: 11.5px;
+      color: var(--slate-700);
+      padding-top: 8px;
+      border-top: 1px dashed var(--slate-200);
+    }
+
+    .cat-items-list li {
+      margin-bottom: 4px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    .cat-items-list li::before {
+      content: '•';
+      color: var(--cdmx-green-primary);
+      font-weight: bold;
+    }
+
+    /* DECILES CARD MATRIX */
+    .decile-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .decile-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--cdmx-green-chip);
+    }
+
+    .decile-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .decile-tag {
+      background: var(--cdmx-green-dark);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+    }
+
+    .decile-share {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--cdmx-green-primary);
+    }
+
+    .decile-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 2px;
+    }
+
+    .decile-age {
+      font-size: 11.5px;
+      color: var(--slate-500);
+      margin-bottom: 10px;
+    }
+
+    .decile-insight {
+      font-size: 11px;
+      background: var(--slate-50);
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--cdmx-amber);
+      color: var(--slate-700);
+      margin-top: 8px;
+    }
+
+    /* FOOTER */
+    #dashboard-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--slate-200);
+      padding: 24px;
+      text-align: center;
+      color: var(--slate-500);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: var(--cdmx-green-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .grid-2col { grid-template-columns: 1fr; }
+      .header-content { flex-direction: column; align-items: flex-start; }
+      .header-actions { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER CDMX -->
+  <header id="dashboard-header">
+    <div class="header-content">
+      <div class="header-brand">
+        <span class="brand-badge">CDMX</span>
+        <div>
+          <h1 class="brand-title">Tablero de Inteligencia Estratégica del Administrador</h1>
+          <p class="brand-subtitle">Gobernanza de Comercio Popular, Abasto Barrial e Interacciones Ciudadanas · Chilangatón 2026</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div class="live-status-pill">
+          <span class="status-dot-pulse"></span>
+          <span>Monitoreo Activo · Octubre 2026</span>
+        </div>
+        <a href="mapa_comercio_movilidad_cdmx.html" class="btn-return-map">
+          <span>🗺️</span> Volver al Mapa Barrial
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="dashboard-container">
+
+    <!-- KPI SUMMARY CARDS -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Tianguis Monitoreados</span>
+          <span class="kpi-icon">🎪</span>
+        </div>
+        <div class="kpi-value" id="kpi-tianguis">1,367</div>
+        <div class="kpi-footer">
+          <span class="badge-trend-up">✓ 100%</span> 16 de 16 Alcaldías
+        </div>
+      </div>
+
+      <div class="kpi-card emerald">
+        <div class="kpi-header">
+          <span class="kpi-title">Puestos / Oferentes</span>
+          <span class="kpi-icon">🏪</span>
+        </div>
+        <div class="kpi-value" id="kpi-oferentes">235,420</div>
+        <div class="kpi-footer">
+          <span>Padrón SEDECO Auditado</span>
+        </div>
+      </div>
+
+      <div class="kpi-card blue">
+        <div class="kpi-header">
+          <span class="kpi-title">Afluencia Semanal CDMX</span>
+          <span class="kpi-icon">👥</span>
+        </div>
+        <div class="kpi-value" id="kpi-afluencia">7.56M</div>
+        <div class="kpi-footer">
+          <span class="badge-trend-up">▲ 64%</span> Concentrada en Fin de Semana
+        </div>
+      </div>
+
+      <div class="kpi-card amber">
+        <div class="kpi-header">
+          <span class="kpi-title">Interacciones Diarias</span>
+          <span class="kpi-icon">📱</span>
+        </div>
+        <div class="kpi-value" id="kpi-interacciones">26,740</div>
+        <div class="kpi-footer">
+          <span>Consultas promedio / día</span>
+        </div>
+      </div>
+
+      <div class="kpi-card purple">
+        <div class="kpi-header">
+          <span class="kpi-title">Validaciones en Territorio</span>
+          <span class="kpi-icon">📍</span>
+        </div>
+        <div class="kpi-value" id="kpi-validaciones">559,513</div>
+        <div class="kpi-footer">
+          <span class="badge-trend-up">95.9%</span> Certidumbre Comunitaria
+        </div>
+      </div>
+
+      <div class="kpi-card terracota">
+        <div class="kpi-header">
+          <span class="kpi-title">Inclusión Financiera</span>
+          <span class="kpi-icon">💳</span>
+        </div>
+        <div class="kpi-value" id="kpi-digital">21.6%</div>
+        <div class="kpi-footer">
+          <span>Pagos SPEI/CoDi (vs 78.4% efectivo)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVEGACIÓN RÁPIDA DE SECCIONES -->
+    <nav class="section-nav-bar">
+      <button class="nav-tab-btn active" onclick="scrollToSection('sec-tianguis')">🎪 1. Tianguis más Visitados</button>
+      <button class="nav-tab-btn" onclick="scrollToSection('sec-categorias')">🛒 2. Categorías de Consumo</button>
+      <button class="nav-tab-btn" onclick="scrollToSection('sec-interacciones')">📈 3. Interacciones Diarias</button>
+      <button class="nav-tab-btn" onclick="scrollToSection('sec-deciles')">👥 4. Deciles por Edad</button>
+      <button class="nav-tab-btn" onclick="scrollToSection('sec-alcaldias')">📍 5. Resumen Territorial</button>
+    </nav>
+
+    <!-- EJE 1: TIANGUIS MÁS VISITADOS -->
+    <section id="sec-tianguis" class="section-card">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-number">Eje 1</span>
+          <div>
+            <h2 class="section-title">Tianguis más Visitados de la Ciudad de México</h2>
+            <p class="section-subtitle">Ranking ordenado por afluencia estimada, capacidad de oferentes y validaciones presenciales con Proof of Location</p>
+          </div>
+        </div>
+        <div id="tianguis-counter-badge" class="badge-scale badge-barrial">Mostrando 15 de 50 tianguis destacados</div>
+      </div>
+
+      <!-- CONTROLES DE BÚSQUEDA Y FILTRADO -->
+      <div class="table-controls">
+        <div class="search-input-box">
+          <span class="search-icon-pos">🔍</span>
+          <input type="text" id="tianguis-search-input" placeholder="Buscar tianguis por nombre (ej. El Salado, San Felipe, Chopo, Meyehualco)...">
+        </div>
+        <div class="filter-select-box">
+          <select id="alcaldia-filter-select">
+            <option value="TODAS">📍 Todas las Alcaldías (16)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- TABLA DE DATOS INTERACTIVA -->
+      <div class="table-scroll-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Tianguis / Nombre Popular</th>
+              <th>Alcaldía</th>
+              <th>Día Pico</th>
+              <th>Oferentes</th>
+              <th>Afluencia Semanal</th>
+              <th>Validaciones en Territorio</th>
+              <th>Certidumbre</th>
+              <th>Estatus</th>
+            </tr>
+          </thead>
+          <tbody id="tianguis-table-body">
+            <!-- Se llena dinámicamente con JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PAGINACIÓN -->
+      <div class="table-pagination">
+        <span id="pagination-info">Página 1 de 4</span>
+        <div class="pagination-actions">
+          <button class="btn-page" id="btn-prev-page" onclick="changePage(-1)" disabled>Anterior</button>
+          <button class="btn-page" id="btn-next-page" onclick="changePage(1)">Siguiente</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJE 2: CATEGORÍAS MÁS CONSUMIDAS -->
+    <section id="sec-categorias" class="section-card">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-number">Eje 2</span>
+          <div>
+            <h2 class="section-title">Categorías más Consumidas en Tianguis</h2>
+            <p class="section-subtitle">Distribución porcentual del gasto, ticket promedio por canasta y penetración de medios de pago</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICAS DEL EJE 2 -->
+      <div class="grid-2col" style="margin-bottom: 24px;">
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Distribución Porcentual del Consumo Popular</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">% sobre transacciones semanales</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-categorias-donut"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Ticket Promedio de Canasta por Categoría (MXN)</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">Gasto medio estimado</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-categorias-ticket"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARDS DETALLADAS DE LAS 6 CATEGORÍAS -->
+      <div class="grid-3col" id="categories-cards-container">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- EJE 3: VOLUMEN MEDIO DE INTERACCIONES DIARIAS -->
+    <section id="sec-interacciones" class="section-card">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-number">Eje 3</span>
+          <div>
+            <h2 class="section-title">Volumen Medio de Interacciones Diarias con el Sistema</h2>
+            <p class="section-subtitle">Curva semanal de lunes a domingo, comportamiento horario de 06:00 a 20:00 y desglose por tipo de consulta</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICAS DEL EJE 3 -->
+      <div class="grid-2col" style="margin-bottom: 24px;">
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Curva Semanal: Consultas vs Afluencia Territorial</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">Lunes a Domingo</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-interacciones-semanal"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Perfil Horario de Consultas (06:00 a 20:00 hrs)</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">Distribución por hora</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-interacciones-horario"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIPOS DE INTERACCIÓN -->
+      <div class="grid-2col">
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Desglose por Tipo de Interacción Ciudadana</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">Distribución funcional</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-interacciones-tipos"></canvas>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; justify-content: center; gap: 12px;">
+          <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 14px;">
+            <div style="font-weight: 700; color: var(--slate-800); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+              <span>⏱️</span> 1. Estatus en Vivo y Horarios (43.8%)
+            </div>
+            <p style="font-size: 12px; color: var(--slate-600);">Es la función más crítica para los ciudadanos: confirmar si el tianguis opera el día de hoy, hora de montaje y hasta qué hora permanece abierto.</p>
+          </div>
+
+          <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 14px;">
+            <div style="font-weight: 700; color: var(--slate-800); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+              <span>💳</span> 2. Medios de Pago y Cajeros (26.5%)
+            </div>
+            <p style="font-size: 12px; color: var(--slate-600);">Los compradores verifican si los puestos aceptan transferencias SPEI o tarjeta para calcular el efectivo necesario o ubicar el cajero más próximo.</p>
+          </div>
+
+          <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 14px;">
+            <div style="font-weight: 700; color: var(--slate-800); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+              <span>🔍</span> 3. Búsqueda de Productos Específicos (18.5%)
+            </div>
+            <p style="font-size: 12px; color: var(--slate-600);">Consultas omnibox de productos populares como paca de marca, carnitas, aguacate Hass, herramientas mecánicas o tenis.</p>
+          </div>
+
+          <div style="background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 14px;">
+            <div style="font-weight: 700; color: var(--slate-800); margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+              <span>🛡️</span> 4. Auditoría y Validación Comunitaria (11.2%)
+            </div>
+            <p style="font-size: 12px; color: var(--slate-600);">Participación ciudadana con Proof of Location (&le;300m) confirmando apertura, limpieza de vía pública y especialidades.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EJE 4: DECILES POR EDAD -->
+    <section id="sec-deciles" class="section-card">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-number">Eje 4</span>
+          <div>
+            <h2 class="section-title">Deciles por Edad (10 Grupos Generacionales)</h2>
+            <p class="section-subtitle">Segmentación demográfica D1 [15-19] a D10 [65+]: cuota de interacción, categorías de mayor interés y medios de pago preferidos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRÁFICAS DEL EJE 4 -->
+      <div class="grid-2col" style="margin-bottom: 24px;">
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Cuota de Interacción por Decil Generacional (%)</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">D1 (15-19) a D10 (65+)</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-deciles-interacciones"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-container-box">
+          <div class="chart-title">
+            <span>Preferencia de Métodos de Pago por Decil (%)</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">Efectivo vs SPEI/CoDi vs Tarjeta</span>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="chart-deciles-pagos"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- MATRIZ DETALLADA DE LOS 10 DECILES -->
+      <div class="grid-2col" id="deciles-cards-container">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- SECCIÓN COMPLEMENTARIA: RESUMEN TERRITORIAL POR ALCALDÍA -->
+    <section id="sec-alcaldias" class="section-card">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-number">Eje 5</span>
+          <div>
+            <h2 class="section-title">Distribución Territorial en las 16 Alcaldías</h2>
+            <p class="section-subtitle">Concentración de tianguis, capacidad de puestos y volumen de afluencia semanal por demarcación</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container-box" style="margin-bottom: 20px;">
+        <div class="chart-title">
+          <span>Afluencia Semanal Estimada por Alcaldía</span>
+          <span style="font-size: 11px; color: var(--slate-500); font-weight: normal;">Personas / semana</span>
+        </div>
+        <div class="canvas-wrap" style="height: 320px;">
+          <canvas id="chart-alcaldias-bar"></canvas>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="dashboard-footer">
+    <p><strong>Tablero de Inteligencia Estratégica del Administrador</strong> · Sistema Unificado de Información de Comercio Popular y Barrial CDMX</p>
+    <p style="margin-top: 4px;">Chilangatón 2026 — Reto 1: Comercio Popular y Barrial (SEDECO / SECTEI / SAF) · Arquitectura Local-First y Principios CARE</p>
+    <div class="footer-links">
+      <a href="mapa_comercio_movilidad_cdmx.html" class="footer-link">🗺️ Visor Cartográfico Minimalista</a>
+      <a href="catalogo_iconos_puestos.html" class="footer-link">🎨 Catálogo de Íconos de Puestos</a>
+      <a href="data/processed/dashboard_analytics_data.json" class="footer-link" target="_blank">📄 Dataset JSON Analítico</a>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE DATOS EXTERNOS O FALLBACK INLINE -->
+  <script src="data/processed/dashboard_analytics_data.js"></script>
+
+  <script>
+    // Variables de estado del tablero
+    let currentData = null;
+    let filteredTianguis = [];
+    let currentPage = 1;
+    const PAGE_SIZE = 15;
+
+    // Inicialización al cargar la ventana
+    window.addEventListener('DOMContentLoaded', () => {
+      // Cargar datos desde window.DASHBOARD_ANALYTICS_DATA o generar de respaldo
+      if (window.DASHBOARD_ANALYTICS_DATA) {
+        currentData = window.DASHBOARD_ANALYTICS_DATA;
+        initDashboard();
+      } else {
+        // Carga vía fetch si no cargó el script JS directamente
+        fetch('data/processed/dashboard_analytics_data.json')
+          .then(res => res.json())
+          .then(data => {
+            currentData = data;
+            initDashboard();
+          })
+          .catch(err => {
+            console.error('Error cargando datos del dashboard:', err);
+          });
+      }
+    });
+
+    function initDashboard() {
+      if (!currentData) return;
+
+      // 1. Renderizar KPIs
+      renderKPIs();
+
+      // 2. Poblar selector de alcaldías
+      populateAlcaldiasSelect();
+
+      // 3. Inicializar Tabla del Eje 1 (Tianguis más visitados)
+      filteredTianguis = [...currentData.eje_1_tianguis_ranking.top_50];
+      renderTianguisTable();
+      setupTableEvents();
+
+      // 4. Renderizar Eje 2 (Categorías)
+      renderCategoriasSection();
+
+      // 5. Renderizar Eje 3 (Interacciones)
+      renderInteraccionesSection();
+
+      // 6. Renderizar Eje 4 (Deciles de edad)
+      renderDecilesSection();
+
+      // 7. Renderizar Eje 5 (Alcaldías)
+      renderAlcaldiasSection();
+    }
+
+    function renderKPIs() {
+      const kpis = currentData.kpis_globales;
+      document.getElementById('kpi-tianguis').textContent = kpis.total_tianguis_activos.toLocaleString();
+      document.getElementById('kpi-oferentes').textContent = kpis.total_oferentes_registrados.toLocaleString();
+      document.getElementById('kpi-afluencia').textContent = (kpis.afluencia_semanal_estimada / 1000000).toFixed(2) + 'M';
+      document.getElementById('kpi-interacciones').textContent = kpis.interacciones_diarias_promedio.toLocaleString();
+      document.getElementById('kpi-validaciones').textContent = kpis.total_validaciones_territorio.toLocaleString();
+      document.getElementById('kpi-digital').textContent = currentData.eje_2_categorias_consumo.digital_ponderado_pct + '%';
+    }
+
+    function populateAlcaldiasSelect() {
+      const select = document.getElementById('alcaldia-filter-select');
+      const alcaldias = currentData.resumen_alcaldias.map(a => a.alcaldia);
+      alcaldias.forEach(alc => {
+        const opt = document.createElement('option');
+        opt.value = alc;
+        opt.textContent = '📍 ' + alc;
+        select.appendChild(opt);
+      });
+    }
+
+    // =========================================================================
+    // EJE 1: TABLA Y FILTROS DE TIANGUIS
+    // =========================================================================
+
+    function setupTableEvents() {
+      const searchInput = document.getElementById('tianguis-search-input');
+      const alcSelect = document.getElementById('alcaldia-filter-select');
+
+      function applyFilter() {
+        const query = searchInput.value.trim().toLowerCase();
+        const alc = alcSelect.value;
+        const all = currentData.eje_1_tianguis_ranking.top_50;
+
+        filteredTianguis = all.filter(t => {
+          const matchQuery = !query || 
+            t.nombre_popular.toLowerCase().includes(query) ||
+            t.nombre_oficial.toLowerCase().includes(query) ||
+            t.colonia.toLowerCase().includes(query);
+          const matchAlc = (alc === 'TODAS') || (t.alcaldia === alc);
+          return matchQuery && matchAlc;
+        });
+
+        currentPage = 1;
+        renderTianguisTable();
+      }
+
+      searchInput.addEventListener('input', applyFilter);
+      alcSelect.addEventListener('change', applyFilter);
+    }
+
+    function renderTianguisTable() {
+      const tbody = document.getElementById('tianguis-table-body');
+      tbody.innerHTML = '';
+
+      const total = filteredTianguis.length;
+      document.getElementById('tianguis-counter-badge').textContent = `Mostrando ${total} tianguis filtrados`;
+
+      const startIdx = (currentPage - 1) * PAGE_SIZE;
+      const endIdx = Math.min(startIdx + PAGE_SIZE, total);
+      const pageItems = filteredTianguis.slice(startIdx, endIdx);
+
+      if (pageItems.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 24px; color: var(--slate-500);">No se encontraron tianguis que coincidan con la búsqueda.</td></tr>`;
+      } else {
+        pageItems.forEach(t => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><span class="rank-cell">#${t.ranking_posicion}</span></td>
+            <td>
+              <div class="tianguis-name-cell">${t.nombre_popular}</div>
+              <div class="tianguis-sub-cell">
+                <span class="badge-scale ${t.escala_id === 'mega' ? 'badge-mega' : t.escala_id === 'mediano' ? 'badge-mediano' : 'badge-barrial'}">${t.escala_nombre}</span>
+                <span>${t.vocacion_icono} ${t.vocacion_nombre.substring(0, 36)}...</span>
+              </div>
+            </td>
+            <td><strong>${t.alcaldia}</strong><br><span style="font-size: 11px; color: var(--slate-500);">${t.colonia || 'Área Barrial'}</span></td>
+            <td><strong style="color: var(--cdmx-green-dark);">${t.dia_principal}</strong><br><span style="font-size: 11px; color: var(--slate-500);">${t.horario}</span></td>
+            <td><strong>${t.oferentes.toLocaleString()}</strong> puestos</td>
+            <td>
+              <strong>${t.afluencia_semanal_est.toLocaleString()}</strong>
+              <div style="margin-top: 2px;"><span class="badge-afluencia ${t.nivel_badge}">${t.nivel_afluencia}</span></div>
+            </td>
+            <td>
+              <span class="proof-badge">📍 ${t.validaciones_territorio}</span>
+              <div style="font-size: 10.5px; color: var(--slate-500); margin-top: 2px;">Proof of Location &le;300m</div>
+            </td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <strong style="color: var(--cdmx-emerald);">${t.pct_confirmacion}%</strong>
+              </div>
+              <div style="background: var(--slate-200); height: 4px; border-radius: 2px; width: 60px; margin-top: 4px;">
+                <div style="background: var(--cdmx-emerald); width: ${t.pct_confirmacion}%; height: 100%; border-radius: 2px;"></div>
+              </div>
+            </td>
+            <td>
+              <span class="badge-status ${t.estatus_epistemico === 'CONFIRMADO' ? 'badge-confirmado' : 'badge-propuesto'}">
+                ${t.estatus_epistemico === 'CONFIRMADO' ? '✓ CONFIRMADO' : '? PROPUESTO'}
+              </span>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      // Actualizar paginador
+      const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      document.getElementById('pagination-info').textContent = `Página ${currentPage} de ${totalPages} (${total} tianguis en total)`;
+      document.getElementById('btn-prev-page').disabled = (currentPage <= 1);
+      document.getElementById('btn-next-page').disabled = (currentPage >= totalPages);
+    }
+
+    function changePage(direction) {
+      const totalPages = Math.ceil(filteredTianguis.length / PAGE_SIZE);
+      currentPage += direction;
+      if (currentPage < 1) currentPage = 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+      renderTianguisTable();
+    }
+
+    // =========================================================================
+    // EJE 2: CATEGORÍAS MÁS CONSUMIDAS
+    // =========================================================================
+
+    function renderCategoriasSection() {
+      const catData = currentData.eje_2_categorias_consumo;
+      const cats = catData.categorias;
+
+      // 1. Gráfica de Donut
+      const ctxDonut = document.getElementById('chart-categorias-donut').getContext('2d');
+      new Chart(ctxDonut, {
+        type: 'doughnut',
+        data: {
+          labels: cats.map(c => c.nombre),
+          datasets: [{
+            data: cats.map(c => c.porcentaje),
+            backgroundColor: cats.map(c => c.color),
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                boxWidth: 12,
+                font: { family: 'Montserrat', size: 11 }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return ` ${context.label}: ${context.raw}% del consumo total`;
+                }
+              }
+            }
+          },
+          cutout: '62%'
+        }
+      });
+
+      // 2. Gráfica de Ticket Promedio
+      const ctxTicket = document.getElementById('chart-categorias-ticket').getContext('2d');
+      new Chart(ctxTicket, {
+        type: 'bar',
+        data: {
+          labels: cats.map(c => c.icono + ' ' + c.nombre.split(' ')[0]),
+          datasets: [{
+            label: 'Ticket Promedio (MXN)',
+            data: cats.map(c => c.ticket_promedio_mxn),
+            backgroundColor: cats.map(c => c.color),
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) { return ` Ticket promedio: $${ctx.raw} MXN`; }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { callback: v => '$' + v }
+            }
+          }
+        }
+      });
+
+      // 3. Cards individuales
+      const container = document.getElementById('categories-cards-container');
+      container.innerHTML = '';
+
+      cats.forEach(c => {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.innerHTML = `
+          <div class="category-header">
+            <div class="cat-name-icon">
+              <span style="font-size: 20px;">${c.icono}</span>
+              <span>${c.nombre}</span>
+            </div>
+            <span class="cat-pct-pill" style="color: ${c.color};">${c.porcentaje}%</span>
+          </div>
+
+          <div class="cat-metric-row">
+            <span>Ticket promedio:</span>
+            <strong>$${c.ticket_promedio_mxn.toFixed(2)} MXN</strong>
+          </div>
+          <div class="cat-metric-row">
+            <span>Horario pico:</span>
+            <strong>⏰ ${c.horario_pico}</strong>
+          </div>
+          <div class="cat-metric-row">
+            <span>Transacciones semanales:</span>
+            <strong>${c.volumen_semanal_transacciones.toLocaleString()}</strong>
+          </div>
+
+          <div style="font-size: 11px; margin-top: 8px; color: var(--slate-600);">
+            Medios de pago: Efectivo <strong>${c.metodos_pago.efectivo_pct}%</strong> · SPEI <strong>${c.metodos_pago.transferencia_spei_pct}%</strong> · Tarjeta <strong>${c.metodos_pago.tarjeta_terminal_pct}%</strong>
+          </div>
+          <div class="cat-progress-bar">
+            <div class="bar-segment-efectivo" style="width: ${c.metodos_pago.efectivo_pct}%;" title="Efectivo: ${c.metodos_pago.efectivo_pct}%"></div>
+            <div class="bar-segment-spei" style="width: ${c.metodos_pago.transferencia_spei_pct}%;" title="SPEI / CoDi: ${c.metodos_pago.transferencia_spei_pct}%"></div>
+            <div class="bar-segment-tarjeta" style="width: ${c.metodos_pago.tarjeta_terminal_pct}%;" title="Tarjeta: ${c.metodos_pago.tarjeta_terminal_pct}%"></div>
+          </div>
+
+          <ul class="cat-items-list">
+            ${c.articulos_lideres.slice(0, 4).map(item => `<li>${item}</li>`).join('')}
+          </ul>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // =========================================================================
+    // EJE 3: VOLUMEN MEDIO DE INTERACCIONES DIARIAS
+    // =========================================================================
+
+    function renderInteraccionesSection() {
+      const interData = currentData.eje_3_interacciones_sistema;
+
+      // 1. Curva Semanal
+      const ctxSemanal = document.getElementById('chart-interacciones-semanal').getContext('2d');
+      new Chart(ctxSemanal, {
+        type: 'line',
+        data: {
+          labels: interData.dias_semana.map(d => d.dia),
+          datasets: [
+            {
+              label: 'Interacciones en Sistema',
+              data: interData.dias_semana.map(d => d.volumen_interacciones),
+              borderColor: '#0f5953',
+              backgroundColor: 'rgba(15, 89, 83, 0.15)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.35,
+              yAxisID: 'y'
+            },
+            {
+              label: 'Tianguis Activos',
+              data: interData.dias_semana.map(d => d.tianguis_activos),
+              borderColor: '#d97706',
+              borderDash: [5, 5],
+              borderWidth: 2,
+              pointRadius: 4,
+              fill: false,
+              tension: 0.2,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' }
+          },
+          scales: {
+            y: {
+              type: 'linear',
+              display: true,
+              position: 'left',
+              title: { display: true, text: 'Consultas Diarias' }
+            },
+            y1: {
+              type: 'linear',
+              display: true,
+              position: 'right',
+              title: { display: true, text: 'Tianguis en Calle' },
+              grid: { drawOnChartArea: false }
+            }
+          }
+        }
+      });
+
+      // 2. Gráfica Horaria (06:00 a 20:00)
+      const ctxHorario = document.getElementById('chart-interacciones-horario').getContext('2d');
+      new Chart(ctxHorario, {
+        type: 'bar',
+        data: {
+          labels: interData.curva_horaria.map(h => h.hora),
+          datasets: [{
+            label: 'Consultas promedio por hora',
+            data: interData.curva_horaria.map(h => h.interacciones),
+            backgroundColor: interData.curva_horaria.map(h => {
+              if (h.interacciones >= 3000) return '#059669'; // pico
+              if (h.interacciones >= 1500) return '#116962'; // regular
+              return '#94a3b8'; // inicio/cierre
+            }),
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                afterLabel: function(ctx) {
+                  return 'Fase: ' + interData.curva_horaria[ctx.dataIndex].fase;
+                }
+              }
+            }
+          },
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+
+      // 3. Tipos de Interacción (Doughnut)
+      const ctxTipos = document.getElementById('chart-interacciones-tipos').getContext('2d');
+      new Chart(ctxTipos, {
+        type: 'doughnut',
+        data: {
+          labels: interData.tipos_interaccion.map(t => t.nombre),
+          datasets: [{
+            data: interData.tipos_interaccion.map(t => t.porcentaje),
+            backgroundColor: interData.tipos_interaccion.map(t => t.color),
+            borderWidth: 2,
+            borderColor: '#ffffff'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 10 } }
+            }
+          },
+          cutout: '55%'
+        }
+      });
+    }
+
+    // =========================================================================
+    // EJE 4: DECILES POR EDAD
+    // =========================================================================
+
+    function renderDecilesSection() {
+      const decilesData = currentData.eje_4_deciles_edad;
+      const deciles = decilesData.deciles;
+
+      // 1. Gráfica de Cuota de Interacción por Decil
+      const ctxDecShare = document.getElementById('chart-deciles-interacciones').getContext('2d');
+      new Chart(ctxDecShare, {
+        type: 'bar',
+        data: {
+          labels: deciles.map(d => d.decil + ' (' + d.rango_edad + ')'),
+          datasets: [{
+            label: '% Cuota de Interacciones',
+            data: deciles.map(d => d.pct_interacciones),
+            backgroundColor: '#0f5953',
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { callback: v => v + '%' }
+            }
+          }
+        }
+      });
+
+      // 2. Gráfica Apilada de Medios de Pago por Decil
+      const ctxDecPagos = document.getElementById('chart-deciles-pagos').getContext('2d');
+      new Chart(ctxDecPagos, {
+        type: 'bar',
+        data: {
+          labels: deciles.map(d => d.decil),
+          datasets: [
+            {
+              label: 'Efectivo (%)',
+              data: deciles.map(d => d.metodos_pago.efectivo_pct),
+              backgroundColor: '#059669'
+            },
+            {
+              label: 'SPEI / Transferencia (%)',
+              data: deciles.map(d => d.metodos_pago.transferencia_spei_pct),
+              backgroundColor: '#2563eb'
+            },
+            {
+              label: 'Tarjeta / Débito (%)',
+              data: deciles.map(d => d.metodos_pago.tarjeta_debito_pct),
+              backgroundColor: '#d97706'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' }
+          },
+          scales: {
+            x: { stacked: true },
+            y: {
+              stacked: true,
+              max: 100,
+              ticks: { callback: v => v + '%' }
+            }
+          }
+        }
+      });
+
+      // 3. Renderizar las 10 Cards de Deciles
+      const container = document.getElementById('deciles-cards-container');
+      container.innerHTML = '';
+
+      deciles.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'decile-card';
+        card.innerHTML = `
+          <div class="decile-badge-row">
+            <span class="decile-tag">${d.decil}</span>
+            <span class="decile-share">${d.pct_interacciones}% del volumen</span>
+          </div>
+
+          <div class="decile-title">${d.etiqueta}</div>
+          <div class="decile-age">Edad: <strong>${d.rango_edad}</strong> · Ticket promedio: <strong>$${d.ticket_promedio_mxn.toFixed(2)} MXN</strong></div>
+
+          <div style="font-size: 11.5px; margin-bottom: 6px;">
+            <strong>Categorías de mayor interés:</strong>
+            <ul style="margin: 4px 0 8px 14px; color: var(--slate-700);">
+              ${d.categorias_interes.map(cat => `<li>${cat.nombre} (${cat.pct}%)</li>`).join('')}
+            </ul>
+          </div>
+
+          <div style="font-size: 11px; color: var(--slate-600); margin-bottom: 4px;">
+            <strong>Medios de pago:</strong> ${d.pago_preferido_texto}
+          </div>
+          <div class="cat-progress-bar" style="margin-bottom: 8px;">
+            <div class="bar-segment-efectivo" style="width: ${d.metodos_pago.efectivo_pct}%;" title="Efectivo: ${d.metodos_pago.efectivo_pct}%"></div>
+            <div class="bar-segment-spei" style="width: ${d.metodos_pago.transferencia_spei_pct}%;" title="SPEI: ${d.metodos_pago.transferencia_spei_pct}%"></div>
+            <div class="bar-segment-tarjeta" style="width: ${d.metodos_pago.tarjeta_debito_pct}%;" title="Tarjeta: ${d.metodos_pago.tarjeta_debito_pct}%"></div>
+          </div>
+
+          <div class="decile-insight">
+            💡 <strong>Comportamiento barrial:</strong> ${d.insight_clave}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // =========================================================================
+    // EJE 5: RESUMEN POR ALCALDÍA
+    // =========================================================================
+
+    function renderAlcaldiasSection() {
+      const alcaldias = currentData.resumen_alcaldias;
+      const ctxAlc = document.getElementById('chart-alcaldias-bar').getContext('2d');
+
+      new Chart(ctxAlc, {
+        type: 'bar',
+        data: {
+          labels: alcaldias.map(a => a.alcaldia),
+          datasets: [
+            {
+              label: 'Afluencia Semanal Estimada (visitantes)',
+              data: alcaldias.map(a => a.afluencia_semanal_total),
+              backgroundColor: '#0f5953',
+              borderRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'top' },
+            tooltip: {
+              callbacks: {
+                afterLabel: function(ctx) {
+                  const item = alcaldias[ctx.dataIndex];
+                  return `Tianguis: ${item.total_tianguis} | Oferentes: ${item.total_oferentes.toLocaleString()}`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { callback: v => (v / 1000).toLocaleString() + 'k' }
+            },
+            x: {
+              ticks: { maxRotation: 45, minRotation: 45, font: { size: 10 } }
+            }
+          }
+        }
+      });
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Actualizar tabs activos
+        document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+        if (event && event.target) {
+          event.target.classList.add('active');
+        }
+      }
+    }
+  </script>
+</body>
+</html>
