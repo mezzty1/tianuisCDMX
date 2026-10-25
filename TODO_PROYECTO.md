@@ -183,6 +183,11 @@ graph TD
 - [x] **5.3 Indicador ligero de estatus de tianguis (Sin fricción)** `[Hecho]`
   - Cálculo automático basado en reloj/horario oficial (ej. `🟢 Abierto hoy · Horario de venta activo`, `🟡 En instalación y montaje (06:00 a 08:00 hrs)`, `🟡 En desmontaje y aseo vial (17:00 a 19:00 hrs)`, `🔴 No opera hoy`) sin depender de reportes manuales obligatorios.
   - Integrado de forma reactiva en la ficha lateral de cada tianguis, MSR y concentración en [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html).
+- [ ] **5.4 Sistema de Ponderación Ciudadana y Crowdsourcing Barrial ("¿Qué se vende aquí?")** `[100% Independiente] [Dificultad: Media]`
+  - Mecanismo ligero y local-first donde la ciudadanía compradora y los comerciantes pueden votar o confirmar qué productos y especialidades sí se encuentran disponibles en cada tianguis individual (ej. "Ropa de paca", "Barbacoa", "Herramientas usadas", "Pescado fresco").
+  - Sistema de reputación por upvotes/downvotes comunitarios almacenado localmente (localStorage/IndexedDB) con sincronización opcional, evitando formularios burocráticos y respetando la soberanía de datos del comerciante.
+- [ ] **5.5 Pipeline de Enriquecimiento de Especialidades de Tianguis (Google Maps & Reseñas)** `[100% Independiente] [Dificultad: Media]`
+  - Scraping ético y enriquecimiento con Google Maps Places API y OpenStreetMap para extraer términos frecuentes en reseñas ciudadanas ("mucha paca", "herramientas baratas", "buenos tacos de carnitas", "antigüedades"), cruzándolo con las 86k solicitudes de FONDESO y el padrón auditado de SEDECO.
 
 ---
 
@@ -227,6 +232,14 @@ graph TD
     - **Filtros rápidos de política social:** Conmutadores para *"Canasta Básica SEDECO"* y *"Acepta Vales Mercomuna"*.
     - **Reactividad geoespacial:** Actualización instantánea de clusters y marcadores de Leaflet (mercados, tianguis, MSR), panel lateral detallado con oferta de giros por espacio, insignias oficiales y contadores dinámicos de oferta disponible con gestión de píldoras activas y botón de reseteo.
 - [x] **7.6 Pivote Estratégico a Comercio Popular y Barrial Itinerante (Tianguis, MSR y Concentraciones)** `[Hecho]`
+- [ ] **7.7 Mapa Minimalista 100% Centrado en Tianguis (CDMX + ZMVM)** `[En Progreso]`
+  - Reinicio visual limpio y minimalista:
+    - Lienzo base con polígonos de las 16 alcaldías de la CDMX y 60 municipios conurbados de la ZMVM.
+    - Exclusión total de mercados públicos (foco exclusivo en Tianguis semanales).
+    - Selector semanal limpio que arranca por defecto en **`[ HOY ]`** y evalúa la hora del día.
+    - Un ÚNICO buscador omnibox inteligente (sin duplicación de cajas) para nombres populares ("El Salado", "La Bola", "El Chopo"), colonias/alcaldías y más de 300 productos/artículos barriales.
+    - Ficha de tianguis sobria: nombre popular, horario en vivo, escala (barrial/mediano/megatianguis), especialidad y referencia caminable a estación más cercana (`🚶 A X min a pie de Metro Y`).
+    - Cero líneas de transporte sobrecargando el lienzo.
   - **Enfoque 100% en Comercio Popular y Barrial:** Rediseño integral de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) y [`scripts/build_revamped_map.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/build_revamped_map.py) para priorizar el abasto popular en vía pública: 1,365 tianguis itinerantes, 51 mercados sobre ruedas (MSR) y 169 concentraciones de comerciantes barriales (SEDECO).
   - **Desactivación de Ruido de Transporte Masivo:** Ocultamiento total de las capas de Metro, Metrobús, RTP, Trolebús y concesionados en la interfaz gráfica (manteniendo los datasets intactos en el backend) y eliminación del planificador multimodal y pestañas de tarifas para una experiencia de usuario limpia y especializada.
   - **Selector por Día de la Semana con Botón "🧺 Abiertos Hoy":** Filtro rápido de Lunes a Domingo con detección automática del día actual de la semana en la CDMX y conteo en tiempo real de espacios abiertos.
