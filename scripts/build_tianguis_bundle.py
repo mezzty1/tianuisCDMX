@@ -200,6 +200,41 @@ def run():
                     pass
         print(f"  ✓ Especialidades y fotografías NLP cargadas.")
 
+    # Cargar citas textuales de reseñas de Google Maps de tianguis_reviews.json
+    reviews_dict = {}
+    if os.path.exists('data/processed/tianguis_reviews.json'):
+        with open('data/processed/tianguis_reviews.json', 'r', encoding='utf-8') as f:
+            for item in json.load(f):
+                idx_val = item.get('idx')
+                citas = []
+                # Intentar parsear snippets_json
+                raw_snippets = item.get('snippets_json')
+                if raw_snippets:
+                    try:
+                        if isinstance(raw_snippets, str):
+                            snips = json.loads(raw_snippets)
+                        else:
+                            snips = raw_snippets
+                        for s in snips:
+                            s_clean = str(s).strip()
+                            if s_clean and len(s_clean) > 8 and not s_clean.startswith('['):
+                                citas.append(s_clean)
+                    except Exception:
+                        pass
+                # Si no hay snippets, buscar en resenas_texto_corpus
+                if not citas and item.get('resenas_texto_corpus'):
+                    parts = str(item['resenas_texto_corpus']).split('|')
+                    for p in parts:
+                        p_clean = p.strip()
+                        if p_clean and len(p_clean) > 15 and not p_clean.startswith('['):
+                            citas.append(p_clean)
+                reviews_dict[idx_val] = citas[:4]
+                try:
+                    reviews_dict[f"TIANG-{int(idx_val)+1:04d}"] = citas[:4]
+                except Exception:
+                    pass
+        print(f"  ✓ Citas textuales de reseñas ciudadanas cargadas ({len([k for k,v in reviews_dict.items() if v])} tianguis con opiniones).")
+
     with open('data/processed/tianguis_limpio.json', 'r', encoding='utf-8') as f:
         tianguis_raw = json.load(f)
 
@@ -226,6 +261,9 @@ def run():
         rating = nlp_info.get('rating_google')
         total_rev = nlp_info.get('total_resenas', 0)
         foto_main = nlp_info.get('foto_principal') or (fotos[0] if fotos else '')
+
+        # Citas textuales de reseñas de compradores
+        citas_list = reviews_dict.get(t['id']) or reviews_dict.get(nlp_info.get('idx')) or []
 
         # Calcular estación más cercana si tiene coordenadas válidas
         transporte_info = {}
@@ -304,6 +342,7 @@ def run():
             'foto_principal': foto_main,
             'rating_google': rating,
             'total_resenas': total_rev,
+            'citas_resenas': citas_list,
             'transporte': transporte_info
         }
         tianguis_processed.append(tianguis_item)

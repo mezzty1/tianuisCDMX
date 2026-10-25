@@ -1010,6 +1010,229 @@ def build_map_html():
         grid-template-columns: 1fr;
       }
     }
+
+    /* =========================================================================
+       GOBERNANZA BARRIAL Y AUDITORÍA COMUNITARIA PONDERADA (MÓDULO 5.4)
+       ========================================================================= */
+    .governance-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .gov-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .gov-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--slate-700);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .badge-epistemic {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .badge-epistemic-confirmado {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .badge-epistemic-propuesto {
+      background: #f8fafc;
+      color: #475569;
+      border: 1px dashed #94a3b8;
+    }
+
+    .badge-epistemic-disputa {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .gov-btn-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-gov-vote {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .btn-gov-vote:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .btn-gov-yes {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1.5px solid #10b981;
+    }
+
+    .btn-gov-yes:hover:not(:disabled) {
+      background: #d1fae5;
+      transform: translateY(-1px);
+    }
+
+    .btn-gov-no {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1.5px solid #ef4444;
+    }
+
+    .btn-gov-no:hover:not(:disabled) {
+      background: #fee2e2;
+      transform: translateY(-1px);
+    }
+
+    .gov-balance-box {
+      font-size: 11.5px;
+      color: var(--slate-700);
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      padding: 7px 10px;
+      line-height: 1.4;
+    }
+
+    .gov-payment-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      padding: 6px 8px;
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 8px;
+      font-size: 11.5px;
+    }
+
+    .btn-gov-small {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      color: var(--slate-700);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .btn-gov-small:hover:not(:disabled) {
+      background: var(--cdmx-green-light);
+      color: var(--cdmx-green-dark);
+      border-color: var(--cdmx-green-primary);
+    }
+
+    .product-tag-chip.chip-confirmed {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      font-weight: 600;
+    }
+
+    .product-tag-chip.chip-proposed {
+      background: #f8fafc;
+      color: #334155;
+      border: 1.5px dashed #94a3b8;
+    }
+
+    .product-tag-chip.chip-dispute {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .marker-comm-dot {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8.5px;
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+
+    .marker-comm-dot.confirmed {
+      background: #059669;
+      color: #ffffff;
+    }
+
+    .marker-comm-dot.dispute {
+      background: #d97706;
+      color: #ffffff;
+      animation: pulse-dispute 1.8s infinite;
+    }
+
+    .marker-comm-dot.active {
+      background: #0284c7;
+      color: #ffffff;
+    }
+
+    @keyframes pulse-dispute {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+
+    .gov-toolbar {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 9px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 11px;
+    }
+
+    .gov-toolbar-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
@@ -1112,7 +1335,7 @@ def build_map_html():
           </div>
         </div>
 
-        <!-- ESTATUS EN VIVO -->
+        <!-- ESTATUS EN VIVO OFICIAL (RELOJ SEDECO) -->
         <div class="status-card" id="side-status-card">
           <div class="status-indicator-dot"></div>
           <div class="status-card-text">
@@ -1121,15 +1344,63 @@ def build_map_html():
           </div>
         </div>
 
-        <!-- ESPECIALIDAD / VOCACIÓN COMUNITARIA NLP -->
+        <!-- AUDITORÍA COMUNITARIA: ESTATUS EN VIVO HOY (MÓDULO 5.4) -->
+        <div class="governance-card" id="gov-live-card">
+          <div class="gov-header-row">
+            <span class="gov-title"><span>👥</span> Auditoría Barrial en Vivo</span>
+            <span class="badge-epistemic" id="gov-live-epistemic-badge">✓ Verificado</span>
+          </div>
+          <div style="font-size: 11.5px; font-weight: 600; color: var(--slate-800);">
+            ¿Se instaló el tianguis hoy?
+          </div>
+          <div class="gov-btn-row">
+            <button class="btn-gov-vote btn-gov-yes" id="btn-gov-live-yes">
+              <span>🟢</span> Sí, está operando
+            </button>
+            <button class="btn-gov-vote btn-gov-no" id="btn-gov-live-no">
+              <span>🔴</span> Hoy no se puso
+            </button>
+          </div>
+          <div class="gov-balance-box" id="gov-live-balance-text">
+            Balance comunitario de hoy: Evaluando...
+          </div>
+        </div>
+
+        <!-- AUDITORÍA COMUNITARIA: MEDIOS DE PAGO REALES (MÓDULO 5.4) -->
+        <div class="governance-card" id="gov-payments-card">
+          <div class="gov-header-row">
+            <span class="gov-title"><span>💳</span> Medios de Pago Auditados</span>
+            <span style="font-size: 10px; color: var(--slate-500); font-weight: 600;">Validación Barrial</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px;" id="gov-payments-list"></div>
+        </div>
+
+        <!-- ESPECIALIDAD / VOCACIÓN COMUNITARIA NLP Y AUDITORÍA CROWDSOURCING (MÓDULO 5.4 Y 5.5) -->
         <div class="detail-section">
-          <span class="detail-label">Vocación y Especialidad Comunitaria</span>
+          <div class="gov-header-row" style="margin-bottom: 2px;">
+            <span class="detail-label">Vocación y Especialidad Comunitaria</span>
+            <span class="badge-epistemic badge-epistemic-confirmado" style="font-size: 9.5px;">IA NLP + Barrio</span>
+          </div>
           <div class="detail-value-bold" id="side-vocation-title">Ropa de Paca, Herramientas y Chácharas</div>
           <div class="detail-value" id="side-vocation-desc" style="font-size: 12.5px; line-height: 1.5; color: var(--slate-700); margin-top: 4px;">Megatianguis emblemático de segunda mano, antigüedades y antojitos.</div>
           
           <div style="margin-top: 10px;">
-            <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-500);">Artículos más elogiados por visitantes:</span>
-            <div class="product-tags-cloud" id="side-product-tags" style="margin-top: 4px;"></div>
+            <div class="gov-header-row" style="margin-bottom: 6px;">
+              <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-500);">Especialidades del tianguis:</span>
+              <button class="btn-gov-small" id="btn-toggle-propose" style="font-size: 10px; padding: 2px 7px;">+ Proponer giro</button>
+            </div>
+
+            <!-- Mini-formulario para proponer especialidad -->
+            <div id="gov-propose-form" style="display: none; background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 8px; padding: 8px 10px; margin-bottom: 8px;">
+              <div style="font-size: 11px; font-weight: 700; color: var(--slate-800); margin-bottom: 4px;">Proponer nuevo artículo o giro popular:</div>
+              <div style="display: flex; gap: 6px;">
+                <input type="text" id="input-new-specialty" placeholder="Ej. Barbacoa de borrego, Tepache, Plantas..." style="flex: 1; font-size: 11px; padding: 5px 8px; border: 1px solid var(--slate-300); border-radius: 6px; font-family: inherit;">
+                <button class="btn-gov-small" id="btn-submit-propose" style="background: var(--cdmx-green-primary); color: #fff; border: none;">Guardar</button>
+              </div>
+              <div style="font-size: 9.5px; color: var(--slate-500); margin-top: 3px;">Entra en estado [PROPUESTO] hasta acumular validaciones comunitarias.</div>
+            </div>
+
+            <div class="product-tags-cloud" id="side-product-tags" style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px;"></div>
           </div>
         </div>
 
@@ -1163,6 +1434,21 @@ def build_map_html():
             <div>• <strong>06:00 a 08:00</strong>: Montaje e instalación de puestos</div>
             <div>• <strong>08:00 a 17:00</strong>: Venta al público</div>
             <div>• <strong>17:00 a 19:00</strong>: Desmontaje y retiro ordenado</div>
+          </div>
+        </div>
+
+        <!-- BARRA CÍVICA Y HERRAMIENTAS DE AUDITORÍA ABIERTA (TESTING Y CARE) -->
+        <div class="gov-toolbar">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-weight: 700; color: var(--slate-700);">📍 Proof of Location:</span>
+            <button class="btn-gov-small" id="btn-toggle-simulate" style="font-size: 10px; padding: 2px 8px;">
+              GPS: Remoto (+1 pt)
+            </button>
+          </div>
+          <div class="gov-toolbar-actions">
+            <button class="btn-gov-small" id="btn-reload-demo">🎲 Datos demo</button>
+            <button class="btn-gov-small" id="btn-reset-votes">🔄 Reset votos</button>
+            <button class="btn-gov-small" id="btn-view-json">📋 Ver JSON</button>
           </div>
         </div>
       </div>
@@ -1216,6 +1502,17 @@ def build_map_html():
     </div>
   </div>
 
+  <!-- MODAL DE INSPECCIÓN JSON DE AUDITORÍA COMUNITARIA (MÓDULO 5.4) -->
+  <div id="json-modal-backdrop" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4); z-index: 2500; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #ffffff; border-radius: 16px; width: 100%; max-width: 600px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid var(--slate-200);">
+      <div class="modal-header">
+        <h3 class="modal-title">📋 Auditoría Abierta · Registro Local (JSON)</h3>
+        <button class="btn-close-sidebar" id="btn-close-json-modal">✕</button>
+      </div>
+      <div style="padding: 16px; overflow-y: auto; flex: 1; background: #0f172a; color: #f8fafc; font-family: monospace; font-size: 11px; white-space: pre-wrap; line-height: 1.5;" id="json-modal-content"></div>
+    </div>
+  </div>
+
   <!-- TOAST FLOTANTE -->
   <div id="toast">
     <span id="toast-icon">✓</span>
@@ -1225,6 +1522,9 @@ def build_map_html():
   <!-- Leaflet JS y MarkerCluster JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <!-- Módulo de Gobernanza Barrial y Auditoría Comunitaria Ponderada (Módulo 5.4) -->
+  <script src="scripts/governance_engine.js"></script>
 
   <!-- Datos empaquetados en JS (garantiza funcionamiento sin servidor ni problemas CORS) -->
   <script src="data/processed/tianguis_map_data.js" onerror="console.log('tianguis_map_data.js no encontrado directamente, intentando fetch JSON')"></script>
@@ -1304,6 +1604,9 @@ def build_map_html():
 
       function setupApp(data) {
         state.tianguis = data.tianguis || [];
+        if (window.GovernanceEngine) {
+          window.GovernanceEngine.initializeOrSeed(state.tianguis);
+        }
         state.vocabulario = data.vocabulario || [];
         state.alcaldias = data.alcaldias_lista || [];
 
@@ -1614,6 +1917,9 @@ def build_map_html():
 
         // Días
         document.getElementById('side-dias-list').textContent = t.dias.join(', ') || t.dia_principal;
+
+        // Renderizar Módulo 5.4: Gobernanza Barrial y Auditoría Comunitaria
+        renderCommunityAuditSections(t);
 
         // Botones de acción
         const gmapsBtn = document.getElementById('side-btn-gmaps');

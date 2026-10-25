@@ -183,9 +183,25 @@ graph TD
 - [x] **5.3 Indicador ligero de estatus de tianguis (Sin fricción)** `[Hecho]`
   - Cálculo automático basado en reloj/horario oficial (ej. `🟢 Abierto hoy · Horario de venta activo`, `🟡 En instalación y montaje (06:00 a 08:00 hrs)`, `🟡 En desmontaje y aseo vial (17:00 a 19:00 hrs)`, `🔴 No opera hoy`) sin depender de reportes manuales obligatorios.
   - Integrado de forma reactiva en la ficha lateral de cada tianguis, MSR y concentración en [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html).
-- [ ] **5.4 Sistema de Ponderación Ciudadana y Crowdsourcing Barrial ("¿Qué se vende aquí?")** `[100% Independiente] [Dificultad: Media]`
-  - Mecanismo ligero y local-first donde la ciudadanía compradora y los comerciantes pueden votar o confirmar qué productos y especialidades sí se encuentran disponibles en cada tianguis individual (ej. "Ropa de paca", "Barbacoa", "Herramientas usadas", "Pescado fresco").
-  - Sistema de reputación por upvotes/downvotes comunitarios almacenado localmente (localStorage/IndexedDB) con sincronización opcional, evitando formularios burocráticos y respetando la soberanía de datos del comerciante.
+- [x] **5.4 Sistema de Ponderación Ciudadana y Crowdsourcing Barrial ("¿Qué se vende aquí?")** `[Hecho]`
+  - Implementado motor modular [`scripts/governance_engine.js`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/governance_engine.js) con arquitectura Local-First (almacenamiento en `localStorage` con UUID anónimo efímero, respetando los Principios CARE y soberanía de datos sin extractivismo financiero).
+  - **Proof of Location & Ponderación por Proximidad:**
+    * Ponderación territorial: Si el usuario se ubica a ≤ 300 metros del tianguis, el voto vale **+3 puntos** con insignia *"Validado en territorio"*.
+    * Validación remota o sin GPS: el voto vale **+1 punto** (*"Validación ciudadana"*).
+    * Selector/conmutador interactivo para simular ubicación territorial y cooldown anti-spam de 24 horas por tianguis/acción.
+  - **Ciclo de Estados Epistémicos:**
+    * `CONFIRMADO` (score acumulado ≥ 3 pts): renderizado con estilo sólido esmeralda y checkmark `✓`.
+    * `PROPUESTO` (score < 3 pts): renderizado con estilo punteado (*dashed*) sutil e interactivo `?`.
+    * `EN_DISPUTA` (conflicto significativo de reportes): renderizado con estilo ámbar y advertencia `⚠️`.
+  - **3 Ámbitos de Auditoría Comunitaria en Ficha Lateral:**
+    1. *Reporte de Estatus en Vivo Hoy:* Micro-preguntador interactivo *"¿Se instaló el tianguis hoy? [ 🟢 Sí, está operando ] [ 🔴 Hoy no se puso ]"* con desglose del balance de votos ponderados del día.
+    2. *Medios de Pago Reales:* Validación barrial comunitaria de medios soberanos (*Solo efectivo*, *Transferencia / CoDi* y *Tarjeta / Terminal*).
+    3. *Especialidades y Artículos del Tianguis ("¿Qué se vende aquí?"):* Chips dinámicos según estado epistémico con botón interactivo *"+ Proponer giro"* y mini-formulario para incorporar artículos comunitarios.
+  - **Semilla de Datos Demo y Reactividad en el Mapa:**
+    * Precarga automática de datos demo verosímiles y variados para tianguis emblemáticos (El Salado, San Felipe de Jesús, El Chopo, Sullivan, Condesa, Apatlaco, etc.) y muestra procedural en las 16 alcaldías.
+    * Indicadores visuales en el mapa: micro-píldoras comunitarias en los pines de Leaflet (`✓` verde confirmado, `⚠️` ámbar en disputa, `👥` azul auditoría activa) y tooltips enriquecidos.
+    * Herramientas cívicas integradas: conmutador de proximidad territorial, recarga de datos demo, reseteo de votos locales y visor modal del dump JSON de auditoría abierta.
+  - Integrado y compilado en [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) y [`scripts/build_revamped_map.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/build_revamped_map.py).
 - [x] **5.5 Pipeline de Enriquecimiento de Especialidades de Tianguis (Google Maps & Reseñas)** `[Hecho]`
   - **Fase 1 (Scraping):** Implementado crawler ético y concurrente [`scripts/scrape_tianguis_reviews.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/scrape_tianguis_reviews.py) con caché local en disco (`data/raw/scraping/cache/`) para los 512 `place_id` únicos de Google Maps Places.
     * Extraídos ratings y opiniones para 1,123 tianguis (82.2%), fotografías reales para 953 tianguis (69.7%) y corpus de comentarios para 1,038 tianguis (75.9%).
