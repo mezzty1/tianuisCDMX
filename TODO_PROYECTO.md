@@ -232,27 +232,19 @@ graph TD
     - **Filtros rápidos de política social:** Conmutadores para *"Canasta Básica SEDECO"* y *"Acepta Vales Mercomuna"*.
     - **Reactividad geoespacial:** Actualización instantánea de clusters y marcadores de Leaflet (mercados, tianguis, MSR), panel lateral detallado con oferta de giros por espacio, insignias oficiales y contadores dinámicos de oferta disponible con gestión de píldoras activas y botón de reseteo.
 - [x] **7.6 Pivote Estratégico a Comercio Popular y Barrial Itinerante (Tianguis, MSR y Concentraciones)** `[Hecho]`
-- [ ] **7.7 Mapa Minimalista 100% Centrado en Tianguis (CDMX + ZMVM)** `[En Progreso]`
-  - Reinicio visual limpio y minimalista:
-    - Lienzo base con polígonos de las 16 alcaldías de la CDMX y 60 municipios conurbados de la ZMVM.
-    - Exclusión total de mercados públicos (foco exclusivo en Tianguis semanales).
-    - Selector semanal limpio que arranca por defecto en **`[ HOY ]`** y evalúa la hora del día.
-    - Un ÚNICO buscador omnibox inteligente (sin duplicación de cajas) para nombres populares ("El Salado", "La Bola", "El Chopo"), colonias/alcaldías y más de 300 productos/artículos barriales.
-    - Ficha de tianguis sobria: nombre popular, horario en vivo, escala (barrial/mediano/megatianguis), especialidad y referencia caminable a estación más cercana (`🚶 A X min a pie de Metro Y`).
-    - Cero líneas de transporte sobrecargando el lienzo.
-  - **Enfoque 100% en Comercio Popular y Barrial:** Rediseño integral de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) y [`scripts/build_revamped_map.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/build_revamped_map.py) para priorizar el abasto popular en vía pública: 1,365 tianguis itinerantes, 51 mercados sobre ruedas (MSR) y 169 concentraciones de comerciantes barriales (SEDECO).
-  - **Desactivación de Ruido de Transporte Masivo:** Ocultamiento total de las capas de Metro, Metrobús, RTP, Trolebús y concesionados en la interfaz gráfica (manteniendo los datasets intactos en el backend) y eliminación del planificador multimodal y pestañas de tarifas para una experiencia de usuario limpia y especializada.
-  - **Selector por Día de la Semana con Botón "🧺 Abiertos Hoy":** Filtro rápido de Lunes a Domingo con detección automática del día actual de la semana en la CDMX y conteo en tiempo real de espacios abiertos.
-  - **Filtro por Demarcación Territorial:** Selector de las 16 alcaldías oficiales de la CDMX en mayúsculas con auto-encuadre espacial (`fitBounds`) a los tianguis de la zona.
-  - **Buscador Predictivo Especializado:** Búsqueda en tiempo real sobre nombres populares (ej. "La Piloto", "El Salado", "Lagunilla"), calles y entrecalles ocupadas, colonias y giros comerciales.
-  - **Ficha Lateral (Sidebar) de Tianguis:**
-    * Nombre popular y oficial con distintivo de espacio.
-    * Estatus en vivo (`🟢 Abierto hoy`, `🟡 En instalación/desmontaje`, `🔴 No opera hoy`).
-    * Desglose horario operativo: Montaje (06:00 a 08:00), Venta (08:00 a 17:00), Desmontaje y aseo (17:00 a 19:00).
-    * Ubicación y entrecalles afectadas por cierre vial.
-    * Número estimado de puestos/oferentes y giros de canasta básica / MERCOMUNA.
-    * Acciones: Copia de coordenadas GPS WGS84 y enlace directo a Google Maps.
-  - **Modal Ejecutivo de "Afectaciones y Calles Ocupadas Hoy":**
-    * Pestaña interactiva con métricas del día (tianguis instalados, km de vía pública ocupada, oferentes totales y tipos de cierres).
-    * Tabla de las top avenidas y corredores afectados hoy.
-    * Pestaña con el resumen semanal acumulado de la CDMX (330 km de calles ocupadas por semana, 239,628 oferentes semanales) y principios normativos de SEDECO.
+- [x] **7.7 Mapa Minimalista 100% Centrado en Tianguis (CDMX + ZMVM)** `[Hecho]`
+  - **Foco Exclusivo en Tianguis (Cero Ruido):** Eliminación total de mercados públicos, líneas de transporte sobrecargadas y capas de cierres viales. Lienzo CartoDB Positron ultra limpio centrado exclusivamente en los 1,367 tianguis semanales autorizados de la CDMX.
+  - **Lienzo Base Limpio Metropolitano:** Incorporación de polígonos vectoriales sutiles de las 16 Alcaldías oficiales de la CDMX y 60 municipios conurbados de la ZMVM (Edomex).
+  - **Inicio Dinámico en `[ HOY ]` con Evaluación de Hora Actual:** Detección automática del día de la semana y cálculo de estatus en vivo (🟢 *Abierto hoy hasta las 17:00 hrs*, 🟡 *En montaje / desmontaje*, 🔴 *No opera hoy*) con selector semanal `[ 🧺 HOY ]` `[ LUN ]` `[ MAR ]` `[ MIÉ ]` `[ JUE ]` `[ VIE ]` `[ SÁB ]` `[ DOM ]` `[ TODOS ]` y contadores en tiempo real.
+  - **ÚNICO Buscador Omnibox Inteligente y Humano:** Sustitución de cajas duplicadas por una sola barra de búsqueda predictiva con sugerencias categorizadas:
+    * 🎪 **Tianguis por Nombre Popular u Oficial:** "El Salado", "San Felipe / La Bola", "Cultural del Chopo", "Sullivan", "Apatlaco", "Condesa", "Doctores", etc.
+    * 📍 **Alcaldías y Colonias:** Enfoque espacial automático con auto-encuadre `fitBounds`.
+    * 🏷️ **Catálogo Extendido de +460 Productos Barriales:** Frutas, legumbres, carnes, mariscos, barbacoa, birria, carnitas, antojitos, ropa de paca, calzado, tenis, herramientas usadas, chácharas, tecnología, hierbas medicinales, etc.
+  - **Ficha Lateral (Sidebar) Sobria:**
+    * Nombre popular destacado y cédula oficial SEDECO.
+    * Badge de estatus en vivo con pulso de color y detalle horario.
+    * Escala comercial: *Megatianguis (300+ puestos)*, *Tianguis Mediano (100–300)* o *Tianguis Barrial (<100)* con número estimado de oferentes.
+    * Especialidad y vocación barrial con nube de etiquetas.
+    * Referencia caminable calculada por distancia geodésica a transporte masivo: `🚶 A X min a pie de Metro [Nombre] (Línea Y) · Z metros` (sin dibujar líneas en el mapa).
+    * Acciones: enlace directo a Google Maps y botón de copiado de coordenadas GPS WGS84 al portapapeles.
+  - **Entrega Técnica:** Generación de `scripts/build_compras_catalog.py` (+460 items), `scripts/build_tianguis_bundle.py` (bundle unificado de 3.3 MB), `scripts/build_revamped_map.py` y `mapa_comercio_movilidad_cdmx.html` (interfaz ultraligera de 61 KB).

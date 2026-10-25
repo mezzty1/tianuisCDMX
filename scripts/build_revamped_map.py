@@ -1,35 +1,35 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Generador del Mapa Minimalista y Especializado de Tianguis CDMX + ZMVM
+Chilangatón 2026 - Reto 1: Comercio Popular y Barrial (Tarea 7.7)
+
+Crea 'mapa_comercio_movilidad_cdmx.html' enfocado 100% en Tianguis:
+- Foco exclusivo en los 1,367 tianguis semanales (cero mercados públicos, cero líneas masivas de transporte).
+- Lienzo base limpio con polígonos de las 16 Alcaldías CDMX y 60 Municipios de la ZMVM.
+- Inicio por defecto en HOY y evaluación de estatus en vivo según hora del día.
+- Selector de días: [ HOY ] [ LUN ] [ MAR ] [ MIÉ ] [ JUE ] [ VIE ] [ SÁB ] [ DOM ] [ TODOS ].
+- UN SOLO buscador inteligente y humano (Omnibox): nombres populares, colonias/alcaldías y +460 productos.
+- Ficha lateral (sidebar) sobria: nombre popular/oficial, estatus en vivo, escala, vocación, transporte a pie y botones de acción.
+"""
+
 import os
-import json
-import re
+import sys
 
 def build_map_html():
-    print("Iniciando generación de mapa_comercio_movilidad_cdmx.html 100% enfocado en Comercio Popular y Barrial...")
+    print("Generando mapa_comercio_movilidad_cdmx.html minimalista y centrado 100% en Tianguis...")
 
-    # Cargar estadísticas de cierres viales
-    cierres_stats = {}
-    cierres_dias = {}
-    if os.path.exists('data/processed/cierres_viales_por_dia.json'):
-        try:
-            with open('data/processed/cierres_viales_por_dia.json', 'r', encoding='utf-8') as f:
-                c_data = json.load(f)
-                cierres_stats = c_data.get('resumen_semanal', {})
-                cierres_dias = c_data.get('dias', {})
-        except Exception as e:
-            print("Notice: error al leer cierres_viales_por_dia.json:", e)
-
-    cierres_json_str = json.dumps({'resumen_semanal': cierres_stats, 'dias': cierres_dias}, ensure_ascii=False)
-
-    html = f"""<!DOCTYPE html>
+    html_content = """<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comercio Popular y Barrial CDMX · Tianguis, MSR y Concentraciones</title>
+  <title>Tianguis CDMX y ZMVM · Abasto Popular Barrial e Itinerante</title>
 
   <!-- Google Fonts: Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -38,2346 +38,1944 @@ def build_map_html():
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
 
   <style>
-    :root {{
-      --cdmx-green-dark: #0f5953;
-      --cdmx-green-primary: #116962;
-      --cdmx-green-light: #eef7f6;
-      --cdmx-green-chip: #d5ece9;
-      --cdmx-teal: #0f766e;
-      --cdmx-teal-light: #ccfbf1;
+    :root {
+      --cdmx-green-dark: #093c37;
+      --cdmx-green-primary: #0f5953;
+      --cdmx-green-accent: #116962;
+      --cdmx-green-light: #e6f3f1;
+      --cdmx-green-chip: #cbe5e1;
       --cdmx-amber: #d97706;
       --cdmx-amber-light: #fef3c7;
-      --cdmx-purple: #6d28d9;
-      --cdmx-purple-light: #ede9fe;
-      --cdmx-wine: #9f2241;
-      --cdmx-gold: #bc955c;
-      --cdmx-bg: #f8fafc;
-      --cdmx-text-dark: #092c29;
-      --cdmx-text-muted: #527370;
-      --cdmx-border: #d4e7e5;
-      --shadow-sidebar: 4px 0 24px rgba(15, 89, 83, 0.12);
-      --shadow-card: 0 4px 16px rgba(15, 89, 83, 0.08);
-      --shadow-fab: 0 4px 14px rgba(0, 0, 0, 0.16);
-      --font-main: 'Montserrat', sans-serif;
-    }}
+      --cdmx-red: #dc2626;
+      --cdmx-red-light: #fee2e2;
+      --cdmx-emerald: #059669;
+      --cdmx-emerald-light: #d1fae5;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
 
-    * {{
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }}
+    }
 
-    body {{
-      font-family: var(--font-main);
-      background: #eef2f6;
-      color: var(--cdmx-text-dark);
+    body {
+      font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+      background: var(--slate-100);
+      color: var(--slate-800);
+      overflow: hidden;
       height: 100vh;
       width: 100vw;
-      overflow: hidden;
       display: flex;
-    }}
+      flex-direction: column;
+    }
 
-    /* ==========================================================================
-       SIDEBAR PRINCIPAL (ESCRITORIO & MÓVIL)
-       ========================================================================== */
-    #sidebar {{
-      width: 440px;
-      height: 100vh;
+    /* =========================================================================
+       CABECERA Y OMNIBOX UNIFICADO
+       ========================================================================= */
+    #header-container {
       background: #ffffff;
-      border-right: 1px solid var(--cdmx-border);
-      box-shadow: var(--shadow-sidebar);
-      display: flex;
-      flex-direction: column;
-      z-index: 1001;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin-left 0.3s ease;
-      flex-shrink: 0;
-    }}
-
-    #sidebar.collapsed {{
-      margin-left: -440px;
-    }}
-
-    .sidebar-header {{
-      background: linear-gradient(135deg, var(--cdmx-green-dark) 0%, #15736c 100%);
-      color: #ffffff;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid var(--cdmx-gold);
-      flex-shrink: 0;
-    }}
-
-    .sidebar-brand-title {{
-      font-size: 1.08rem;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }}
-
-    .sidebar-brand-sub {{
-      font-size: 0.68rem;
-      color: #e0f2f1;
-      font-weight: 500;
-      margin-top: 2px;
-      letter-spacing: 0.2px;
-    }}
-
-    .btn-toggle-sidebar {{
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #ffffff;
-      border-radius: 8px;
-      padding: 6px 10px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: background 0.2s ease;
-    }}
-    .btn-toggle-sidebar:hover {{
-      background: rgba(255, 255, 255, 0.28);
-    }}
-
-    .sidebar-scroll {{
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }}
-
-    /* Botón flotante para reabrir sidebar cuando está colapsado */
-    #btn-open-sidebar {{
-      position: absolute;
-      top: 16px;
-      left: 16px;
+      border-bottom: 1px solid var(--slate-200);
       z-index: 1000;
-      background: var(--cdmx-green-dark);
-      color: #ffffff;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      font-weight: 700;
-      box-shadow: var(--shadow-fab);
-      cursor: pointer;
-      display: none;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .header-top {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }}
-    #btn-open-sidebar:hover {{
+      justify-content: space-between;
+      padding: 10px 20px;
+      gap: 16px;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 250px;
+    }
+
+    .brand-badge {
       background: var(--cdmx-green-primary);
-      transform: translateY(-1px);
-    }}
-
-    /* ==========================================================================
-       TARJETAS Y MÓDULOS DE CONTROL
-       ========================================================================== */
-    .section-card {{
-      background: #ffffff;
-      border: 1px solid var(--cdmx-border);
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: var(--shadow-card);
-    }}
-
-    .section-title {{
-      font-size: 0.76rem;
+      color: #ffffff;
       font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.8px;
+      padding: 4px 8px;
+      border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--cdmx-green-dark);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }}
+    }
 
-    /* Selector de Día de la Semana */
-    .btn-today-highlight {{
-      width: 100%;
-      background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 10px;
-      padding: 11px 14px;
-      font-family: var(--font-main);
-      font-size: 0.84rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.24);
-      margin-bottom: 10px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }}
-    .btn-today-highlight:hover {{
-      transform: translateY(-1px);
-      box-shadow: 0 6px 16px rgba(15, 118, 110, 0.32);
-    }}
-    .btn-today-highlight.active {{
-      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
-      border: 2px solid #a7f3d0;
-    }}
-
-    .days-grid {{
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
-    }}
-    .day-btn {{
-      background: var(--cdmx-bg);
-      border: 1px solid var(--cdmx-border);
-      color: var(--cdmx-text-dark);
-      padding: 7px 4px;
-      border-radius: 8px;
-      font-family: var(--font-main);
-      font-size: 0.72rem;
+    .brand-title {
+      font-size: 15px;
       font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.15s ease;
-    }}
-    .day-btn:hover {{
-      background: var(--cdmx-green-chip);
-      border-color: var(--cdmx-green-primary);
-    }}
-    .day-btn.active {{
-      background: var(--cdmx-green-dark);
-      color: #ffffff;
-      border-color: var(--cdmx-green-dark);
-      box-shadow: 0 2px 6px rgba(15, 89, 83, 0.25);
-    }}
+      color: var(--slate-900);
+      line-height: 1.2;
+    }
 
-    /* Selector de Alcaldía */
-    .alcaldia-select-wrapper {{
-      position: relative;
-      margin-top: 6px;
-    }}
-    .alcaldia-select {{
-      width: 100%;
-      padding: 9px 12px;
-      font-family: var(--font-main);
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--cdmx-text-dark);
-      background: #ffffff;
-      border: 1.5px solid var(--cdmx-border);
-      border-radius: 9px;
-      outline: none;
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      transition: border-color 0.2s ease;
-    }}
-    .alcaldia-select:focus {{
-      border-color: var(--cdmx-green-primary);
-      box-shadow: 0 0 0 3px rgba(17, 105, 98, 0.12);
-    }}
-    .alcaldia-select-arrow {{
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      color: var(--cdmx-green-dark);
-      font-size: 0.75rem;
-    }}
+    .brand-subtitle {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--slate-500);
+    }
 
-    /* Buscador Predictivo */
-    .search-input-container {{
+    /* OMNIBOX UNIFICADO */
+    .omnibox-wrapper {
       position: relative;
-    }}
-    .search-input-box {{
-      width: 100%;
-      padding: 10px 38px 10px 12px;
-      font-family: var(--font-main);
-      font-size: 0.82rem;
-      border: 1.5px solid var(--cdmx-border);
-      border-radius: 9px;
+      flex: 1;
+      max-width: 680px;
+    }
+
+    .omnibox-input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: var(--slate-50);
+      border: 1.5px solid var(--slate-300);
+      border-radius: 28px;
+      padding: 2px 14px;
+      transition: all 0.2s ease;
+    }
+
+    .omnibox-input-group:focus-within {
       background: #ffffff;
-      color: var(--cdmx-text-dark);
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }}
-    .search-input-box:focus {{
       border-color: var(--cdmx-green-primary);
-      box-shadow: 0 0 0 3px rgba(17, 105, 98, 0.12);
-    }}
-    .search-clear-btn {{
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
+      box-shadow: 0 0 0 3px rgba(15, 89, 83, 0.12);
+    }
+
+    .omnibox-icon {
+      color: var(--slate-400);
+      font-size: 16px;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+    }
+
+    #omnibox-input {
+      flex: 1;
       border: none;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: none;
-    }}
+      background: transparent;
+      padding: 9px 0;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--slate-800);
+      outline: none;
+    }
 
-    /* Dropdown de Autocompletado */
-    .autocomplete-dropdown {{
+    #omnibox-input::placeholder {
+      color: var(--slate-400);
+      font-weight: 400;
+      font-size: 12.5px;
+    }
+
+    #omnibox-clear {
+      background: none;
+      border: none;
+      color: var(--slate-400);
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: 50%;
+      display: none;
+      line-height: 1;
+    }
+
+    #omnibox-clear:hover {
+      color: var(--slate-700);
+      background: var(--slate-200);
+    }
+
+    /* DROPDOWN DE SUGERENCIAS INTELIGENTES */
+    #omnibox-dropdown {
       position: absolute;
-      top: calc(100% + 4px);
+      top: calc(100% + 6px);
       left: 0;
       right: 0;
       background: #ffffff;
-      border: 1px solid var(--cdmx-border);
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      max-height: 280px;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      max-height: 380px;
       overflow-y: auto;
-      z-index: 2000;
       display: none;
-    }}
-    .autocomplete-item {{
-      padding: 9px 12px;
-      border-bottom: 1px solid #f1f5f9;
-      cursor: pointer;
-      font-size: 0.77rem;
-      transition: background 0.12s ease;
-    }}
-    .autocomplete-item:last-child {{
-      border-bottom: none;
-    }}
-    .autocomplete-item:hover, .autocomplete-item.selected {{
-      background: var(--cdmx-green-light);
-    }}
-    .autocomplete-title {{
-      font-weight: 700;
-      color: var(--cdmx-text-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }}
-    .autocomplete-sub {{
-      font-size: 0.69rem;
-      color: var(--cdmx-text-muted);
-      margin-top: 2px;
-    }}
-    .autocomplete-badge {{
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.62rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #ffffff;
-    }}
+      z-index: 2000;
+    }
 
-    /* Conmutadores de Capas de Comercio */
-    .layers-toggle-grid {{
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }}
-    .layer-toggle-btn {{
+    .suggest-group-header {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--slate-500);
+      background: var(--slate-50);
+      padding: 6px 14px;
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-100);
+    }
+
+    .suggest-group-header:first-child {
+      border-top: none;
+    }
+
+    .suggest-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: var(--cdmx-bg);
-      border: 1px solid var(--cdmx-border);
+      padding: 9px 14px;
       cursor: pointer;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--cdmx-text-dark);
-      transition: all 0.15s ease;
-    }}
-    .layer-toggle-btn:hover {{
-      background: #f1f5f9;
-    }}
-    .layer-toggle-btn.active {{
-      background: var(--cdmx-green-chip);
-      border-color: var(--cdmx-green-primary);
-      color: var(--cdmx-green-dark);
-      font-weight: 700;
-    }}
-    .layer-pill-dot {{
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 6px;
-    }}
+      border-bottom: 1px solid var(--slate-100);
+      transition: background 0.15s ease;
+    }
 
-    /* Banderas de Política Pública y Abasto */
-    .policy-toggle-row {{
+    .suggest-item:hover, .suggest-item.active {
+      background: var(--cdmx-green-light);
+    }
+
+    .suggest-item-main {
       display: flex;
-      gap: 8px;
-    }}
-    .policy-toggle-btn {{
-      flex: 1;
-      padding: 7px 8px;
-      border-radius: 7px;
-      background: #ffffff;
-      border: 1px solid var(--cdmx-border);
-      font-family: var(--font-main);
-      font-size: 0.72rem;
-      font-weight: 700;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .suggest-item-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .suggest-item-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    .suggest-item-subtitle {
+      font-size: 11px;
+      color: var(--slate-500);
+      margin-top: 1px;
+    }
+
+    .suggest-item-badge {
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 10px;
+      background: var(--slate-100);
+      color: var(--slate-600);
+      flex-shrink: 0;
+    }
+
+    /* BOTONES HEADER DERECHA */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-info-action {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--slate-100);
+      border: 1px solid var(--slate-300);
+      color: var(--slate-700);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 20px;
       cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-info-action:hover {
+      background: var(--slate-200);
+      color: var(--slate-900);
+    }
+
+    /* =========================================================================
+       BARRA DE FILTROS Y SELECTOR SEMANAL
+       ========================================================================= */
+    #filter-bar {
+      background: #ffffff;
+      border-top: 1px solid var(--slate-100);
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      overflow-x: auto;
+    }
+
+    .week-selector-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--slate-100);
+      padding: 3px;
+      border-radius: 24px;
+      flex-shrink: 0;
+    }
+
+    .day-btn {
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--slate-600);
+      padding: 5px 11px;
+      border-radius: 18px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .day-btn:hover {
+      color: var(--slate-900);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .day-btn.active {
+      background: var(--cdmx-green-primary);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(15, 89, 83, 0.3);
+    }
+
+    .day-btn.btn-today {
+      position: relative;
+    }
+
+    .day-btn.btn-today::after {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #34d399;
+      border-radius: 50%;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    .day-btn.active.btn-today::after {
+      background: #ffffff;
+    }
+
+    /* SELECTORES COMPLEMENTARIOS */
+    .filter-dropdowns {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .filter-select {
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      border-radius: 18px;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--slate-700);
+      padding: 5px 12px;
+      outline: none;
+      cursor: pointer;
+      transition: border 0.15s;
+    }
+
+    .filter-select:focus {
+      border-color: var(--cdmx-green-primary);
+    }
+
+    /* CONTADORES Y CHIPS */
+    .filter-summary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--slate-600);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .results-count-badge {
+      font-weight: 700;
+      color: var(--cdmx-green-primary);
+      background: var(--cdmx-green-light);
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+
+    /* BARRA DE CHIPS ACTIVOS */
+    #active-chips-bar {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 20px 8px 20px;
+      background: #ffffff;
+      border-top: 1px dashed var(--slate-200);
+      flex-wrap: wrap;
+    }
+
+    .active-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cdmx-green-light);
+      border: 1px solid var(--cdmx-green-chip);
+      color: var(--cdmx-green-dark);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 14px;
+    }
+
+    .active-chip-remove {
+      cursor: pointer;
+      color: var(--cdmx-green-primary);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .active-chip-remove:hover {
+      color: var(--cdmx-red);
+    }
+
+    .btn-reset-filters {
+      background: none;
+      border: none;
+      color: var(--slate-500);
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 2px 6px;
+    }
+
+    .btn-reset-filters:hover {
+      color: var(--cdmx-red);
+    }
+
+    /* =========================================================================
+       MAPA Y CONTENEDOR PRINCIPAL
+       ========================================================================= */
+    #main-content {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      background: #f8fafc;
+    }
+
+    /* =========================================================================
+       MARCADORES Y CLUSTERS MINIMALISTAS
+       ========================================================================= */
+    .tianguis-marker-icon {
+      background: transparent;
+      border: none;
+    }
+
+    .marker-pin {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      color: var(--cdmx-text-dark);
-      transition: all 0.15s ease;
-    }}
-    .policy-toggle-btn.active {{
-      background: var(--cdmx-green-dark);
-      color: #ffffff;
-      border-color: var(--cdmx-green-dark);
-    }}
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+      border: 2px solid #ffffff;
+      font-size: 13px;
+      transition: transform 0.15s ease;
+      cursor: pointer;
+    }
 
-    /* Contador y Filtros Activos */
-    .results-counter-bar {{
+    .marker-pin:hover {
+      transform: scale(1.2);
+      z-index: 1000 !important;
+    }
+
+    .marker-open {
+      background: var(--cdmx-emerald);
+      color: #ffffff;
+    }
+
+    .marker-setup {
+      background: var(--cdmx-amber);
+      color: #ffffff;
+    }
+
+    .marker-closed {
+      background: var(--slate-400);
+      color: #ffffff;
+    }
+
+    /* CLUSTERS PERSONALIZADOS */
+    .tianguis-cluster {
+      background: rgba(15, 89, 83, 0.2);
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 6px 4px;
-      font-size: 0.74rem;
-      color: var(--cdmx-text-muted);
-    }}
-    .btn-reset-filters {{
-      background: none;
-      border: none;
-      color: #dc2626;
-      font-family: var(--font-main);
-      font-size: 0.72rem;
+      justify-content: center;
+    }
+
+    .tianguis-cluster div {
+      width: 32px;
+      height: 32px;
+      background: var(--cdmx-green-primary);
+      color: #ffffff;
+      border-radius: 50%;
+      font-size: 12px;
       font-weight: 700;
-      cursor: pointer;
-      display: none;
-    }}
-    .btn-reset-filters:hover {{
-      text-decoration: underline;
-    }}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
 
-    /* ==========================================================================
-       FICHA DE DETALLE EN EL SIDEBAR (DETAIL CARD)
-       ========================================================================== */
-    #detail-card {{
+    /* =========================================================================
+       FICHA LATERAL (SIDEBAR) SOBRIA
+       ========================================================================= */
+    #tianguis-sidebar {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      bottom: 14px;
+      width: 380px;
+      max-width: calc(100vw - 28px);
       background: #ffffff;
-      border: 1.5px solid var(--cdmx-green-dark);
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 8px 24px rgba(15, 89, 83, 0.12);
-      display: none;
-      animation: fadeIn 0.25s ease;
-    }}
+      border-radius: 16px;
+      box-shadow: var(--shadow-xl);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(120%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+    }
 
-    @keyframes fadeIn {{
-      from {{ opacity: 0; transform: translateY(6px); }}
-      to {{ opacity: 1; transform: translateY(0); }}
-    }}
+    #tianguis-sidebar.open {
+      transform: translateX(0);
+    }
 
-    .detail-card-header {{
+    .sidebar-header {
+      padding: 16px 18px 12px 18px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-100);
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 8px;
-    }}
-    .detail-space-badge {{
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 8px;
-      border-radius: 5px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #ffffff;
-    }}
-    .btn-close-card {{
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 1.1rem;
-      cursor: pointer;
-      line-height: 1;
-      padding: 2px 4px;
-    }}
-    .btn-close-card:hover {{
-      color: var(--cdmx-text-dark);
-    }}
+      gap: 12px;
+    }
 
-    .detail-name {{
-      font-size: 1.05rem;
+    .sidebar-title-group {
+      flex: 1;
+    }
+
+    .sidebar-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge-escala {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-mega {
+      background: #fae8ff;
+      color: #86198f;
+      border: 1px solid #f0abfc;
+    }
+
+    .badge-mediano {
+      background: var(--cdmx-green-light);
+      color: var(--cdmx-green-dark);
+      border: 1px solid var(--cdmx-green-chip);
+    }
+
+    .badge-barrial {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      border: 1px solid var(--slate-200);
+    }
+
+    .sidebar-popular-title {
+      font-size: 17px;
       font-weight: 800;
-      color: var(--cdmx-text-dark);
+      color: var(--slate-900);
       line-height: 1.25;
       margin-bottom: 3px;
-    }}
-    .detail-sub {{
-      font-size: 0.74rem;
-      color: var(--cdmx-text-muted);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }}
+    }
 
-    /* Estatus en Vivo */
-    .status-live-banner {{
+    .sidebar-cedula-title {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--slate-500);
+      line-height: 1.3;
+    }
+
+    .btn-close-sidebar {
+      background: var(--slate-100);
+      border: none;
+      color: var(--slate-500);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }}
-    .status-open {{
-      background: #ecfdf5;
-      color: #065f46;
+      justify-content: center;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-close-sidebar:hover {
+      background: var(--slate-200);
+      color: var(--slate-800);
+    }
+
+    .sidebar-body {
+      padding: 16px 18px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* CARD STATUS EN VIVO */
+    .status-card {
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-card.status-open {
+      background: var(--cdmx-emerald-light);
       border: 1px solid #a7f3d0;
-    }}
-    .status-montaje {{
-      background: #fefce8;
-      color: #854d0e;
-      border: 1px solid #fde047;
-    }}
-    .status-closed {{
-      background: #fef2f2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
-    }}
-    .status-dot-pulse {{
-      width: 8px;
-      height: 8px;
+      color: #065f46;
+    }
+
+    .status-card.status-setup, .status-card.status-teardown {
+      background: var(--cdmx-amber-light);
+      border: 1px solid #fde68a;
+      color: #92400e;
+    }
+
+    .status-card.status-closed {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      color: var(--slate-600);
+    }
+
+    .status-indicator-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       flex-shrink: 0;
-    }}
-    .status-open .status-dot-pulse {{
-      background: #10b981;
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
-    }}
-    .status-montaje .status-dot-pulse {{
-      background: #f59e0b;
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
-    }}
-    .status-closed .status-dot-pulse {{
-      background: #ef4444;
-    }}
+    }
 
-    /* Caja de Afectación Vial y Entrecalles */
-    .closure-box {{
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 0.74rem;
-      color: #92400e;
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }}
-    .closure-box-title {{
-      font-weight: 800;
-      color: #78350f;
-      margin-bottom: 3px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }}
+    .status-open .status-indicator-dot {
+      background: var(--cdmx-emerald);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25);
+    }
 
-    /* Grid de Estadísticas */
-    .detail-stats-grid {{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      margin-bottom: 10px;
-    }}
-    .stat-box {{
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 7px;
-      padding: 6px;
-      text-align: center;
-    }}
-    .stat-box-val {{
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--cdmx-green-dark);
-    }}
-    .stat-box-lbl {{
-      font-size: 0.62rem;
-      color: #64748b;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-top: 1px;
-    }}
+    .status-setup .status-indicator-dot, .status-teardown .status-indicator-dot {
+      background: var(--cdmx-amber);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25);
+    }
 
-    /* Desglose de Horarios Operativos */
-    .oper-schedule-box {{
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 0.72rem;
-      margin-bottom: 10px;
-    }}
-    .oper-schedule-row {{
-      display: flex;
-      justify-content: space-between;
-      padding: 2px 0;
-      color: #334155;
-    }}
+    .status-closed .status-indicator-dot {
+      background: var(--slate-400);
+    }
 
-    /* Botones de Acción en Ficha */
-    .detail-actions-row {{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-    }}
-    .btn-detail-action {{
-      padding: 8px;
-      border-radius: 7px;
-      font-family: var(--font-main);
-      font-size: 0.72rem;
+    .status-card-text {
+      flex: 1;
+    }
+
+    .status-headline {
+      font-size: 13.5px;
       font-weight: 700;
+    }
+
+    .status-subline {
+      font-size: 11px;
+      margin-top: 1px;
+      opacity: 0.9;
+    }
+
+    /* SECCIÓN DE DATOS */
+    .detail-section {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .detail-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--slate-500);
+    }
+
+    .detail-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--slate-800);
+      line-height: 1.4;
+    }
+
+    .detail-value-bold {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    /* CAJA DE TRANSPORTE A PIE */
+    .transit-walk-box {
+      background: var(--slate-50);
+      border: 1.5px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .transit-walk-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .transit-walk-content {
+      flex: 1;
+    }
+
+    .transit-walk-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .transit-walk-desc {
+      font-size: 11px;
+      color: var(--slate-500);
+      margin-top: 2px;
+    }
+
+    /* TAGS DE PRODUCTOS */
+    .product-tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .product-tag-chip {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 10px;
       cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .product-tag-chip:hover {
+      background: var(--cdmx-green-light);
+      color: var(--cdmx-green-dark);
+    }
+
+    /* ACCIONES SIDEBAR FOOTER */
+    .sidebar-footer {
+      padding: 14px 18px;
+      background: var(--slate-50);
+      border-top: 1px solid var(--slate-200);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-action-primary {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      border: 1px solid transparent;
-    }}
-    .btn-action-primary {{
-      background: var(--cdmx-green-dark);
-      color: #ffffff;
-    }}
-    .btn-action-primary:hover {{
+      gap: 8px;
       background: var(--cdmx-green-primary);
-    }}
-    .btn-action-secondary {{
-      background: #f1f5f9;
-      color: var(--cdmx-text-dark);
-      border-color: #cbd5e1;
-    }}
-    .btn-action-secondary:hover {{
-      background: #e2e8f0;
-    }}
-
-    /* Botón Calles Ocupadas Hoy */
-    .btn-open-cierres-modal {{
-      background: linear-gradient(135deg, #b45309 0%, #78350f 100%);
       color: #ffffff;
       border: none;
-      border-radius: 10px;
-      padding: 11px 14px;
-      font-family: var(--font-main);
-      font-size: 0.8rem;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(180, 83, 9, 0.22);
-      transition: transform 0.15s ease;
-    }}
-    .btn-open-cierres-modal:hover {{
-      transform: translateY(-1px);
-    }}
-
-    /* ==========================================================================
-       MAPA Y CONTROLES FLOTANTES
-       ========================================================================== */
-    #map-container {{
-      flex: 1;
-      height: 100vh;
-      position: relative;
-    }}
-    #map {{
-      width: 100%;
-      height: 100%;
-    }}
-
-    /* Barra Superior Flotante */
-    .top-floating-bar {{
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-    }}
-    .top-bar-left {{
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      pointer-events: auto;
-    }}
-    .top-bar-right {{
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      pointer-events: auto;
-    }}
-
-    .btn-fab {{
-      background: #ffffff;
-      color: var(--cdmx-text-dark);
-      border: 1px solid var(--cdmx-border);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-family: var(--font-main);
-      font-size: 0.78rem;
+      font-family: inherit;
+      font-size: 12.5px;
       font-weight: 700;
-      box-shadow: var(--shadow-fab);
+      padding: 10px 14px;
+      border-radius: 10px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }}
-    .btn-fab:hover {{
-      background: var(--cdmx-green-light);
-      border-color: var(--cdmx-green-primary);
-    }}
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
 
-    /* ==========================================================================
-       MARKER CLUSTERS ESTILIZADOS
-       ========================================================================== */
-    .cluster-wrapper {{
-      background: transparent !important;
-      border: none !important;
-    }}
-    .custom-cluster-badge {{
+    .btn-action-primary:hover {
+      background: var(--cdmx-green-dark);
+    }
+
+    .btn-action-secondary {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      font-family: var(--font-main);
-      font-weight: 800;
-      color: #ffffff;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.28), 0 0 0 3px rgba(255,255,255,0.9);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      gap: 6px;
+      background: #ffffff;
+      border: 1px solid var(--slate-300);
+      color: var(--slate-700);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
       cursor: pointer;
-      user-select: none;
-    }}
-    .custom-cluster-badge:hover {{
-      transform: scale(1.12);
-    }}
-    .cluster-tianguis {{
-      background: radial-gradient(circle at 35% 35%, #0f766e, #064e3b);
-    }}
-    .cluster-msr {{
-      background: radial-gradient(circle at 35% 35%, #d97706, #92400e);
-    }}
-    .cluster-concentraciones {{
-      background: radial-gradient(circle at 35% 35%, #6d28d9, #4c1d95);
-    }}
-    .cluster-mercados {{
-      background: radial-gradient(circle at 35% 35%, #ca8a04, #854d0e);
-    }}
+      transition: all 0.15s ease;
+    }
 
-    .cluster-small {{ width: 36px; height: 36px; font-size: 0.72rem; }}
-    .cluster-medium {{ width: 44px; height: 44px; font-size: 0.78rem; }}
-    .cluster-large {{ width: 52px; height: 52px; font-size: 0.84rem; }}
+    .btn-action-secondary:hover {
+      background: var(--slate-100);
+      color: var(--slate-900);
+    }
 
-    /* ==========================================================================
-       MODAL DE AFECTACIONES Y CALLES OCUPADAS
-       ========================================================================== */
-    .modal-overlay {{
+    /* =========================================================================
+       MODAL DE INFORMACIÓN Y METODOLOGÍA
+       ========================================================================= */
+    #info-modal-backdrop {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(15, 23, 42, 0.6);
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
       backdrop-filter: blur(4px);
       z-index: 3000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-    }}
-    .modal-card {{
-      background: #ffffff;
-      width: 100%;
-      max-width: 760px;
-      max-height: 88vh;
-      border-radius: 16px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid var(--cdmx-border);
-      animation: modalPop 0.22s ease-out;
-    }}
-    @keyframes modalPop {{
-      from {{ transform: scale(0.95); opacity: 0; }}
-      to {{ transform: scale(1); opacity: 1; }}
-    }}
+      padding: 20px;
+    }
 
-    .modal-header {{
-      background: linear-gradient(135deg, var(--cdmx-green-dark) 0%, #15736c 100%);
-      color: #ffffff;
-      padding: 16px 20px;
+    #info-modal {
+      background: #ffffff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 620px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--slate-200);
+    }
+
+    .modal-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--slate-200);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 2px solid var(--cdmx-gold);
-    }}
-    .modal-title {{
-      font-size: 1.05rem;
+    }
+
+    .modal-title {
+      font-size: 16px;
       font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }}
-    .modal-close-btn {{
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: #ffffff;
-      border-radius: 8px;
-      width: 28px;
-      height: 28px;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }}
+      color: var(--slate-900);
+    }
 
-    .modal-tabs {{
-      display: flex;
-      background: #f1f5f9;
-      border-bottom: 1px solid var(--cdmx-border);
-      padding: 0 16px;
-    }}
-    .modal-tab-btn {{
-      padding: 10px 14px;
-      font-family: var(--font-main);
-      font-size: 0.78rem;
-      font-weight: 700;
-      border: none;
-      background: transparent;
-      color: #64748b;
-      cursor: pointer;
-      border-bottom: 2.5px solid transparent;
-      transition: all 0.15s ease;
-    }}
-    .modal-tab-btn.active {{
-      color: var(--cdmx-green-dark);
-      border-bottom-color: var(--cdmx-green-dark);
-      background: #ffffff;
-    }}
-
-    .modal-body {{
-      padding: 20px;
-      overflow-y: auto;
-      flex: 1;
-    }}
-
-    /* KPI Cards dentro del Modal */
-    .kpi-row {{
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
-    }}
-    .kpi-card {{
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-    }}
-    .kpi-val {{
-      font-size: 1.25rem;
-      font-weight: 900;
-      color: var(--cdmx-green-dark);
-    }}
-    .kpi-lbl {{
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #64748b;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }}
-
-    /* Tablas de Corredores y Afectaciones */
-    .corredores-table {{
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.74rem;
-      margin-top: 10px;
-    }}
-    .corredores-table th {{
-      background: #f1f5f9;
-      color: var(--cdmx-text-dark);
-      padding: 8px 10px;
-      text-align: left;
-      font-weight: 800;
-      border-bottom: 2px solid var(--cdmx-border);
-    }}
-    .corredores-table td {{
-      padding: 8px 10px;
-      border-bottom: 1px solid #e2e8f0;
-      color: #334155;
-    }}
-    .corredores-table tr:hover td {{
-      background: var(--cdmx-green-light);
-    }}
-
-    /* Loader Inicial */
-    .map-loader-overlay {{
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(248, 250, 252, 0.94);
-      backdrop-filter: blur(6px);
-      z-index: 2500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }}
-    .map-loader-overlay.hidden {{
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }}
-    .loader-card {{
-      background: #ffffff;
-      padding: 28px 34px;
-      border-radius: 16px;
-      box-shadow: 0 15px 35px rgba(15, 89, 83, 0.15);
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-      border: 1px solid var(--cdmx-border);
-    }}
-    .spinner-ring {{
-      width: 40px;
-      height: 40px;
-      border: 3.5px solid #d5ece9;
-      border-top-color: var(--cdmx-green-dark);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 14px;
-    }}
-    @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
-
-    /* Toasts */
-    .toast-container {{
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 4000;
+    .modal-body {
+      padding: 20px 22px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      pointer-events: none;
-    }}
-    .toast-msg {{
-      background: #0f172a;
-      color: #ffffff;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      pointer-events: auto;
-      animation: toastIn 0.2s ease;
-    }}
-    @keyframes toastIn {{
-      from {{ transform: translateY(10px); opacity: 0; }}
-      to {{ transform: translateY(0); opacity: 1; }}
-    }}
+      gap: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--slate-700);
+    }
 
-    /* Responsive */
-    @media (max-width: 768px) {{
-      #sidebar {{
-        position: absolute;
+    .stat-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 8px 0;
+    }
+
+    .stat-card {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .stat-card-number {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--cdmx-green-primary);
+    }
+
+    .stat-card-label {
+      font-size: 10.5px;
+      color: var(--slate-500);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* TOAST DE NOTIFICACIÓN */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--slate-900);
+      color: #ffffff;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+      z-index: 4000;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header-top {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 14px;
+      }
+      .brand-area {
+        justify-content: space-between;
+      }
+      .omnibox-wrapper {
+        max-width: 100%;
+      }
+      #filter-bar {
+        padding: 6px 14px;
+      }
+      #tianguis-sidebar {
         top: 0;
+        right: 0;
         bottom: 0;
-        left: 0;
-        width: 100vw;
-        max-width: 380px;
-        z-index: 2001;
-      }}
-      #sidebar.collapsed {{
-        margin-left: -100vw;
-      }}
-      #btn-open-sidebar {{
-        display: flex;
-      }}
-      .kpi-row {{
-        grid-template-columns: repeat(2, 1fr);
-      }}
-    }}
+        width: 100%;
+        max-width: 100vw;
+        border-radius: 0;
+      }
+      .stat-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Botón para reabrir panel en móvil o vista colapsada -->
-  <button id="btn-open-sidebar" onclick="toggleSidebar()">
-    <span>☰</span>
-    <span>Abrir Directorio</span>
-  </button>
-
-  <!-- SIDEBAR LATERAL -->
-  <aside id="sidebar">
-    <div class="sidebar-header">
-      <div>
-        <div class="sidebar-brand-title">
-          <span>🧺</span> Comercio Popular CDMX
-        </div>
-        <div class="sidebar-brand-sub">Tianguis · MSR · Concentraciones Barriales</div>
-      </div>
-      <button class="btn-toggle-sidebar" onclick="toggleSidebar()" title="Colapsar panel lateral">◀</button>
-    </div>
-
-    <div class="sidebar-scroll">
-
-      <!-- 1. SELECTOR RÁPIDO DE DÍA DE LA SEMANA -->
-      <div class="section-card">
-        <div class="section-title">
-          <span>📅 Día de Instalación</span>
-          <span id="active-day-badge" style="font-size:0.65rem; background:var(--cdmx-green-chip); color:var(--cdmx-green-dark); padding:2px 6px; border-radius:4px;">TODOS</span>
-        </div>
-
-        <!-- Botón destacado "Abiertos Hoy" -->
-        <button id="btn-today-filter" class="btn-today-highlight" onclick="filterByToday()">
-          <span style="display:flex; align-items:center; gap:6px;">
-            <span>🧺</span>
-            <span id="btn-today-text">Abiertos Hoy ({'LUNES'})</span>
-          </span>
-          <span id="btn-today-count" style="background:rgba(255,255,255,0.22); padding:2px 8px; border-radius:12px; font-size:0.75rem;">--</span>
-        </button>
-
-        <!-- Selector de Días -->
-        <div class="days-grid">
-          <button class="day-btn active" id="day-TODOS" onclick="filterByDay('TODOS')">Todos</button>
-          <button class="day-btn" id="day-LUNES" onclick="filterByDay('LUNES')">Lun</button>
-          <button class="day-btn" id="day-MARTES" onclick="filterByDay('MARTES')">Mar</button>
-          <button class="day-btn" id="day-MIERCOLES" onclick="filterByDay('MIERCOLES')">Mié</button>
-          <button class="day-btn" id="day-JUEVES" onclick="filterByDay('JUEVES')">Jue</button>
-          <button class="day-btn" id="day-VIERNES" onclick="filterByDay('VIERNES')">Vie</button>
-          <button class="day-btn" id="day-SABADO" onclick="filterByDay('SABADO')">Sáb</button>
-          <button class="day-btn" id="day-DOMINGO" onclick="filterByDay('DOMINGO')">Dom</button>
+  <!-- CABECERA SUPERIOR -->
+  <header id="header-container">
+    <div class="header-top">
+      <div class="brand-area">
+        <span class="brand-badge">CDMX</span>
+        <div>
+          <h1 class="brand-title">Tianguis de la CDMX</h1>
+          <p class="brand-subtitle">Abasto Popular Barrial y ZMVM</p>
         </div>
       </div>
 
-      <!-- 2. FILTRO POR ALCALDÍA -->
-      <div class="section-card">
-        <div class="section-title">
-          <span>🏛️ Alcaldía Oficial</span>
-          <span id="alcaldia-count-badge" style="font-size:0.65rem; color:#64748b;">16 demarcaciones</span>
+      <!-- OMNIBOX UNIFICADO INTELIGENTE -->
+      <div class="omnibox-wrapper">
+        <div class="omnibox-input-group">
+          <span class="omnibox-icon">🔍</span>
+          <input type="text" id="omnibox-input" placeholder="Busca tianguis (El Salado, La Bola, Chopo), alcaldía o producto (barbacoa, paca, aguacate)..." autocomplete="off" spellcheck="false">
+          <button id="omnibox-clear" title="Borrar búsqueda">✕</button>
         </div>
-        <div class="alcaldia-select-wrapper">
-          <select id="alcaldia-select" class="alcaldia-select" onchange="onAlcaldiaSelectChange(this.value)">
-            <option value="TODAS">Todas las Alcaldías (CDMX)</option>
-            <option value="ALVARO OBREGON">Álvaro Obregón</option>
-            <option value="AZCAPOTZALCO">Azcapotzalco</option>
-            <option value="BENITO JUAREZ">Benito Juárez</option>
-            <option value="COYOACAN">Coyoacán</option>
-            <option value="CUAJIMALPA DE MORELOS">Cuajimalpa de Morelos</option>
-            <option value="CUAUHTEMOC">Cuauhtémoc</option>
-            <option value="GUSTAVO A. MADERO">Gustavo A. Madero</option>
-            <option value="IZTACALCO">Iztacalco</option>
-            <option value="IZTAPALAPA">Iztapalapa</option>
-            <option value="LA MAGDALENA CONTRERAS">La Magdalena Contreras</option>
-            <option value="MIGUEL HIDALGO">Miguel Hidalgo</option>
-            <option value="MILPA ALTA">Milpa Alta</option>
-            <option value="TLAHUAC">Tláhuac</option>
-            <option value="TLALPAN">Tlalpan</option>
-            <option value="VENUSTIANO CARRANZA">Venustiano Carranza</option>
-            <option value="XOCHIMILCO">Xochimilco</option>
-          </select>
-          <span class="alcaldia-select-arrow">▼</span>
-        </div>
+        <!-- Desplegable predictivo -->
+        <div id="omnibox-dropdown"></div>
       </div>
 
-      <!-- 3. BUSCADOR PREDICTIVO ESPECIALIZADO -->
-      <div class="section-card">
-        <div class="section-title">
-          <span>🔍 Búsqueda Rápida</span>
-          <span style="font-size:0.65rem; color:#64748b;">Predictivo</span>
-        </div>
-        <div class="search-input-container">
-          <input type="text" id="commerce-search-input" class="search-input-box"
-                 placeholder="Tianguis, calle, entrecalle, colonia o giro (ej. El Salado, Texcoco, Frutas)..."
-                 autocomplete="off"
-                 oninput="onCommerceSearchInput(this.value)">
-          <button id="commerce-search-clear" class="search-clear-btn" onclick="clearCommerceSearch()">✕</button>
-          <div id="commerce-autocomplete-dropdown" class="autocomplete-dropdown"></div>
-        </div>
-      </div>
-
-      <!-- 4. TIPOS DE COMERCIO POPULAR Y BANDERAS -->
-      <div class="section-card">
-        <div class="section-title">
-          <span>🛒 Espacios Comerciales</span>
-        </div>
-        <div class="layers-toggle-grid">
-          <div class="layer-toggle-btn active" id="chip-tianguis" onclick="toggleSpaceLayer('tianguis')">
-            <span><span class="layer-pill-dot" style="background:#0f766e;"></span>🧺 Tianguis Itinerantes</span>
-            <span id="badge-count-tianguis" style="font-size:0.7rem; color:#64748b;">1,365</span>
-          </div>
-          <div class="layer-toggle-btn active" id="chip-msr" onclick="toggleSpaceLayer('msr')">
-            <span><span class="layer-pill-dot" style="background:#d97706;"></span>🚚 Mercados Sobre Ruedas (MSR)</span>
-            <span id="badge-count-msr" style="font-size:0.7rem; color:#64748b;">51</span>
-          </div>
-          <div class="layer-toggle-btn active" id="chip-concentraciones" onclick="toggleSpaceLayer('concentraciones')">
-            <span><span class="layer-pill-dot" style="background:#6d28d9;"></span>🏬 Concentraciones Barriales</span>
-            <span id="badge-count-concentraciones" style="font-size:0.7rem; color:#64748b;">169</span>
-          </div>
-          <div class="layer-toggle-btn" id="chip-mercados" onclick="toggleSpaceLayer('mercados')">
-            <span><span class="layer-pill-dot" style="background:#ca8a04;"></span>🏪 Mercados Públicos Fijos</span>
-            <span id="badge-count-mercados" style="font-size:0.7rem; color:#64748b;">329 (Oculto)</span>
-          </div>
-        </div>
-
-        <div style="margin-top:10px;">
-          <div class="policy-toggle-row">
-            <button class="policy-toggle-btn" id="btn-toggle-canasta" onclick="toggleCanastaFilter()">
-              <span>🧺</span>
-              <span>Canasta Básica</span>
-            </button>
-            <button class="policy-toggle-btn" id="btn-toggle-mercomuna" onclick="toggleMercomunaFilter()">
-              <span>💳</span>
-              <span>MERCOMUNA</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. CONTADOR Y RESET -->
-      <div class="results-counter-bar">
-        <span id="results-counter-text">Cargando espacios...</span>
-        <button id="btn-reset-filters" class="btn-reset-filters" onclick="resetAllFilters()">↺ Limpiar filtros</button>
-      </div>
-
-      <!-- 6. BOTÓN DESTACADO CALLLES OCUPADAS HOY -->
-      <button class="btn-open-cierres-modal" onclick="openCierresModal()">
-        <span>⚠️</span>
-        <span>Afectaciones y Calles Ocupadas Hoy</span>
-      </button>
-
-      <!-- 7. FICHA DE DETALLE DINÁMICA (AL SELECCIONAR TIANGUIS / ESPACIO) -->
-      <div id="detail-card">
-        <div class="detail-card-header">
-          <span class="detail-space-badge" id="card-tag" style="background:#0f766e;">🧺 TIANGUIS ITINERANTE</span>
-          <button class="btn-close-card" onclick="closeDetailCard()" title="Cerrar ficha">✕</button>
-        </div>
-
-        <div id="card-status-banner" class="status-live-banner status-open">
-          <span class="status-dot-pulse"></span>
-          <span id="card-status-text">🟢 En operación hoy</span>
-        </div>
-
-        <div class="detail-name" id="card-name">Tianguis</div>
-        <div class="detail-sub" id="card-sub">Alcaldía · Colonia</div>
-
-        <!-- Ubicación exacta y entrecalles -->
-        <div class="closure-box">
-          <div class="closure-box-title">
-            <span>📍</span>
-            <span>Ubicación y Entrecalles Ocupadas:</span>
-          </div>
-          <div id="card-street-text" style="font-weight:600; color:#1e293b; margin-bottom:4px;">
-            Tramo vial principal
-          </div>
-          <div id="card-closure-impact" style="font-size:0.7rem; color:#b45309;">
-            🚗 Cierre temporal de calle vehicular durante el horario de venta.
-          </div>
-        </div>
-
-        <!-- Estadísticas clave -->
-        <div class="detail-stats-grid">
-          <div class="stat-box">
-            <div class="stat-box-val" id="card-stat-dia">--</div>
-            <div class="stat-box-lbl">Día</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-val" id="card-stat-horario">8:00-17:00</div>
-            <div class="stat-box-lbl">Horario Venta</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-box-val" id="card-stat-puestos">--</div>
-            <div class="stat-box-lbl">Puestos Est.</div>
-          </div>
-        </div>
-
-        <!-- Horarios operativos -->
-        <div class="oper-schedule-box">
-          <div style="font-weight:700; color:var(--cdmx-green-dark); margin-bottom:4px; font-size:0.69rem; text-transform:uppercase;">
-            ⏰ Dinámica Horaria en Vía Pública:
-          </div>
-          <div class="oper-schedule-row">
-            <span>🛠️ Montaje de estructuras:</span>
-            <span style="font-weight:700;" id="card-time-montaje">06:00 a 08:00 hrs</span>
-          </div>
-          <div class="oper-schedule-row">
-            <span>🧺 Venta al público:</span>
-            <span style="font-weight:700; color:#065f46;" id="card-time-venta">08:00 a 17:00 hrs</span>
-          </div>
-          <div class="oper-schedule-row">
-            <span>🧹 Desmontaje y limpieza vial:</span>
-            <span style="font-weight:700;" id="card-time-desmontaje">17:00 a 19:00 hrs</span>
-          </div>
-        </div>
-
-        <!-- Giros y Etiquetas -->
-        <div style="margin-bottom:12px;">
-          <div style="font-size:0.69rem; font-weight:700; color:#64748b; text-transform:uppercase; margin-bottom:4px;">
-            🛍️ Giros y Abasto Popular:
-          </div>
-          <div id="card-tags-container" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
-        </div>
-
-        <!-- Botones de Acción -->
-        <div class="detail-actions-row">
-          <button class="btn-detail-action btn-action-primary" onclick="copyCardCoords()">
-            <span>📋</span>
-            <span>Copiar GPS</span>
-          </button>
-          <a id="card-gmaps-link" class="btn-detail-action btn-action-secondary" href="#" target="_blank" rel="noopener">
-            <span>📍</span>
-            <span>Google Maps</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </aside>
-
-  <!-- CONTENEDOR DEL MAPA Y CONTROLES FLOTANTES -->
-  <main id="map-container">
-    
-    <!-- Barra Superior Flotante -->
-    <div class="top-floating-bar">
-      <div class="top-bar-left">
-        <button class="btn-fab" onclick="toggleSidebar()" title="Alternar panel de búsqueda">
-          <span>☰</span>
-          <span style="display:none;" class="mobile-hide">Menú</span>
-        </button>
-      </div>
-
-      <div class="top-bar-right">
-        <button class="btn-fab" onclick="locateUser()" title="Ubicar mi posición actual">
-          <span>📍</span>
-          <span>Mi Ubicación</span>
-        </button>
-        <button class="btn-fab" onclick="toggleBaseMap()" title="Cambiar capa base">
-          <span>🗺️</span>
-          <span>Mapa</span>
-        </button>
-        <button class="btn-fab" onclick="resetMapView()" title="Centrar mapa en la CDMX">
-          <span>↺</span>
+      <div class="header-actions">
+        <button class="btn-info-action" id="btn-open-info">
+          <span>ℹ️</span> Metodología
         </button>
       </div>
     </div>
 
-    <!-- Div Mapa Leaflet -->
+    <!-- BARRA DE FILTROS SEMANALES Y ALCALDÍA -->
+    <div id="filter-bar">
+      <!-- SELECTOR SEMANAL -->
+      <div class="week-selector-group">
+        <button class="day-btn btn-today active" data-day="HOY">🧺 HOY</button>
+        <button class="day-btn" data-day="LUNES">LUN</button>
+        <button class="day-btn" data-day="MARTES">MAR</button>
+        <button class="day-btn" data-day="MIERCOLES">MIÉ</button>
+        <button class="day-btn" data-day="JUEVES">JUE</button>
+        <button class="day-btn" data-day="VIERNES">VIE</button>
+        <button class="day-btn" data-day="SABADO">SÁB</button>
+        <button class="day-btn" data-day="DOMINGO">DOM</button>
+        <button class="day-btn" data-day="TODOS">TODOS</button>
+      </div>
+
+      <!-- SELECTORES SECUNDARIOS -->
+      <div class="filter-dropdowns">
+        <select id="alcaldia-select" class="filter-select">
+          <option value="TODAS">📍 Todas las Alcaldías</option>
+        </select>
+        <select id="escala-select" class="filter-select">
+          <option value="TODAS">🎪 Cualquier escala</option>
+          <option value="mega">Megatianguis (300+)</option>
+          <option value="mediano">Mediano (100–300)</option>
+          <option value="barrial">Barrial (<100)</option>
+        </select>
+      </div>
+
+      <!-- CONTEO EN VIVO -->
+      <div class="filter-summary">
+        <span class="results-count-badge" id="results-count">Cargando tianguis...</span>
+      </div>
+    </div>
+
+    <!-- CHIPS DE FILTROS ACTIVOS -->
+    <div id="active-chips-bar">
+      <span style="font-size: 11px; font-weight: 600; color: var(--slate-500);">Filtros activos:</span>
+      <div id="active-chips-container" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
+      <button class="btn-reset-filters" id="btn-clear-all-chips">Restablecer todo</button>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR DE MAPA Y SIDEBAR -->
+  <main id="main-content">
     <div id="map"></div>
 
-    <!-- Skeleton Loader Inicial -->
-    <div id="map-loader" class="map-loader-overlay">
-      <div class="loader-card">
-        <div class="spinner-ring"></div>
-        <div style="font-size:1.05rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:6px;">
-          Comercio Popular y Barrial CDMX
+    <!-- FICHA LATERAL SOBRIA -->
+    <aside id="tianguis-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title-group">
+          <div class="sidebar-badge-row">
+            <span class="badge-escala" id="side-escala-badge">🎪 Megatianguis</span>
+            <span style="font-size: 11px; color: var(--slate-500); font-weight: 600;" id="side-oferentes-count">~1,200 oferentes</span>
+          </div>
+          <h2 class="sidebar-popular-title" id="side-popular-name">Tianguis El Salado</h2>
+          <p class="sidebar-cedula-title" id="side-cedula-name">TIANGUIS ERMITA ZARAGOZA II (DOMINGO)</p>
         </div>
-        <div id="loader-sub" style="font-size:0.75rem; color:#64748b;">
-          Cargando 1,365 tianguis, mercados sobre ruedas y concentraciones...
+        <button class="btn-close-sidebar" id="btn-close-sidebar" title="Cerrar ficha">✕</button>
+      </div>
+
+      <div class="sidebar-body">
+        <!-- ESTATUS EN VIVO -->
+        <div class="status-card" id="side-status-card">
+          <div class="status-indicator-dot"></div>
+          <div class="status-card-text">
+            <div class="status-headline" id="side-status-headline">🟢 Abierto hoy hasta las 17:00 hrs</div>
+            <div class="status-subline" id="side-status-subline">En horario de venta al público</div>
+          </div>
+        </div>
+
+        <!-- ESPECIALIDAD / VOCACIÓN -->
+        <div class="detail-section">
+          <span class="detail-label">Especialidad y Vocación</span>
+          <div class="detail-value-bold" id="side-vocation-title">Ropa de Paca, Herramientas y Chácharas</div>
+          <div class="detail-value" id="side-vocation-desc">Megatianguis emblemático de segunda mano, antigüedades y antojitos.</div>
+          <div class="product-tags-cloud" id="side-product-tags"></div>
+        </div>
+
+        <!-- TRANSPORTE MÁS CERCANO A PIE (SIN LÍNEAS ESTORBOSAS) -->
+        <div class="transit-walk-box">
+          <span class="transit-walk-icon">🚶</span>
+          <div class="transit-walk-content">
+            <div class="transit-walk-title" id="side-transit-title">A 5 min a pie de Metro Guelatao (Línea A)</div>
+            <div class="transit-walk-desc" id="side-transit-desc">Referencia caminable más cercana (380 metros aproximados).</div>
+          </div>
+        </div>
+
+        <!-- UBICACIÓN Y DIRECCIÓN -->
+        <div class="detail-section">
+          <span class="detail-label">Ubicación Territorial</span>
+          <div class="detail-value">
+            <strong id="side-alcaldia">IZTAPALAPA</strong> · Col. <span id="side-colonia">Ermita Zaragoza</span>
+          </div>
+          <div class="detail-value" style="font-size: 12px; color: var(--slate-600); margin-top: 2px;" id="side-direccion">
+            Av. Texcoco entre Sentimientos de la Nación y Calle 1
+          </div>
+        </div>
+
+        <!-- OPERACIÓN Y HORARIOS SEDECO -->
+        <div class="detail-section">
+          <span class="detail-label">Días y Horarios Oficiales (SEDECO)</span>
+          <div class="detail-value">
+            Días de instalación: <strong id="side-dias-list">DOMINGO</strong>
+          </div>
+          <div style="font-size: 11.5px; color: var(--slate-600); background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: 8px; padding: 8px 10px; margin-top: 4px;">
+            <div>• <strong>06:00 a 08:00</strong>: Montaje e instalación de puestos</div>
+            <div>• <strong>08:00 a 17:00</strong>: Venta al público</div>
+            <div>• <strong>17:00 a 19:00</strong>: Desmontaje y retiro ordenado</div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div class="sidebar-footer">
+        <a href="#" target="_blank" class="btn-action-primary" id="side-btn-gmaps">
+          <span>📍</span> Abrir en Google Maps
+        </a>
+        <button class="btn-action-secondary" id="side-btn-copy-coords">
+          <span>📋</span> Copiar Coordenadas GPS (WGS84)
+        </button>
+      </div>
+    </aside>
   </main>
 
-  <!-- MODAL DE AFECTACIONES Y CALLES OCUPADAS HOY -->
-  <div id="cierres-modal-overlay" class="modal-overlay" onclick="handleModalOverlayClick(event)">
-    <div class="modal-card">
+  <!-- MODAL DE METODOLOGÍA -->
+  <div id="info-modal-backdrop">
+    <div id="info-modal">
       <div class="modal-header">
-        <div class="modal-title">
-          <span>⚠️</span>
-          <span>Afectaciones y Calles Ocupadas por Comercio Popular</span>
+        <h3 class="modal-title">Tianguis y Abasto Popular en la CDMX</h3>
+        <button class="btn-close-sidebar" id="btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Este visualizador forma parte del <strong>Chilangatón 2026 (Reto 1: Comercio Popular y Barrial)</strong>. Está diseñado para visibilizar y facilitar el acceso a la red de comercio popular itinerante más importante de la Ciudad de México y su Área Metropolitana.
+        </p>
+
+        <div class="stat-cards-grid">
+          <div class="stat-card">
+            <div class="stat-card-number">1,367</div>
+            <div class="stat-card-label">Tianguis Semanales Registrados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">239,628</div>
+            <div class="stat-card-label">Oferentes y Puestos Semanales</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-number">16 / 16</div>
+            <div class="stat-card-label">Alcaldías con Cobertura</div>
+          </div>
         </div>
-        <button class="modal-close-btn" onclick="closeCierresModal()">✕</button>
-      </div>
 
-      <div class="modal-tabs">
-        <button class="modal-tab-btn active" id="modal-tab-hoy" onclick="switchModalTab('hoy')">🧺 Ocupación Vial Hoy</button>
-        <button class="modal-tab-btn" id="modal-tab-semana" onclick="switchModalTab('semana')">📅 Calendario Semanal CDMX</button>
-        <button class="modal-tab-btn" id="modal-tab-normativa" onclick="switchModalTab('normativa')">ℹ️ Horarios y Montaje</button>
-      </div>
-
-      <div class="modal-body" id="modal-body-content">
-        <!-- Contenido generado dinámicamente -->
+        <h4 style="font-size: 13px; font-weight: 700; color: var(--slate-900); margin-top: 6px;">Principios Clave del Proyecto:</h4>
+        <ul style="padding-left: 18px; display: flex; flex-direction: column; gap: 6px;">
+          <li><strong>Foco Exclusivo en Vía Pública:</strong> Despliegue de los 1,367 tianguis semanales de la CDMX con polígonos limpios de las 16 Alcaldías y 60 Municipios conurbados de la ZMVM.</li>
+          <li><strong>Búsqueda Omnibox Humana:</strong> Capacidad de encontrar espacios por su nombre popular ("El Salado", "La Bola", "El Chopo"), colonia o por más de 460 artículos de canasta básica, paca y chácharas.</li>
+          <li><strong>Movilidad sin Saturación:</strong> Referencia caminable a estaciones del Metro y Metrobús más cercanas sin dibujar líneas de transporte invasivas en el mapa.</li>
+          <li><strong>Soberanía y No Extractivismo (CARE):</strong> Información pública al servicio de la ciudadanía y los comerciantes barriales sin recolección de datos sensibles.</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <!-- Contenedor de Toasts -->
-  <div id="toast-container" class="toast-container"></div>
+  <!-- TOAST FLOTANTE -->
+  <div id="toast">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">Mensaje de notificación</span>
+  </div>
 
-  <!-- Leaflet JS -->
+  <!-- Leaflet JS y MarkerCluster JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <!-- Leaflet MarkerCluster JS -->
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-  <!-- Bundle de datos unificado -->
-  <script src="data/processed/map_bundle.js" onerror="console.log('map_bundle.js no cargado localmente, usando fetch')"></script>
+  <!-- Datos empaquetados en JS (garantiza funcionamiento sin servidor ni problemas CORS) -->
+  <script src="data/processed/tianguis_map_data.js" onerror="console.log('tianguis_map_data.js no encontrado directamente, intentando fetch JSON')"></script>
 
   <script>
-    // =========================================================================
-    // DATOS DE CIERRES VIALES EMBEBIDOS PARA RENDERING OFFLINE INMEDIATO
-    // =========================================================================
-    const EMBEDDED_CIERRES = {cierres_json_str};
+    (function() {
+      // Días canónicos en español
+      const DAY_NAMES = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
+      const todayIndex = new Date().getDay();
+      const currentDayName = DAY_NAMES[todayIndex];
 
-    // =========================================================================
-    // INICIALIZACIÓN DEL MAPA LEAFLET (WGS84)
-    // =========================================================================
-    const map = L.map('map', {{
-      center: [19.4326, -99.1332],
-      zoom: 12,
-      minZoom: 9,
-      maxZoom: 18,
-      zoomControl: false
-    }});
+      // Estado global de la aplicación
+      const state = {
+        tianguis: [],
+        alcaldias: [],
+        vocabulario: [],
+        activeDay: 'HOY',
+        activeAlcaldia: 'TODAS',
+        activeEscala: 'TODAS',
+        activeProductFilter: null,
+        searchTerm: '',
+        selectedTianguis: null
+      };
 
-    L.control.zoom({{ position: 'bottomright' }}).addTo(map);
+      // Inicializar mapa Leaflet centrado en la CDMX
+      const map = L.map('map', {
+        center: [19.38, -99.13],
+        zoom: 11,
+        zoomControl: false,
+        attributionControl: true
+      });
 
-    let currentBase = 'esri';
-    const esriLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{{z}}/{{y}}/{{x}}', {{
-      attribution: 'Esri, HERE &copy; OpenStreetMap contributors',
-      maxZoom: 18
-    }}).addTo(map);
+      // Controles de zoom abajo a la derecha
+      L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    const osmLayer = L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{y}}/{{x}}.png', {{
-      attribution: '&copy; OpenStreetMap contributors',
-      maxZoom: 19
-    }});
+      // Capa base CartoDB Positron ultra sobria y limpia
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a> · Chilangatón 2026',
+        maxZoom: 19,
+        subdomains: 'abcd'
+      }).addTo(map);
 
-    function toggleBaseMap() {{
-      if (currentBase === 'esri') {{
-        map.removeLayer(esriLayer);
-        osmLayer.addTo(map);
-        currentBase = 'osm';
-        showToast('Mapa base cambiado a OpenStreetMap.', 'info');
-      }} else {{
-        map.removeLayer(osmLayer);
-        esriLayer.addTo(map);
-        currentBase = 'esri';
-        showToast('Mapa base cambiado a Esri Light Gray.', 'info');
-      }}
-    }}
-
-    function resetMapView() {{
-      map.flyTo([19.4326, -99.1332], 12, {{ duration: 0.8 }});
-    }}
-
-    // =========================================================================
-    // CLUSTERS Y CAPAS DE COMERCIO POPULAR
-    // =========================================================================
-    const clusterOptionsBase = {{
-      spiderfyOnMaxZoom: true,
-      showCoverageOnHover: false,
-      zoomToBoundsOnClick: true,
-      disableClusteringAtZoom: 16
-    }};
-
-    const layers = {{
-      alcaldias: L.geoJSON(null, {{
-        style: {{
-          color: '#0f5953',
-          weight: 1.5,
-          opacity: 0.7,
-          fillColor: '#0f5953',
-          fillOpacity: 0.03,
-          dashArray: '4, 4'
-        }}
-      }}),
-      tianguis: L.markerClusterGroup({{
-        ...clusterOptionsBase,
-        maxClusterRadius: 38,
-        iconCreateFunction: function(cluster) {{
+      // Capas vectoriales
+      let zmvmLayer = null;
+      let alcaldiasLayer = null;
+      const markersCluster = L.markerClusterGroup({
+        maxClusterRadius: 40,
+        showCoverageOnHover: false,
+        spiderfyOnMaxZoom: true,
+        iconCreateFunction: function(cluster) {
           const count = cluster.getChildCount();
-          let sz = count < 15 ? 'cluster-small' : (count < 40 ? 'cluster-medium' : 'cluster-large');
-          return L.divIcon({{
-            html: `<div class="custom-cluster-badge cluster-tianguis ${{sz}}"><span>${{count}}</span></div>`,
-            className: 'cluster-wrapper',
+          return L.divIcon({
+            html: `<div>${count}</div>`,
+            className: 'tianguis-cluster',
             iconSize: L.point(40, 40)
-          }});
-        }}
-      }}),
-      msr: L.markerClusterGroup({{
-        ...clusterOptionsBase,
-        maxClusterRadius: 36,
-        iconCreateFunction: function(cluster) {{
-          const count = cluster.getChildCount();
-          let sz = count < 10 ? 'cluster-small' : 'cluster-medium';
-          return L.divIcon({{
-            html: `<div class="custom-cluster-badge cluster-msr ${{sz}}"><span>${{count}}</span></div>`,
-            className: 'cluster-wrapper',
-            iconSize: L.point(38, 38)
-          }});
-        }}
-      }}),
-      concentraciones: L.markerClusterGroup({{
-        ...clusterOptionsBase,
-        maxClusterRadius: 36,
-        iconCreateFunction: function(cluster) {{
-          const count = cluster.getChildCount();
-          let sz = count < 10 ? 'cluster-small' : 'cluster-medium';
-          return L.divIcon({{
-            html: `<div class="custom-cluster-badge cluster-concentraciones ${{sz}}"><span>${{count}}</span></div>`,
-            className: 'cluster-wrapper',
-            iconSize: L.point(38, 38)
-          }});
-        }}
-      }}),
-      mercados: L.markerClusterGroup({{
-        ...clusterOptionsBase,
-        maxClusterRadius: 36,
-        iconCreateFunction: function(cluster) {{
-          const count = cluster.getChildCount();
-          let sz = count < 10 ? 'cluster-small' : 'cluster-medium';
-          return L.divIcon({{
-            html: `<div class="custom-cluster-badge cluster-mercados ${{sz}}"><span>${{count}}</span></div>`,
-            className: 'cluster-wrapper',
-            iconSize: L.point(38, 38)
-          }});
-        }}
-      }})
-    }};
+          });
+        }
+      });
+      map.addLayer(markersCluster);
 
-    // =========================================================================
-    // ESTADO DE FILTRADO Y GESTIÓN DE VISTA
-    // =========================================================================
-    const filterState = {{
-      day: 'TODOS',          // 'TODOS' o 'LUNES', 'MARTES', etc.
-      isTodayActive: false,
-      alcaldia: 'TODAS',
-      showTianguis: true,
-      showMSR: true,
-      showConcentraciones: true,
-      showMercados: false,  // Oculto por defecto
-      canastaBasica: false,
-      mercomuna: false,
-      searchQuery: ''
-    }};
+      // =========================================================================
+      // CARGA DE DATOS (JS BUNDLE O FALLBACK FETCH)
+      // =========================================================================
+      async function initData() {
+        if (window.TIANGUIS_DATA) {
+          setupApp(window.TIANGUIS_DATA);
+        } else {
+          try {
+            const res = await fetch('data/processed/tianguis_map_data.json');
+            const data = await res.json();
+            setupApp(data);
+          } catch (err) {
+            console.error('Error al cargar datos de tianguis:', err);
+            document.getElementById('results-count').innerText = 'Error al cargar datos.';
+          }
+        }
+      }
 
-    let SEARCH_INDEX = [];
-    let currentSelectedCardData = null;
+      function setupApp(data) {
+        state.tianguis = data.tianguis || [];
+        state.vocabulario = data.vocabulario || [];
+        state.alcaldias = data.alcaldias_lista || [];
 
-    const DIAS_SEMANA = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
-    const NOMBRE_DIAS = {{
-      'DOMINGO': 'Domingo',
-      'LUNES': 'Lunes',
-      'MARTES': 'Martes',
-      'MIERCOLES': 'Miércoles',
-      'JUEVES': 'Jueves',
-      'VIERNES': 'Viernes',
-      'SABADO': 'Sábado'
-    }};
+        // Poblar selector de alcaldías
+        const alcSelect = document.getElementById('alcaldia-select');
+        state.alcaldias.forEach(alc => {
+          const opt = document.createElement('option');
+          opt.value = alc;
+          opt.textContent = `📍 ${alc}`;
+          alcSelect.appendChild(opt);
+        });
 
-    function getTodayDayName() {{
-      const d = new Date().getDay();
-      return DIAS_SEMANA[d];
-    }}
+        // Cargar polígonos de contexto territorial (ZMVM y Alcaldías)
+        if (data.cartografia) {
+          // 1. ZMVM Municipios Conurbados (estilo punteado neutro de contexto)
+          if (data.cartografia.zmvm) {
+            zmvmLayer = L.geoJSON(data.cartografia.zmvm, {
+              style: {
+                color: '#94a3b8',
+                weight: 1,
+                dashArray: '3, 4',
+                fillColor: '#64748b',
+                fillOpacity: 0.02
+              },
+              onEachFeature: function(feat, layer) {
+                if (feat.properties && feat.properties.nombre) {
+                  layer.bindTooltip(`ZMVM: ${feat.properties.nombre}`, {
+                    sticky: true,
+                    className: 'carto-tooltip'
+                  });
+                }
+              }
+            }).addTo(map);
+          }
 
-    // =========================================================================
-    // CARGA DE DATOS E INICIALIZACIÓN
-    // =========================================================================
-    async function initApplication() {{
-      const loader = document.getElementById('map-loader');
-      const loaderSub = document.getElementById('loader-sub');
+          // 2. Alcaldías CDMX (polígonos limpios en verde CDMX sutil)
+          if (data.cartografia.alcaldias) {
+            alcaldiasLayer = L.geoJSON(data.cartografia.alcaldias, {
+              style: {
+                color: '#0f5953',
+                weight: 1.6,
+                fillColor: '#0f5953',
+                fillOpacity: 0.03
+              },
+              onEachFeature: function(feat, layer) {
+                const nom = feat.properties ? feat.properties.nombre : '';
+                layer.bindTooltip(`Alcaldía: ${nom}`, {
+                  sticky: true,
+                  className: 'carto-tooltip'
+                });
+                layer.on('click', function() {
+                  setAlcaldiaFilter(nom);
+                });
+              }
+            }).addTo(map);
+          }
+        }
 
-      try {{
-        let data = window.MAP_DATA;
-        if (!data) {{
-          loaderSub.innerText = "Descargando directorio de comercio popular...";
-          const res = await fetch('data/processed/map_bundle.json');
-          data = await res.json();
-          window.MAP_DATA = data;
-        }}
+        // Renderizar marcadores iniciales (arranque en HOY)
+        renderMapMarkers();
+        updateChipsBar();
+      }
 
-        // Capas base de alcaldías
-        if (data.alcaldias) {{
-          layers.alcaldias.addData(data.alcaldias);
-          layers.alcaldias.addTo(map);
-        }}
+      // =========================================================================
+      // EVALUACIÓN DE ESTATUS EN VIVO
+      // =========================================================================
+      function getLiveStatus(tianguis, selectedDay) {
+        const isToday = (selectedDay === 'HOY' || selectedDay === currentDayName);
+        const operates = (selectedDay === 'HOY')
+          ? tianguis.dias.includes(currentDayName)
+          : (selectedDay === 'TODOS' || tianguis.dias.includes(selectedDay));
 
-        // Configurar botón "Abiertos Hoy"
-        const todayName = getTodayDayName();
-        document.getElementById('btn-today-text').innerText = `Abiertos Hoy (${{NOMBRE_DIAS[todayName]}})`;
+        if (!operates) {
+          const diasStr = tianguis.dias.length ? tianguis.dias.join(', ') : tianguis.dia_principal;
+          return {
+            isOpenNow: false,
+            cssClass: 'status-closed',
+            markerClass: 'marker-closed',
+            headline: `🔴 No opera hoy`,
+            subline: `Se instala los días: ${diasStr}`,
+            shortBadge: `Cerrado hoy`
+          };
+        }
 
-        // Calcular conteo inicial de hoy
-        const countToday = countSpacesForDay(todayName, data);
-        document.getElementById('btn-today-count').innerText = `${{countToday}} espacios`;
+        if (isToday) {
+          const now = new Date();
+          const nowHour = now.getHours() + (now.getMinutes() / 60);
+          const open = tianguis.hora_apertura || 8.0;
+          const close = tianguis.hora_cierre || 17.0;
 
-        // Construir índice de búsqueda predictiva
-        buildSearchIndex(data);
+          if (nowHour >= open && nowHour < close) {
+            return {
+              isOpenNow: true,
+              cssClass: 'status-open',
+              markerClass: 'marker-open',
+              headline: `🟢 Abierto hoy hasta las ${Math.floor(close)}:00 hrs`,
+              subline: `Venta activa al público (${formatHour(open)} a ${formatHour(close)})`,
+              shortBadge: `Abierto`
+            };
+          } else if (nowHour >= 6.0 && nowHour < open) {
+            return {
+              isOpenNow: false,
+              cssClass: 'status-setup',
+              markerClass: 'marker-setup',
+              headline: `🟡 En montaje e instalación`,
+              subline: `Abre en breve a las ${formatHour(open)} hrs`,
+              shortBadge: `En montaje`
+            };
+          } else if (nowHour >= close && nowHour < 19.0) {
+            return {
+              isOpenNow: false,
+              cssClass: 'status-teardown',
+              markerClass: 'marker-setup',
+              headline: `🟡 En desmontaje y retiro ordenado`,
+              subline: `Concluyó venta a las ${formatHour(close)} hrs`,
+              shortBadge: `En retiro`
+            };
+          } else {
+            return {
+              isOpenNow: false,
+              cssClass: 'status-closed',
+              markerClass: 'marker-closed',
+              headline: `🔴 Cerrado en este horario`,
+              subline: `Horario regular de hoy: ${formatHour(open)} a ${formatHour(close)} hrs`,
+              shortBadge: `Cerrado`
+            };
+          }
+        } else {
+          return {
+            isOpenNow: false,
+            cssClass: 'status-open',
+            markerClass: 'marker-open',
+            headline: `📅 Opera los días ${selectedDay}`,
+            subline: `Horario: ${formatHour(tianguis.hora_apertura)} a ${formatHour(tianguis.hora_cierre)} hrs`,
+            shortBadge: `Opera ${selectedDay}`
+          };
+        }
+      }
 
-        // Renderizar marcadores con filtros iniciales
-        applyAllFilters();
+      function formatHour(h) {
+        if (!h && h !== 0) return '08:00';
+        const hours = Math.floor(h);
+        const mins = Math.round((h - hours) * 60);
+        return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+      }
 
-        // Ocultar loader
-        setTimeout(() => {{
-          loader.classList.add('hidden');
-          showToast(`Directorio cargado · ${{countToday}} espacios abiertos hoy en CDMX.`, 'success', 3500);
-        }}, 250);
+      // =========================================================================
+      // FILTRADO Y RENDERIZADO DE TIANGUIS
+      // =========================================================================
+      function getFilteredTianguis() {
+        return state.tianguis.filter(t => {
+          // Coordenadas válidas
+          if (!t.lat || !t.lng || t.coordenadas_validas === false) return false;
 
-      }} catch (err) {{
-        console.error("Error al inicializar aplicación:", err);
-        loader.classList.add('hidden');
-        showToast('Error cargando el directorio de comercio.', 'error');
-      }}
-    }}
+          // 1. Filtro de Día
+          if (state.activeDay === 'HOY') {
+            if (!t.dias.includes(currentDayName)) return false;
+          } else if (state.activeDay !== 'TODOS') {
+            if (!t.dias.includes(state.activeDay)) return false;
+          }
 
-    function countSpacesForDay(dayName, data) {{
-      if (!data) return 0;
-      let count = 0;
-      if (data.tianguis) {{
-        count += data.tianguis.filter(t => t.dia && t.dia.toUpperCase().includes(dayName)).length;
-      }}
-      if (data.msr) {{
-        count += data.msr.filter(m => m.dia && m.dia.toUpperCase().includes(dayName)).length;
-      }}
-      if (data.concentraciones) {{
-        count += data.concentraciones.filter(c => c.dias_operacion_lista && c.dias_operacion_lista.includes(dayName)).length;
-      }}
-      return count;
-    }}
+          // 2. Filtro de Alcaldía
+          if (state.activeAlcaldia !== 'TODAS') {
+            if (t.alcaldia !== state.activeAlcaldia) return false;
+          }
 
-    // =========================================================================
-    // FILTROS: DÍA, ALCALDÍA, TIPOS Y BANDERAS
-    // =========================================================================
-    function filterByToday() {{
-      const today = getTodayDayName();
-      const btn = document.getElementById('btn-today-filter');
+          // 3. Filtro de Escala
+          if (state.activeEscala !== 'TODAS') {
+            if (t.escala_id !== state.activeEscala) return false;
+          }
 
-      if (filterState.isTodayActive) {{
-        // Desactivar
-        filterState.isTodayActive = false;
-        filterState.day = 'TODOS';
-        btn.classList.remove('active');
-        setActiveDayUI('TODOS');
-        showToast('Mostrando todos los días de la semana', 'info');
-      }} else {{
-        // Activar hoy
-        filterState.isTodayActive = true;
-        filterState.day = today;
-        btn.classList.add('active');
-        setActiveDayUI(today);
-        showToast(`Filtrado a espacios abiertos hoy (${{NOMBRE_DIAS[today]}})`, 'success');
-      }}
-      applyAllFilters();
-    }}
+          // 4. Filtro por Producto
+          if (state.activeProductFilter) {
+            const prod = state.activeProductFilter.toLowerCase();
+            const matchesTag = t.tags && t.tags.some(tag => tag.toLowerCase().includes(prod) || prod.includes(tag.toLowerCase()));
+            const matchesVocation = t.vocacion_nombre && t.vocacion_nombre.toLowerCase().includes(prod);
+            if (!matchesTag && !matchesVocation) return false;
+          }
 
-    function filterByDay(day) {{
-      filterState.day = day;
-      filterState.isTodayActive = (day === getTodayDayName());
-      const btnToday = document.getElementById('btn-today-filter');
-      if (filterState.isTodayActive) {{
-        btnToday.classList.add('active');
-      }} else {{
-        btnToday.classList.remove('active');
-      }}
-      setActiveDayUI(day);
-      applyAllFilters();
-    }}
+          // 5. Búsqueda de Texto Libre en Omnibox
+          if (state.searchTerm) {
+            const term = state.searchTerm.toLowerCase();
+            const matchName = t.nombre_popular.toLowerCase().includes(term) || t.nombre_oficial.toLowerCase().includes(term);
+            const matchCol = t.colonia.toLowerCase().includes(term) || t.alcaldia.toLowerCase().includes(term);
+            const matchDir = t.direccion.toLowerCase().includes(term);
+            const matchTag = t.tags && t.tags.some(tag => tag.toLowerCase().includes(term));
+            if (!matchName && !matchCol && !matchDir && !matchTag) return false;
+          }
 
-    function setActiveDayUI(day) {{
-      document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-      const activeBtn = document.getElementById('day-' + day);
-      if (activeBtn) activeBtn.classList.add('active');
-      document.getElementById('active-day-badge').innerText = day === 'TODOS' ? 'TODOS' : NOMBRE_DIAS[day].toUpperCase();
-    }}
-
-    function onAlcaldiaSelectChange(alc) {{
-      filterState.alcaldia = alc;
-      applyAllFilters();
-
-      if (alc !== 'TODAS' && window.MAP_DATA && window.MAP_DATA.alcaldias) {{
-        // Zoom suave a la alcaldía seleccionada
-        const feat = window.MAP_DATA.alcaldias.features.find(f => {{
-          const nom = (f.properties.NOMGEO || f.properties.nomgeo || f.properties.name || '').toUpperCase();
-          return nom.includes(alc) || alc.includes(nom);
-        }});
-        if (feat) {{
-          const bbox = L.geoJSON(feat).getBounds();
-          map.fitBounds(bbox, {{ padding: [30, 30], maxZoom: 14 }});
-        }}
-      }}
-    }}
-
-    function toggleSpaceLayer(layerKey) {{
-      if (layerKey === 'tianguis') filterState.showTianguis = !filterState.showTianguis;
-      if (layerKey === 'msr') filterState.showMSR = !filterState.showMSR;
-      if (layerKey === 'concentraciones') filterState.showConcentraciones = !filterState.showConcentraciones;
-      if (layerKey === 'mercados') filterState.showMercados = !filterState.showMercados;
-
-      const chip = document.getElementById('chip-' + layerKey);
-      if (chip) {{
-        const isActive = filterState[layerKey === 'tianguis' ? 'showTianguis' : (layerKey === 'msr' ? 'showMSR' : (layerKey === 'concentraciones' ? 'showConcentraciones' : 'showMercados'))];
-        if (isActive) chip.classList.add('active');
-        else chip.classList.remove('active');
-      }}
-      applyAllFilters();
-    }}
-
-    function toggleCanastaFilter() {{
-      filterState.canastaBasica = !filterState.canastaBasica;
-      const btn = document.getElementById('btn-toggle-canasta');
-      if (filterState.canastaBasica) btn.classList.add('active');
-      else btn.classList.remove('active');
-      applyAllFilters();
-    }}
-
-    function toggleMercomunaFilter() {{
-      filterState.mercomuna = !filterState.mercomuna;
-      const btn = document.getElementById('btn-toggle-mercomuna');
-      if (filterState.mercomuna) btn.classList.add('active');
-      else btn.classList.remove('active');
-      applyAllFilters();
-    }}
-
-    function resetAllFilters() {{
-      filterState.day = 'TODOS';
-      filterState.isTodayActive = false;
-      filterState.alcaldia = 'TODAS';
-      filterState.showTianguis = true;
-      filterState.showMSR = true;
-      filterState.showConcentraciones = true;
-      filterState.showMercados = false;
-      filterState.canastaBasica = false;
-      filterState.mercomuna = false;
-      filterState.searchQuery = '';
-
-      document.getElementById('commerce-search-input').value = '';
-      document.getElementById('commerce-search-clear').style.display = 'none';
-      document.getElementById('alcaldia-select').value = 'TODAS';
-      document.getElementById('btn-today-filter').classList.remove('active');
-      document.getElementById('btn-toggle-canasta').classList.remove('active');
-      document.getElementById('btn-toggle-mercomuna').classList.remove('active');
-      document.getElementById('chip-tianguis').classList.add('active');
-      document.getElementById('chip-msr').classList.add('active');
-      document.getElementById('chip-concentraciones').classList.add('active');
-      document.getElementById('chip-mercados').classList.remove('active');
-      setActiveDayUI('TODOS');
-
-      applyAllFilters();
-      resetMapView();
-      showToast('Filtros restablecidos', 'info');
-    }}
-
-    // =========================================================================
-    // APLICACIÓN DE FILTROS Y RENDERIZADO DE MARCADORES
-    // =========================================================================
-    function applyAllFilters() {{
-      if (!window.MAP_DATA) return;
-      const data = window.MAP_DATA;
-
-      const q = filterState.searchQuery.toLowerCase().trim();
-      const currentDay = filterState.day;
-      const currentAlc = filterState.alcaldia;
-
-      // 1. Filtrar Tianguis
-      let filteredTianguis = [];
-      if (filterState.showTianguis && data.tianguis) {{
-        filteredTianguis = data.tianguis.filter(t => {{
-          if (currentDay !== 'TODOS' && (!t.dia || !t.dia.toUpperCase().includes(currentDay))) return false;
-          if (currentAlc !== 'TODAS' && t.alcaldia && !t.alcaldia.toUpperCase().includes(currentAlc)) return false;
-          if (filterState.canastaBasica && !t.canasta_basica) return false;
-          if (filterState.mercomuna && !t.mercomuna) return false;
-          if (q) {{
-            const searchStr = `${{t.nombre_popular || ''}} ${{t.nombre || ''}} ${{t.colonia || ''}} ${{t.ubicacion || ''}} ${{t.alcaldia || ''}} ${{t.giro || ''}}`.toLowerCase();
-            if (!searchStr.includes(q)) return false;
-          }}
           return true;
-        }});
-      }}
-
-      // 2. Filtrar MSR
-      let filteredMSR = [];
-      if (filterState.showMSR && data.msr) {{
-        filteredMSR = data.msr.filter(m => {{
-          if (currentDay !== 'TODOS' && (!m.dia || !m.dia.toUpperCase().includes(currentDay))) return false;
-          if (currentAlc !== 'TODAS' && m.alcaldia && !m.alcaldia.toUpperCase().includes(currentAlc)) return false;
-          if (filterState.canastaBasica && !m.canasta_basica) return false;
-          if (filterState.mercomuna && !m.mercomuna) return false;
-          if (q) {{
-            const searchStr = `${{m.nombre || ''}} ${{m.ruta || ''}} ${{m.colonia || ''}} ${{m.direccion || ''}} ${{m.alcaldia || ''}}`.toLowerCase();
-            if (!searchStr.includes(q)) return false;
-          }}
-          return true;
-        }});
-      }}
-
-      // 3. Filtrar Concentraciones
-      let filteredConcentraciones = [];
-      if (filterState.showConcentraciones && data.concentraciones) {{
-        filteredConcentraciones = data.concentraciones.filter(c => {{
-          if (currentDay !== 'TODOS' && c.dias_operacion_lista && !c.dias_operacion_lista.includes(currentDay)) return false;
-          if (currentAlc !== 'TODAS' && c.alcaldia && !c.alcaldia.toUpperCase().includes(currentAlc)) return false;
-          if (filterState.canastaBasica && !c.canasta_basica) return false;
-          if (filterState.mercomuna && !c.mercomuna) return false;
-          if (q) {{
-            const searchStr = `${{c.nombre || ''}} ${{c.colonia || ''}} ${{c.ubicacion || ''}} ${{c.alcaldia || ''}} ${{c.giro || ''}}`.toLowerCase();
-            if (!searchStr.includes(q)) return false;
-          }}
-          return true;
-        }});
-      }}
-
-      // 4. Filtrar Mercados Fijos (Opcional)
-      let filteredMercados = [];
-      if (filterState.showMercados && data.mercados) {{
-        filteredMercados = data.mercados.filter(m => {{
-          if (currentAlc !== 'TODAS' && m.alcaldia && !m.alcaldia.toUpperCase().includes(currentAlc)) return false;
-          if (filterState.canastaBasica && !m.canasta_basica) return false;
-          if (filterState.mercomuna && !m.mercomuna) return false;
-          if (q) {{
-            const searchStr = `${{m.nombre || ''}} ${{m.colonia || ''}} ${{m.alcaldia || ''}} ${{m.giro || ''}}`.toLowerCase();
-            if (!searchStr.includes(q)) return false;
-          }}
-          return true;
-        }});
-      }}
-
-      // Render Tianguis Markers
-      layers.tianguis.clearLayers();
-      filteredTianguis.forEach(t => {{
-        const marker = L.circleMarker([t.lat, t.lon], {{
-          radius: 6,
-          fillColor: '#0f766e',
-          color: '#ffffff',
-          weight: 1.5,
-          opacity: 1,
-          fillOpacity: 0.88
-        }});
-        marker.on('click', () => {{
-          showSpaceDetail(t, 'tianguis');
-        }});
-        layers.tianguis.addLayer(marker);
-      }});
-      if (filterState.showTianguis) {{
-        if (!map.hasLayer(layers.tianguis)) layers.tianguis.addTo(map);
-      }} else {{
-        if (map.hasLayer(layers.tianguis)) map.removeLayer(layers.tianguis);
-      }}
-
-      // Render MSR Markers
-      layers.msr.clearLayers();
-      filteredMSR.forEach(m => {{
-        const marker = L.circleMarker([m.lat, m.lon], {{
-          radius: 7,
-          fillColor: '#d97706',
-          color: '#ffffff',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.9
-        }});
-        marker.on('click', () => {{
-          showSpaceDetail(m, 'msr');
-        }});
-        layers.msr.addLayer(marker);
-      }});
-      if (filterState.showMSR) {{
-        if (!map.hasLayer(layers.msr)) layers.msr.addTo(map);
-      }} else {{
-        if (map.hasLayer(layers.msr)) map.removeLayer(layers.msr);
-      }}
-
-      // Render Concentraciones Markers
-      layers.concentraciones.clearLayers();
-      filteredConcentraciones.forEach(c => {{
-        const marker = L.circleMarker([c.lat, c.lon], {{
-          radius: 6.5,
-          fillColor: '#6d28d9',
-          color: '#ffffff',
-          weight: 1.8,
-          opacity: 1,
-          fillOpacity: 0.88
-        }});
-        marker.on('click', () => {{
-          showSpaceDetail(c, 'concentracion');
-        }});
-        layers.concentraciones.addLayer(marker);
-      }});
-      if (filterState.showConcentraciones) {{
-        if (!map.hasLayer(layers.concentraciones)) layers.concentraciones.addTo(map);
-      }} else {{
-        if (map.hasLayer(layers.concentraciones)) map.removeLayer(layers.concentraciones);
-      }}
-
-      // Render Mercados Markers
-      layers.mercados.clearLayers();
-      filteredMercados.forEach(m => {{
-        const marker = L.circleMarker([m.lat, m.lon], {{
-          radius: m.radio || 7,
-          fillColor: '#ca8a04',
-          color: '#ffffff',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.88
-        }});
-        marker.on('click', () => {{
-          showSpaceDetail(m, 'mercado');
-        }});
-        layers.mercados.addLayer(marker);
-      }});
-      if (filterState.showMercados) {{
-        if (!map.hasLayer(layers.mercados)) layers.mercados.addTo(map);
-      }} else {{
-        if (map.hasLayer(layers.mercados)) map.removeLayer(layers.mercados);
-      }}
-
-      // Actualizar Badges y Contadores
-      const totalActivos = filteredTianguis.length + filteredMSR.length + filteredConcentraciones.length + filteredMercados.length;
-      document.getElementById('badge-count-tianguis').innerText = filteredTianguis.length.toLocaleString();
-      document.getElementById('badge-count-msr').innerText = filteredMSR.length.toLocaleString();
-      document.getElementById('badge-count-concentraciones').innerText = filteredConcentraciones.length.toLocaleString();
-      document.getElementById('badge-count-mercados').innerText = filterState.showMercados ? filteredMercados.length.toLocaleString() : 'Inactivo';
-
-      const counterText = document.getElementById('results-counter-text');
-      const resetBtn = document.getElementById('btn-reset-filters');
-      counterText.innerHTML = `Mostrando <b>${{totalActivos.toLocaleString()}}</b> espacios de abasto popular`;
-
-      const isFilterModified = filterState.day !== 'TODOS' || filterState.alcaldia !== 'TODAS' || !filterState.showTianguis || !filterState.showMSR || !filterState.showConcentraciones || filterState.showMercados || filterState.canastaBasica || filterState.mercomuna || filterState.searchQuery !== '';
-      resetBtn.style.display = isFilterModified ? 'inline-block' : 'none';
-    }}
-
-    // =========================================================================
-    // FICHA DE DETALLE (SIDEBAR)
-    // =========================================================================
-    function showSpaceDetail(item, type) {{
-      currentSelectedCardData = item;
-      const card = document.getElementById('detail-card');
-      card.style.display = 'block';
-
-      // Abrir sidebar en pantallas móviles
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar.classList.contains('collapsed')) {{
-        sidebar.classList.remove('collapsed');
-      }}
-
-      // Centrar mapa suavemente
-      map.flyTo([item.lat, item.lon], Math.max(map.getZoom(), 15), {{ duration: 0.7 }});
-
-      // Configurar badge y colores
-      const tagEl = document.getElementById('card-tag');
-      if (type === 'tianguis') {{
-        tagEl.innerText = '🧺 TIANGUIS ITINERANTE';
-        tagEl.style.background = '#0f766e';
-      }} else if (type === 'msr') {{
-        tagEl.innerText = '🚚 MERCADO SOBRE RUEDAS';
-        tagEl.style.background = '#d97706';
-      }} else if (type === 'concentracion') {{
-        tagEl.innerText = '🏬 CONCENTRACIÓN BARRIAL';
-        tagEl.style.background = '#6d28d9';
-      }} else {{
-        tagEl.innerText = '🏪 MERCADO PÚBLICO';
-        tagEl.style.background = '#ca8a04';
-      }}
-
-      // Título y subtítulo
-      const popularName = item.nombre_popular || item.nombre || 'Tianguis Popular';
-      document.getElementById('card-name').innerText = popularName;
-      document.getElementById('card-sub').innerText = `${{item.alcaldia || 'CDMX'}} · Col. ${{item.colonia || 'Sin colonia'}}`;
-
-      // Ubicación exacta y entrecalles
-      const street = item.ubicacion || item.direccion || 'Vía pública local';
-      document.getElementById('card-street-text').innerText = street;
-
-      // Calcular Estatus en Vivo
-      const statusBanner = document.getElementById('card-status-banner');
-      const statusText = document.getElementById('card-status-text');
-
-      const now = new Date();
-      const currentHour = now.getHours() + (now.getMinutes() / 60);
-      const today = getTodayDayName();
-
-      let operatesToday = false;
-      if (type === 'tianguis' || type === 'msr') {{
-        operatesToday = item.dia && item.dia.toUpperCase().includes(today);
-      }} else if (type === 'concentracion') {{
-        operatesToday = item.dias_operacion_lista ? item.dias_operacion_lista.includes(today) : true;
-      }} else {{
-        operatesToday = true;
-      }}
-
-      const horaApertura = item.hora_apertura || 8.0;
-      const horaCierre = item.hora_cierre || 17.0;
-
-      if (!operatesToday) {{
-        statusBanner.className = 'status-live-banner status-closed';
-        statusText.innerText = `🔴 No opera hoy · Días habituales: ${{item.dia || item.dias_operacion || 'Programado'}}`;
-      }} else {{
-        if (currentHour >= horaApertura && currentHour <= horaCierre) {{
-          statusBanner.className = 'status-live-banner status-open';
-          statusText.innerText = `🟢 Abierto hoy · En venta hasta las ${{Math.floor(horaCierre)}}:00 hrs`;
-        }} else if (currentHour >= (horaApertura - 2) && currentHour < horaApertura) {{
-          statusBanner.className = 'status-live-banner status-montaje';
-          statusText.innerText = `🟡 En instalación y montaje de puestos (Abre a las ${{Math.floor(horaApertura)}}:00 hrs)`;
-        }} else if (currentHour > horaCierre && currentHour <= (horaCierre + 2)) {{
-          statusBanner.className = 'status-live-banner status-montaje';
-          statusText.innerText = `🟡 En desmontaje y aseo vial (Cerró a las ${{Math.floor(horaCierre)}}:00 hrs)`;
-        }} else {{
-          statusBanner.className = 'status-live-banner status-closed';
-          statusText.innerText = `🔴 Cerrado por hoy (Horario regular: ${{Math.floor(horaApertura)}}:00 a ${{Math.floor(horaCierre)}}:00 hrs)`;
-        }}
-      }}
-
-      // Estadísticas
-      document.getElementById('card-stat-dia').innerText = item.dia || (item.dias_operacion ? 'L-D' : 'Semanal');
-      document.getElementById('card-stat-horario').innerText = item.horario || `${{Math.floor(horaApertura)}}:00-${{Math.floor(horaCierre)}}:00`;
-      document.getElementById('card-stat-puestos').innerText = item.oferentes ? `~${{item.oferentes}}` : (item.num_oferentes ? `~${{item.num_oferentes}}` : '--');
-
-      // Horarios operativos
-      document.getElementById('card-time-montaje').innerText = `${{Math.max(0, Math.floor(horaApertura - 2))}}:00 a ${{Math.floor(horaApertura)}}:00 hrs`;
-      document.getElementById('card-time-venta').innerText = `${{Math.floor(horaApertura)}}:00 a ${{Math.floor(horaCierre)}}:00 hrs`;
-      document.getElementById('card-time-desmontaje').innerText = `${{Math.floor(horaCierre)}}:00 a ${{Math.min(24, Math.floor(horaCierre + 2))}}:00 hrs`;
-
-      // Giros y Banderas
-      const tagsBox = document.getElementById('card-tags-container');
-      tagsBox.innerHTML = '';
-
-      if (item.canasta_basica) {{
-        tagsBox.innerHTML += `<span style="background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:700;">🧺 Canasta Básica</span>`;
-      }}
-      if (item.mercomuna) {{
-        tagsBox.innerHTML += `<span style="background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:700;">💳 MERCOMUNA</span>`;
-      }}
-
-      const tags = item.tags || ['Frutas y Verduras', 'Abarrotes', 'Ropa', 'Comida'];
-      tags.slice(0, 6).forEach(tg => {{
-        tagsBox.innerHTML += `<span style="background:#f1f5f9; color:#334155; padding:2px 6px; border-radius:4px; font-size:0.68rem; font-weight:600;">${{tg}}</span>`;
-      }});
-
-      // Enlace a Google Maps
-      const gmapsLink = document.getElementById('card-gmaps-link');
-      gmapsLink.href = `https://www.google.com/maps/search/?api=1&query=${{item.lat}},${{item.lon}}`;
-
-      // Scroll hacia la ficha en el sidebar
-      card.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
-    }}
-
-    function closeDetailCard() {{
-      const card = document.getElementById('detail-card');
-      card.style.display = 'none';
-      currentSelectedCardData = null;
-    }}
-
-    function copyCardCoords() {{
-      if (!currentSelectedCardData) return;
-      const coords = `${{currentSelectedCardData.lat.toFixed(6)}}, ${{currentSelectedCardData.lon.toFixed(6)}}`;
-      navigator.clipboard.writeText(coords).then(() => {{
-        showToast(`Coordenadas GPS copiadas: ${{coords}}`, 'success');
-      }}).catch(() => {{
-        showToast(`Coordenadas: ${{coords}}`, 'info');
-      }});
-    }}
-
-    // =========================================================================
-    // BUSCADOR PREDICTIVO UNIFICADO
-    // =========================================================================
-    function buildSearchIndex(data) {{
-      SEARCH_INDEX = [];
-      if (data.tianguis) {{
-        data.tianguis.forEach(t => {{
-          SEARCH_INDEX.push({{
-            type: 'tianguis',
-            badge: 'TIANGUIS',
-            badgeColor: '#0f766e',
-            title: t.nombre_popular || `Tianguis ${{t.colonia}}`,
-            subtitle: `${{t.alcaldia}} · ${{t.dia}} · ${{t.ubicacion || t.colonia}}`,
-            lat: t.lat,
-            lon: t.lon,
-            data: t,
-            searchStr: `tianguis ${{t.nombre_popular || ''}} ${{t.nombre || ''}} ${{t.colonia || ''}} ${{t.ubicacion || ''}} ${{t.alcaldia || ''}} ${{t.dia || ''}} ${{t.giro || ''}}`.toLowerCase()
-          }});
-        }});
-      }}
-      if (data.msr) {{
-        data.msr.forEach(m => {{
-          SEARCH_INDEX.push({{
-            type: 'msr',
-            badge: 'MSR',
-            badgeColor: '#d97706',
-            title: m.nombre || `MSR ${{m.ruta}}`,
-            subtitle: `${{m.alcaldia}} · ${{m.dia}} · ${{m.colonia}}`,
-            lat: m.lat,
-            lon: m.lon,
-            data: m,
-            searchStr: `msr mercado sobre ruedas ${{m.nombre || ''}} ${{m.ruta || ''}} ${{m.colonia || ''}} ${{m.direccion || ''}} ${{m.alcaldia || ''}} ${{m.dia || ''}}`.toLowerCase()
-          }});
-        }});
-      }}
-      if (data.concentraciones) {{
-        data.concentraciones.forEach(c => {{
-          SEARCH_INDEX.push({{
-            type: 'concentracion',
-            badge: 'CONCENTRACIÓN',
-            badgeColor: '#6d28d9',
-            title: c.nombre_popular || c.nombre,
-            subtitle: `${{c.alcaldia}} · Col. ${{c.colonia}}`,
-            lat: c.lat,
-            lon: c.lon,
-            data: c,
-            searchStr: `concentracion comerciante ${{c.nombre || ''}} ${{c.colonia || ''}} ${{c.ubicacion || ''}} ${{c.alcaldia || ''}} ${{c.giro || ''}}`.toLowerCase()
-          }});
-        }});
-      }}
-    }}
-
-    function onCommerceSearchInput(val) {{
-      filterState.searchQuery = val;
-      const clearBtn = document.getElementById('commerce-search-clear');
-      clearBtn.style.display = val.length > 0 ? 'block' : 'none';
-
-      const dropdown = document.getElementById('commerce-autocomplete-dropdown');
-      if (val.trim().length < 2) {{
-        dropdown.style.display = 'none';
-        applyAllFilters();
-        return;
-      }}
-
-      const q = val.toLowerCase().trim();
-      const matches = SEARCH_INDEX.filter(item => item.searchStr.includes(q)).slice(0, 8);
-
-      if (matches.length === 0) {{
-        dropdown.innerHTML = `<div style="padding:10px; font-size:0.75rem; color:#64748b; text-align:center;">No se encontraron tianguis o calles con "${{val}}"</div>`;
-        dropdown.style.display = 'block';
-      }} else {{
-        dropdown.innerHTML = matches.map((m, idx) => `
-          <div class="autocomplete-item" onclick="selectSearchMatch(${{idx}})">
-            <div class="autocomplete-title">
-              <span class="autocomplete-badge" style="background:${{m.badgeColor}};">${{m.badge}}</span>
-              <span>${{highlightMatch(m.title, q)}}</span>
-            </div>
-            <div class="autocomplete-sub">${{highlightMatch(m.subtitle, q)}}</div>
-          </div>
-        `).join('');
-        dropdown.style.display = 'block';
-        window._currentMatches = matches;
-      }}
-
-      applyAllFilters();
-    }}
-
-    function highlightMatch(text, q) {{
-      if (!text) return '';
-      const idx = text.toLowerCase().indexOf(q);
-      if (idx === -1) return text;
-      return text.substring(0, idx) + '<b style="color:#0f5953; background:#ccfbf1;">' + text.substring(idx, idx + q.length) + '</b>' + text.substring(idx + q.length);
-    }}
-
-    function selectSearchMatch(idx) {{
-      if (!window._currentMatches || !window._currentMatches[idx]) return;
-      const item = window._currentMatches[idx];
-      document.getElementById('commerce-search-input').value = item.title;
-      document.getElementById('commerce-autocomplete-dropdown').style.display = 'none';
-
-      showSpaceDetail(item.data, item.type);
-    }}
-
-    function clearCommerceSearch() {{
-      document.getElementById('commerce-search-input').value = '';
-      document.getElementById('commerce-search-clear').style.display = 'none';
-      document.getElementById('commerce-autocomplete-dropdown').style.display = 'none';
-      filterState.searchQuery = '';
-      applyAllFilters();
-    }}
-
-    // Cerrar autocomplete si se hace click fuera
-    document.addEventListener('click', (e) => {{
-      const container = document.querySelector('.search-input-container');
-      if (container && !container.contains(e.target)) {{
-        const dropdown = document.getElementById('commerce-autocomplete-dropdown');
-        if (dropdown) dropdown.style.display = 'none';
-      }}
-    }});
-
-    // =========================================================================
-    // MODAL DE AFECTACIONES Y CALLES OCUPADAS
-    // =========================================================================
-    function openCierresModal() {{
-      const overlay = document.getElementById('cierres-modal-overlay');
-      overlay.style.display = 'flex';
-      switchModalTab('hoy');
-    }}
-
-    function closeCierresModal() {{
-      document.getElementById('cierres-modal-overlay').style.display = 'none';
-    }}
-
-    function handleModalOverlayClick(e) {{
-      if (e.target.id === 'cierres-modal-overlay') {{
-        closeCierresModal();
-      }}
-    }}
-
-    function switchModalTab(tabKey) {{
-      document.querySelectorAll('.modal-tab-btn').forEach(b => b.classList.remove('active'));
-      const activeBtn = document.getElementById('modal-tab-' + tabKey);
-      if (activeBtn) activeBtn.classList.add('active');
-
-      const contentBox = document.getElementById('modal-body-content');
-      const today = getTodayDayName();
-
-      const cierres = (window.MAP_DATA && window.MAP_DATA.cierres_viales) ? window.MAP_DATA.cierres_viales : EMBEDDED_CIERRES;
-      const dayData = (cierres.dias && cierres.dias[today]) ? cierres.dias[today] : {{}};
-      const semStats = cierres.resumen_semanal || {{}};
-
-      if (tabKey === 'hoy') {{
-        const tianguisCount = dayData.total_tianguis || 194;
-        const kmOcupados = dayData.km_lineales_ocupados || 42.15;
-        const oferentesTot = dayData.oferentes_totales || 29070;
-        const corredores = dayData.top_corredores || [];
-
-        let corredoresHtml = '';
-        if (corredores.length > 0) {{
-          corredoresHtml = corredores.map(c => `
-            <tr>
-              <td><b>${{c.corredor}}</b></td>
-              <td>${{c.alcaldias ? c.alcaldias.join(', ') : 'CDMX'}}</td>
-              <td><b>${{c.oferentes ? c.oferentes.toLocaleString() : '--'}}</b> puestos</td>
-              <td>~${{c.km_lineales ? c.km_lineales.toFixed(2) : '--'}} km</td>
-              <td><span style="background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px; font-weight:700;">${{c.tipo_afectacion || 'Cierre de calle'}}</span></td>
-            </tr>
-          `).join('');
-        }} else {{
-          corredoresHtml = `<tr><td colspan="5" style="text-align:center; color:#64748b;">No hay corredores viales reportados.</td></tr>`;
-        }}
-
-        contentBox.innerHTML = `
-          <div style="margin-bottom:14px;">
-            <div style="font-size:0.95rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:2px;">
-              Ocupación de Espacio Público Hoy (${{NOMBRE_DIAS[today]}})
-            </div>
-            <div style="font-size:0.75rem; color:#64748b;">
-              Datos derivados del Padrón de Tianguis y Mercados Sobre Ruedas de la Ciudad de México.
-            </div>
-          </div>
-
-          <div class="kpi-row">
-            <div class="kpi-card">
-              <div class="kpi-val">${{tianguisCount}}</div>
-              <div class="kpi-lbl">Tianguis Hoy</div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-val">${{kmOcupados}} km</div>
-              <div class="kpi-lbl">Vía Ocupada</div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-val">${{oferentesTot.toLocaleString()}}</div>
-              <div class="kpi-lbl">Oferentes Hoy</div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-val">100%</div>
-              <div class="kpi-lbl">Comunitario</div>
-            </div>
-          </div>
-
-          <div style="margin-top:16px;">
-            <div style="font-size:0.82rem; font-weight:800; color:#334155; margin-bottom:6px;">
-              🚦 Top Avenidas y Corredores con Cierre Vial Hoy:
-            </div>
-            <table class="corredores-table">
-              <thead>
-                <tr>
-                  <th>Avenida / Calle</th>
-                  <th>Alcaldía</th>
-                  <th>Puestos Est.</th>
-                  <th>Longitud</th>
-                  <th>Tipo Afectación</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${{corredoresHtml}}
-              </tbody>
-            </table>
-          </div>
-        `;
-
-      }} else if (tabKey === 'semana') {{
-        const totalTianguis = semStats.total_tianguis_catalogo || 1367;
-        const totalKmSem = semStats.km_lineales_acumulados_semana || 330.0;
-        const totalOferentes = semStats.oferentes_acumulados_semana || 239628;
-        const top10 = semStats.top_10_corredores_cdmx || [];
-
-        let top10Html = top10.map((c, i) => `
-          <tr>
-            <td><b>#${{i+1}} ${{c.corredor}}</b></td>
-            <td>${{c.alcaldias ? c.alcaldias.join(', ') : 'CDMX'}}</td>
-            <td>${{c.tianguis_instalaciones_semana || 1}} por sem</td>
-            <td><b>${{c.oferentes_totales ? c.oferentes_totales.toLocaleString() : '--'}}</b> oferentes</td>
-            <td>${{c.km_ocupados_semana || '--'}} km</td>
-          </tr>
-        `).join('');
-
-        contentBox.innerHTML = `
-          <div style="margin-bottom:14px;">
-            <div style="font-size:0.95rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:2px;">
-              Impacto Semanal del Comercio Popular en la CDMX
-            </div>
-            <div style="font-size:0.75rem; color:#64748b;">
-              Balance acumulado semanal de tianguis en las 16 demarcaciones territoriales.
-            </div>
-          </div>
-
-          <div class="kpi-row">
-            <div class="kpi-card">
-              <div class="kpi-val">${{totalTianguis}}</div>
-              <div class="kpi-lbl">Tianguis en Padrón</div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-val">${{totalKmSem}} km</div>
-              <div class="kpi-lbl">Km Lineales / Sem</div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-val">${{totalOferentes.toLocaleString()}}</div>
-              <div class="kpi-lbl">Oferentes / Sem</div>
-            </div>
-            <div class="kpi-card">
-              <div class="kpi-val">16</div>
-              <div class="kpi-lbl">Alcaldías</div>
-            </div>
-          </div>
-
-          <div style="margin-top:16px;">
-            <div style="font-size:0.82rem; font-weight:800; color:#334155; margin-bottom:6px;">
-              🏆 Los 10 Corredores Populares Más Extensos de la CDMX:
-            </div>
-            <table class="corredores-table">
-              <thead>
-                <tr>
-                  <th>Corredor</th>
-                  <th>Alcaldías</th>
-                  <th>Instalaciones</th>
-                  <th>Oferentes Semanales</th>
-                  <th>Km Ocupados</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${{top10Html}}
-              </tbody>
-            </table>
-          </div>
-        `;
-
-      }} else if (tabKey === 'normativa') {{
-        contentBox.innerHTML = `
-          <div style="font-size:0.82rem; line-height:1.6; color:#334155;">
-            <div style="font-size:0.95rem; font-weight:800; color:var(--cdmx-green-dark); margin-bottom:8px;">
-              Protocolos de Convivencia y Operación en Vía Pública
-            </div>
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px; margin-bottom:12px;">
-              <div style="font-weight:700; color:#0f766e; margin-bottom:4px;">⏰ Horarios Normativos Habituales (SEDECO):</div>
-              <ul style="margin-left:18px; font-size:0.75rem; color:#475569;">
-                <li><b>Montaje de estructuras:</b> 06:00 a 08:00 hrs.</li>
-                <li><b>Horario de atención al público:</b> 08:00 a 17:00 hrs.</li>
-                <li><b>Desmontaje, retiro y aseo barrial:</b> 17:00 a 19:00 hrs.</li>
-              </ul>
-            </div>
-
-            <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:10px; padding:12px; margin-bottom:12px;">
-              <div style="font-weight:700; color:#065f46; margin-bottom:4px;">🛡️ Principios Éticos y Soberanía Comunitaria:</div>
-              <p style="font-size:0.75rem; color:#065f46; margin-bottom:6px;">
-                Este portal reconoce la gobernanza histórica de las mesas directivas, comisiones electas en asamblea y dinámicas barriales de los tianguis de la Ciudad de México.
-              </p>
-              <p style="font-size:0.75rem; color:#065f46;">
-                <b>No al extractivismo de datos:</b> Esta herramienta es de consulta libre para las familias y los comerciantes, sin intermediarios ni vigilancia punitiva.
-              </p>
-            </div>
-          </div>
-        `;
-      }}
-    }}
-
-    // =========================================================================
-    // UTILIDADES: TOASTS, GEOLOCALIZACIÓN Y UI
-    // =========================================================================
-    function toggleSidebar() {{
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('collapsed');
-      const btnOpen = document.getElementById('btn-open-sidebar');
-      if (sidebar.classList.contains('collapsed')) {{
-        btnOpen.style.display = 'flex';
-      }} else {{
-        btnOpen.style.display = 'none';
-      }}
-      setTimeout(() => map.invalidateSize(), 320);
-    }}
-
-    function locateUser() {{
-      showToast('Buscando ubicación actual...', 'info');
-      map.locate({{ setView: true, maxZoom: 15, timeout: 10000, enableHighAccuracy: true }});
-    }}
-
-    map.on('locationfound', (e) => {{
-      const marker = L.circleMarker(e.latlng, {{
-        radius: 8,
-        fillColor: '#2563eb',
-        color: '#ffffff',
-        weight: 2.5,
-        opacity: 1,
-        fillOpacity: 0.95
-      }}).addTo(map);
-      marker.bindPopup('<b>Tu ubicación actual</b>').openPopup();
-      showToast('Ubicación encontrada.', 'success');
-    }});
-
-    map.on('locationerror', (e) => {{
-      showToast('No se pudo acceder a tu ubicación actual.', 'warning');
-    }});
-
-    function showToast(msg, type = 'info', duration = 3000) {{
-      const container = document.getElementById('toast-container');
-      const toast = document.createElement('div');
-      toast.className = 'toast-msg';
-
-      let borderCol = '#0f766e';
-      if (type === 'success') borderCol = '#10b981';
-      if (type === 'warning') borderCol = '#f59e0b';
-      if (type === 'error') borderCol = '#ef4444';
-
-      toast.style.borderLeft = `4px solid ${{borderCol}}`;
-      toast.innerText = msg;
-      container.appendChild(toast);
-
-      setTimeout(() => {{
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(8px)';
-        toast.style.transition = 'all 0.25s ease';
-        setTimeout(() => toast.remove(), 260);
-      }}, duration);
-    }}
-
-    // Iniciar aplicación al cargar el DOM
-    window.addEventListener('DOMContentLoaded', () => {{
-      initApplication();
-    }});
+        });
+      }
+
+      function renderMapMarkers() {
+        markersCluster.clearLayers();
+        const filtered = getFilteredTianguis();
+        let openCount = 0;
+
+        filtered.forEach(t => {
+          const status = getLiveStatus(t, state.activeDay);
+          if (status.isOpenNow) openCount++;
+
+          const iconHtml = `<div class="marker-pin ${status.markerClass}" title="${t.nombre_popular}">${t.escala_icono || '🎪'}</div>`;
+          const customIcon = L.divIcon({
+            html: iconHtml,
+            className: 'tianguis-marker-icon',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+          });
+
+          const marker = L.marker([t.lat, t.lng], { icon: customIcon });
+
+          // Tooltip sobrio
+          marker.bindTooltip(`
+            <div style="font-weight: 700; font-size: 12px; color: #0f172a;">${t.nombre_popular}</div>
+            <div style="font-size: 10.5px; color: #64748b;">${status.headline} · ${t.oferentes} oferentes</div>
+          `, { direction: 'top', offset: [0, -10] });
+
+          marker.on('click', function() {
+            openTianguisSidebar(t);
+          });
+
+          markersCluster.addLayer(marker);
+        });
+
+        // Actualizar contador
+        const dayLabel = (state.activeDay === 'HOY') ? `HOY (${currentDayName.toLowerCase()})` : state.activeDay;
+        const countText = `📍 ${filtered.length} tianguis (${dayLabel})`;
+        const openText = (state.activeDay === 'HOY') ? ` · ${openCount} abiertos ahora` : '';
+        document.getElementById('results-count').textContent = `${countText}${openText}`;
+      }
+
+      // =========================================================================
+      // FICHA LATERAL (SIDEBAR)
+      // =========================================================================
+      function openTianguisSidebar(t) {
+        state.selectedTianguis = t;
+        const status = getLiveStatus(t, state.activeDay);
+
+        // Textos y nombres
+        document.getElementById('side-popular-name').textContent = t.nombre_popular;
+        document.getElementById('side-cedula-name').textContent = t.nombre_oficial;
+
+        // Escala
+        const escalaBadge = document.getElementById('side-escala-badge');
+        escalaBadge.textContent = `${t.escala_icono || '🎪'} ${t.escala_nombre}`;
+        escalaBadge.className = `badge-escala ${t.escala_badge || 'badge-barrial'}`;
+        document.getElementById('side-oferentes-count').textContent = `~${t.oferentes.toLocaleString()} oferentes / puestos`;
+
+        // Estatus en vivo
+        const statusCard = document.getElementById('side-status-card');
+        statusCard.className = `status-card ${status.cssClass}`;
+        document.getElementById('side-status-headline').textContent = status.headline;
+        document.getElementById('side-status-subline').textContent = status.subline;
+
+        // Vocación
+        document.getElementById('side-vocation-title').textContent = t.vocacion_nombre || 'Abasto Popular Barrial';
+        document.getElementById('side-vocation-desc').textContent = t.vocacion_desc || 'Abasto barrial de alimentos frescos y enseres.';
+
+        // Tags de productos
+        const tagsContainer = document.getElementById('side-product-tags');
+        tagsContainer.innerHTML = '';
+        if (t.tags && t.tags.length) {
+          t.tags.forEach(tag => {
+            const chip = document.createElement('span');
+            chip.className = 'product-tag-chip';
+            chip.textContent = `#${tag}`;
+            chip.addEventListener('click', () => {
+              applyProductFilter(tag);
+            });
+            tagsContainer.appendChild(chip);
+          });
+        }
+
+        // Transporte a pie
+        const transit = t.transporte || {};
+        document.getElementById('side-transit-title').textContent = transit.texto || 'Referencia de movilidad en proceso';
+        document.getElementById('side-transit-desc').textContent = (transit.distancia_m)
+          ? `Estación más cercana a pie sin cruces masivos (aprox. ${transit.tiempo_min} min caminando).`
+          : 'Consulta rutas de acceso barriales.';
+
+        // Ubicación
+        document.getElementById('side-alcaldia').textContent = t.alcaldia || 'CDMX';
+        document.getElementById('side-colonia').textContent = t.colonia || 'Sin colonia';
+        document.getElementById('side-direccion').textContent = t.direccion || 'Vía pública autorizada';
+
+        // Días
+        document.getElementById('side-dias-list').textContent = t.dias.join(', ') || t.dia_principal;
+
+        // Botones de acción
+        const gmapsBtn = document.getElementById('side-btn-gmaps');
+        gmapsBtn.href = `https://www.google.com/maps/search/?api=1&query=${t.lat},${t.lng}`;
+
+        const copyBtn = document.getElementById('side-btn-copy-coords');
+        copyBtn.onclick = function() {
+          const coordsStr = `${t.lat}, ${t.lng}`;
+          navigator.clipboard.writeText(coordsStr).then(() => {
+            showToast(`✓ Coordenadas GPS copiadas: ${coordsStr}`);
+          });
+        };
+
+        // Abrir panel
+        document.getElementById('tianguis-sidebar').classList.add('open');
+
+        // Enfocar mapa suavemente
+        map.flyTo([t.lat, t.lng], Math.max(map.getZoom(), 15), { duration: 0.8 });
+      }
+
+      function closeTianguisSidebar() {
+        document.getElementById('tianguis-sidebar').classList.remove('open');
+        state.selectedTianguis = null;
+      }
+
+      document.getElementById('btn-close-sidebar').addEventListener('click', closeTianguisSidebar);
+
+      // =========================================================================
+      // OMNIBOX UNIFICADO INTELIGENTE
+      // =========================================================================
+      const omniboxInput = document.getElementById('omnibox-input');
+      const omniboxDropdown = document.getElementById('omnibox-dropdown');
+      const omniboxClear = document.getElementById('omnibox-clear');
+
+      let debounceTimer = null;
+      omniboxInput.addEventListener('input', function() {
+        const query = this.value.trim();
+        if (query.length > 0) {
+          omniboxClear.style.display = 'block';
+        } else {
+          omniboxClear.style.display = 'none';
+        }
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          handleOmniboxSearch(query);
+        }, 150);
+      });
+
+      omniboxClear.addEventListener('click', function() {
+        omniboxInput.value = '';
+        omniboxClear.style.display = 'none';
+        omniboxDropdown.style.display = 'none';
+        state.searchTerm = '';
+        renderMapMarkers();
+        updateChipsBar();
+      });
+
+      omniboxInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          omniboxDropdown.style.display = 'none';
+          if (query) {
+            state.searchTerm = query;
+            renderMapMarkers();
+            updateChipsBar();
+            fitToVisibleMarkers();
+          }
+        } else if (e.key === 'Escape') {
+          omniboxDropdown.style.display = 'none';
+        }
+      });
+
+      function handleOmniboxSearch(query) {
+        if (query.length < 2) {
+          omniboxDropdown.style.display = 'none';
+          return;
+        }
+
+        const q = query.toLowerCase();
+
+        // 1. Buscar en Tianguis (Nombres populares y oficiales)
+        const matchTianguis = state.tianguis.filter(t => {
+          return t.nombre_popular.toLowerCase().includes(q) ||
+                 t.nombre_oficial.toLowerCase().includes(q) ||
+                 t.colonia.toLowerCase().includes(q);
+        }).slice(0, 4);
+
+        // 2. Buscar en Catálogo de Productos Populares (+460 productos)
+        const matchProducts = state.vocabulario.filter(v => {
+          const tMatch = v.termino.toLowerCase().includes(q);
+          const sMatch = v.sinonimos && v.sinonimos.some(s => s.toLowerCase().includes(q));
+          const tokMatch = v.tokens_busqueda && v.tokens_busqueda.some(tok => tok.toLowerCase().includes(q));
+          return tMatch || sMatch || tokMatch;
+        }).slice(0, 5);
+
+        // 3. Buscar en Alcaldías
+        const matchAlcaldias = state.alcaldias.filter(alc => alc.toLowerCase().includes(q)).slice(0, 2);
+
+        // Renderizar sugerencias en dropdown
+        let html = '';
+
+        // Sección Productos
+        if (matchProducts.length > 0) {
+          html += `<div class="suggest-group-header">🏷️ Productos y Artículos Barriales</div>`;
+          matchProducts.forEach(p => {
+            html += `
+              <div class="suggest-item" data-type="product" data-value="${escapeHtml(p.termino)}">
+                <div class="suggest-item-main">
+                  <span class="suggest-item-icon">${p.categoria_icono || '🧺'}</span>
+                  <div>
+                    <div class="suggest-item-title">${p.termino}</div>
+                    <div class="suggest-item-subtitle">${p.subgiro_nombre} · ${p.categoria_nombre}</div>
+                  </div>
+                </div>
+                <span class="suggest-item-badge">Producto</span>
+              </div>
+            `;
+          });
+        }
+
+        // Sección Tianguis
+        if (matchTianguis.length > 0) {
+          html += `<div class="suggest-group-header">🎪 Tianguis y Mercados Móviles</div>`;
+          matchTianguis.forEach(t => {
+            html += `
+              <div class="suggest-item" data-type="tianguis" data-id="${t.id}">
+                <div class="suggest-item-main">
+                  <span class="suggest-item-icon">${t.escala_icono || '🎪'}</span>
+                  <div>
+                    <div class="suggest-item-title">${t.nombre_popular}</div>
+                    <div class="suggest-item-subtitle">${t.alcaldia} · Col. ${t.colonia} (${t.dias.join(', ')})</div>
+                  </div>
+                </div>
+                <span class="suggest-item-badge">${t.escala_nombre}</span>
+              </div>
+            `;
+          });
+        }
+
+        // Sección Alcaldías
+        if (matchAlcaldias.length > 0) {
+          html += `<div class="suggest-group-header">📍 Demarcación Territorial</div>`;
+          matchAlcaldias.forEach(alc => {
+            html += `
+              <div class="suggest-item" data-type="alcaldia" data-value="${alc}">
+                <div class="suggest-item-main">
+                  <span class="suggest-item-icon">📍</span>
+                  <div>
+                    <div class="suggest-item-title">Alcaldía ${alc}</div>
+                    <div class="suggest-item-subtitle">Ver tianguis en esta demarcación</div>
+                  </div>
+                </div>
+                <span class="suggest-item-badge">Alcaldía</span>
+              </div>
+            `;
+          });
+        }
+
+        if (!html) {
+          html = `<div style="padding: 14px; text-align: center; color: var(--slate-500); font-size: 12px;">No se encontraron resultados para "${escapeHtml(query)}"</div>`;
+        }
+
+        omniboxDropdown.innerHTML = html;
+        omniboxDropdown.style.display = 'block';
+
+        // Escuchar clics en sugerencias
+        omniboxDropdown.querySelectorAll('.suggest-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const type = this.getAttribute('data-type');
+            if (type === 'product') {
+              const prod = this.getAttribute('data-value');
+              applyProductFilter(prod);
+              omniboxInput.value = prod;
+            } else if (type === 'tianguis') {
+              const tid = this.getAttribute('data-id');
+              const t = state.tianguis.find(x => x.id === tid);
+              if (t) {
+                openTianguisSidebar(t);
+              }
+            } else if (type === 'alcaldia') {
+              const alc = this.getAttribute('data-value');
+              setAlcaldiaFilter(alc);
+            }
+            omniboxDropdown.style.display = 'none';
+          });
+        });
+      }
+
+      // Cerrar dropdown al hacer clic fuera
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.omnibox-wrapper')) {
+          omniboxDropdown.style.display = 'none';
+        }
+      });
+
+      function applyProductFilter(productName) {
+        state.activeProductFilter = productName;
+        renderMapMarkers();
+        updateChipsBar();
+        fitToVisibleMarkers();
+        showToast(`Filtrando tianguis con: "${productName}"`);
+      }
+
+      function setAlcaldiaFilter(alcaldiaName) {
+        state.activeAlcaldia = alcaldiaName;
+        document.getElementById('alcaldia-select').value = alcaldiaName;
+        renderMapMarkers();
+        updateChipsBar();
+        
+        // Auto-encuadrar a la alcaldía si existe polígono
+        if (alcaldiasLayer) {
+          alcaldiasLayer.eachLayer(layer => {
+            if (layer.feature && layer.feature.properties && layer.feature.properties.nombre === alcaldiaName) {
+              map.fitBounds(layer.getBounds(), { padding: [30, 30] });
+            }
+          });
+        }
+      }
+
+      function fitToVisibleMarkers() {
+        const bounds = markersCluster.getBounds();
+        if (bounds.isValid()) {
+          map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+        }
+      }
+
+      // =========================================================================
+      // MANEJO DE SELECTOR SEMANAL Y FILTROS SECUNDARIOS
+      // =========================================================================
+      document.querySelectorAll('.day-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          state.activeDay = this.getAttribute('data-day');
+          renderMapMarkers();
+          updateChipsBar();
+        });
+      });
+
+      document.getElementById('alcaldia-select').addEventListener('change', function() {
+        state.activeAlcaldia = this.value;
+        renderMapMarkers();
+        updateChipsBar();
+        if (this.value !== 'TODAS' && alcaldiasLayer) {
+          alcaldiasLayer.eachLayer(layer => {
+            if (layer.feature && layer.feature.properties && layer.feature.properties.nombre === state.activeAlcaldia) {
+              map.fitBounds(layer.getBounds(), { padding: [30, 30] });
+            }
+          });
+        }
+      });
+
+      document.getElementById('escala-select').addEventListener('change', function() {
+        state.activeEscala = this.value;
+        renderMapMarkers();
+        updateChipsBar();
+      });
+
+      // =========================================================================
+      // GESTIÓN DE CHIPS ACTIVOS
+      // =========================================================================
+      function updateChipsBar() {
+        const bar = document.getElementById('active-chips-bar');
+        const container = document.getElementById('active-chips-container');
+        container.innerHTML = '';
+        let hasFilter = false;
+
+        // Chip de Producto
+        if (state.activeProductFilter) {
+          hasFilter = true;
+          const chip = createChip(`🏷️ Producto: ${state.activeProductFilter}`, () => {
+            state.activeProductFilter = null;
+            renderMapMarkers();
+            updateChipsBar();
+          });
+          container.appendChild(chip);
+        }
+
+        // Chip de Alcaldía
+        if (state.activeAlcaldia !== 'TODAS') {
+          hasFilter = true;
+          const chip = createChip(`📍 ${state.activeAlcaldia}`, () => {
+            state.activeAlcaldia = 'TODAS';
+            document.getElementById('alcaldia-select').value = 'TODAS';
+            renderMapMarkers();
+            updateChipsBar();
+          });
+          container.appendChild(chip);
+        }
+
+        // Chip de Escala
+        if (state.activeEscala !== 'TODAS') {
+          hasFilter = true;
+          const label = state.activeEscala === 'mega' ? 'Megatianguis' : (state.activeEscala === 'mediano' ? 'Mediano' : 'Barrial');
+          const chip = createChip(`🎪 ${label}`, () => {
+            state.activeEscala = 'TODAS';
+            document.getElementById('escala-select').value = 'TODAS';
+            renderMapMarkers();
+            updateChipsBar();
+          });
+          container.appendChild(chip);
+        }
+
+        // Chip de Búsqueda libre
+        if (state.searchTerm) {
+          hasFilter = true;
+          const chip = createChip(`🔍 "${state.searchTerm}"`, () => {
+            state.searchTerm = '';
+            omniboxInput.value = '';
+            omniboxClear.style.display = 'none';
+            renderMapMarkers();
+            updateChipsBar();
+          });
+          container.appendChild(chip);
+        }
+
+        bar.style.display = hasFilter ? 'flex' : 'none';
+      }
+
+      function createChip(text, onRemove) {
+        const div = document.createElement('div');
+        div.className = 'active-chip';
+        div.innerHTML = `<span>${escapeHtml(text)}</span><span class="active-chip-remove" title="Quitar filtro">✕</span>`;
+        div.querySelector('.active-chip-remove').addEventListener('click', onRemove);
+        return div;
+      }
+
+      document.getElementById('btn-clear-all-chips').addEventListener('click', function() {
+        state.activeProductFilter = null;
+        state.activeAlcaldia = 'TODAS';
+        state.activeEscala = 'TODAS';
+        state.searchTerm = '';
+        omniboxInput.value = '';
+        omniboxClear.style.display = 'none';
+        document.getElementById('alcaldia-select').value = 'TODAS';
+        document.getElementById('escala-select').value = 'TODAS';
+        renderMapMarkers();
+        updateChipsBar();
+      });
+
+      // =========================================================================
+      // MODAL DE METODOLOGÍA
+      // =========================================================================
+      const infoModalBackdrop = document.getElementById('info-modal-backdrop');
+      document.getElementById('btn-open-info').addEventListener('click', () => {
+        infoModalBackdrop.style.display = 'flex';
+      });
+      document.getElementById('btn-close-modal').addEventListener('click', () => {
+        infoModalBackdrop.style.display = 'none';
+      });
+      infoModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === infoModalBackdrop) {
+          infoModalBackdrop.style.display = 'none';
+        }
+      });
+
+      // =========================================================================
+      // TOAST HELPER
+      // =========================================================================
+      let toastTimer = null;
+      function showToast(msg) {
+        const toast = document.getElementById('toast');
+        document.getElementById('toast-msg').textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3200);
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>'"]/g, tag => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[tag] || tag));
+      }
+
+      // Arrancar aplicación
+      initData();
+    })();
   </script>
 </body>
 </html>
 """
 
-    with open('mapa_comercio_movilidad_cdmx.html', 'w', encoding='utf-8') as f:
-        f.write(html)
+    output_path = 'mapa_comercio_movilidad_cdmx.html'
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(html_content)
 
-    print(f"mapa_comercio_movilidad_cdmx.html generado exitosamente ({len(html)} bytes).")
+    print(f"✓ Archivo generado exitosamente: {output_path} (Tamaño: {os.path.getsize(output_path) / 1024:.1f} KB)")
 
 if __name__ == '__main__':
     build_map_html()
