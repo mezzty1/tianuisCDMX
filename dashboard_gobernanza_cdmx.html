@@ -13,7 +13,7 @@
 
   <style>
     /* =========================================================================
-       SISTEMA VISUAL CÍVICO (DESIGN.md)
+       SISTEMA VISUAL CÍVICO CDMX
        ========================================================================= */
     :root {
       --primary: #166163;
@@ -58,10 +58,10 @@
        BARRA SUPERIOR INSTITUCIONAL (TEAL PROFUNDO)
        ========================================================================= */
     header.tv-header {
-      height: 64px;
+      height: 60px;
       background: var(--primary-deep);
       color: var(--ink-inverse);
-      padding: 0 24px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -72,30 +72,30 @@
     .header-brand-group {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .brand-emblem {
       background: rgba(255, 255, 255, 0.15);
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       border: 1.5px solid rgba(255, 255, 255, 0.3);
     }
 
     .brand-titles h1 {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.01em;
       line-height: 1.2;
     }
 
     .brand-titles .brand-meta {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #b2d7d8;
       display: flex;
       align-items: center;
@@ -108,7 +108,7 @@
       background: #10b981;
       border-radius: 50%;
       box-shadow: 0 0 8px #10b981;
-      animation: pulse-live 1.8s infinite;
+      animation: pulse-live 1.6s infinite;
       display: inline-block;
     }
 
@@ -122,57 +122,78 @@
     .header-kpi-bar {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
 
     .kpi-pill {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 999px;
-      padding: 6px 14px;
+      padding: 5px 12px;
       display: flex;
       align-items: baseline;
       gap: 6px;
-      transition: background 0.3s ease;
+      position: relative;
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .kpi-pill.pulse-tick {
-      background: rgba(16, 185, 129, 0.3);
+      background: rgba(16, 185, 129, 0.35);
       border-color: #10b981;
     }
 
     .kpi-pill-val {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #ffffff;
       font-variant-numeric: tabular-nums;
     }
 
     .kpi-pill-label {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #d1f4f4;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
 
+    .kpi-delta-tag {
+      position: absolute;
+      top: -8px;
+      right: 6px;
+      background: #10b981;
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .kpi-delta-tag.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .btn-map-nav {
       background: var(--surface-raised);
       color: var(--primary);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 7px 14px;
       border-radius: 999px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       transition: transform 0.15s ease, background 0.15s ease;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
@@ -183,22 +204,61 @@
     }
 
     /* =========================================================================
-       LIENZO PRINCIPAL PARA TV: 4 GRANDES CUADRANTES (100VH SIN SCROLL)
+       CINTILLO / TICKER EN VIVO DE ACTIVIDAD CIUDADANA
+       ========================================================================= */
+    .tv-live-ticker-bar {
+      height: 28px;
+      background: #0d4348;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-size: 11.5px;
+      color: #d4f7f7;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .ticker-lead-badge {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 9.5px;
+      background: #166163;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .ticker-feed-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: opacity 0.3s ease;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* =========================================================================
+       LIENZO PRINCIPAL PARA TV: 4 CUADRANTES SIN SCROLL
        ========================================================================= */
     main.tv-viewport-grid {
-      height: calc(100vh - 64px);
-      padding: 14px 18px;
+      height: calc(100vh - 88px);
+      padding: 12px 18px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 14px;
+      gap: 12px;
     }
 
     .tv-card {
       background: var(--surface);
       border: 1.5px solid #c7e3e4;
-      border-radius: 16px;
-      padding: 18px 22px;
+      border-radius: 14px;
+      padding: 16px 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -218,7 +278,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .tv-card-title-group {
@@ -228,19 +288,19 @@
     }
 
     .tv-card-icon-circle {
-      width: 34px;
-      height: 34px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--primary);
       color: var(--ink-inverse);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     .tv-card-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: var(--ink);
       text-transform: uppercase;
@@ -248,9 +308,9 @@
     }
 
     .tv-card-badge {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
-      padding: 3px 9px;
+      padding: 2px 8px;
       border-radius: 999px;
       background: #e2f6f7;
       color: var(--primary);
@@ -261,20 +321,25 @@
       display: flex;
       align-items: baseline;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .tv-hero-number {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 800;
       color: var(--primary-deep);
       line-height: 1;
       letter-spacing: -0.02em;
       font-variant-numeric: tabular-nums;
+      transition: color 0.3s ease;
+    }
+
+    .tv-hero-number.flash-green {
+      color: #059669;
     }
 
     .tv-hero-label {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--ink-secondary);
     }
@@ -287,6 +352,7 @@
       justify-content: center;
       min-height: 0;
       position: relative;
+      width: 100%;
     }
 
     /* FOOTER DE ACCIÓN DE TARJETA */
@@ -294,9 +360,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 10px;
+      padding-top: 8px;
       border-top: 1px solid #d8ecec;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--primary);
     }
@@ -305,7 +371,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--primary-muted);
     }
 
@@ -322,7 +388,7 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .tianguis-preview-row {
@@ -331,18 +397,18 @@
       justify-content: space-between;
       background: var(--surface-raised);
       border: 1px solid #d3ecec;
-      border-radius: 10px;
-      padding: 7px 12px;
+      border-radius: 8px;
+      padding: 6px 10px;
     }
 
     .tianguis-rank-tag {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       background: var(--primary);
       color: white;
-      border-radius: 6px;
-      padding: 2px 7px;
-      min-width: 26px;
+      border-radius: 5px;
+      padding: 2px 6px;
+      min-width: 24px;
       text-align: center;
     }
 
@@ -356,7 +422,7 @@
     }
 
     .tianguis-preview-name {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--ink-body);
       white-space: nowrap;
@@ -365,13 +431,13 @@
     }
 
     .tianguis-preview-sub {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--ink-secondary);
     }
 
     .tianguis-preview-metric {
       text-align: right;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--primary);
     }
@@ -382,12 +448,12 @@
       height: 100%;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .donut-container {
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
       position: relative;
       flex-shrink: 0;
     }
@@ -396,25 +462,25 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .legend-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11.5px;
     }
 
     .legend-bullet-group {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
     }
 
     .legend-bullet {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
     }
 
@@ -437,13 +503,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(16, 79, 85, 0.6);
+      background: rgba(16, 79, 85, 0.65);
       backdrop-filter: blur(6px);
       z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 30px;
+      padding: 24px;
     }
 
     .tv-modal-backdrop.open {
@@ -453,9 +519,9 @@
     .tv-modal-window {
       width: 100%;
       max-width: 1200px;
-      height: 90vh;
+      height: 92vh;
       background: var(--surface-raised);
-      border-radius: 20px;
+      border-radius: 18px;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
       display: flex;
       flex-direction: column;
@@ -466,32 +532,32 @@
     .tv-modal-header {
       background: var(--primary);
       color: var(--ink-inverse);
-      padding: 16px 24px;
+      padding: 14px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .tv-modal-header h2 {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .btn-close-modal {
       background: rgba(255, 255, 255, 0.15);
       color: #ffffff;
       border: 1.5px solid rgba(255, 255, 255, 0.3);
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 999px;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       transition: background 0.15s ease;
       font-family: inherit;
     }
@@ -502,7 +568,7 @@
 
     .tv-modal-body {
       flex: 1;
-      padding: 24px;
+      padding: 20px 24px;
       overflow-y: auto;
       background: #fbfefe;
     }
@@ -511,23 +577,23 @@
     .modal-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     .modal-table th {
       background: #e6f7f7;
       color: var(--primary);
       text-align: left;
-      padding: 10px 14px;
+      padding: 9px 12px;
       font-weight: 700;
       border-bottom: 2px solid #b7dfdf;
       text-transform: uppercase;
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: 0.5px;
     }
 
     .modal-table td {
-      padding: 11px 14px;
+      padding: 9px 12px;
       border-bottom: 1px solid #e1f1f1;
       color: var(--ink-body);
     }
@@ -537,9 +603,9 @@
     }
 
     .badge-pill {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 999px;
       background: #e2f6f7;
       color: var(--primary);
@@ -559,7 +625,7 @@
           <span class="live-pulse-dot"></span>
           <span>SISTEMA DE GOBERNANZA CÍVICA EN TIEMPO REAL</span>
           <span>•</span>
-          <span id="tv-live-clock" style="font-variant-numeric: tabular-nums; font-weight: 700;">14:35:00</span>
+          <span id="tv-live-clock" style="font-variant-numeric: tabular-nums; font-weight: 700;">14:40:00</span>
         </div>
       </div>
     </div>
@@ -567,20 +633,22 @@
     <!-- 4 MACRO KPIS EN HEADER -->
     <div class="header-kpi-bar">
       <div class="kpi-pill" id="pill-interacciones">
+        <span class="kpi-delta-tag" id="delta-tag-consultas">+2</span>
         <span class="kpi-pill-val" id="kpi-interacciones-num">26,740</span>
         <span class="kpi-pill-label">Consultas / Día</span>
       </div>
+      <div class="kpi-pill" id="pill-validaciones">
+        <span class="kpi-delta-tag" id="delta-tag-validaciones">+1</span>
+        <span class="kpi-pill-val" id="kpi-validaciones-num">559,513</span>
+        <span class="kpi-pill-label">Validaciones Sitio</span>
+      </div>
       <div class="kpi-pill">
         <span class="kpi-pill-val">7.56M</span>
-        <span class="kpi-pill-label">Afluencia Semanal</span>
+        <span class="kpi-pill-label">Afluencia / Sem</span>
       </div>
       <div class="kpi-pill">
         <span class="kpi-pill-val">1,367</span>
         <span class="kpi-pill-label">Tianguis CDMX</span>
-      </div>
-      <div class="kpi-pill">
-        <span class="kpi-pill-val">95.9%</span>
-        <span class="kpi-pill-label">En Territorio</span>
       </div>
     </div>
 
@@ -590,6 +658,12 @@
       </a>
     </div>
   </header>
+
+  <!-- CINTILLO / TICKER EN VIVO DE ACTIVIDAD CIUDADANA -->
+  <div class="tv-live-ticker-bar">
+    <span class="ticker-lead-badge">🟢 Actividad en Vivo</span>
+    <span class="ticker-feed-text" id="tv-ticker-content">14:40:15 · Reporte territorial verificado (+3 pts) en Tianguis Santa Cruz Meyehualco · Iztapalapa</span>
+  </div>
 
   <!-- LIENZO PRINCIPAL PARA PANTALLA DE TV (4 CUADRANTES SIN SCROLL) -->
   <main class="tv-viewport-grid">
@@ -640,7 +714,7 @@
 
       <div class="tv-visual-content">
         <div class="categories-preview-box">
-          <div class="donut-container">
+          <div class="donut-container" style="position: relative; width: 130px; height: 130px;">
             <canvas id="chart-categorias-tv"></canvas>
           </div>
           <div class="donut-legend">
@@ -684,7 +758,7 @@
       </div>
 
       <div class="tv-card-footer">
-        <span>Colores de movilidad oficial (DESIGN.md)</span>
+        <span>Canasta básica y gastronomía popular</span>
         <span class="tv-card-cta">Ver desglose y tickets ➔</span>
       </div>
     </article>
@@ -705,7 +779,7 @@
         </div>
       </div>
 
-      <div class="tv-visual-content" style="height: 125px;">
+      <div class="tv-visual-content" style="position: relative; width: 100%; height: 110px;">
         <canvas id="chart-volumen-tv"></canvas>
       </div>
 
@@ -731,7 +805,7 @@
         </div>
       </div>
 
-      <div class="tv-visual-content" style="height: 125px;">
+      <div class="tv-visual-content" style="position: relative; width: 100%; height: 110px;">
         <canvas id="chart-deciles-tv"></canvas>
       </div>
 
@@ -744,7 +818,7 @@
   </main>
 
   <!-- =========================================================================
-       PANTALLAS SECUNDARIAS (MODALES DETALLADOS)
+       PANTALLAS SECUNDARIAS (MODALES DETALLADOS EN PANTALLA COMPLETA)
        ========================================================================= -->
 
   <!-- MODAL 1: TIANGUIS RANKING -->
@@ -755,7 +829,7 @@
         <button class="btn-close-modal" data-close="modal-tianguis">✕ Volver (ESC)</button>
       </div>
       <div class="tv-modal-body">
-        <p style="font-size: 13.5px; color: var(--ink-secondary); margin-bottom: 16px;">
+        <p style="font-size: 13px; color: var(--ink-secondary); margin-bottom: 14px;">
           Afluencia semanal estimada a partir del padrón auditado de 1,367 tianguis, capacidad de puestos y validaciones comunitarias con Proof of Location (&le; 300 m).
         </p>
         <table class="modal-table">
@@ -810,29 +884,29 @@
         <button class="btn-close-modal" data-close="modal-volumen">✕ Volver (ESC)</button>
       </div>
       <div class="tv-modal-body">
-        <div style="height: 320px; margin-bottom: 24px;">
+        <div style="position: relative; width: 100%; height: 260px; margin-bottom: 20px;">
           <canvas id="chart-modal-horas"></canvas>
         </div>
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
-          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 14px; border-radius: 12px;">
-            <div style="font-size: 11px; font-weight: 700; color: var(--primary);">ESTATUS EN VIVO</div>
-            <div style="font-size: 24px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">43.8%</div>
-            <div style="font-size: 11.5px; color: var(--ink-secondary);">Consultas de apertura y montaje</div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 12px; border-radius: 10px;">
+            <div style="font-size: 10.5px; font-weight: 700; color: var(--primary);">ESTATUS EN VIVO</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">43.8%</div>
+            <div style="font-size: 11px; color: var(--ink-secondary);">Consultas de apertura y montaje</div>
           </div>
-          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 14px; border-radius: 12px;">
-            <div style="font-size: 11px; font-weight: 700; color: var(--primary);">MEDIOS DE PAGO</div>
-            <div style="font-size: 24px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">26.5%</div>
-            <div style="font-size: 11.5px; color: var(--ink-secondary);">Confirmación de CoDi y transferencias</div>
+          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 12px; border-radius: 10px;">
+            <div style="font-size: 10.5px; font-weight: 700; color: var(--primary);">MEDIOS DE PAGO</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">26.5%</div>
+            <div style="font-size: 11px; color: var(--ink-secondary);">Confirmación de CoDi y transferencias</div>
           </div>
-          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 14px; border-radius: 12px;">
-            <div style="font-size: 11px; font-weight: 700; color: var(--primary);">BÚSQUEDA PREDICTIVA</div>
-            <div style="font-size: 24px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">18.5%</div>
-            <div style="font-size: 11.5px; color: var(--ink-secondary);">Búsqueda de productos específicos</div>
+          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 12px; border-radius: 10px;">
+            <div style="font-size: 10.5px; font-weight: 700; color: var(--primary);">BÚSQUEDA PREDICTIVA</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">18.5%</div>
+            <div style="font-size: 11px; color: var(--ink-secondary);">Búsqueda de productos específicos</div>
           </div>
-          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 14px; border-radius: 12px;">
-            <div style="font-size: 11px; font-weight: 700; color: var(--primary);">VALIDACIÓN EN SITIO</div>
-            <div style="font-size: 24px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">11.2%</div>
-            <div style="font-size: 11.5px; color: var(--ink-secondary);">Reportes con Proof of Location</div>
+          <div style="background: #f0fefe; border: 1px solid #b7dfdf; padding: 12px; border-radius: 10px;">
+            <div style="font-size: 10.5px; font-weight: 700; color: var(--primary);">VALIDACIÓN EN SITIO</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--primary-deep); margin-top: 4px;">11.2%</div>
+            <div style="font-size: 11px; color: var(--ink-secondary);">Reportes con Proof of Location</div>
           </div>
         </div>
       </div>
@@ -864,12 +938,15 @@
     </div>
   </div>
 
-  <!-- LÓGICA JAVASCRIPT Y SIMULACIÓN EN TIEMPO REAL -->
+  <!-- =========================================================================
+       LÓGICA JAVASCRIPT, DATOS Y SIMULACIÓN EN TIEMPO REAL
+       ========================================================================= -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Garantizar acceso a datos analíticos
       const data = window.DASHBOARD_ANALYTICS_DATA || {};
 
-      // 1. Reloj en vivo
+      // 1. Reloj digital en vivo
       function updateClock() {
         const now = new Date();
         document.getElementById('tv-live-clock').textContent = now.toLocaleTimeString('es-MX', { hour12: false });
@@ -877,118 +954,181 @@
       setInterval(updateClock, 1000);
       updateClock();
 
-      // 2. Simulación de Latido en Vivo (+1/+2 en interacciones cada 4s)
+      // 2. Simulación en Tiempo Real (Consultas y Validaciones en sitio que se mueven continuamente)
       let liveConsultas = 26740;
+      let liveValidaciones = 559513;
+
+      // Lista de eventos de simulación verosímiles
+      const liveEvents = [
+        "Nueva validación territorial (+3 pts · GPS ≤300m) en Tianguis Santa Cruz Meyehualco · Iztapalapa",
+        "Confirmación de pago con CoDi/Transferencia (+1 pt) en Tianguis Sullivan · Cuauhtémoc",
+        "Reporte en vivo: Tianguis instalado y operando (+3 pts) en El Salado · Iztapalapa",
+        "Consulta de ruta de transporte hacia San Felipe de Jesús · Gustavo A. Madero",
+        "Voto barrial registrado para especialidad #Barbacoa (+1 pt) en Tianguis Condesa · Cuauhtémoc",
+        "Nueva validación de medios de pago (+3 pts · GPS) en Tianguis El Chopo · Cuauhtémoc",
+        "Consulta de horario activo en Tianguis Doctores · Cuauhtémoc",
+        "Validación territorial (+3 pts) en Tianguis Apatlaco · Iztacalco",
+        "Consulta de canasta básica y perecederos en Tianguis Portales · Benito Juárez",
+        "Reporte en vivo: Puestos de ropa de paca activos en San Antonio Barr · Iztapalapa"
+      ];
+
+      let eventIdx = 0;
+      const tickerEl = document.getElementById('tv-ticker-content');
+      const deltaTagConsultas = document.getElementById('delta-tag-consultas');
+      const deltaTagValidaciones = document.getElementById('delta-tag-validaciones');
+
+      // Ticker y movimiento cada 2.5 segundos
       setInterval(function() {
-        const delta = Math.floor(Math.random() * 3) + 1;
-        liveConsultas += delta;
-        const str = liveConsultas.toLocaleString('es-MX');
-        document.getElementById('kpi-interacciones-num').textContent = str;
-        document.getElementById('tv-hero-consultas').textContent = str;
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString('es-MX', { hour12: false });
         
-        const pill = document.getElementById('pill-interacciones');
-        pill.classList.add('pulse-tick');
-        setTimeout(() => pill.classList.remove('pulse-tick'), 600);
-      }, 4000);
+        // 1. Incrementar consultas
+        const deltaConsultas = Math.floor(Math.random() * 3) + 1; // +1 a +3
+        liveConsultas += deltaConsultas;
+        const consultasStr = liveConsultas.toLocaleString('es-MX');
+        document.getElementById('kpi-interacciones-num').textContent = consultasStr;
+        document.getElementById('tv-hero-consultas').textContent = consultasStr;
+
+        // Feedback visual en consultas
+        deltaTagConsultas.textContent = `+${deltaConsultas}`;
+        deltaTagConsultas.classList.add('show');
+        const pillConsultas = document.getElementById('pill-interacciones');
+        pillConsultas.classList.add('pulse-tick');
+        const heroNum = document.getElementById('tv-hero-consultas');
+        heroNum.classList.add('flash-green');
+
+        setTimeout(() => {
+          deltaTagConsultas.classList.remove('show');
+          pillConsultas.classList.remove('pulse-tick');
+          heroNum.classList.remove('flash-green');
+        }, 700);
+
+        // 2. Incrementar validaciones en territorio (50% de probabilidad)
+        if (Math.random() > 0.45) {
+          const deltaVal = 1;
+          liveValidaciones += deltaVal;
+          document.getElementById('kpi-validaciones-num').textContent = liveValidaciones.toLocaleString('es-MX');
+          deltaTagValidaciones.classList.add('show');
+          const pillVal = document.getElementById('pill-validaciones');
+          pillVal.classList.add('pulse-tick');
+          setTimeout(() => {
+            deltaTagValidaciones.classList.remove('show');
+            pillVal.classList.remove('pulse-tick');
+          }, 700);
+        }
+
+        // 3. Ticker text update
+        eventIdx = (eventIdx + 1) % liveEvents.length;
+        tickerEl.style.opacity = '0';
+        setTimeout(() => {
+          tickerEl.textContent = `${timeStr} · ${liveEvents[eventIdx]}`;
+          tickerEl.style.opacity = '1';
+        }, 200);
+
+      }, 2400);
 
       // 3. Render Top 3 Tianguis en Tarjeta 1
-      const ranking = (data.eje_1_tianguis_ranking && data.eje_1_tianguis_ranking.ranking_top) || [];
+      const ranking = (data.eje_1_tianguis_ranking && (data.eje_1_tianguis_ranking.top_50 || data.eje_1_tianguis_ranking.ranking_top)) || [];
       const previewContainer = document.getElementById('preview-tianguis-list');
       const tags = ['gold', 'silver', 'bronze'];
 
+      previewContainer.innerHTML = '';
       ranking.slice(0, 3).forEach((t, i) => {
         const row = document.createElement('div');
         row.className = 'tianguis-preview-row';
+        const afluenciaStr = t.afluencia_semanal_est ? (t.afluencia_semanal_est / 1000).toFixed(1) : (t.afluencia_semanal_estimada ? (t.afluencia_semanal_estimada / 1000).toFixed(1) : '200');
         row.innerHTML = `
-          <div class="tianguis-rank-tag ${tags[i]}">#${t.posicion}</div>
+          <div class="tianguis-rank-tag ${tags[i]}">#${t.ranking_posicion || t.posicion || (i+1)}</div>
           <div class="tianguis-preview-info">
             <div class="tianguis-preview-name">${t.nombre_popular}</div>
             <div class="tianguis-preview-sub">${t.alcaldia} · ${t.oferentes.toLocaleString()} puestos</div>
           </div>
-          <div class="tianguis-preview-metric">~${(t.afluencia_semanal_estimada / 1000).toFixed(1)}k <span style="font-size: 11px; font-weight: normal; color: var(--ink-secondary);">/sem</span></div>
+          <div class="tianguis-preview-metric">~${afluenciaStr}k <span style="font-size: 10px; font-weight: normal; color: var(--ink-secondary);">/sem</span></div>
         `;
         previewContainer.appendChild(row);
       });
 
-      // 4. Gráfica de Dona (Categorías) - Chart.js con colores de DESIGN.md
-      const ctxCat = document.getElementById('chart-categorias-tv').getContext('2d');
-      new Chart(ctxCat, {
-        type: 'doughnut',
-        data: {
-          labels: ['Gastronomía', 'Frescos', 'Paca/Calzado', 'Canasta Básica', 'Chácharas'],
-          datasets: [{
-            data: [29.4, 26.8, 17.5, 13.8, 12.5],
-            backgroundColor: ['#d02c3a', '#00843d', '#c89e3a', '#2f4fb7', '#e8622a'],
-            borderWidth: 2,
-            borderColor: '#f0fefe'
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '68%',
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              callbacks: {
-                label: (ctx) => ` ${ctx.label}: ${ctx.raw}%`
+      // 4. Gráfica de Dona (Categorías) - Chart.js con paleta cívica oficial
+      if (window.Chart) {
+        const ctxCat = document.getElementById('chart-categorias-tv').getContext('2d');
+        new Chart(ctxCat, {
+          type: 'doughnut',
+          data: {
+            labels: ['Gastronomía', 'Frescos', 'Paca/Calzado', 'Canasta Básica', 'Chácharas'],
+            datasets: [{
+              data: [29.4, 26.8, 17.5, 13.8, 12.5],
+              backgroundColor: ['#d02c3a', '#00843d', '#c89e3a', '#2f4fb7', '#e8622a'],
+              borderWidth: 2,
+              borderColor: '#f0fefe'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '66%',
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => ` ${ctx.label}: ${ctx.raw}%`
+                }
               }
             }
           }
-        }
-      });
+        });
 
-      // 5. Gráfica de Área (Volumen Semanal)
-      const ctxVol = document.getElementById('chart-volumen-tv').getContext('2d');
-      new Chart(ctxVol, {
-        type: 'line',
-        data: {
-          labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-          datasets: [{
-            data: [13.8, 15.4, 23.6, 21.8, 27.4, 41.2, 43.9],
-            borderColor: '#166163',
-            backgroundColor: 'rgba(22, 97, 99, 0.12)',
-            borderWidth: 2.5,
-            fill: true,
-            tension: 0.35,
-            pointBackgroundColor: '#166163',
-            pointRadius: 3
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { grid: { display: false }, ticks: { font: { size: 10, weight: 600 } } },
-            y: { display: false }
+        // 5. Gráfica de Área (Volumen Semanal)
+        const ctxVol = document.getElementById('chart-volumen-tv').getContext('2d');
+        new Chart(ctxVol, {
+          type: 'line',
+          data: {
+            labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+            datasets: [{
+              data: [13.8, 15.4, 23.6, 21.8, 27.4, 41.2, 43.9],
+              borderColor: '#166163',
+              backgroundColor: 'rgba(22, 97, 99, 0.14)',
+              borderWidth: 2.5,
+              fill: true,
+              tension: 0.35,
+              pointBackgroundColor: '#166163',
+              pointRadius: 3
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { grid: { display: false }, ticks: { font: { size: 10, weight: 600 } } },
+              y: { display: false }
+            }
           }
-        }
-      });
+        });
 
-      // 6. Gráfica de Barras Horizontales (Deciles D1 a D10)
-      const ctxDec = document.getElementById('chart-deciles-tv').getContext('2d');
-      new Chart(ctxDec, {
-        type: 'bar',
-        data: {
-          labels: ['D1 (15-19)', 'D2 (20-24)', 'D3 (25-29)', 'D4 (30-34)', 'D5 (35-39)', 'D6 (40-44)', 'D7 (45-49)', 'D8 (50-54)', 'D9 (55-64)', 'D10 (65+)'],
-          datasets: [{
-            data: [4.8, 11.2, 15.6, 16.4, 14.2, 12.1, 9.8, 7.3, 5.4, 3.2],
-            backgroundColor: (ctx) => (ctx.dataIndex === 3) ? '#166163' : '#7db1b4',
-            borderRadius: 4
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { display: false },
-            y: { grid: { display: false }, ticks: { font: { size: 9.5, weight: 600 } } }
+        // 6. Gráfica de Barras Horizontales (Deciles D1 a D10)
+        const ctxDec = document.getElementById('chart-deciles-tv').getContext('2d');
+        new Chart(ctxDec, {
+          type: 'bar',
+          data: {
+            labels: ['D1 (15-19)', 'D2 (20-24)', 'D3 (25-29)', 'D4 (30-34)', 'D5 (35-39)', 'D6 (40-44)', 'D7 (45-49)', 'D8 (50-54)', 'D9 (55-64)', 'D10 (65+)'],
+            datasets: [{
+              data: [4.8, 11.2, 15.6, 16.4, 14.2, 12.1, 9.8, 7.3, 5.4, 3.2],
+              backgroundColor: (ctx) => (ctx.dataIndex === 3) ? '#166163' : '#7db1b4',
+              borderRadius: 4
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { display: false },
+              y: { grid: { display: false }, ticks: { font: { size: 9, weight: 600 } } }
+            }
           }
-        }
-      });
+        });
+      }
 
       // 7. Modales en Pantalla Completa
       function openModal(id) {
@@ -1016,51 +1156,65 @@
         }
       });
 
-      // Llenar tabla de Tianguis
+      // Llenar tabla de Tianguis en Modal 1
       const tbodyTianguis = document.getElementById('table-tianguis-body');
-      ranking.forEach(t => {
+      tbodyTianguis.innerHTML = '';
+      ranking.forEach((t, i) => {
         const tr = document.createElement('tr');
+        const afluenciaNum = t.afluencia_semanal_est || t.afluencia_semanal_estimada || 0;
+        const diasList = t.dias_operacion ? t.dias_operacion.join(', ') : (t.dias ? t.dias.join(', ') : t.dia_principal);
+        const certPct = t.pct_confirmacion || t.validacion_territorial_pct || 95;
+        const certStatus = t.estatus_epistemico || t.certidumbre_status || 'CONFIRMADO';
+        
         tr.innerHTML = `
-          <td><strong>#${t.posicion}</strong></td>
+          <td><strong>#${t.ranking_posicion || (i+1)}</strong></td>
           <td><strong>${t.nombre_popular}</strong><br><span style="font-size: 11px; color: var(--ink-secondary);">${t.nombre_oficial}</span></td>
           <td><span class="badge-pill">${t.alcaldia}</span></td>
-          <td>${t.dias.join(', ')}</td>
+          <td>${diasList}</td>
           <td>${t.oferentes.toLocaleString()}</td>
-          <td><strong>${t.afluencia_semanal_estimada.toLocaleString()}</strong></td>
-          <td><strong style="color: var(--accent-metrobus-green);">${t.validacion_territorial_pct}%</strong> (${t.certidumbre_status})</td>
+          <td><strong>${afluenciaNum.toLocaleString()}</strong></td>
+          <td><strong style="color: var(--accent-metrobus-green);">${certPct}%</strong> (${certStatus})</td>
         `;
         tbodyTianguis.appendChild(tr);
       });
 
-      // Llenar tabla de Categorías
+      // Llenar tabla de Categorías en Modal 2
       const cats = (data.eje_2_categorias_consumo && data.eje_2_categorias_consumo.categorias) || [];
       const tbodyCat = document.getElementById('table-categorias-body');
+      tbodyCat.innerHTML = '';
       cats.forEach(c => {
         const tr = document.createElement('tr');
+        const artList = c.articulos_lideres ? c.articulos_lideres.slice(0, 3).join(', ') : 'Perecederos y enseres';
+        const efPct = c.metodos_pago ? c.metodos_pago.efectivo_pct : 80;
+        const speiPct = c.metodos_pago ? c.metodos_pago.transferencia_spei_pct : 20;
+
         tr.innerHTML = `
-          <td><strong>${c.icono} ${c.nombre}</strong></td>
+          <td><strong>${c.icono || '🧺'} ${c.nombre}</strong></td>
           <td><span class="badge-pill">${c.porcentaje}%</span></td>
-          <td><strong>$${c.ticket_promedio_mxn.toFixed(2)} MXN</strong></td>
+          <td><strong>$${Number(c.ticket_promedio_mxn).toFixed(2)} MXN</strong></td>
           <td>${c.horario_pico}</td>
-          <td>${c.metodos_pago.efectivo_pct}%</td>
-          <td>${c.metodos_pago.transferencia_spei_pct}%</td>
-          <td style="font-size: 11.5px; color: var(--ink-secondary);">${c.articulos_lideres.slice(0, 3).join(', ')}</td>
+          <td>${efPct}%</td>
+          <td>${speiPct}%</td>
+          <td style="font-size: 11px; color: var(--ink-secondary);">${artList}</td>
         `;
         tbodyCat.appendChild(tr);
       });
 
-      // Llenar tabla de Deciles
+      // Llenar tabla de Deciles en Modal 4
       const decs = (data.eje_4_deciles_edad && data.eje_4_deciles_edad.deciles) || [];
       const tbodyDec = document.getElementById('table-deciles-body');
+      tbodyDec.innerHTML = '';
       decs.forEach(d => {
         const tr = document.createElement('tr');
+        const catInteres = d.categorias_interes ? d.categorias_interes.map(ci => ci.nombre).slice(0, 2).join(', ') : 'Consumo general';
+
         tr.innerHTML = `
           <td><strong>${d.decil}</strong></td>
           <td><strong>${d.rango_edad}</strong><br><span style="font-size: 11px; color: var(--ink-secondary);">${d.etiqueta}</span></td>
           <td><span class="badge-pill">${d.pct_interacciones}%</span></td>
-          <td><strong>$${d.ticket_promedio_mxn.toFixed(2)} MXN</strong></td>
-          <td>${d.categorias_interes.map(ci => ci.nombre).slice(0, 2).join(', ')}</td>
-          <td>${d.pago_preferido_texto}</td>
+          <td><strong>$${Number(d.ticket_promedio_mxn).toFixed(2)} MXN</strong></td>
+          <td>${catInteres}</td>
+          <td>${d.pago_preferido_texto || 'Efectivo / Transferencia'}</td>
         `;
         tbodyDec.appendChild(tr);
       });
@@ -1068,19 +1222,21 @@
       // Gráfica de 15 horas en modal de Volumen
       let hourlyChartInit = false;
       function initHourlyChart() {
-        if (hourlyChartInit) return;
+        if (hourlyChartInit || !window.Chart) return;
         hourlyChartInit = true;
-        const horas = (data.eje_3_interacciones_sistema && data.eje_3_interacciones_sistema.distribucion_horaria) || [];
+        
+        const horas = (data.eje_3_interacciones_sistema && (data.eje_3_interacciones_sistema.curva_horaria || data.eje_3_interacciones_sistema.distribucion_horaria)) || [];
         const ctxH = document.getElementById('chart-modal-horas').getContext('2d');
+        
         new Chart(ctxH, {
           type: 'bar',
           data: {
-            labels: horas.map(h => h.hora_label),
+            labels: horas.map(h => h.hora || h.hora_label),
             datasets: [{
               label: 'Consultas por Hora',
-              data: horas.map(h => h.volumen_consultas_hora),
+              data: horas.map(h => h.interacciones || h.volumen_consultas_hora),
               backgroundColor: '#166163',
-              borderRadius: 6
+              borderRadius: 5
             }]
           },
           options: {
@@ -1090,7 +1246,7 @@
               legend: { display: false },
               tooltip: {
                 callbacks: {
-                  afterLabel: (ctx) => horas[ctx.dataIndex].fase_operativa
+                  afterLabel: (ctx) => horas[ctx.dataIndex] ? (horas[ctx.dataIndex].fase || horas[ctx.dataIndex].fase_operativa || '') : ''
                 }
               }
             },
