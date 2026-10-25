@@ -22,6 +22,8 @@ Este directorio contiene los datasets limpios, estandarizados y estructurados li
 | **`apoyos_emergentes_limpio`** | `.json` / `.csv` | 2,673 | N/A (Padrón) | Padrón de microcomerciantes beneficiarios de apoyos emergentes CDMX, con status de dispersión, edad y género. |
 | **`cierres_viales_tianguis`** | `.geojson` | 1,367 | 1,365 (99.8%) | **Capa Vectorial de Afectación Vial**: tramos de calle cerrados (`LineString`) por tianguis con entrecalles, longitud, ancho, tipo de afectación y desvíos sugeridos. |
 | **`cierres_viales_por_dia`** | `.json` | 7 días | N/A (Consolidado) | **Índice de Cierres Viales por Día de la Semana**: consolidación de LUNES a DOMINGO con 330 km de vialidades afectadas y desglose por alcaldía para el frontend. |
+| **`desiertos_abasto_cdmx`** | `.json` / `.csv` | **1,543** | **1,543 (100.0%)** | **Detección de Desiertos de Abasto Popular por Colonia (Tarea 6.3)**: análisis isócrono peatonal (500m/1km) de todas las colonias de la CDMX, distancias mínimas y diarias (Lunes a Domingo), tiempo de caminata, tianguis más cercano, día crítico e índice de vulnerabilidad de abasto. |
+| **`cobertura_tianguis_alcaldias`** | `.json` / `.csv` | **16** | **16 (100.0%)** | **Matriz Consolidada de Cobertura y Desiertos por Alcaldía (Tarea 6.3)**: superficie total, cobertura de buffers a 500m y 1,000m, porcentaje de desierto territorial, número de tianguis y oferentes, cobertura diaria (L-D), día crítico, ISDAP (0-100) y Top 5 colonias prioritarias. |
 | **`normalize_all.py`** | `.py` | Script | N/A | Pipeline automatizado y reproducible que genera todos los archivos procesados desde `data/raw/`. |
 
 ---
@@ -76,6 +78,15 @@ Cada registro posee un ID legible y único para claves primarias en bases de dat
 - Apoyos Emergentes: `APOYO-0001` a `APOYO-2673`
 - Rutas MSR: `RUTA-MSR-01` a `RUTA-MSR-10`, `RUTA-MSR-06A/B`, `RUTA-MSR-08A/B`, `RUTA-MSR-MINI`
 - Centros Mayoristas: `ABASTO-CEDA`, `ABASTO-MERCED-MAYOR`, `ABASTO-MERCED-MENOR`, `ABASTO-SONORA`, `ABASTO-JAMAICA`, `ABASTO-NUEVA-VIGA`, `ABASTO-LA-VIGA`, `ABASTO-SAN-JUAN-PUGIBET`
+
+### 2.6 Modelo de Detección de Desiertos de Abasto Popular y Fresco (Tarea 6.3)
+Generado por [`scripts/analyze_food_deserts.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/analyze_food_deserts.py) con proyección cartográfica métrica en **UTM Zona 14N (EPSG:32614)**:
+- **Buffers Isócronos Peatonales**:
+  * `500 metros` ($\le 6.7$ min de caminata): *Abasto Pleno* (1,033 colonias, 66.9%).
+  * `1,000 metros` ($6.7 - 13.3$ min de caminata): *Abasto Moderado* (406 colonias, 26.3%).
+  * `> 1,000 metros` ($> 13.3$ min de caminata): *Desierto de Abasto Popular Fresco* (104 colonias, 6.7%).
+- **Dinámica Temporal Diaria (Lunes a Domingo)**: Detección del día crítico semanal (el viernes es el día con mayor déficit, alcanzando el 51.6% de colonias sin abasto cercano).
+- **Índice de Severidad de Desierto de Abasto Popular (ISDAP, 0 a 100)**: Combina cobertura territorial desértica, porcentaje de colonias desérticas, déficit temporal promedio y penalización por baja densidad de oferentes. Permite priorizar la asignación de nuevas paradas de Mercados Sobre Ruedas en alcaldías críticas como Milpa Alta (72.0), Cuajimalpa (61.8), Xochimilco (54.3) y Tlalpan (53.7).
 
 ---
 

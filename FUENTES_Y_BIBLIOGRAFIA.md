@@ -306,17 +306,39 @@ Marco teórico para blindar el prototipo frente al extractivismo de datos y la d
 
 ---
 
-## 8. Trazabilidad de Scripts y Entregables del Repositorio
+## 8. Metodología de Desiertos de Alimentos, Seguridad Alimentaria y Geografía Urbana
+
+1. **CONEVAL (Consejo Nacional de Evaluación de la Política de Desarrollo Social, 2022-2024):**
+   - *«Medición multidimensional de la pobreza y acceso a la alimentación nutritiva y de calidad en México»*: Criterios metodológicos para evaluar la carencia por acceso a la alimentación en zonas urbanas y periurbanas. Enlace: [https://www.coneval.org.mx/](https://www.coneval.org.mx/)
+2. **USDA Economic Research Service (ERS, 2012-2023):**
+   - *«Food Access Research Atlas & Mapping Food Deserts in the United States»*: Definición estandarizada de buffers de caminabilidad (500m y 1,000m) e isócronas peatonales aplicadas al acceso a alimentos frescos. Enlace: [https://www.ers.usda.gov/data-products/food-access-research-atlas/](https://www.ers.usda.gov/data-products/food-access-research-atlas/)
+3. **FAO (Organización de las Naciones Unidas para la Alimentación y la Agricultura, 2021):**
+   - *«Sistemas alimentarios urbanos y comercio tradicional en América Latina»*: Documentación del rol de los tianguis, ferias libres y mercados municipales como amortiguadores inflacionarios y garantes de la diversidad dietética barrial frente a cadenas de autoservicio corporativo.
+4. **INSP (Instituto Nacional de Salud Pública, 2022-2024):**
+   - *«Encuesta Nacional de Salud y Nutrición (ENSANUT) - Resultados CDMX»*: Análisis de prevalencia de obesidad, hipertensión y diabetes tipo 2 cruzado con la proximidad a tiendas de conveniencia y entornos alimentarios no saludables (*food swamps*). Enlace: [https://ensanut.insp.mx/](https://ensanut.insp.mx/)
+5. **Bitler, M. & Haider, S. (2011):**
+   - *«An Economic View of Food Deserts in the United States»*, Journal of Policy Analysis and Management: Análisis de elasticidad de precios, costos de transporte y fricción espacial en la elección alimentaria de hogares vulnerables.
+6. **Widener, M. J., Farber, S., Neutens, T., & Horner, M. W. (2013):**
+   - *«Spatiotemporal accessibility to supermarkets using public transit, an interaction potential approach in space-time»*: Fundamento para modelar la accesibilidad alimentaria no como un fenómeno estático, sino dinámico según el día de la semana y el horario de operación de los mercados móviles.
+
+---
+
+## 9. Trazabilidad de Scripts y Entregables del Repositorio
 
 | Directorio / Archivo | Tipo | Descripción y Componentes |
 |---|:---:|---|
 | [`data/raw/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/raw) | Datasets Crudos | Archivos CSV, JSON, GeoJSON y Excel descargados directamente de portales abiertos gubernamentales. |
 | [`data/processed/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed) | Datasets Limpios | Datos estandarizados WGS84, horarios decimales, alcaldías canónicas y catálogo unificado (`directorio_comercio_popular.json`). |
+| [`data/processed/desiertos_abasto_cdmx.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/desiertos_abasto_cdmx.json) / [`.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/desiertos_abasto_cdmx.csv) | Datasets Derivados | Análisis micro-territorial de las 1,543 colonias de la CDMX: distancias a tianguis, tiempo de caminata, día crítico, distancias diarias y clasificación de abasto. |
+| [`data/processed/cobertura_tianguis_alcaldias.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/cobertura_tianguis_alcaldias.json) / [`.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/cobertura_tianguis_alcaldias.csv) | Datasets Derivados | Matriz consolidada de las 16 alcaldías con porcentajes de cobertura a 500m y 1,000m, ISDAP (0-100), densidad de oferentes y Top 5 colonias prioritarias. |
 | [`data/catalog/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog) | Taxonomía y Tarifas | 9 Macro-Categorías, 67 Subgiros normalizados, `giro_classifier.py`, `vocabulario_compras.json` y catálogo maestro de tarifas y horarios (`tarifas_horarios_transporte.json` / `.csv`). |
 | [`data/docs/apis_cdmx.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/docs/apis_cdmx.md) | Catálogo de APIs | Guía técnica y pruebas de conectividad en vivo de CKAN Datastore, GeoServer WFS SIG CDMX, Ecobici GBFS y OSRM. |
 | [`docs/TARIFAS_Y_HORARIOS_TRANSPORTE.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/TARIFAS_Y_HORARIOS_TRANSPORTE.md) | Documentación Tarifaria | Estudio exhaustivo de la asimetría metropolitana CDMX vs Edomex, fórmulas de cobro por distancia, recargos nocturnos e impacto en comerciantes madrugadores. |
 | [`docs/RUTEO_MULTIMODAL_CDMX.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/RUTEO_MULTIMODAL_CDMX.md) | Documentación Técnica | Especificación del motor de ruteo multimodal (Metro + Metrobús + Trolebús + RTP + caminata hacia tianguis). |
+| [`docs/CIERRES_VIALES_TIANGUIS.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/CIERRES_VIALES_TIANGUIS.md) | Documentación Espacial | Modelado geométrico de cortes viales dinámicos, afectación a transporte público e indexador acimutal de calles ocupadas. |
+| [`docs/DESIERTOS_ABASTO_CDMX.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/DESIERTOS_ABASTO_CDMX.md) | Política Pública | Reporte de política pública para SEDECO y SECTEI sobre equidad alimentaria barrial, penetración de cadenas privadas (Oxxo) y 4 propuestas estratégicas. |
 | [`scripts/schedule_pricing_engine.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/schedule_pricing_engine.py) | Motor de Horarios y Precios | Motor CLI y API Python para consulta dinámica de transporte abierto/cerrado por hora y cotización exacta tramo por tramo. |
+| [`scripts/analyze_food_deserts.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/analyze_food_deserts.py) | Motor de Desiertos de Abasto | Script espacial reproducible para buffers peatonales (500m/1km), cruce dinámico por día de la semana, cálculo de ISDAP y exportación dual (JSON/CSV). |
 | [`TODO_PROYECTO.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/TODO_PROYECTO.md) | Backlog del Proyecto | Lista estructurada de 8 módulos de trabajo con dependencias, dificultad y estatus de ejecución en tiempo real. |
 | [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) | Visor Web Integrado | Prototipo cartográfico interactivo que combina la capa de comercio popular con la Red de Movilidad Integrada. |
 | [`scripts/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts) | Pipelines ETL y Build | Scripts en Python para descarga, compilación del grafo de ruteo, normalización de datos y generación del visor web. |
