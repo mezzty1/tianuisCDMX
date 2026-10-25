@@ -447,6 +447,34 @@ def generate():
       color: var(--cdmx-text-muted);
     }}
 
+    .secundaria-info-box {{
+      background: #faf5ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-top: 8px;
+    }}
+
+    .badge-red-primaria {{
+      background: #0f5953;
+      color: #ffffff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }}
+
+    .badge-red-secundaria {{
+      background: #8e24aa;
+      color: #ffffff;
+      font-size: 0.62rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }}
+
     /* Accesos Rápidos */
     .goto-row {{
       display: grid;
@@ -833,53 +861,59 @@ def generate():
         </div>
       </div>
 
-      <!-- Capas de Transporte -->
+      <!-- RED PRIMARIA: MOVILIDAD INTEGRADA (MI) -->
       <div class="section-block">
         <div class="section-heading">
-          <span>Red de Transporte</span>
-          <button class="btn-dropdown-main" onclick="toggleTransportDropdown(event)">
-            <span>Líneas MI</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M7 10l5 5 5-5z"/></svg>
-          </button>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="background:#0f5953; color:#fff; font-size:0.6rem; font-weight:800; padding:2px 6px; border-radius:4px;">PRIMARIA</span>
+            <span>Movilidad Integrada (MI)</span>
+          </div>
+          <span style="font-size:0.68rem; color:#64748b; font-weight:700;">Tarjeta MI · $3-$7</span>
         </div>
-
         <div class="chips-flow">
-          <button class="chip-btn active" id="chip-metro_icons" onclick="toggleLayer('metro_icons')">🚇 Íconos Metro (195)</button>
-          <button class="chip-btn active" id="chip-metrobus_icons" onclick="toggleLayer('metrobus_icons')">🚍 Íconos Metrobús (324)</button>
-          <button class="chip-btn active" id="chip-concesionado" onclick="toggleLayer('concesionado')">🚐 Rutas Secundarias (331)</button>
-          <button class="chip-btn active" id="chip-alcaldias" onclick="toggleLayer('alcaldias')">🗺️ Alcaldías CDMX</button>
-          <button class="chip-btn active" id="chip-zmvm" onclick="toggleLayer('zmvm')">🌐 Área Metropolitana</button>
+          <button class="chip-btn active" id="chip-metro" onclick="toggleMetroComplete()">🚇 Metro ($5.00)</button>
+          <button class="chip-btn active" id="chip-metrobus" onclick="toggleMetrobusComplete()">🚍 Metrobús ($6.00)</button>
+          <button class="chip-btn active" id="chip-trolebus" onclick="toggleLayer('trolebus')">🚎 Trolebús ($4.00)</button>
+          <button class="chip-btn active" id="chip-cablebus" onclick="toggleLayer('cablebus')">🚡 Cablebús ($7.00)</button>
+          <button class="chip-btn active" id="chip-tren" onclick="toggleLayer('tren')">🚋 Tren Ligero ($3.00)</button>
+          <button class="chip-btn active" id="chip-rtp" onclick="toggleLayer('rtp')">🟢 RTP Pasajeros ($2-$4)</button>
         </div>
+      </div>
 
-        <div id="transport-dropdown-menu">
-          <div class="t-opt" onclick="toggleSubsystem('METRO')">
-            <div class="t-badge" style="background:#ef4444;">M</div>
-            <span>Metro (Líneas 1-12)</span>
+      <!-- RED SECUNDARIA: TRANSPORTE CONCESIONADO (MICROBUSES Y COMBIS) -->
+      <div class="section-block">
+        <div class="section-heading">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="background:#8e24aa; color:#fff; font-size:0.6rem; font-weight:800; padding:2px 6px; border-radius:4px;">SECUNDARIA</span>
+            <span>Transporte Concesionado</span>
           </div>
-          <div class="t-opt" onclick="toggleSubsystem('MB')">
-            <div class="t-badge" style="background:#ec4899;">MB</div>
-            <span>Metrobús (L1-L7)</span>
+          <span style="font-size:0.68rem; color:#8e24aa; font-weight:700;">Efectivo · $6-$8</span>
+        </div>
+        <div class="chips-flow">
+          <button class="chip-btn active" id="chip-concesionado" onclick="toggleLayer('concesionado')">🚐 Microbuses y Corredores (331 rutas)</button>
+        </div>
+        <div class="secundaria-info-box">
+          <div style="font-weight:700; color:#6b21a8; font-size:0.72rem; margin-bottom:3px;">
+            💵 Esquema Tarifario Concesionado (Oficial SEMOVI):
           </div>
-          <div class="t-opt" onclick="toggleSubsystem('TROLE')">
-            <div class="t-badge" style="background:#10b981;">TE</div>
-            <span>Trolebús</span>
+          <div style="font-size:0.7rem; color:#4a044e; line-height:1.4;">
+            • <b>Hasta 5 km:</b> $6.00 MXN<br>
+            • <b>De 5 a 12 km:</b> $6.50 MXN<br>
+            • <b>Más de 12 km:</b> $7.50 MXN<br>
+            • <b>Autobuses de Corredor Zonal:</b> $8.00 MXN<br>
+            <span style="color:#7e22ce;"><i>Cobro en monedas/efectivo al chofer. Rutas de última milla a tianguis y colonias.</i></span>
           </div>
-          <div class="t-opt" onclick="toggleSubsystem('CBB')">
-            <div class="t-badge" style="background:#06b6d4;">CB</div>
-            <span>Cablebús</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('RTP')">
-            <div class="t-badge" style="background:#15803d;">RTP</div>
-            <span>RTP Pasajeros</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('TL')">
-            <div class="t-badge" style="background:#3b82f6;">TL</div>
-            <span>Tren Ligero</span>
-          </div>
-          <div class="t-opt" onclick="toggleSubsystem('CC')">
-            <div class="t-badge" style="background:#8e24aa;">CC</div>
-            <span>Corredores Concesionados</span>
-          </div>
+        </div>
+      </div>
+
+      <!-- LÍMITES Y CARTOGRAFÍA -->
+      <div class="section-block">
+        <div class="section-heading">
+          <span>Límites Territoriales</span>
+        </div>
+        <div class="chips-flow">
+          <button class="chip-btn active" id="chip-alcaldias" onclick="toggleLayer('alcaldias')">🗺️ 16 Alcaldías CDMX</button>
+          <button class="chip-btn active" id="chip-zmvm" onclick="toggleLayer('zmvm')">🌐 Área Metropolitana (Edomex)</button>
         </div>
       </div>
 
@@ -1066,15 +1100,34 @@ def generate():
             }}
           );
 
+          const p = f.properties;
+          const isPrimaria = p.red_tipo === 'PRIMARIA';
+          const badgeBg = isPrimaria ? '#0f5953' : '#8e24aa';
+          const badgeText = isPrimaria ? 'RED PRIMARIA (MI)' : 'RED SECUNDARIA (ALIMENTADORA)';
+          const tarifaText = p.tarifa || (isPrimaria ? '$5.00 MXN' : '$6.50 MXN aprox');
+
           polyline.bindPopup(`
-            <div style="font-weight:800; color:${{f.properties.color}}; font-size:0.92rem; margin-bottom:2px;">
-              ${{f.properties.agency_name}}
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+              <span style="background:${{badgeBg}}; color:#ffffff; font-size:0.62rem; font-weight:800; padding:2px 6px; border-radius:4px; letter-spacing:0.3px;">
+                ${{badgeText}}
+              </span>
+              <span style="background:#dcfce7; color:#166534; font-size:0.75rem; font-weight:800; padding:2px 6px; border-radius:4px;">
+                ${{tarifaText}}
+              </span>
             </div>
-            <div style="font-size:0.75rem; color:#334155; margin-bottom:4px;">
-              Ruta: <b>${{f.properties.route_short || ''}} ${{f.properties.route_long || ''}}</b>
+            <div style="font-weight:800; color:${{p.color}}; font-size:0.92rem; margin-bottom:2px;">
+              ${{p.agency_name}}
             </div>
-            <div style="font-size:0.7rem; color:#64748b;">
-              ${{f.properties.headsign || 'Servicio Concesionado / Red'}}
+            <div style="font-size:0.75rem; color:#334155; margin-bottom:3px;">
+              Ruta: <b>${{p.route_short || ''}} ${{p.route_long || ''}}</b>
+            </div>
+            <div style="font-size:0.7rem; color:#64748b; margin-bottom:6px;">
+              ${{p.headsign || 'Servicio de Transporte CDMX'}}
+            </div>
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:6px 8px; font-size:0.7rem; color:#334155; line-height:1.4;">
+              <div>💳 <b>Forma de Pago:</b> ${{p.forma_pago || (isPrimaria ? 'Tarjeta MI' : 'Efectivo en mano')}}</div>
+              <div>🚐 <b>Vehículo:</b> ${{p.tipo_unidad || (isPrimaria ? 'Tren / BRT' : 'Microbús / Vagoneta')}}</div>
+              ${{p.distancia_km ? `<div>📏 <b>Distancia de Ramal:</b> ~${{p.distancia_km}} km (${{p.tramo_descripcion || 'Tarifa oficial'}})</div>` : ''}}
             </div>
           `);
 

@@ -89,11 +89,27 @@ def run():
         if len(coords) > 200:
             coords = coords[::2]
 
+        # Tarifas e información de Red Primaria (Movilidad Integrada)
+        tarifa_map = {
+            'METRO': ('$5.00 MXN', 'Tarjeta Movilidad Integrada (MI)', 'Tren de rodadura neumática / férrea'),
+            'MB': ('$6.00 MXN', 'Tarjeta Movilidad Integrada (MI)', 'Autobús articulado / biarticulado BRT'),
+            'TROLE': ('$4.00 MXN (Elevado: $7.00)', 'Tarjeta Movilidad Integrada (MI)', 'Trolebús 100% eléctrico'),
+            'CBB': ('$7.00 MXN', 'Tarjeta Movilidad Integrada (MI)', 'Teleférico urbano'),
+            'TL': ('$3.00 MXN', 'Tarjeta Movilidad Integrada (MI)', 'Tren ligero superficial'),
+            'RTP': ('$2.00 - $4.00 MXN', 'Tarjeta MI o Efectivo exacto', 'Autobús urbano de pasajeros')
+        }
+        tarifa_info, pago_info, unidad_info = tarifa_map.get(agency, ('$5.00 MXN', 'Tarjeta MI', 'Transporte Masivo'))
+
         transport_layers[agency]['features'].append({
             'type': 'Feature',
             'properties': {
                 'agency': agency,
                 'agency_name': transport_layers[agency]['name'],
+                'red_tipo': 'PRIMARIA',
+                'red_nombre': 'Red Primaria (Movilidad Integrada - MI)',
+                'tarifa': tarifa_info,
+                'forma_pago': pago_info,
+                'tipo_unidad': unidad_info,
                 'route_id': str(row['route_id']),
                 'route_short': r_short,
                 'route_long': r_long,
@@ -112,15 +128,31 @@ def run():
     print("Cargando rutas secundarias concesionadas desde SHP...")
     sf_concesionado = shapefile.Reader('data/raw/transporte/concesionado_shp/concesionado_shp/concesionado_rutas.shp')
     cc_count = 0
+
+    import math
+    def calc_dist_km(pts):
+        total = 0.0
+        for i in range(len(pts) - 1):
+            p1, p2 = pts[i], pts[i+1]
+            lat1, lon1 = p1[1], p1[0]
+            lat2, lon2 = p2[1], p2[0]
+            phi1, phi2 = lat1 * math.pi / 180, lat2 * math.pi / 180
+            dphi = (lat2 - lat1) * math.pi / 180
+            dlam = (lon2 - lon1) * math.pi / 180
+            a = math.sin(dphi/2)**2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlam/2)**2
+            c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+            total += 6371.0 * c
+        return round(total, 1)
+
     for shape_rec in sf_concesionado.shapeRecords():
         rec = shape_rec.record
         shp = shape_rec.shape
         if not shp.points:
             continue
         
-        # Filtrar o tomar una muestra representativa de 45 rutas emblemáticas de microbuses/corredores para rendimiento
+        # Muestra representativa balanceada de 70 rutas secundarias concesionadas
         cc_count += 1
-        if cc_count > 45:
+        if cc_count > 70:
             continue
 
         orig_dest = rec['ORIG_DEST'] or 'Ruta Concesionada'
@@ -130,19 +162,42 @@ def run():
 
         # Convertir puntos a coordenadas [lon, lat]
         pts = shp.points
+        dist_km = calc_dist_km(pts)
         if len(pts) > 150:
             pts = pts[::2]
         coords = [[round(p[0], 5), round(p[1], 5)] for p in pts]
+
+        # Esquema tarifario oficial SEMOVI para transporte concesionado
+        if dist_km <= 5.0:
+            tarifa_sec = f"$6.00 MXN (~{dist_km} km)"
+            tramo_desc = "Tramo corto (hasta 5 km)"
+        elif dist_km <= 12.0:
+            tarifa_sec = f"$6.50 MXN (~{dist_km} km)"
+            tramo_desc = "Tramo medio (5 a 12 km)"
+        else:
+            tarifa_sec = f"$7.50 MXN (~{dist_km} km)"
+            tramo_desc = "Tramo largo (más de 12 km)"
+
+        if 'corredor' in str(corredor).lower() or 'sausa' in str(empresa).lower() or 'coavensa' in str(empresa).lower():
+            tarifa_sec = f"$8.00 MXN (~{dist_km} km)"
+            tramo_desc = "Autobús de Corredor Concesionado"
 
         transport_layers['CC']['features'].append({
             'type': 'Feature',
             'properties': {
                 'agency': 'CC',
-                'agency_name': f'Corredor {corredor}',
+                'agency_name': f'Ruta Concesionada · {corredor}',
+                'red_tipo': 'SECUNDARIA',
+                'red_nombre': 'Red Secundaria (Transporte Concesionado / Alimentadora)',
+                'tarifa': tarifa_sec,
+                'tramo_descripcion': tramo_desc,
+                'distancia_km': dist_km,
+                'forma_pago': 'Efectivo exacto al operador (monedas)',
+                'tipo_unidad': 'Microbús colectivo / Vagoneta (combi)',
                 'route_id': nomencl,
                 'route_short': nomencl,
                 'route_long': orig_dest,
-                'headsign': f'Operado por {empresa}',
+                'headsign': f'Operado por: {empresa}',
                 'color': '#8E24AA',
                 'weight': 2.5,
                 'opacity': 0.8

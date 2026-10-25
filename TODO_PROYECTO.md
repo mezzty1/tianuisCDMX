@@ -98,6 +98,11 @@ graph TD
     - Mercado de La Viga (polo semimayorista histórico de pescados y mariscos)
     - Mercado de San Juan Pugibet (abasto semimayorista gourmet y carnes selectas)
     - Cada nodo incluye: ID, nombre, clave_nodo, alcaldía, colonia, dirección, lat, lng, giros, tipo_abasto, horario, relevancia logística y conectividad con la Red MI.
+- [ ] **1.6 Enriquecimiento de Padrón Comercial con Taxonomía de Giros y Productos** `[Depende de 1.1 y data/catalog] [Dificultad: Media]`
+  - Cruzar el padrón unificado (`directorio_comercio_popular`), `tianguis`, `mercados_publicos`, `concentraciones` y muestras de padrón detallado (FONDESO 86k registros, apoyos emergentes, Mercomuna) con el motor [`giro_classifier.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/giro_classifier.py) y [`giros_catalogo.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/giros_catalogo.json).
+  - Asignar a cada espacio comercial sus **Macro-Categorías** (1 a 9), **Subgiros específicos** (de los 67 del catálogo) y **Banderas de Canasta Básica / Mercomuna**.
+  - Derivar vocabulario y mapeo inverso de productos de consumo popular (desde términos desagregados: "aguacate", "huevo", "tacos", "pescado", "zapatos", "tornillos") hacia subgiros y macrocategorías.
+  - Integrar estas estructuras jerárquicas en [`scripts/compile_advanced_bundle.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/compile_advanced_bundle.py) y en el bundle del visor web.
 
 ---
 
@@ -198,12 +203,22 @@ graph TD
 
 - [ ] **7.1 Arquitectura de almacenamiento portable** `[100% Independiente] [Dificultad: Baja]`
   - Estructurar datos limpios en SQLite / SpatiaLite o GeoJSONs estáticos organizados en `data/processed/` o `data/cartography/`.
-- [x] **7.2 Visor Geoespacial Integrado (Frontend Web)** `[Prototipo v2 generado]`
+- [x] **7.2 Visor Geoespacial Integrado (Frontend Web & UX/UI Renovado)** `[Prototipo v2.1 Frontend Completo]`
   - Archivo interactivo [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) con diseño de escritorio inspirado en la App CDMX oficial (`#0f5953`), sin barra inferior estorbosa.
-  - Capas completas: Alcaldías, 60 municipios del Edomex (ZMVM), Metro (195 estaciones con glifos vectoriales oficiales), Metrobús (324 estaciones), Cablebús, Trolebús, Tren Ligero, Corredores Concesionados (331 ramales), 329 Mercados Públicos escalados por locales, 51 Rutas MSR y 1,367 Tianguis.
-  - **Modo Ruta Limpia (Focus Mode):** Al calcular una ruta o pulsar "🎯 Ir hacia aquí", se ocultan automáticamente todas las líneas, tianguis y mercados ruidosos de fondo, dejando únicamente el trayecto activo: Pin Origen (A), tramo de caminata inicial (azul punteado), estación de abordaje con ícono oficial, línea de metro correspondiente, transbordos si aplican, estación de descenso, caminata final (verde punteado) y Pin Destino (B).
-  - Incluye banner flotante superior y botón en panel lateral para restaurar el mapa completo con un solo clic.
+  - **Clustering Inteligente con Leaflet.markercluster:** Agrupación visual optimizada de 1,367 tianguis, 329 mercados y 519 estaciones (Metro y Metrobús) con badges y colores temáticos por subsistema, reduciendo la saturación en zoom bajo y desplegando marcadores individuales a nivel barrial (`zoom >= 14`).
+  - **Eliminación Total de `window.alert(...)`:** Reemplazo integral por modal flotante interactivo con 4 pestañas temáticas ("🚧 Cierres Viales", "⏰ Horarios Semanales", "💳 Tarifas MI", "📅 Aviso Hoy") y sistema de notificaciones toast no invasivas.
+  - **Buscador Unificado Predictivo:** Autocompletado flotante en tiempo real con ponderación de relevancia para Mercados, Tianguis, Rutas MSR y Estaciones MI con navegación por teclado y centrado suave (`flyTo`).
+  - **Ficha Lateral (Sidebar) Rediseñada:** Tarjeta de detalle sin popups redundantes, con badge dinámico de estado (`🟢 Abierto hoy hasta las 18:00 hrs` / `🔴 Cerrado`), cálculo en tiempo real de estación más cercana con distancia en metros y tiempo a pie, alerta de calle ocupada y botón para copiar coordenadas GPS WGS84 al portapapeles.
+  - **Carga Asíncrona & Skeleton Loader:** Reducción de 93% en peso de HTML (de 3.6 MB a 254 KB) mediante desacoplamiento a `data/processed/map_bundle.js` / `map_bundle.json` con loader visual animado de CDMX.
+  - **Modo Ruta Limpia (Focus Mode):** Al calcular una ruta o pulsar "🎯 Ir hacia aquí", se ocultan automáticamente todas las líneas, tianguis y mercados ruidosos de fondo, dejando únicamente el trayecto activo: Pin Origen (A), tramo de caminata inicial (azul punteado), estación de abordaje con ícono oficial, línea de metro correspondiente, transbordos si aplican, estación de descenso, caminata final (verde punteado) y Pin Destino (B). Incluye banner flotante superior para restaurar el mapa completo.
 - [ ] **7.3 Modo Offline / Descargable por Alcaldía** `[100% Independiente] [Dificultad: Baja]`
   - Siguiendo la premisa del dossier (herramientas locales y ligeras): generación de fichas descargables o modo cacheado para consultar sin internet.
 - [ ] **7.4 Pitch Deck y Narrativa de Impacto Social** `[100% Independiente] [Dificultad: Baja]`
   - Demostrar que el proyecto no es "otro marketplace", sino una plataforma cívica de infraestructura viva que fortalece la soberanía alimentaria barrial y la movilidad sustentable.
+- [ ] **7.5 Filtro y Buscador Jerárquico de Compras en el Visor Web (De lo micro a lo macro)** `[Depende de 1.6 y 7.2] [Dificultad: Media]`
+  - Implementar en la interfaz de usuario de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) un sistema de filtros multinivel para compras:
+    - **Nivel Macro (Categorías agregadas):** Barra interactiva de chips con íconos temáticos (🥦 Alimentos Frescos, 🥫 Abarrotes y Canasta, 🌮 Comida Preparada, 👕 Ropa y Calzado, 🔨 Hogar y Ferretería, ✂️ Salud y Belleza, ✏️ Papelería y Tecnología, 🪛 Oficios y Reparaciones, 📦 Bazar y Chácharas).
+    - **Nivel Meso (Subgiros / Giros específicos):** Menú cascada dinámico con los 67 subgiros estructurados (ej. dentro de Alimentos Frescos: Frutas y Verduras, Carnicería, Pescadería, Pollería, Cremería/Lácteos).
+    - **Nivel Micro (Búsqueda predictiva de productos concretos):** Entrada tipo *"¿Qué buscas comprar hoy? (ej. jitomate, barbacoa, tenis, clavos, útiles)"* con autocompletado en tiempo real que resuelve sinónimos hacia subgiros y macrocategorías.
+    - **Filtros rápidos de política social:** Conmutadores para *"Canasta Básica SEDECO"* y *"Acepta Vales Mercomuna"*.
+    - **Reactividad geoespacial:** Actualización instantánea de clusters y marcadores de Leaflet, panel lateral detallado con oferta de giros por espacio y contadores dinámicos de oferta disponible.
