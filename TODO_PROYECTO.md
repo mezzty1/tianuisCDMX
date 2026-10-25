@@ -186,8 +186,10 @@ graph TD
 - [ ] **5.4 Sistema de Ponderación Ciudadana y Crowdsourcing Barrial ("¿Qué se vende aquí?")** `[100% Independiente] [Dificultad: Media]`
   - Mecanismo ligero y local-first donde la ciudadanía compradora y los comerciantes pueden votar o confirmar qué productos y especialidades sí se encuentran disponibles en cada tianguis individual (ej. "Ropa de paca", "Barbacoa", "Herramientas usadas", "Pescado fresco").
   - Sistema de reputación por upvotes/downvotes comunitarios almacenado localmente (localStorage/IndexedDB) con sincronización opcional, evitando formularios burocráticos y respetando la soberanía de datos del comerciante.
-- [ ] **5.5 Pipeline de Enriquecimiento de Especialidades de Tianguis (Google Maps & Reseñas)** `[100% Independiente] [Dificultad: Media]`
-  - Scraping ético y enriquecimiento con Google Maps Places API y OpenStreetMap para extraer términos frecuentes en reseñas ciudadanas ("mucha paca", "herramientas baratas", "buenos tacos de carnitas", "antigüedades"), cruzándolo con las 86k solicitudes de FONDESO y el padrón auditado de SEDECO.
+- [ ] **5.5 Pipeline de Enriquecimiento de Especialidades de Tianguis (Google Maps & Reseñas)** `[En Progreso]`
+  - **Fase 1 (Scraping):** Extracción automatizada de reseñas ciudadanas, calificaciones y galerías de fotos para los 1,366 tianguis con `place_id` en Google Maps Places (`scripts/scrape_tianguis_reviews.py`).
+  - **Fase 2 (Posprocesado NLP & Especialidades):** Procesamiento de texto de reseñas con extracción de n-gramas, análisis de sentimiento y cruce con el catálogo de 460 artículos para derivar la vocación comercial exacta de cada tianguis ("Ropa de paca", "Barbacoa/Antojitos", "Herramientas usadas", "Abasto fresco").
+  - Integración de fotos y especialidades comunitarias en la ficha lateral de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html).
 
 ---
 
