@@ -193,8 +193,11 @@ graph TD
 
 - [ ] **7.1 Arquitectura de almacenamiento portable** `[100% Independiente] [Dificultad: Baja]`
   - Estructurar datos limpios en SQLite / SpatiaLite o GeoJSONs estáticos organizados en `data/processed/` o `data/cartography/`.
-- [x] **7.2 Visor Geoespacial Integrado (Frontend Web)** `[Prototipo v1 generado]`
-  - Archivo interactivo [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) con capas conmutables de Alcaldías, Metro, Metrobús, Cablebús, Trolebús, Tren Ligero, Corredores Concesionados, Mercados Públicos escalados por locales, Mercados Sobre Ruedas y Tianguis con filtro de día.
+- [x] **7.2 Visor Geoespacial Integrado (Frontend Web)** `[Prototipo v2 generado]`
+  - Archivo interactivo [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) con diseño de escritorio inspirado en la App CDMX oficial (`#0f5953`), sin barra inferior estorbosa.
+  - Capas completas: Alcaldías, 60 municipios del Edomex (ZMVM), Metro (195 estaciones con glifos vectoriales oficiales), Metrobús (324 estaciones), Cablebús, Trolebús, Tren Ligero, Corredores Concesionados (331 ramales), 329 Mercados Públicos escalados por locales, 51 Rutas MSR y 1,367 Tianguis.
+  - **Modo Ruta Limpia (Focus Mode):** Al calcular una ruta o pulsar "🎯 Ir hacia aquí", se ocultan automáticamente todas las líneas, tianguis y mercados ruidosos de fondo, dejando únicamente el trayecto activo: Pin Origen (A), tramo de caminata inicial (azul punteado), estación de abordaje con ícono oficial, línea de metro correspondiente, transbordos si aplican, estación de descenso, caminata final (verde punteado) y Pin Destino (B).
+  - Incluye banner flotante superior y botón en panel lateral para restaurar el mapa completo con un solo clic.
 - [ ] **7.3 Modo Offline / Descargable por Alcaldía** `[100% Independiente] [Dificultad: Baja]`
   - Siguiendo la premisa del dossier (herramientas locales y ligeras): generación de fichas descargables o modo cacheado para consultar sin internet.
 - [ ] **7.4 Pitch Deck y Narrativa de Impacto Social** `[100% Independiente] [Dificultad: Baja]`

@@ -760,6 +760,120 @@
       cursor: pointer;
       transition: transform 0.15s ease;
     }
+
+    /* Banner Flotante de Modo Ruta Limpia */
+    .route-focus-banner {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1200;
+      background: #ffffff;
+      border-radius: 36px;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.22);
+      border: 1px solid #cbd5e1;
+      padding: 7px 18px;
+      display: none;
+      align-items: center;
+      gap: 16px;
+      animation: slideDownFocus 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideDownFocus {
+      from { opacity: 0; transform: translate(-50%, -18px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .focus-pulse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseGreenDot 1.6s infinite ease-out;
+    }
+
+    @keyframes pulseGreenDot {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .btn-exit-focus {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-exit-focus:hover {
+      background: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+    }
+
+    .btn-clear-route-box {
+      margin-top: 10px;
+      width: 100%;
+      background: #f8fafc;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-clear-route-box:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* Estilos para los marcadores de la ruta limpia */
+    .route-pin-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 11px;
+      color: #ffffff;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      border: 2px solid #ffffff;
+      white-space: nowrap;
+    }
+
+    .route-pin-badge-a {
+      background: #2563eb;
+    }
+
+    .route-pin-badge-b {
+      background: #ef4444;
+    }
+
+    .route-intermediate-station {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #000000;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    }
   </style>
 </head>
 <body>
@@ -804,8 +918,15 @@
         </button>
 
         <div id="route-result-box">
-          <div style="font-weight:800; color:#15803d; margin-bottom:4px;" id="route-summary-title">Ruta Calculada</div>
-          <div id="route-summary-content" style="color:#334155; line-height:1.4;"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <div style="font-weight:800; color:#15803d; font-size:0.85rem;" id="route-summary-title">Ruta Calculada</div>
+            <span style="font-size:0.65rem; background:#dcfce7; color:#166534; font-weight:800; padding:2px 6px; border-radius:4px;">RUTA LIMPIA</span>
+          </div>
+          <div id="route-summary-content" style="color:#334155; line-height:1.45; font-size:0.78rem;"></div>
+          <button class="btn-clear-route-box" onclick="exitRouteFocusMode()">
+            <span>✕</span>
+            <span>Limpiar ruta y restaurar todas las capas</span>
+          </button>
         </div>
       </div>
 
@@ -959,6 +1080,21 @@
 
   <main id="map-wrapper">
     <div id="map"></div>
+
+    <!-- Banner Flotante de Modo Ruta Limpia -->
+    <div id="route-focus-banner" class="route-focus-banner">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="focus-pulse-dot"></span>
+        <div>
+          <div style="font-size:0.65rem; font-weight:800; color:#0f5953; letter-spacing:0.5px;">MODO RUTA LIMPIA ACTIVO</div>
+          <div style="font-size:0.82rem; font-weight:700; color:#0f172a;" id="focus-banner-text">Mostrando únicamente el trayecto origen ➔ destino</div>
+        </div>
+      </div>
+      <button class="btn-exit-focus" onclick="exitRouteFocusMode()" title="Restaurar capas completas">
+        <span>✕</span>
+        <span>Restaurar mapa completo</span>
+      </button>
+    </div>
 
     <div class="map-floating-actions">
       <button class="map-fab" onclick="locateUser()" title="Mi ubicación GPS (Punto Azul)">
@@ -1360,6 +1496,141 @@
       alert('Aviso de Ubicación: Activa el permiso de ubicación en tu navegador para mostrar tu punto azul en el mapa.');
     });
 
+    // GESTIÓN DE CAPAS Y MODO RUTA LIMPIA
+    const ALL_DATA_LAYERS = [
+      'zmvm', 'alcaldias', 'metro', 'metro_icons', 'metrobus', 'metrobus_icons',
+      'rtp', 'cablebus', 'trolebus', 'tren', 'concesionado',
+      'mercados', 'msr', 'tianguis'
+    ];
+    let isFocusRouteMode = false;
+    let savedActiveLayers = [];
+
+    function enterRouteFocusMode(originLabel, destLabel) {
+      if (!isFocusRouteMode) {
+        savedActiveLayers = ALL_DATA_LAYERS.filter(k => layers[k] && map.hasLayer(layers[k]));
+        savedActiveLayers.forEach(k => map.removeLayer(layers[k]));
+        isFocusRouteMode = true;
+      }
+      document.getElementById('route-focus-banner').style.display = 'flex';
+      document.getElementById('focus-banner-text').innerText = `${originLabel} ➔ ${destLabel}`;
+    }
+
+    function exitRouteFocusMode() {
+      if (isFocusRouteMode) {
+        savedActiveLayers.forEach(k => {
+          if (layers[k]) map.addLayer(layers[k]);
+        });
+        isFocusRouteMode = false;
+      }
+      layers.routeLines.clearLayers();
+      document.getElementById('route-focus-banner').style.display = 'none';
+      document.getElementById('route-result-box').style.display = 'none';
+      resetMapView();
+    }
+
+    // Grafo de la red del Metro CDMX para ruteo multi-estación y transbordos
+    const METRO_GRAPH = {
+      lines: {},
+      adj: {},
+      built: false,
+      build: function() {
+        if (this.built || !MAP_DATA.metro_stations) return;
+        
+        MAP_DATA.metro_stations.forEach(st => {
+          if (!this.lines[st.linea]) this.lines[st.linea] = [];
+          this.lines[st.linea].push(st);
+        });
+
+        const addEdge = (u, v, cost, line) => {
+          if (!this.adj[u]) this.adj[u] = [];
+          if (!this.adj[v]) this.adj[v] = [];
+          this.adj[u].push({ target: v, cost: cost, line: line });
+          this.adj[v].push({ target: u, cost: cost, line: line });
+        };
+
+        Object.keys(this.lines).forEach(lId => {
+          const stList = this.lines[lId];
+          for (let i = 0; i < stList.length - 1; i++) {
+            const u = stList[i].nombre + '||' + lId;
+            const v = stList[i+1].nombre + '||' + lId;
+            addEdge(u, v, 1.8, lId);
+          }
+        });
+
+        const nameMap = {};
+        MAP_DATA.metro_stations.forEach(st => {
+          const baseName = st.nombre.split('/')[0].trim().toLowerCase();
+          if (!nameMap[baseName]) nameMap[baseName] = [];
+          nameMap[baseName].push(st);
+        });
+
+        Object.keys(nameMap).forEach(base => {
+          const list = nameMap[base];
+          if (list.length > 1) {
+            for (let i = 0; i < list.length; i++) {
+              for (let j = i + 1; j < list.length; j++) {
+                const u = list[i].nombre + '||' + list[i].linea;
+                const v = list[j].nombre + '||' + list[j].linea;
+                addEdge(u, v, 3.5, 'TRANSB');
+              }
+            }
+          }
+        });
+
+        this.built = true;
+      },
+      findPath: function(startStation, endStation) {
+        this.build();
+        const startKey = startStation.nombre + '||' + startStation.linea;
+        const endKey = endStation.nombre + '||' + endStation.linea;
+
+        if (startKey === endKey) return [startStation];
+
+        const dist = {};
+        const prev = {};
+        const visited = new Set();
+        dist[startKey] = 0;
+        const pq = [{ node: startKey, cost: 0 }];
+
+        while (pq.length > 0) {
+          let minIdx = 0;
+          for (let i = 1; i < pq.length; i++) {
+            if (pq[i].cost < pq[minIdx].cost) minIdx = i;
+          }
+          const { node: u, cost: c } = pq.splice(minIdx, 1)[0];
+
+          if (visited.has(u)) continue;
+          visited.add(u);
+
+          if (u === endKey) {
+            const pathKeys = [];
+            let curr = u;
+            while (curr && curr !== startKey) {
+              pathKeys.unshift(curr);
+              curr = prev[curr];
+            }
+            pathKeys.unshift(startKey);
+            return pathKeys.map(k => {
+              const [n, l] = k.split('||');
+              return MAP_DATA.metro_stations.find(s => s.nombre === n && s.linea === l);
+            }).filter(Boolean);
+          }
+
+          const neighbors = this.adj[u] || [];
+          for (let edge of neighbors) {
+            const v = edge.target;
+            const newCost = c + edge.cost;
+            if (!visited.has(v) && newCost < (dist[v] !== undefined ? dist[v] : Infinity)) {
+              dist[v] = newCost;
+              prev[v] = u;
+              pq.push({ node: v, cost: newCost });
+            }
+          }
+        }
+        return null;
+      }
+    };
+
     // PLANIFICADOR DE RUTAS (PUNTO A -> B) INTERACTIVO
     function setAsRouteDestination() {
       if (currentSelectedTarget) {
@@ -1367,6 +1638,71 @@
         openSidebarIfClosed();
         calculateRouteUI();
       }
+    }
+
+    function findDestinationTarget(query) {
+      const q = query.toLowerCase().trim();
+      if (!q) return null;
+
+      // 1. Si currentSelectedTarget coincide
+      if (currentSelectedTarget && currentSelectedTarget.name.toLowerCase().includes(q)) {
+        return {
+          name: currentSelectedTarget.name,
+          lat: currentSelectedTarget.lat,
+          lon: currentSelectedTarget.lon,
+          type: 'Seleccionado'
+        };
+      }
+
+      // 2. Buscar en Mercados Públicos
+      for (let m of (MAP_DATA.mercados || [])) {
+        if (m.nombre.toLowerCase().includes(q) || q.includes(m.nombre.toLowerCase())) {
+          return {
+            name: 'Mercado ' + m.nombre,
+            lat: m.lat,
+            lon: m.lon,
+            type: 'Mercado Público (' + m.alcaldia + ')'
+          };
+        }
+      }
+
+      // 3. Buscar en Tianguis Móviles
+      for (let t of (MAP_DATA.tianguis || [])) {
+        if (t.colonia.toLowerCase().includes(q) || t.ubicacion.toLowerCase().includes(q)) {
+          return {
+            name: 'Tianguis ' + t.colonia,
+            lat: t.lat,
+            lon: t.lon,
+            type: 'Tianguis Móvil (' + t.dia + ')'
+          };
+        }
+      }
+
+      // 4. Buscar en Mercados Sobre Ruedas
+      for (let msr of (MAP_DATA.msr || [])) {
+        if (msr.ruta.toLowerCase().includes(q) || msr.colonia.toLowerCase().includes(q)) {
+          return {
+            name: 'MSR ' + msr.ruta,
+            lat: msr.lat,
+            lon: msr.lon,
+            type: 'Mercado Sobre Ruedas (' + msr.dia + ')'
+          };
+        }
+      }
+
+      // 5. Buscar en Estaciones de Metro
+      for (let st of (MAP_DATA.metro_stations || [])) {
+        if (st.nombre.toLowerCase().includes(q)) {
+          return {
+            name: 'Metro ' + st.nombre,
+            lat: st.lat,
+            lon: st.lon,
+            type: 'Estación Metro'
+          };
+        }
+      }
+
+      return null;
     }
 
     function calculateRouteUI() {
@@ -1380,72 +1716,228 @@
 
       // Coordenadas origen
       let startCoords = userCurrentCoords;
+      let originName = 'Tu Ubicación Actual';
+
       if (fromVal.toLowerCase().includes('bellas artes')) {
         startCoords = [19.4352, -99.1412];
+        originName = 'Bellas Artes';
       } else if (fromVal.toLowerCase().includes('zocalo') || fromVal.toLowerCase().includes('zócalo')) {
         startCoords = [19.4326, -99.1332];
+        originName = 'Zócalo / Plaza de la Constitución';
+      } else if (fromVal.toLowerCase().includes('revolucion') || fromVal.toLowerCase().includes('revolución')) {
+        startCoords = [19.4354, -99.1542];
+        originName = 'Monumento a la Revolución';
+      } else if (!fromVal.toLowerCase().includes('mi ubicaci') && !fromVal.toLowerCase().includes('ubicaci')) {
+        originName = fromVal;
       }
 
       // Coordenadas destino
-      let targetMarket = null;
-      let endCoords = [19.4086, -99.1228]; // Default Jamaica
-      let targetName = toVal;
-
-      for (let m of MAP_DATA.mercados) {
-        if (m.nombre.toLowerCase().includes(toVal.toLowerCase()) || toVal.toLowerCase().includes(m.nombre.toLowerCase())) {
-          targetMarket = m;
-          endCoords = [m.lat, m.lon];
-          targetName = 'Mercado ' + m.nombre;
-          break;
-        }
+      let destTarget = findDestinationTarget(toVal);
+      if (!destTarget) {
+        destTarget = {
+          name: toVal || 'Mercado Jamaica',
+          lat: 19.4086,
+          lon: -99.1228,
+          type: 'Destino Barrial'
+        };
       }
+      const endCoords = [destTarget.lat, destTarget.lon];
 
       // Buscar estación de transporte más cercana al origen y al destino
       let nearestMetroStart = findClosestMetro(startCoords[0], startCoords[1]);
       let nearestMetroEnd = findClosestMetro(endCoords[0], endCoords[1]);
 
-      resultBox.style.display = 'block';
-
-      if (nearestMetroStart && nearestMetroEnd) {
-        // Dibujar tramo 1: Caminata inicial (línea punteada azul)
-        const walk1 = L.polyline([startCoords, [nearestMetroStart.lat, nearestMetroStart.lon]], {
-          color: '#2563eb',
-          dashArray: '6, 6',
-          weight: 3.5
-        }).bindPopup('🚶 Tramo 1: Caminar a ' + nearestMetroStart.nombre);
-        layers.routeLines.addLayer(walk1);
-
-        // Dibujar tramo 2: Transporte Masivo (Línea sólida del color oficial)
-        const transitLine = L.polyline([[nearestMetroStart.lat, nearestMetroStart.lon], [nearestMetroEnd.lat, nearestMetroEnd.lon]], {
-          color: nearestMetroStart.color || '#ef4444',
-          weight: 5,
-          opacity: 0.95
-        }).bindPopup('🚇 Tramo 2: Abordar Metro en ' + nearestMetroStart.nombre + ' hacia ' + nearestMetroEnd.nombre);
-        layers.routeLines.addLayer(transitLine);
-
-        // Dibujar tramo 3: Caminata final (línea punteada verde)
-        const walk2 = L.polyline([[nearestMetroEnd.lat, nearestMetroEnd.lon], endCoords], {
-          color: '#16a34a',
-          dashArray: '6, 6',
-          weight: 3.5
-        }).bindPopup('🚶 Tramo 3: Caminar hacia ' + targetName);
-        layers.routeLines.addLayer(walk2);
-
-        // Ajustar mapa para ver la ruta completa
-        map.fitBounds(layers.routeLines.getBounds(), { padding: [50, 50] });
-
-        titleEl.innerText = `Ruta a ${targetName}`;
-        contentEl.innerHTML = `
-          ⏱️ <b>Tiempo estimado:</b> ~18 - 25 min<br>
-          💵 <b>Costo oficial:</b> $5.00 MXN (Tarifa Integrada MI)<br>
-          1. 🚶 Caminar hacia <b>Metro ${nearestMetroStart.nombre}</b>.<br>
-          2. 🚇 Abordar <b>Metro Línea ${nearestMetroStart.linea}</b> hasta <b>${nearestMetroEnd.nombre}</b>.<br>
-          3. 🚶 Caminar al destino final (<b>${targetName}</b>).<br>
-          <span style="color:#15803d; font-weight:700;">🌱 Ahorro CO₂: ~0.45 kg vs automóvil.</span>
-        `;
-      } else {
-        contentEl.innerText = 'Calculando ruta directa sobre la red...';
+      if (!nearestMetroStart || !nearestMetroEnd) {
+        alert('No se encontraron estaciones cercanas para trazar la ruta.');
+        return;
       }
+
+      // ACTIVAR MODO RUTA LIMPIA (Oculta todas las líneas, mercados y tianguis)
+      enterRouteFocusMode(originName, destTarget.name);
+
+      // Calcular trayecto del Metro (con transbordos si aplica)
+      const metroPath = METRO_GRAPH.findPath(nearestMetroStart, nearestMetroEnd);
+      const stationSequence = (metroPath && metroPath.length > 0) ? metroPath : [nearestMetroStart, nearestMetroEnd];
+
+      // 1. PIN ORIGEN (PUNTO A)
+      const originMarker = L.marker(startCoords, {
+        icon: L.divIcon({
+          className: 'custom-pin-a',
+          html: `<div class="route-pin-badge route-pin-badge-a">📍 A: ${originName}</div>`,
+          iconSize: [120, 26],
+          iconAnchor: [60, 13]
+        })
+      }).bindPopup(`<b>Origen (Punto A):</b> ${originName}`);
+      layers.routeLines.addLayer(originMarker);
+
+      // 2. TRAMO 1: Caminata inicial hacia primera estación
+      const walkDist1 = Math.round(getDistMeters(startCoords[0], startCoords[1], nearestMetroStart.lat, nearestMetroStart.lon));
+      const walkMin1 = Math.max(1, Math.round(walkDist1 / 75));
+      const walk1 = L.polyline([startCoords, [nearestMetroStart.lat, nearestMetroStart.lon]], {
+        color: '#2563eb',
+        dashArray: '6, 8',
+        weight: 4,
+        opacity: 0.95
+      }).bindPopup(`🚶 <b>Tramo 1:</b> Caminar ${walkDist1} m (~${walkMin1} min) hacia Metro ${nearestMetroStart.nombre}`);
+      layers.routeLines.addLayer(walk1);
+
+      // 3. BADGE ESTACIÓN DE ABORDAJE
+      const boardGlyph = nearestMetroStart.has_glyph ? `<em class="${nearestMetroStart.icon_class}"></em>` : `<span style="font-size:9px; font-weight:800; color:#fff;">M</span>`;
+      const boardMarker = L.marker([nearestMetroStart.lat, nearestMetroStart.lon], {
+        icon: L.divIcon({
+          className: 'custom-station-badge',
+          html: `<div class="metro-station-badge route-pin-badge-station" style="background:${nearestMetroStart.color}; width:26px; height:26px; font-size:12px;" title="Abordar Metro ${nearestMetroStart.nombre} (Línea ${nearestMetroStart.linea})">${boardGlyph}</div>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        })
+      }).bindPopup(`🚇 <b>1. Abordar Metro:</b> ${nearestMetroStart.nombre} (Línea ${nearestMetroStart.linea})`);
+      layers.routeLines.addLayer(boardMarker);
+
+      // 4. TRAZADO DE LÍNEA DE TRANSPORTE A LO LARGO DE LAS ESTACIONES
+      const lineSegments = [];
+      let currentSegment = [];
+      let currentLine = stationSequence[0].linea;
+      let currentColor = stationSequence[0].color || '#ef4444';
+      let transfersCount = 0;
+      let transferSteps = [];
+
+      for (let i = 0; i < stationSequence.length; i++) {
+        const st = stationSequence[i];
+        if (st.linea !== currentLine) {
+          // Hubo transbordo
+          transfersCount++;
+          transferSteps.push(`🔄 Transbordo en <b>${st.nombre}</b> (de Línea ${currentLine} a Línea ${st.linea})`);
+          if (currentSegment.length > 0) {
+            lineSegments.push({ coords: currentSegment, color: currentColor, line: currentLine });
+          }
+          currentSegment = [[st.lat, st.lon]];
+          currentLine = st.linea;
+          currentColor = st.color;
+
+          // Marcador de transbordo
+          const transbMarker = L.marker([st.lat, st.lon], {
+            icon: L.divIcon({
+              className: 'custom-transb-icon',
+              html: `<div style="background:#f59e0b; color:#fff; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,0.35);" title="Transbordo en ${st.nombre}">🔄</div>`,
+              iconSize: [22, 22],
+              iconAnchor: [11, 11]
+            })
+          }).bindPopup(`🔄 <b>Transbordo:</b> ${st.nombre} (hacia Línea ${st.linea})`);
+          layers.routeLines.addLayer(transbMarker);
+        } else {
+          currentSegment.push([st.lat, st.lon]);
+        }
+
+        // Pequeño nodo intermedio
+        if (i > 0 && i < stationSequence.length - 1 && st.linea === currentLine) {
+          const dotMarker = L.circleMarker([st.lat, st.lon], {
+            radius: 3.5,
+            fillColor: currentColor,
+            color: '#ffffff',
+            weight: 1.5,
+            fillOpacity: 1
+          }).bindTooltip(`Metro ${st.nombre} (Línea ${st.linea})`, { sticky: true });
+          layers.routeLines.addLayer(dotMarker);
+        }
+      }
+      if (currentSegment.length > 0) {
+        lineSegments.push({ coords: currentSegment, color: currentColor, line: currentLine });
+      }
+
+      // Dibujar polilíneas sólidas de cada línea del metro
+      lineSegments.forEach(seg => {
+        if (seg.coords.length > 1) {
+          const tLine = L.polyline(seg.coords, {
+            color: seg.color,
+            weight: 6,
+            opacity: 0.95,
+            lineCap: 'round',
+            lineJoin: 'round'
+          }).bindPopup(`🚇 <b>Metro Línea ${seg.line}</b> (${seg.coords.length} estaciones)`);
+          layers.routeLines.addLayer(tLine);
+        }
+      });
+
+      // 5. BADGE ESTACIÓN DE DESCENSO
+      const alightGlyph = nearestMetroEnd.has_glyph ? `<em class="${nearestMetroEnd.icon_class}"></em>` : `<span style="font-size:9px; font-weight:800; color:#fff;">M</span>`;
+      const alightMarker = L.marker([nearestMetroEnd.lat, nearestMetroEnd.lon], {
+        icon: L.divIcon({
+          className: 'custom-station-badge',
+          html: `<div class="metro-station-badge route-pin-badge-station" style="background:${nearestMetroEnd.color}; width:26px; height:26px; font-size:12px;" title="Descenso en Metro ${nearestMetroEnd.nombre} (Línea ${nearestMetroEnd.linea})">${alightGlyph}</div>`,
+          iconSize: [26, 26],
+          iconAnchor: [13, 13]
+        })
+      }).bindPopup(`🚶 <b>Descenso de Metro:</b> ${nearestMetroEnd.nombre} (Línea ${nearestMetroEnd.linea})`);
+      layers.routeLines.addLayer(alightMarker);
+
+      // 6. TRAMO 3: Caminata final desde estación hasta destino comercial
+      const walkDist2 = Math.round(getDistMeters(nearestMetroEnd.lat, nearestMetroEnd.lon, endCoords[0], endCoords[1]));
+      const walkMin2 = Math.max(1, Math.round(walkDist2 / 75));
+      const walk2 = L.polyline([[nearestMetroEnd.lat, nearestMetroEnd.lon], endCoords], {
+        color: '#16a34a',
+        dashArray: '6, 8',
+        weight: 4,
+        opacity: 0.95
+      }).bindPopup(`🚶 <b>Tramo Final:</b> Caminar ${walkDist2} m (~${walkMin2} min) hacia ${destTarget.name}`);
+      layers.routeLines.addLayer(walk2);
+
+      // 7. PIN DESTINO (PUNTO B)
+      const destMarker = L.marker(endCoords, {
+        icon: L.divIcon({
+          className: 'custom-pin-b',
+          html: `<div class="route-pin-badge route-pin-badge-b">🎯 B: ${destTarget.name}</div>`,
+          iconSize: [140, 26],
+          iconAnchor: [70, 13]
+        })
+      }).bindPopup(`<b>Destino (Punto B):</b> ${destTarget.name}<br><small style="color:#64748b;">${destTarget.type}</small>`);
+      layers.routeLines.addLayer(destMarker);
+
+      // Ajustar vista limpia
+      map.fitBounds(layers.routeLines.getBounds(), { padding: [65, 65] });
+
+      // Tiempos e indicadores
+      const transitTimeMin = Math.round(stationSequence.length * 2.2 + transfersCount * 4.0);
+      const totalTimeMin = walkMin1 + transitTimeMin + walkMin2;
+      const co2Kg = (totalTimeMin * 0.025).toFixed(2);
+
+      // Actualizar tarjeta lateral
+      resultBox.style.display = 'block';
+      titleEl.innerText = `Ruta hacia ${destTarget.name}`;
+      
+      let stepsHtml = `
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:8px 10px; margin-bottom:8px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+            <span>⏱️ <b>Tiempo estimado:</b></span>
+            <span style="font-weight:800; color:#15803d;">~${totalTimeMin} min</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
+            <span>💵 <b>Tarifa oficial MI:</b></span>
+            <span style="font-weight:800; color:#0f5953;">$5.00 MXN</span>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span>🌱 <b>Ahorro de CO₂:</b></span>
+            <span style="font-weight:700; color:#16a34a;">~${co2Kg} kg vs auto</span>
+          </div>
+        </div>
+
+        <div style="font-size:0.75rem; color:#1e293b; display:flex; flex-direction:column; gap:6px;">
+          <div><b>1.</b> 🚶 Caminar <b>${walkDist1} m (~${walkMin1} min)</b> hacia <b>Metro ${nearestMetroStart.nombre}</b>.</div>
+          <div><b>2.</b> 🚇 Abordar <b>Metro Línea ${nearestMetroStart.linea}</b> en <b>${nearestMetroStart.nombre}</b>.</div>
+      `;
+
+      if (transferSteps.length > 0) {
+        transferSteps.forEach(ts => {
+          stepsHtml += `<div><b>•</b> ${ts}</div>`;
+        });
+      }
+
+      stepsHtml += `
+          <div><b>3.</b> 🚶 Descenso en <b>Metro ${nearestMetroEnd.nombre}</b> (Línea ${nearestMetroEnd.linea}).</div>
+          <div><b>4.</b> 🚶 Caminar <b>${walkDist2} m (~${walkMin2} min)</b> hacia <b>${destTarget.name}</b>.</div>
+        </div>
+      `;
+
+      contentEl.innerHTML = stepsHtml;
     }
 
     function findClosestMetro(lat, lon) {

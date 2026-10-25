@@ -8,21 +8,114 @@
 
 ## Índice General
 
-1. [Conjuntos de Datos Oficiales (Descargados y Procesados)](#1-conjuntos-de-datos-oficiales)
-2. [APIs, Servicios Web y Geoportales en Vivo](#2-apis-servicios-web-y-geoportales-en-vivo)
-3. [Bibliografía Académica y Estudios Socioterritoriales](#3-bibliografía-académica-y-estudios-socioterritoriales)
-4. [Crítica al Solucionismo y Principios de Gobernanza de Datos](#4-crítica-al-solucionismo-y-gobernanza-de-datos)
-5. [Marco Normativo, Gacetas y Políticas Públicas](#5-marco-normativo-gacetas-y-políticas-públicas)
-6. [Investigación Periodística y Reportes Gremiales](#6-investigación-periodística-y-reportes-gremiales)
-7. [Trazabilidad de Scripts y Entregables del Repositorio](#7-trazabilidad-de-entregables-del-repositorio)
+1. [Páginas Web y Portales Consultados Directamente (Webliografía Oficial y Enlaces en Vivo)](#1-páginas-web-y-portales-consultados-directamente)
+2. [Inventario de Datasets Descargados y Procesados Localmente](#2-inventario-de-datasets-descargados-y-procesados-localmente)
+3. [APIs, Servicios Web y Geoportales en Vivo](#3-apis-servicios-web-y-geoportales-en-vivo)
+4. [Bibliografía Académica y Estudios Socioterritoriales](#4-bibliografía-académica-y-estudios-socioterritoriales)
+5. [Crítica al Solucionismo y Principios de Gobernanza de Datos](#5-crítica-al-solucionismo-y-gobernanza-de-datos)
+6. [Marco Normativo, Gacetas y Políticas Públicas](#6-marco-normativo-gacetas-y-políticas-públicas)
+7. [Investigación Periodística y Reportes Gremiales](#7-investigación-periodística-y-reportes-gremiales)
+8. [Trazabilidad de Scripts y Entregables del Repositorio](#8-trazabilidad-de-entregables-del-repositorio)
 
 ---
 
-## 1. Conjuntos de Datos Oficiales
+## 1. Páginas Web y Portales Consultados Directamente
+
+Relación detallada de todas las URLs, plataformas web, repositorios de datos abiertos y endpoints que fueron consultados, sondeados o descargados durante el desarrollo de este proyecto:
+
+### 1.1 Portal de Datos Abiertos de la Ciudad de México (`datos.cdmx.gob.mx`)
+* **Portal Principal:** [`https://datos.cdmx.gob.mx/`](https://datos.cdmx.gob.mx/)
+* **Motor de Búsqueda CKAN API v3:** [`https://datos.cdmx.gob.mx/api/3/action/package_search`](https://datos.cdmx.gob.mx/api/3/action/package_search)
+* **Datasets consultados y descargados:**
+  1. *Tianguis de la Ciudad de México:*
+     - Página del dataset: [`https://datos.cdmx.gob.mx/dataset/tianguis-de-la-ciudad-de-mexico`](https://datos.cdmx.gob.mx/dataset/tianguis-de-la-ciudad-de-mexico)
+     - Descarga directa CSV: [`https://datos.cdmx.gob.mx/dataset/64aa33ed-e3f4-4949-aab5-4fcca129eecd/resource/c16cc0f7-8307-4a5f-a2d4-25e83b71faae/download/c16cc0f7-8307-4a5f-a2d4-25e83b71faae.csv`](https://datos.cdmx.gob.mx/dataset/64aa33ed-e3f4-4949-aab5-4fcca129eecd/resource/c16cc0f7-8307-4a5f-a2d4-25e83b71faae/download/c16cc0f7-8307-4a5f-a2d4-25e83b71faae.csv)
+     - Descarga directa GeoJSON: [`https://datos.cdmx.gob.mx/dataset/64aa33ed-e3f4-4949-aab5-4fcca129eecd/resource/c9360f3f-ce49-4b4f-a3c9-f221a97f870e/download/c9360f3f-ce49-4b4f-a3c9-f221a97f870e.json`](https://datos.cdmx.gob.mx/dataset/64aa33ed-e3f4-4949-aab5-4fcca129eecd/resource/c9360f3f-ce49-4b4f-a3c9-f221a97f870e/download/c9360f3f-ce49-4b4f-a3c9-f221a97f870e.json)
+  2. *Mercados Públicos de la Ciudad de México:*
+     - Página del dataset: [`https://datos.cdmx.gob.mx/dataset/mercados-publicos`](https://datos.cdmx.gob.mx/dataset/mercados-publicos)
+     - Descarga directa CSV: [`https://datos.cdmx.gob.mx/dataset/6e008c6b-197c-49f2-899f-47b9a406596c/resource/c27dbd03-6083-40d5-a5cc-9e8c429779bc/download/c27dbd03-6083-40d5-a5cc-9e8c429779bc.csv`](https://datos.cdmx.gob.mx/dataset/6e008c6b-197c-49f2-899f-47b9a406596c/resource/c27dbd03-6083-40d5-a5cc-9e8c429779bc/download/c27dbd03-6083-40d5-a5cc-9e8c429779bc.csv)
+     - Descarga directa GeoJSON: [`https://datos.cdmx.gob.mx/dataset/6e008c6b-197c-49f2-899f-47b9a406596c/resource/39a74f11-55c5-4abf-aaf2-3558a9a281f7/download/39a74f11-55c5-4abf-aaf2-3558a9a281f7.json`](https://datos.cdmx.gob.mx/dataset/6e008c6b-197c-49f2-899f-47b9a406596c/resource/39a74f11-55c5-4abf-aaf2-3558a9a281f7/download/39a74f11-55c5-4abf-aaf2-3558a9a281f7.json)
+  3. *Mercados Sobre Ruedas de la Ciudad de México:*
+     - Página del dataset: [`https://datos.cdmx.gob.mx/dataset/mercados-sobre-ruedas`](https://datos.cdmx.gob.mx/dataset/mercados-sobre-ruedas)
+     - Descarga directa CSV: [`https://datos.cdmx.gob.mx/dataset/07c86bbd-6795-4d13-aaca-42427e24e895/resource/90edcf0d-f603-4720-b386-e1d381260e8a/download/90edcf0d-f603-4720-b386-e1d381260e8a.csv`](https://datos.cdmx.gob.mx/dataset/07c86bbd-6795-4d13-aaca-42427e24e895/resource/90edcf0d-f603-4720-b386-e1d381260e8a/download/90edcf0d-f603-4720-b386-e1d381260e8a.csv)
+     - Descarga directa GeoJSON: [`https://datos.cdmx.gob.mx/dataset/07c86bbd-6795-4d13-aaca-42427e24e895/resource/4814c177-b5c5-47f0-b5c5-9997be87a711/download/4814c177-b5c5-47f0-b5c5-9997be87a711.json`](https://datos.cdmx.gob.mx/dataset/07c86bbd-6795-4d13-aaca-42427e24e895/resource/4814c177-b5c5-47f0-b5c5-9997be87a711/download/4814c177-b5c5-47f0-b5c5-9997be87a711.json)
+  4. *Concentraciones de Comerciantes:*
+     - Página del dataset: [`https://datos.cdmx.gob.mx/dataset/concentraciones-de-comerciantes`](https://datos.cdmx.gob.mx/dataset/concentraciones-de-comerciantes)
+     - Descarga directa CSV: [`https://datos.cdmx.gob.mx/dataset/a9fe73b0-7f67-45e9-91dd-85cca91d45ca/resource/1949ed54-f009-4dfe-a466-fd2620a9c2b5/download/1949ed54-f009-4dfe-a466-fd2620a9c2b5.csv`](https://datos.cdmx.gob.mx/dataset/a9fe73b0-7f67-45e9-91dd-85cca91d45ca/resource/1949ed54-f009-4dfe-a466-fd2620a9c2b5/download/1949ed54-f009-4dfe-a466-fd2620a9c2b5.csv)
+     - Descarga directa GeoJSON: [`https://datos.cdmx.gob.mx/dataset/a9fe73b0-7f67-45e9-91dd-85cca91d45ca/resource/6ddb338e-3d03-4a79-b5e7-b0478608c2f0/download/6ddb338e-3d03-4a79-b5e7-b0478608c2f0.json`](https://datos.cdmx.gob.mx/dataset/a9fe73b0-7f67-45e9-91dd-85cca91d45ca/resource/6ddb338e-3d03-4a79-b5e7-b0478608c2f0/download/6ddb338e-3d03-4a79-b5e7-b0478608c2f0.json)
+  5. *Solicitudes de Financiamiento para Microempresas FONDESO:*
+     - Descarga directa XLSX: [`https://datos.cdmx.gob.mx/dataset/6ab620e0-a11b-4a60-a5b1-cbfff4ddc207/resource/67df5e9f-8b3a-4b1b-9786-30354f63338c/download/67df5e9f-8b3a-4b1b-9786-30354f63338c.xlsx`](https://datos.cdmx.gob.mx/dataset/6ab620e0-a11b-4a60-a5b1-cbfff4ddc207/resource/67df5e9f-8b3a-4b1b-9786-30354f63338c/download/67df5e9f-8b3a-4b1b-9786-30354f63338c.xlsx)
+  6. *Apoyos Emergentes a Comercio en Vía Pública (Alimentos):*
+     - Descarga directa CSV: [`https://datos.cdmx.gob.mx/dataset/e5404c70-dda3-4a84-87fe-e7dabd4296fe/resource/b900d083-43bc-49e3-ae25-422d14803a92/download/b900d083-43bc-49e3-ae25-422d14803a92.csv`](https://datos.cdmx.gob.mx/dataset/e5404c70-dda3-4a84-87fe-e7dabd4296fe/resource/b900d083-43bc-49e3-ae25-422d14803a92/download/b900d083-43bc-49e3-ae25-422d14803a92.csv)
+  7. *Líneas y Estaciones de Movilidad Integrada (Metro, Metrobús, Trolebús, Cablebús, RTP, Tren Ligero):*
+     - Dataset SEMOVI: [`https://datos.cdmx.gob.mx/dataset/lineas-y-estaciones-del-metro-metrobus-rtp-trolebus-tren-ligero-y-cablebus`](https://datos.cdmx.gob.mx/dataset/lineas-y-estaciones-del-metro-metrobus-rtp-trolebus-tren-ligero-y-cablebus)
+
+---
+
+### 1.2 Padrón Oficial de Comercios Mercomuna
+* **Portal Oficial del Programa:** [`https://comercios-mercomuna.cdmx.gob.mx/`](https://comercios-mercomuna.cdmx.gob.mx/)
+* **Script de Búsqueda:** [`https://comercios-mercomuna.cdmx.gob.mx/assets/reporteador2.js`](https://comercios-mercomuna.cdmx.gob.mx/assets/reporteador2.js)
+* **Endpoint de Paginación y Consulta AJAX en vivo:** `https://comercios-mercomuna.cdmx.gob.mx/?page={num_pagina}` *(probado con cabecera `X-Requested-With: XMLHttpRequest` para extracción de 250 comercios muestra de las 905 páginas existentes).*
+
+---
+
+### 1.3 Sistema Nacional de Información e Integración de Mercados (SNIIM)
+* **Portal de la Secretaría de Economía:** [`http://www.economia-sniim.gob.mx/nuevo/`](http://www.economia-sniim.gob.mx/nuevo/)
+* **Módulo de Consulta Agrícola (Frutas y Hortalizas):** [`http://www.economia-sniim.gob.mx/nuevo/Consultas/MercadosNacionales/PreciosDeMercado/Agricolas/ConsultaFrutasYHortalizas.aspx`](http://www.economia-sniim.gob.mx/nuevo/Consultas/MercadosNacionales/PreciosDeMercado/Agricolas/ConsultaFrutasYHortalizas.aspx)
+* **Resultados de Precios Mayoreo en Central de Abasto CDMX:** [`http://www.economia-sniim.gob.mx/nuevo/Consultas/MercadosNacionales/PreciosDeMercado/Agricolas/ResultadosConsultaFechaFrutasYHortalizas.aspx`](http://www.economia-sniim.gob.mx/nuevo/Consultas/MercadosNacionales/PreciosDeMercado/Agricolas/ResultadosConsultaFechaFrutasYHortalizas.aspx) *(Parámetro validado: Destino ID 100: DF Central de Abasto de Iztapalapa).*
+
+---
+
+### 1.4 Geoportal Oficial SIG CDMX / GeoServer GeoNode (ADIP)
+* **Endpoint WFS Oficial en Vivo:** [`https://catalogov2.sig.cdmx.gob.mx/geoserver/geonode/ows`](https://catalogov2.sig.cdmx.gob.mx/geoserver/geonode/ows)
+* **Petición GetCapabilities:** `https://catalogov2.sig.cdmx.gob.mx/geoserver/geonode/ows?service=wfs&version=1.1.0&request=GetCapabilities`
+* **Peticiones GetFeature probadas con salida GeoJSON (`outputFormat=application/json`):**
+  - Atlas de Riesgo por Inundación: `...&request=GetFeature&typeName=geonode:atlas_de_riesgo_inundaciones&outputFormat=application/json`
+  - Atlas de Riesgo por Granizo: `...&request=GetFeature&typeName=geonode:atlas_de_riesgo_granizo&outputFormat=application/json`
+  - Centros de Transferencia Modal (CETRAM): `...&request=GetFeature&typeName=geonode:cetram&outputFormat=application/json`
+  - Transporte Concesionado (Rutas de Microbuses): `...&request=GetFeature&typeName=geonode:cconcesionado_rutas&outputFormat=application/json`
+  - Rutas de la Red de Transporte de Pasajeros (RTP): `...&request=GetFeature&typeName=geonode:rutas_rtp&outputFormat=application/json`
+  - Estaciones y Líneas de Metrobús: `...&request=GetFeature&typeName=geonode:metrobus_estaciones&outputFormat=application/json`
+  - Estaciones y Líneas del STC Metro: `...&request=GetFeature&typeName=geonode:stc_metro_estaciones&outputFormat=application/json`
+  - Áreas Verdes de la CDMX (Sombra y confort peatonal): `...&request=GetFeature&typeName=geonode:cdmx_areas_verdes_2017&outputFormat=application/json`
+  - Módulos LUNAS (Espacios seguros de atención a mujeres): `...&request=GetFeature&typeName=geonode:lunas&outputFormat=application/json`
+
+---
+
+### 1.5 Ecobici CDMX (API GBFS en Tiempo Real)
+* **Página Oficial de Datos Abiertos de Ecobici:** [`https://ecobici.cdmx.gob.mx/datos-abiertos/`](https://ecobici.cdmx.gob.mx/datos-abiertos/)
+* **Información Fija de Cicloestaciones (GBFS v2.3):** [`https://gbfs.mex.lyftbikes.com/gbfs/es/station_information.json`](https://gbfs.mex.lyftbikes.com/gbfs/es/station_information.json)
+* **Estado en Tiempo Real (Bicicletas y Anclajes Disponibles cada 60 s):** [`https://gbfs.mex.lyftbikes.com/gbfs/es/station_status.json`](https://gbfs.mex.lyftbikes.com/gbfs/es/station_status.json)
+
+---
+
+### 1.6 PROFECO (Procuraduría Federal del Consumidor)
+* **Portal de Datos Abiertos PROFECO:** [`https://datos.profeco.gob.mx/`](https://datos.profeco.gob.mx/) *(Monitoreado en vivo; en mantenimiento).*
+* **Programa Quién es Quién en los Precios (QQP):** [`https://www.gob.mx/profeco/acciones-y-programas/quien-es-quien-en-los-precios`](https://www.gob.mx/profeco/acciones-y-programas/quien-es-quien-en-los-precios)
+
+---
+
+### 1.7 Instituto Nacional de Estadística y Geografía (INEGI)
+* **Censos Económicos 2024 (Resultados Oportunos CDMX):** [`https://www.inegi.org.mx/programas/ce/2024/`](https://www.inegi.org.mx/programas/ce/2024/)
+* **Marco Geoestadístico Nacional (Polígonos de Alcaldías y Municipios Conurbados):** [`https://www.inegi.org.mx/temas/mg/`](https://www.inegi.org.mx/temas/mg/)
+* **Directorio Estadístico Nacional de Unidades Económicas (DENUE - SCIAN 46):** [`https://www.inegi.org.mx/app/mapa/denue/`](https://www.inegi.org.mx/app/mapa/denue/)
+* **Encuesta Nacional de Ocupación y Empleo (ENOE - Informalidad Laboral):** [`https://www.inegi.org.mx/programas/enoe/15ymas/`](https://www.inegi.org.mx/programas/enoe/15ymas/)
+* **Encuesta Nacional de Inclusión Financiera (ENIF 2024 - Medios de Pago y Efectivo):** [`https://www.inegi.org.mx/programas/enif/2024/`](https://www.inegi.org.mx/programas/enif/2024/)
+
+---
+
+### 1.8 Servicios Cartográficos, Meteorológicos y de Ruteo Abiertos
+* **Project OSRM (Ruteo Peatonal y Ciclista Ligero para CDMX):** [`https://router.project-osrm.org/route/v1/walking/`](https://router.project-osrm.org/route/v1/walking/)
+* **OpenStreetMap Nominatim (Geocodificación Directa e Inversa de Colonias y Calles):** [`https://nominatim.openstreetmap.org/search`](https://nominatim.openstreetmap.org/search)
+* **Open-Meteo API (Meteorología y Clima Hiperlocal en Tiempo Real):** [`https://api.open-meteo.com/v1/forecast`](https://api.open-meteo.com/v1/forecast)
+
+---
+
+## 2. Inventario de Datasets Descargados y Procesados Localmente
 
 Todos los datasets base han sido descargados en `data/raw/` y normalizados bajo el estándar WGS84 en `data/processed/`.
 
-### 1.1 Comercio Popular y Barrial
+### 2.1 Comercio Popular y Barrial
 
 | Nombre del Dataset | Dependencia / Fuente | Formatos | Registros | Cobertura / Contenido | Ubicación Local |
 |---|---|:---:|:---:|---|---|
@@ -38,7 +131,7 @@ Todos los datasets base han sido descargados en `data/raw/` y normalizados bajo 
 
 ---
 
-### 1.2 Cartografía y División Territorial
+### 2.2 Cartografía y División Territorial
 
 | Nombre | Fuente | Formato | Registros | Descripción | Ubicación Local |
 |---|---|:---:|:---:|---|---|
@@ -48,7 +141,7 @@ Todos los datasets base han sido descargados en `data/raw/` y normalizados bajo 
 
 ---
 
-### 1.3 Movilidad Integrada (Red MI) y Transporte Concesionado
+### 2.3 Movilidad Integrada (Red MI) y Transporte Concesionado
 
 | Subsistema de Transporte | Fuente | Formato | Contenido | Ubicación Local |
 |---|---|:---:|---|---|
@@ -63,11 +156,11 @@ Todos los datasets base han sido descargados en `data/raw/` y normalizados bajo 
 
 ---
 
-## 2. APIs, Servicios Web y Geoportales en Vivo
+## 3. APIs, Servicios Web y Geoportales en Vivo
 
 Catálogo técnico detallado disponible en: [`data/docs/apis_cdmx.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/docs/apis_cdmx.md).
 
-### 2.1 Portal de Datos Abiertos CDMX (CKAN API v3)
+### 3.1 Portal de Datos Abiertos CDMX (CKAN API v3)
 - **Base URL:** `https://datos.cdmx.gob.mx/api/3/action/`
 - **Autenticación:** Abierta (sin tokens ni restricciones de cuota rígidas).
 - **Formatos:** JSON estándar CKAN con soporte de consultas relacionales SQL.
@@ -83,7 +176,7 @@ Catálogo técnico detallado disponible en: [`data/docs/apis_cdmx.md`](file:///U
   - `20e3f3a2-c53d-4ead-bb50-95fd4923dbe4` $\rightarrow$ Incidentes Viales reportados al C5 (590k+ registros).
   - `a8069e94-c7cb-45d7-8166-561e80884422` $\rightarrow$ Reportes de Agua y Fugas SACMEX (313k+ registros).
 
-### 2.2 GeoServer WFS Oficial SIG CDMX (ADIP)
+### 3.2 GeoServer WFS Oficial SIG CDMX (ADIP)
 - **Endpoint WFS:** `https://catalogov2.sig.cdmx.gob.mx/geoserver/geonode/ows`
 - **Protocolo:** OGC WFS 1.0.0 / 1.1.0 con salida nativa GeoJSON (`outputFormat=application/json`).
 - **Autenticación:** Pública (sin token).
@@ -98,25 +191,25 @@ Catálogo técnico detallado disponible en: [`data/docs/apis_cdmx.md`](file:///U
   - `geonode:cdmx_areas_verdes_2017` $\rightarrow$ Parques y arbolado para cálculo de sombra peatonal.
   - `geonode:lunas` $\rightarrow$ Unidades territoriales de atención y protección a mujeres.
 
-### 2.3 Movilidad en Tiempo Real: Ecobici GBFS v2.3
+### 3.3 Movilidad en Tiempo Real: Ecobici GBFS v2.3
 - **Base URL:** `https://gbfs.mex.lyftbikes.com/gbfs/es/`
 - **Refresco:** Cada 60 segundos (en vivo).
 - **Endpoints:**
   - `GET /station_information.json` $\rightarrow$ Metadatos fijos de 677 estaciones (nombre, capacidad y coordenadas).
   - `GET /station_status.json` $\rightarrow$ Disponibilidad en tiempo real: `num_bikes_available`, `num_ebikes_available`, `num_docks_available`, `is_renting`.
 
-### 2.4 Meteorología y Resiliencia Climática Hiperlocal (Open-Meteo)
+### 3.4 Meteorología y Resiliencia Climática Hiperlocal (Open-Meteo)
 - **Endpoint:** `https://api.open-meteo.com/v1/forecast`
 - **Parámetros:** `latitude=19.4326&longitude=-99.1332&hourly=temperature_2m,precipitation_probability,precipitation,wind_gusts_10m,uv_index&timezone=America%2FMexico_City`
 - **Utilidad:** Detección predictiva de lluvia torrencial o viento para alerta temprana en tianguis semanales.
 
-### 2.5 Ruteo Peatonal y Multimodal (OSRM & OpenStreetMap)
+### 3.5 Ruteo Peatonal y Multimodal (OSRM & OpenStreetMap)
 - **OSRM Router:** `https://router.project-osrm.org/route/v1/walking/{lng1},{lat1};{lng2},{lat2}?overview=full&geometries=geojson`
 - **Nominatim Geocoding:** `https://nominatim.openstreetmap.org/search?q={direccion},+CDMX&format=json`
 
 ---
 
-## 3. Bibliografía Académica y Estudios Socioterritoriales
+## 4. Bibliografía Académica y Estudios Socioterritoriales
 
 Investigaciones académicas documentadas en el dossier de investigación del Chilangatón 2026 sobre mercados, tianguis y gobernanza popular:
 
@@ -143,7 +236,7 @@ Investigaciones académicas documentadas en el dossier de investigación del Chi
 
 ---
 
-## 4. Crítica al Solucionismo y Gobernanza de Datos
+## 5. Crítica al Solucionismo y Principios de Gobernanza de Datos
 
 Marco teórico para blindar el prototipo frente al extractivismo de datos y la digitalización tecnocrática:
 
@@ -168,7 +261,7 @@ Marco teórico para blindar el prototipo frente al extractivismo de datos y la d
 
 ---
 
-## 5. Marco Normativo, Gacetas y Políticas Públicas
+## 6. Marco Normativo, Gacetas y Políticas Públicas
 
 1. **Reglamento de Mercados para el Distrito Federal (Vigente):** Marco legal que regula la administración compartida entre SEDECO (emisión de cédulas de empadronamiento) y las 16 Alcaldías (operación diaria, mantenimiento menor y Ventanilla Única).
 2. **Lineamientos SITRAMERP / "Mercados Digitales CDMX" (Gaceta Oficial CDMX, 9 de enero y 27 de febrero de 2025):** Política de digitalización obligatoria suspendida y posteriormente derogada tras movilizaciones de más de 2,000 comerciantes que temían despojo de sus cédulas y locales.
@@ -187,7 +280,7 @@ Marco teórico para blindar el prototipo frente al extractivismo de datos y la d
 
 ---
 
-## 6. Investigación Periodística y Reportes Gremiales
+## 7. Investigación Periodística y Reportes Gremiales
 
 1. **Alianza Nacional de Pequeños Comerciantes (ANPEC, 2025):**  
    - Encuesta *«Pulso de la Tienda de Barrio 2025»*: El 53.86% de las tienditas otorga fiado; 4 de cada 10 reporta solicitudes crecientes por inflación; 77.5% teme cierres permanentes ante la expansión de cadenas de conveniencia y tiendas de descuento duro (Tiendas 3B, OXXO).
@@ -204,7 +297,7 @@ Marco teórico para blindar el prototipo frente al extractivismo de datos y la d
 
 ---
 
-## 7. Trazabilidad de Entregables del Repositorio
+## 8. Trazabilidad de Scripts y Entregables del Repositorio
 
 | Directorio / Archivo | Tipo | Descripción y Componentes |
 |---|:---:|---|
