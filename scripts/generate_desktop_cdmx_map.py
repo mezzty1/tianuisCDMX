@@ -1952,20 +1952,27 @@ def generate():
       const card = document.getElementById('detail-card');
       card.style.display = 'block';
 
-      document.getElementById('panel-tag').innerText = p.agency_name;
-      document.getElementById('panel-tag').style.background = p.color;
-      document.getElementById('panel-name').innerText = (p.route_short || '') + ' ' + (p.route_long || '');
-      document.getElementById('panel-sub').innerText = 'Destino: ' + (p.headsign || 'Servicio Concesionado/Red');
+      const isPrimaria = p.red_tipo === 'PRIMARIA';
+      document.getElementById('panel-tag').innerText = isPrimaria ? 'RED PRIMARIA · MOVILIDAD INTEGRADA' : 'RED SECUNDARIA · CONCESIONADO';
+      document.getElementById('panel-tag').style.background = isPrimaria ? '#0f5953' : '#8e24aa';
+      document.getElementById('panel-name').innerText = (p.route_short || '') + ' ' + (p.route_long || p.agency_name);
+      document.getElementById('panel-sub').innerText = 'Destino / Operador: ' + (p.headsign || p.agency_name);
 
-      document.getElementById('panel-stat1').innerText = p.agency === 'METRO' ? '$5.00' : (p.agency === 'MB' ? '$6.00' : (p.agency === 'CC' ? 'Por tramo' : '$2.00-$4.00'));
-      document.getElementById('panel-lbl1').innerText = 'Tarifa';
+      document.getElementById('panel-stat1').innerText = p.tarifa || (isPrimaria ? '$5.00 MXN' : '$6.50 MXN');
+      document.getElementById('panel-lbl1').innerText = isPrimaria ? 'Tarifa Oficial' : 'Tarifa Estimada';
 
-      document.getElementById('panel-stat2').innerText = p.agency === 'CC' ? 'Efectivo / Mi' : 'Tarjeta MI';
-      document.getElementById('panel-lbl2').innerText = 'Pago';
+      document.getElementById('panel-stat2').innerText = p.forma_pago || (isPrimaria ? 'Tarjeta MI' : 'Efectivo al chofer');
+      document.getElementById('panel-lbl2').innerText = 'Forma de Pago';
 
-      document.getElementById('panel-conn').innerHTML = `
-        <b>Corredor / Ruta:</b> Conexión de transporte que abastece y alimenta a la zona comercial.
-      `;
+      if (isPrimaria) {{
+        document.getElementById('panel-conn').innerHTML = `
+          🚇 <b>Red Troncal Masiva (MI):</b> Sistema estructurante de alta frecuencia del Gobierno de la CDMX. Opera sobre carriles exclusivos y vías dedicadas con Tarjeta MI.
+        `;
+      }} else {{
+        document.getElementById('panel-conn').innerHTML = `
+          🚐 <b>Red Alimentadora Barrial:</b> Microbuses y corredores zonales que penetran en colonias populares conectando con tianguis y mercados. Tarifa oficial según tramo: ≤5 km ($6.00), 5-12 km ($6.50), >12 km ($7.50). Pago en efectivo directo al operador.
+        `;
+      }}
 
       openSidebarIfClosed();
     }}
@@ -2016,6 +2023,34 @@ def generate():
         menu.style.display = 'none';
       }}
     }});
+
+    function toggleMetroComplete() {{
+      const chip = document.getElementById('chip-metro');
+      const active = map.hasLayer(layers.metro) || map.hasLayer(layers.metro_icons);
+      if (active) {{
+        if (map.hasLayer(layers.metro)) map.removeLayer(layers.metro);
+        if (map.hasLayer(layers.metro_icons)) map.removeLayer(layers.metro_icons);
+        if (chip) chip.classList.remove('active');
+      }} else {{
+        map.addLayer(layers.metro);
+        map.addLayer(layers.metro_icons);
+        if (chip) chip.classList.add('active');
+      }}
+    }}
+
+    function toggleMetrobusComplete() {{
+      const chip = document.getElementById('chip-metrobus');
+      const active = map.hasLayer(layers.metrobus) || map.hasLayer(layers.metrobus_icons);
+      if (active) {{
+        if (map.hasLayer(layers.metrobus)) map.removeLayer(layers.metrobus);
+        if (map.hasLayer(layers.metrobus_icons)) map.removeLayer(layers.metrobus_icons);
+        if (chip) chip.classList.remove('active');
+      }} else {{
+        map.addLayer(layers.metrobus);
+        map.addLayer(layers.metrobus_icons);
+        if (chip) chip.classList.add('active');
+      }}
+    }}
 
     function toggleSubsystem(agency) {{
       const fg = transportMapping[agency];
@@ -2075,7 +2110,25 @@ def generate():
     }}
 
     function showRoutesModal() {{
-      alert('Rutas Secundarias Concesionadas: 331 ramales de microbuses y corredores que penetran en colonias conectando con tianguis y mercados.');
+      alert(
+        '🧭 GUÍA DE REDES DE TRANSPORTE Y TARIFAS CDMX:\\n\\n' +
+        '1. RED PRIMARIA (MOVILIDAD INTEGRADA - MI):\\n' +
+        '• Metro (STC): $5.00 MXN (Líneas 1 a 12)\\n' +
+        '• Metrobús: $6.00 MXN (Líneas 1 a 7)\\n' +
+        '• Cablebús: $7.00 MXN (Líneas 1 a 3)\\n' +
+        '• Trolebús: $4.00 MXN (Elevado: $7.00 MXN)\\n' +
+        '• Tren Ligero: $3.00 MXN (Tasqueña - Xochimilco)\\n' +
+        '• RTP Pasajeros: $2.00 (ordinario) a $4.00 MXN (expreso)\\n' +
+        '💳 Forma de pago: Tarjeta de Movilidad Integrada (MI).\\n\\n' +
+        '2. RED SECUNDARIA (TRANSPORTE CONCESIONADO):\\n' +
+        '• Microbuses, combis/vagonetas y corredores zonales (331 rutas oficiales).\\n' +
+        '• Hasta 5 km: $6.00 MXN\\n' +
+        '• De 5 a 12 km: $6.50 MXN\\n' +
+        '• Más de 12 km: $7.50 MXN\\n' +
+        '• Autobuses de Corredor Zonal: $8.00 MXN\\n' +
+        '💵 Forma de pago: Efectivo exacto en mano al operador.\\n' +
+        '🎯 Función: Penetran en colonias populares, alimentando hacia tianguis y mercados donde el transporte masivo no llega.'
+      );
     }}
   </script>
 </body>

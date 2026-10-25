@@ -2639,28 +2639,35 @@
       const card = document.getElementById('detail-card');
       card.style.display = 'block';
 
-      document.getElementById('panel-tag').innerText = p.agency_name || 'TRANSPORTE CONCESIONADO';
-      document.getElementById('panel-tag').style.background = p.color || '#64748b';
+      const isPrimaria = p.red_tipo === 'PRIMARIA' || p.agency === 'METRO' || p.agency === 'MB' || p.agency === 'TROLE' || p.agency === 'CBB' || p.agency === 'TL' || p.agency === 'RTP';
+      document.getElementById('panel-tag').innerText = isPrimaria ? 'RED PRIMARIA · MOVILIDAD INTEGRADA' : 'RED SECUNDARIA · CONCESIONADO';
+      document.getElementById('panel-tag').style.background = isPrimaria ? (p.color || '#0f5953') : '#8e24aa';
 
       const pill = document.getElementById('panel-status-pill');
       const text = document.getElementById('panel-status-text');
       pill.className = 'panel-status-pill status-open';
       text.innerText = '🟢 Corredor en operación continua';
 
-      document.getElementById('panel-name').innerText = (p.route_short || '') + ' ' + (p.route_long || 'Corredor');
-      document.getElementById('panel-sub').innerText = 'Destino: ' + (p.headsign || 'Servicio de Conexión Barrial');
+      document.getElementById('panel-name').innerText = (p.route_short || '') + ' ' + (p.route_long || p.agency_name || 'Corredor');
+      document.getElementById('panel-sub').innerText = (isPrimaria ? 'Sistema MI · Operador: ' : 'Destino / Concesión: ') + (p.headsign || p.agency_name || 'Red CDMX');
 
-      document.getElementById('panel-stat1').innerText = p.agency === 'METRO' ? '$5.00' : (p.agency === 'MB' ? '$6.00' : (p.agency === 'CC' ? '$6.00-$8.50' : '$2.00-$4.00'));
-      document.getElementById('panel-lbl1').innerText = 'Tarifa';
+      document.getElementById('panel-stat1').innerText = p.tarifa || (p.agency === 'METRO' ? '$5.00 MXN' : (p.agency === 'MB' ? '$6.00 MXN' : (p.agency === 'CC' ? '$6.00 - $8.50' : '$2.00 - $4.00')));
+      document.getElementById('panel-lbl1').innerText = isPrimaria ? 'Tarifa Oficial' : 'Tarifa por Tramo';
 
-      document.getElementById('panel-stat2').innerText = p.agency === 'CC' ? 'Efectivo / Tarjeta MI' : 'Tarjeta MI';
+      document.getElementById('panel-stat2').innerText = p.forma_pago || (isPrimaria ? 'Tarjeta MI' : 'Efectivo al chofer');
       document.getElementById('panel-lbl2').innerText = 'Método de Pago';
 
       document.getElementById('panel-closure-box').style.display = 'none';
 
-      document.getElementById('panel-conn').innerHTML = `
-        <b>Corredor Alimentador:</b> Brinda cobertura de última milla penetrando en colonias para conectar hogares con mercados.
-      `;
+      if (isPrimaria) {
+        document.getElementById('panel-conn').innerHTML = `
+          🚇 <b>Red Troncal Masiva (MI):</b> Sistema estructurante de alta frecuencia del Gobierno de la CDMX. Opera sobre carriles exclusivos y vías dedicadas con Tarjeta MI.
+        `;
+      } else {
+        document.getElementById('panel-conn').innerHTML = `
+          🚐 <b>Red Alimentadora Barrial:</b> Microbuses y corredores zonales que penetran en colonias populares conectando con tianguis y mercados. Tarifa oficial según tramo: ≤5 km ($6.00), 5-12 km ($6.50), >12 km ($7.50). Pago en efectivo directo al operador.
+        `;
+      }
 
       openSidebarIfClosed();
     }
