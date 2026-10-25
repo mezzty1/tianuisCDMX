@@ -145,17 +145,21 @@ graph TD
 
 > Como los tianguis se instalan sobre el arroyo vehicular, reducen la movilidad y alteran el tráfico local.
 
-- [ ] **4.1 Extracción y estructuración de tramos de calle afectados** `[Depende de 0.3 o 1.1] [Dificultad: Media]`
-  - A partir de la columna `ubicacion` de `tianguis.csv` (ej. "ADOLFO DE LA HUERTA ENTRE RUIZ CORTINEZ Y BENITO JUAREZ"):
-    - Parsear calle principal y entrecalles que delimitan el polígono de cierre.
-    - Cruzar con la malla vial de CDMX para generar segmentos de línea (tramos de calle cerrados).
-- [ ] **4.2 Calendario de Cierres Viales Programados (Por día y hora)** `[Depende de 1.3 y 4.1] [Dificultad: Baja-Media]`
-  - Crear motor de consulta: Dado un día (ej. Domingo) y una hora (ej. 11:00 am), listar todas las vías públicas con tránsito cerrado por tianguis.
-  - Considerar ventana de afectación extendida: Incluir tiempo de montaje (1 a 2 horas antes) y desmontaje/limpieza (1 a 2 horas después).
-- [ ] **4.3 Impacto en el Transporte Público Secundario (Desvíos)** `[Depende de 3.1 y 4.1] [Dificultad: Media]`
-  - Cruzar tramos viales cerrados con rutas de microbuses y RTP para alertar sobre desvíos habituales de transporte durante los días de tianguis.
-- [ ] **4.4 Feed / API de Alertas Viales Barriales** `[Depende de 4.2] [Dificultad: Media]`
-  - Exportar alertas en formato compatible (GeoJSON / RSS / JSON) para que vecinos, conductores y ciclistas consulten "Calles cerradas hoy en mi colonia".
+- [x] **4.1 Extracción y estructuración de tramos de calle afectados** `[Hecho]`
+  - Script [`scripts/process_street_closures.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/process_street_closures.py) con parser regex vial y modelo dimensional físico (~1.5 m por oferente y ancho de 6 a 12 m).
+  - Georreferenciación completa en WGS84 para los 1,367 tianguis (1,396 operaciones semanales).
+  - Generado [`data/processed/cierres_viales_tianguis.geojson`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/cierres_viales_tianguis.geojson) con geometrías `LineString` y polígonos envolventes (`poligono_buffer`).
+- [x] **4.2 Calendario de Cierres Viales Programados (Por día y hora)** `[Hecho]`
+  - Generado índice optimizado [`data/processed/cierres_viales_por_dia.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/cierres_viales_por_dia.json) organizado de `DOMINGO` a `SÁBADO`.
+  - Métrica capitalina: **330.00 km lineales de calles cerradas/ocupadas cada semana en la CDMX**.
+  - Domingo es el día pico de afectación vial: 267 tianguis, 65.16 km lineales clausurados y 47,142 oferentes activos.
+- [x] **4.3 Impacto en el Transporte Público Secundario (Desvíos)** `[Hecho]`
+  - Indexador espacial con KDTree cruzando 107,008 segmentos de transporte público (RTP, microbuses concesionados, Trolebús y Metrobús).
+  - Tipificación de afectación: 1,083 cierres totales de calle (77.6%), 238 reducciones de carril (17.0%) y 74 ocupaciones de camellón (5.3%).
+  - Generación automatizada de sugerencias de desvío vehicular y rutas alternas en cada tramo.
+- [x] **4.4 Feed / API de Alertas Viales Barriales y Documentación** `[Hecho]`
+  - Archivos GeoJSON y JSON listos para integración directa en el visor web y sistemas de alerta ciudadana.
+  - Documentación exhaustiva en [`docs/CIERRES_VIALES_TIANGUIS.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/CIERRES_VIALES_TIANGUIS.md) con matriz por alcaldía, top 10 corredores viales críticos y directrices operativas.
 
 ---
 

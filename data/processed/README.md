@@ -18,6 +18,8 @@ Este directorio contiene los datasets limpios, estandarizados y estructurados li
 | **`concentraciones_comerciantes_limpio`** | `.json` / `.csv` | 224 | 169 (75.4%) | Concentraciones de comerciantes en vía pública, con proyección UTM 14N convertida a WGS84. |
 | **`mercomuna_comercios_limpio`** | `.json` / `.csv` | 250 | N/A (Padrón) | Muestra de tienditas y comercios barriales (abarrotes, carnicerías, papelerías) afiliados a MERCOMUNA. |
 | **`apoyos_emergentes_limpio`** | `.json` / `.csv` | 2,673 | N/A (Padrón) | Padrón de microcomerciantes beneficiarios de apoyos emergentes CDMX, con status de dispersión, edad y género. |
+| **`cierres_viales_tianguis`** | `.geojson` | 1,367 | 1,365 (99.8%) | **Capa Vectorial de Afectación Vial**: tramos de calle cerrados (`LineString`) por tianguis con entrecalles, longitud, ancho, tipo de afectación y desvíos sugeridos. |
+| **`cierres_viales_por_dia`** | `.json` | 7 días | N/A (Consolidado) | **Índice de Cierres Viales por Día de la Semana**: consolidación de LUNES a DOMINGO con 330 km de vialidades afectadas y desglose por alcaldía para el frontend. |
 | **`normalize_all.py`** | `.py` | Script | N/A | Pipeline automatizado y reproducible que genera todos los archivos procesados desde `data/raw/`. |
 
 ---
