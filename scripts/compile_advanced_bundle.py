@@ -323,59 +323,161 @@ def run():
         except Exception:
             continue
 
-    # 7. Mercados Sobre Ruedas
-    msr_df = pd.read_csv('data/raw/mercados_sobre_ruedas.csv')
+    # 7. Mercados Sobre Ruedas (MSR enriquecido)
     msr_list = []
-    for _, row in msr_df.iterrows():
-        if pd.isnull(row['Coor_GeogY']) or pd.isnull(row['Coor_GeogX']):
-            continue
-        try:
-            ruta_nom = str(row['Ruta'])
-            cls = classify_space('Mercado Sobre Ruedas', 'ABASTO POPULAR CANASTA BASICA', ruta_nom)
-            msr_list.append({
-                'ruta': ruta_nom,
-                'dia': str(row['Día_Oper']).strip(),
-                'oferentes': int(row['Num_Oferen']) if pd.notnull(row['Num_Oferen']) else 0,
-                'direccion': str(row['Dirección']),
-                'alcaldia': str(row['Alcaldía']),
-                'colonia': str(row['Colonia']),
-                'cats': cls['categorias'],
-                'subgiros': cls['subgiros'],
-                'canasta_basica': cls['canasta_basica'],
-                'mercomuna': cls['mercomuna'],
-                'tags': cls['popular_tags'],
-                'lat': float(row['Coor_GeogY']),
-                'lon': float(row['Coor_GeogX']),
-                'radio': 9
-            })
-        except Exception:
-            continue
+    if os.path.exists('data/processed/mercados_sobre_ruedas_limpio.json'):
+        with open('data/processed/mercados_sobre_ruedas_limpio.json', 'r', encoding='utf-8') as f:
+            msr_raw = json.load(f)
+        for row in msr_raw:
+            if not row.get('coordenadas_validas') or not row.get('lat') or not row.get('lng'):
+                continue
+            try:
+                ruta_nom = row.get('ruta', row.get('nombre', 'MSR'))
+                cls = classify_space('Mercado Sobre Ruedas', 'ABASTO POPULAR CANASTA BASICA', ruta_nom)
+                msr_list.append({
+                    'id': row.get('id', 'MSR-0000'),
+                    'nombre': row.get('nombre', ruta_nom),
+                    'ruta': ruta_nom,
+                    'tipo_espacio': 'Mercado Sobre Ruedas',
+                    'dia': str(row.get('dia', '')).strip().upper(),
+                    'dias_operacion': str(row.get('dias_operacion', row.get('dia', ''))).strip().upper(),
+                    'dias_operacion_lista': row.get('dias_operacion_lista', [str(row.get('dia', '')).strip().upper()]),
+                    'oferentes': int(row.get('num_oferentes', 100)),
+                    'direccion': str(row.get('direccion', '')),
+                    'alcaldia': str(row.get('alcaldia', '')),
+                    'colonia': str(row.get('colonia', '')),
+                    'horario': str(row.get('horario', '08:00 A 18:00 HORAS')),
+                    'hora_apertura': float(row.get('hora_apertura', 8.0)),
+                    'hora_cierre': float(row.get('hora_cierre', 18.0)),
+                    'giro': str(row.get('giro', 'ABASTO POPULAR Y CANASTA BÁSICA')),
+                    'cats': cls['categorias'],
+                    'subgiros': cls['subgiros'],
+                    'canasta_basica': cls['canasta_basica'],
+                    'mercomuna': cls['mercomuna'],
+                    'tags': cls['popular_tags'],
+                    'lat': float(row['lat']),
+                    'lon': float(row['lng']),
+                    'radio': 9
+                })
+            except Exception:
+                continue
+    print(f"Mercados Sobre Ruedas procesados: {len(msr_list)}")
 
-    # 8. Tianguis
-    tianguis_df = pd.read_csv('data/raw/tianguis.csv')
+    # 8. Tianguis (Enriquecido con padrón auditado Google Maps y oferentes)
     tianguis_list = []
-    for _, row in tianguis_df.iterrows():
-        if pd.isnull(row['latitud']) or pd.isnull(row['longitud']):
-            continue
-        try:
-            col_tian = str(row['colonia']) if pd.notnull(row['colonia']) else ''
-            cls = classify_space('Tianguis', 'ABASTO POPULAR MIXTO', col_tian)
-            tianguis_list.append({
-                'alcaldia': str(row['alcaldia']) if pd.notnull(row['alcaldia']) else '',
-                'colonia': col_tian,
-                'ubicacion': str(row['ubicacion']) if pd.notnull(row['ubicacion']) else '',
-                'dia': str(row['dia']).strip().upper() if pd.notnull(row['dia']) else 'DESCONOCIDO',
-                'horario': str(row['horario']) if pd.notnull(row['horario']) else '8:00 A 17:00',
-                'cats': cls['categorias'],
-                'subgiros': cls['subgiros'],
-                'canasta_basica': cls['canasta_basica'],
-                'mercomuna': cls['mercomuna'],
-                'tags': cls['popular_tags'],
-                'lat': float(row['latitud']),
-                'lon': float(row['longitud'])
-            })
-        except Exception:
-            continue
+    if os.path.exists('data/processed/tianguis_limpio.json'):
+        with open('data/processed/tianguis_limpio.json', 'r', encoding='utf-8') as f:
+            t_raw = json.load(f)
+        df_audit = None
+        if os.path.exists('data/processed/padron_tianguis_auditado_maps.csv'):
+            df_audit = pd.read_csv('data/processed/padron_tianguis_auditado_maps.csv')
+
+        for idx, row in enumerate(t_raw):
+            if not row.get('coordenadas_validas') or not row.get('lat') or not row.get('lng'):
+                continue
+            try:
+                col_tian = str(row.get('colonia', '')).strip()
+                p_name = ''
+                if df_audit is not None and idx < len(df_audit):
+                    val = df_audit.iloc[idx].get('place_name')
+                    if pd.notnull(val):
+                        p_name = str(val).strip()
+
+                nombre_oficial = str(row.get('nombre', 'TIANGUIS')).strip()
+                if p_name and not p_name.lower().startswith('mercado público') and not p_name.lower().startswith('mercado'):
+                    nombre_popular = p_name
+                else:
+                    nombre_popular = f"Tianguis {col_tian.title()}" if col_tian else "Tianguis Popular"
+
+                cls = classify_space('Tianguis', 'ABASTO POPULAR MIXTO', col_tian + ' ' + nombre_popular)
+                tianguis_list.append({
+                    'id': str(row.get('id', f'TIANG-{idx+1:04d}')),
+                    'nombre': nombre_oficial,
+                    'nombre_popular': nombre_popular,
+                    'tipo_espacio': 'Tianguis',
+                    'alcaldia': str(row.get('alcaldia', '')),
+                    'colonia': col_tian,
+                    'ubicacion': str(row.get('direccion', '')),
+                    'dia': str(row.get('dia', 'DESCONOCIDO')).strip().upper(),
+                    'dias_operacion': str(row.get('dias_operacion', row.get('dia', ''))).strip().upper(),
+                    'dias_operacion_lista': row.get('dias_operacion_lista', [str(row.get('dia', '')).strip().upper()]),
+                    'horario': str(row.get('horario', '8:00 A 17:00 HORAS')),
+                    'hora_apertura': float(row.get('hora_apertura', 8.0)),
+                    'hora_cierre': float(row.get('hora_cierre', 17.0)),
+                    'oferentes': int(row.get('num_oferentes', 120)),
+                    'giro': str(row.get('giro', 'MIXTO / ABASTO POPULAR')),
+                    'cats': cls['categorias'],
+                    'subgiros': cls['subgiros'],
+                    'canasta_basica': cls['canasta_basica'],
+                    'mercomuna': cls['mercomuna'],
+                    'tags': cls['popular_tags'],
+                    'lat': float(row['lat']),
+                    'lon': float(row['lng'])
+                })
+            except Exception:
+                continue
+    print(f"Tianguis procesados y enriquecidos: {len(tianguis_list)}")
+
+    # 9. Concentraciones de Comerciantes (SEDECO)
+    concentraciones_list = []
+    if os.path.exists('data/processed/concentraciones_comerciantes_limpio.json'):
+        with open('data/processed/concentraciones_comerciantes_limpio.json', 'r', encoding='utf-8') as f:
+            conc_raw = json.load(f)
+        for row in conc_raw:
+            if not row.get('coordenadas_validas') or not row.get('lat') or not row.get('lng'):
+                continue
+            try:
+                nom = str(row.get('nombre', 'CONCENTRACIÓN')).strip()
+                col = str(row.get('colonia', '')).strip()
+                alc = str(row.get('alcaldia', '')).strip()
+                giro = str(row.get('giro', 'COMERCIO Y SERVICIOS EN VÍA PÚBLICA')).strip()
+                cls = classify_space('Concentración', giro, nom + ' ' + col)
+                concentraciones_list.append({
+                    'id': str(row.get('id', 'CONC-0000')),
+                    'nombre': nom,
+                    'nombre_popular': nom.title(),
+                    'tipo_espacio': 'Concentración',
+                    'tipo_comercio': str(row.get('tipo_comercio', 'FIJO')),
+                    'alcaldia': alc,
+                    'colonia': col,
+                    'ubicacion': str(row.get('direccion', '')),
+                    'dias_operacion': str(row.get('dias_operacion', 'LUNES A DOMINGO')),
+                    'dias_operacion_lista': row.get('dias_operacion_lista', ['LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO']),
+                    'horario': str(row.get('horario', '08:00 A 18:00 HORAS')),
+                    'hora_apertura': float(row.get('hora_apertura', 8.0)),
+                    'hora_cierre': float(row.get('hora_cierre', 18.0)),
+                    'oferentes': int(row.get('numero_oficial', 50)) if row.get('numero_oficial') else 50,
+                    'giro': giro,
+                    'cats': cls['categorias'],
+                    'subgiros': cls['subgiros'],
+                    'canasta_basica': cls['canasta_basica'],
+                    'mercomuna': cls['mercomuna'],
+                    'tags': cls['popular_tags'],
+                    'lat': float(row['lat']),
+                    'lon': float(row['lng'])
+                })
+            except Exception:
+                continue
+    print(f"Concentraciones georreferenciadas procesadas: {len(concentraciones_list)}")
+
+    # 10. Estadísticas de Cierres Viales y Afectaciones por Día
+    compact_cierres = {'resumen_semanal': {}, 'dias': {}}
+    if os.path.exists('data/processed/cierres_viales_por_dia.json'):
+        with open('data/processed/cierres_viales_por_dia.json', 'r', encoding='utf-8') as f:
+            cv_raw = json.load(f)
+            compact_cierres['resumen_semanal'] = cv_raw.get('resumen_semanal', {})
+            for d, d_info in cv_raw.get('dias', {}).items():
+                compact_cierres['dias'][d] = {
+                    'total_tianguis': d_info.get('total_tianguis', 0),
+                    'tianguis_activos': d_info.get('tianguis_activos', 0),
+                    'km_lineales_ocupados': d_info.get('km_lineales_ocupados', 0.0),
+                    'superficie_m2_ocupada': d_info.get('superficie_m2_ocupada', 0.0),
+                    'oferentes_totales': d_info.get('oferentes_totales', 0),
+                    'distribucion_afectacion': d_info.get('distribucion_afectacion', {}),
+                    'top_corredores': d_info.get('top_corredores_dia', [])[:10],
+                    'alcaldias': d_info.get('alcaldias', {})
+                }
+    print("Estadísticas de cierres viales compactadas para frontend.")
 
     # Cargar metadatos de categorías y subgiros para el frontend
     with open('data/catalog/giros_catalogo.json', 'r', encoding='utf-8') as f:
@@ -393,6 +495,8 @@ def run():
         'mercados': mercados_list,
         'msr': msr_list,
         'tianguis': tianguis_list,
+        'concentraciones': concentraciones_list,
+        'cierres_viales': compact_cierres,
         'catalog_categorias': catalog_raw['categorias'],
         'catalog_subgiros': [{
             'id': sg['id'],
