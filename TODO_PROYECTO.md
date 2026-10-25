@@ -199,8 +199,11 @@ graph TD
   - Soporte de consulta por nombres (ej. `Zócalo` a `Mercado Jamaica`), desglose tramo por tramo, costo oficial en pesos ($5.00 - $12.00) y exportación JSON para API/Web.
 - [ ] **6.2 Cálculo de buffers de caminabilidad (Isócronas a pie)** `[Depende de 1.1 y 2.1] [Dificultad: Media]`
   - Determinar qué tianguis y mercados tienen una estación de Metro, Metrobús, Trolebús o Cablebús a menos de 5, 10 y 15 minutos caminando (400m, 800m, 1200m).
-- [ ] **6.3 Detección de "Desiertos de Movilidad" y "Desiertos de Abasto"** `[Depende de 0.2, 0.4 y 6.1] [Dificultad: Media]`
-  - Cruzar colonias con alta densidad poblacional que carecen tanto de mercado formal/tianguis como de estación de transporte masivo.
+- [ ] **6.3 Detección de "Desiertos de Movilidad" y "Desiertos de Abasto"** `[En Progreso]`
+  - Análisis espacial georreferenciado (buffers isócronos de caminabilidad a 500m, 800m y 1,200m) sobre los 1,367 tianguis de la CDMX y la ZMVM cruzados por día de la semana (lunes a domingo).
+  - Tipificación de colonias y zonas barriales en: *Abasto Pleno* (<500 m), *Abasto Moderado* (500-1,000 m) y *Desierto de Abasto Fresco Popular* (>1,000 m sin tianguis caminable).
+  - Generación de datasets duales (`data/processed/desiertos_abasto_cdmx.json` y `.csv`) con métricas por alcaldía.
+  - Reporte de política pública para el jurado SEDECO/SECTEI en [`docs/DESIERTOS_ABASTO_CDMX.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/DESIERTOS_ABASTO_CDMX.md) con recomendaciones para la asignación de nuevas rutas de abasto popular.
 - [ ] **6.4 Densidad de Unidades Económicas (Comercio Popular vs. Cadenas Privadas)** `[Depende de 0.4 y 1.1] [Dificultad: Media]`
   - Contrastar la huella del comercio tradicional (tianguis y mercados) contra la penetración de supermercados y tiendas de conveniencia (Oxxo, Bodega Aurrera Express) por alcaldía.
 - [ ] **6.5 Calculadora de Costo Total de Traslado para el Mandado** `[Depende de 2.2 y 3.2] [Dificultad: Baja]`
