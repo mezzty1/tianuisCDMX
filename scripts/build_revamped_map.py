@@ -87,6 +87,7 @@ def build_map_html():
        CABECERA Y OMNIBOX UNIFICADO
        ========================================================================= */
     #header-container {
+      position: relative;
       background: #ffffff;
       border-bottom: 1px solid var(--slate-200);
       z-index: 1000;
@@ -480,9 +481,9 @@ def build_map_html():
        ========================================================================= */
     #main-content {
       position: relative;
-      flex: 1;
+      flex: 1 1 auto;
+      min-height: 0;
       width: 100%;
-      height: 100%;
       overflow: hidden;
     }
 
