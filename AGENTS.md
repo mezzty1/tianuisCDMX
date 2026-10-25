@@ -79,12 +79,25 @@ Para evitar que la documentación se desactualice:
 
 ---
 
-## 🤝 5. Coordinación Multiagente
+## 🤝 5. Coordinación Multiagente y Gestión del Contexto
 
-1. **Trabajo Modular sin Pisarse Archivos:**
+Para maximizar la eficiencia y preservar la memoria de trabajo del modelo:
+
+1. **El Chat Principal es Exclusivamente para Organizar y Analizar:**
+   * La conversación principal (agente orquestador) debe reservarse para:
+     - Clarificar requerimientos y alinear objetivos con el usuario.
+     - Analizar problemas, diseñar arquitectura y priorizar el backlog en `TODO_PROYECTO.md`.
+     - Supervisar la ejecución, evaluar reportes de subagentes y sintetizar respuestas ejecutivas.
+2. **Delegación Obligatoria de Trabajo Pesado a Subagentes:**
+   * **Regla estricta:** Todo trabajo operativo, de cómputo intensivo o que genere salidas voluminosas **DEBE ser delegado a subagentes independientes** para no saturar la ventana de contexto del chat principal.
+   * Casos obligatorios para invocar subagentes:
+     - Descarga, limpieza, transformación y normalización masiva de datasets (ETL).
+     - Procesamiento y clasificación de catálogos extensos (miles de registros o variantes ortográficas).
+     - Búsqueda, scraping y pruebas en vivo de múltiples APIs y endpoints.
+     - Generación de scripts complejos o refactorizaciones de código extensas.
+   * Al aislar el trabajo pesado en subagentes, la sesión principal mantiene su contexto limpio, ágil y enfocado en la toma de decisiones estratégicas.
+3. **Trabajo Modular sin Pisarse Archivos:**
    * Antes de modificar un archivo grande o script central, revisar si otro agente está operando sobre él.
    * Mantener los módulos desacoplados: datos de comercio (`data/processed/`), capas de transporte (`data/raw/transporte/`), clasificadores (`data/catalog/`) y visualizadores web (`scripts/` y `.html`).
-2. **Uso Eficiente de Subagentes:**
-   * Delegar tareas complejas, exploratorias o de cómputo intensivo a subagentes dedicados con roles específicos (`Especialista en Datos`, `Investigador de APIs`, `Desarrollador Frontend`).
-3. **Respuestas Ejecutivas:**
+4. **Respuestas Ejecutivas:**
    * Al interactuar con el usuario, ser conciso, estructurado y presentar siempre los links clickeables a los archivos modificados o creados con el esquema `file:///`.
