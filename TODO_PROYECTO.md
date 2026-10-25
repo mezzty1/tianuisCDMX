@@ -274,3 +274,21 @@ graph TD
     * Referencia caminable calculada por distancia geodésica a transporte masivo: `🚶 A X min a pie de Metro [Nombre] (Línea Y) · Z metros` (sin dibujar líneas en el mapa).
     * Acciones: enlace directo a Google Maps y botón de copiado de coordenadas GPS WGS84 al portapapeles.
   - **Entrega Técnica:** Generación de `scripts/build_compras_catalog.py` (+460 items), `scripts/build_tianguis_bundle.py` (bundle unificado de 3.3 MB), `scripts/build_revamped_map.py` y `mapa_comercio_movilidad_cdmx.html` (interfaz ultraligera de 61 KB).
+- [x] **7.8 Sistema Visual de Íconos de Puestos de Tianguis en PNG y Variantes Cromáticas por Giro** `[Hecho]`
+  - **Conversión de Imagen Fuente a PNG Transparente de Alta Definición:** Procesamiento de `photo_2026-10-25 13.18.03.jpeg` a [`puesto_tianguis.png`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/puesto_tianguis.png) (903 x 952 px) con canal alfa de bordes desvanecidos (*defringed*), apertura de fondo transparente entre postes y debajo del toldo, y preservación íntegra de la toalla interior de rayas, foco cálido suspendido y ojillos metálicos.
+  - **Segmentación Cromática Semántica:** Aislamiento selectivo de toldo superior, parche textil, faldón inferior y caja central plástica, manteniendo intactos los colores naturales de frutas (jitomates rojos, naranjas, plátanos amarillos, sandías, aguacates) y estructura tubular galvanizada.
+  - **10 Variantes Cromáticas por Macro-Categoría de Giro Popular (`assets/icons/puestos/`):**
+    * 🔴 `puesto_original_rojo.png` (`#DC2626`): Tradicional de Tianguis / Canasta Básica Oficial SEDECO.
+    * 🟢 `puesto_cat_alim_frescos_verde.png` (`#059669`): Alimentos Frescos, Frutas y Verduras (`CAT_ALIM_FRESCOS`).
+    * 🟡 `puesto_cat_abarrotes_canasta_ambar.png` (`#D97706`): Abarrotes, Granos, Semillas y Huevo (`CAT_ABARROTES_CANASTA`).
+    * 🟠 `puesto_cat_comida_preparada_naranja.png` (`#EA580C`): Comida Preparada, Tacos y Garnachas (`CAT_COMIDA_PREPARADA`).
+    * 🔵 `puesto_cat_ropa_calzado_textil_azul.png` (`#2563EB`): Ropa de Paca, Calzado y Textiles (`CAT_ROPA_CALZADO_TEXTIL`).
+    * 🔷 `puesto_cat_hogar_ferreteria_cian.png` (`#0891B2`): Artículos del Hogar, Limpieza y Ferretería (`CAT_HOGAR_FERRETERIA`).
+    * 🌸 `puesto_cat_salud_belleza_rosa.png` (`#DB2777`): Cosméticos, Belleza y Cuidado Personal (`CAT_SALUD_BELLEZA`).
+    * 🟣 `puesto_cat_papeleria_tecnologia_morado.png` (`#7C3AED`): Tecnología, Papelería y Juguetes (`CAT_PAPELERIA_TECNOLOGIA`).
+    * 🫒 `puesto_cat_oficios_servicios_olivo.png` (`#65A30D`): Oficios, Cerrajería y Reparaciones (`CAT_OFICIOS_SERVICIOS`).
+    * 🍷 `puesto_cat_bazar_chacharas_terracota.png` (`#9F1239`): Chácharas, Segunda Mano y Bazar (`CAT_BAZAR_CHACHARAS`).
+  - **5 Aliases Canónicos para Sectores SEDECO / Gaceta Oficial:** `puesto_sector_basicos.png`, `puesto_sector_complementarios.png`, `puesto_sector_alimentos_preparados.png`, `puesto_sector_servicios.png`, `puesto_sector_mixtos_chacharas.png`.
+  - **Entrega Multiresolución (60 archivos PNG):** Exportación en Master HD (903px), 256px, 128px y 64px para integración directa en Leaflet Markers y cards web.
+  - **Catálogo y Showcase Interactivo:** Generación de metadatos estructurados en [`assets/icons/puestos/iconos_catalogo.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/assets/icons/puestos/iconos_catalogo.json) y visor web [`catalogo_iconos_puestos.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/catalogo_iconos_puestos.html) con selector de fondo (claro, oscuro, damero, mapa), filtros por sector y copia rápida de snippets para Leaflet.
+  - **Script Automatizado y Reproducible:** [`scripts/generate_tianguis_icons.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/generate_tianguis_icons.py).
