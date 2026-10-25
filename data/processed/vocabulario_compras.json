@@ -1,0 +1,4274 @@
+[
+  {
+    "id": "VOC-001",
+    "termino": "Jitomate",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "jitomates",
+      "tomate rojo",
+      "jitomate saladet"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "jitomate",
+      "jitomates",
+      "tomate rojo",
+      "jitomate saladet",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-002",
+    "termino": "Aguacate",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "aguacates",
+      "aguacate hass"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "aguacate",
+      "aguacates",
+      "aguacate hass",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-003",
+    "termino": "Cebolla",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "cebollas",
+      "cebolla blanca",
+      "cebolla morada"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "cebolla",
+      "cebollas",
+      "cebolla blanca",
+      "cebolla morada",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-004",
+    "termino": "Limón",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "limones",
+      "limon con semilla",
+      "limon colima"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "limón",
+      "limones",
+      "limon con semilla",
+      "limon colima",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-005",
+    "termino": "Papas",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "papa",
+      "papa blanca",
+      "papas cambray"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "papas",
+      "papa",
+      "papa blanca",
+      "papas cambray",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-006",
+    "termino": "Nopales",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "nopal",
+      "nopalitos",
+      "nopales limpios"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "nopales",
+      "nopal",
+      "nopalitos",
+      "nopales limpios",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-007",
+    "termino": "Plátano",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "platanos",
+      "platano tabasco",
+      "platano macho",
+      "platano dominico"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "plátano",
+      "platanos",
+      "platano tabasco",
+      "platano macho",
+      "platano dominico",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-008",
+    "termino": "Manzana",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "manzanas",
+      "manzana gala",
+      "manzana red",
+      "manzana golden"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "manzana",
+      "manzanas",
+      "manzana gala",
+      "manzana red",
+      "manzana golden",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-009",
+    "termino": "Naranja",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "naranjas",
+      "naranja para jugo",
+      "naranja valencia"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "naranja",
+      "naranjas",
+      "naranja para jugo",
+      "naranja valencia",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-010",
+    "termino": "Papaya",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "papayas",
+      "papaya maradol"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "papaya",
+      "papayas",
+      "papaya maradol",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-011",
+    "termino": "Piña",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "piñas",
+      "pina miel",
+      "pina esmeralda"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "piña",
+      "piñas",
+      "pina miel",
+      "pina esmeralda",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-012",
+    "termino": "Mango",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "mangos",
+      "mango manila",
+      "mango ataulfo",
+      "mango petacon"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "mango",
+      "mangos",
+      "mango manila",
+      "mango ataulfo",
+      "mango petacon",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-013",
+    "termino": "Zanahorias",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "zanahoria"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "zanahorias",
+      "zanahoria",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-014",
+    "termino": "Calabacitas",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "calabacita",
+      "calabaza italiana"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "calabacitas",
+      "calabacita",
+      "calabaza italiana",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-015",
+    "termino": "Lechuga",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "lechugas",
+      "lechuga orejona",
+      "lechuga romana",
+      "lechuga italiana"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "lechuga",
+      "lechugas",
+      "lechuga orejona",
+      "lechuga romana",
+      "lechuga italiana",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-016",
+    "termino": "Cilantro y Perejil",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "cilantro",
+      "perejil",
+      "epazote",
+      "hierbabuena"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "cilantro y perejil",
+      "cilantro",
+      "perejil",
+      "epazote",
+      "hierbabuena",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-017",
+    "termino": "Chiles Verdes",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "chile serrano",
+      "chile jalapeño",
+      "chile poblano",
+      "chile cuaresmeño",
+      "chile habanero"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "chiles verdes",
+      "chile serrano",
+      "chile jalapeño",
+      "chile poblano",
+      "chile cuaresmeño",
+      "chile habanero",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-018",
+    "termino": "Tomate Verde",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "tomates",
+      "tomate con cáscara",
+      "tomatillo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "tomate verde",
+      "tomates",
+      "tomate con cáscara",
+      "tomatillo",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-019",
+    "termino": "Fresas",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "fresa",
+      "fresas frescas"
+    ],
+    "peso": 75,
+    "tokens_busqueda": [
+      "fresas",
+      "fresa",
+      "fresas frescas",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-020",
+    "termino": "Sandía y Melón",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "sandia",
+      "melon",
+      "melon chino"
+    ],
+    "peso": 75,
+    "tokens_busqueda": [
+      "sandía y melón",
+      "sandia",
+      "melon",
+      "melon chino",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-021",
+    "termino": "Chayotes",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "chayote",
+      "chayote sin espina"
+    ],
+    "peso": 75,
+    "tokens_busqueda": [
+      "chayotes",
+      "chayote",
+      "chayote sin espina",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-022",
+    "termino": "Ajo",
+    "subgiro_id": "recauderia_fruteria",
+    "subgiro_nombre": "Recaudería, Frutería y Verdulería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "ajos",
+      "cabeza de ajo"
+    ],
+    "peso": 75,
+    "tokens_busqueda": [
+      "ajo",
+      "ajos",
+      "cabeza de ajo",
+      "recaudería, frutería y verdulería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-023",
+    "termino": "Bistec de Res",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "bistec",
+      "bisteces",
+      "carne de res",
+      "filete de res",
+      "pulpa"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "bistec de res",
+      "bistec",
+      "bisteces",
+      "carne de res",
+      "filete de res",
+      "pulpa",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-024",
+    "termino": "Carne Molida",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "molida de res",
+      "molida mixta",
+      "molida de sirloin"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "carne molida",
+      "molida de res",
+      "molida mixta",
+      "molida de sirloin",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-025",
+    "termino": "Cecina",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "cecina de yecapixtla",
+      "cecina enchilada"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "cecina",
+      "cecina de yecapixtla",
+      "cecina enchilada",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-026",
+    "termino": "Carne de Cerdo",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "puerco",
+      "carne de puerco",
+      "lomo de cerdo",
+      "pierna de cerdo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "carne de cerdo",
+      "puerco",
+      "carne de puerco",
+      "lomo de cerdo",
+      "pierna de cerdo",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-027",
+    "termino": "Chuletas",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "chuleta ahumada",
+      "chuleta natural",
+      "chuletas de cerdo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "chuletas",
+      "chuleta ahumada",
+      "chuleta natural",
+      "chuletas de cerdo",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-028",
+    "termino": "Costilla de Res / Cerdo",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "costilla",
+      "costillitas",
+      "costilla para asar"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "costilla de res / cerdo",
+      "costilla",
+      "costillitas",
+      "costilla para asar",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-029",
+    "termino": "Longaniza y Chorizo",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "longaniza",
+      "chorizo verde",
+      "chorizo rojo",
+      "chorizo de toluca"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "longaniza y chorizo",
+      "longaniza",
+      "chorizo verde",
+      "chorizo rojo",
+      "chorizo de toluca",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-030",
+    "termino": "Suadero Crudo",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "suadero",
+      "trozo de suadero"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "suadero crudo",
+      "suadero",
+      "trozo de suadero",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-031",
+    "termino": "Chicharrón de Cerdo",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "chicharron",
+      "chicharron crujiente",
+      "chicharron de pella"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "chicharrón de cerdo",
+      "chicharron",
+      "chicharron crujiente",
+      "chicharron de pella",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-032",
+    "termino": "Tocino",
+    "subgiro_id": "carniceria",
+    "subgiro_nombre": "Carnicería y Tocinería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "tocino ahumado",
+      "tocino en tiras"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "tocino",
+      "tocino ahumado",
+      "tocino en tiras",
+      "carnicería y tocinería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-033",
+    "termino": "Pechuga de Pollo",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "pechuga",
+      "pechugas",
+      "pechuga aplanada",
+      "pechuga deshuesada",
+      "milanesa de pollo"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "pechuga de pollo",
+      "pechuga",
+      "pechugas",
+      "pechuga aplanada",
+      "pechuga deshuesada",
+      "milanesa de pollo",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-034",
+    "termino": "Pollo Entero",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "pollo",
+      "pollos",
+      "pollo en canal",
+      "medio pollo"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "pollo entero",
+      "pollo",
+      "pollos",
+      "pollo en canal",
+      "medio pollo",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-035",
+    "termino": "Pierna y Muslo",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "piernas de pollo",
+      "muslos de pollo"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "pierna y muslo",
+      "piernas de pollo",
+      "muslos de pollo",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-036",
+    "termino": "Alitas de Pollo",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "alitas crudas",
+      "alas de pollo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "alitas de pollo",
+      "alitas crudas",
+      "alas de pollo",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-037",
+    "termino": "Retazo de Pollo",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "retazo",
+      "huacal",
+      "rabadilla",
+      "cuello"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "retazo de pollo",
+      "retazo",
+      "huacal",
+      "rabadilla",
+      "cuello",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-038",
+    "termino": "Pollo Rostizado",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "rosticería",
+      "pollo asado",
+      "pollo frito",
+      "pollo con papas"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "pollo rostizado",
+      "rosticería",
+      "pollo asado",
+      "pollo frito",
+      "pollo con papas",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-039",
+    "termino": "Huevo Blanco y Rojo",
+    "subgiro_id": "polleria",
+    "subgiro_nombre": "Pollería, Aves de Corral y Rosticería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "huevo",
+      "huevos",
+      "kilo de huevo",
+      "cono de huevo",
+      "blanquillos"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "huevo blanco y rojo",
+      "huevo",
+      "huevos",
+      "kilo de huevo",
+      "cono de huevo",
+      "blanquillos",
+      "pollería, aves de corral y rosticería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-040",
+    "termino": "Pescado Fresco",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "pescado",
+      "pescados",
+      "pescaderia",
+      "pescado entero"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "pescado fresco",
+      "pescado",
+      "pescados",
+      "pescaderia",
+      "pescado entero",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-041",
+    "termino": "Mojarra",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "mojarras",
+      "mojarra tilapia",
+      "mojarra para freir"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "mojarra",
+      "mojarras",
+      "mojarra tilapia",
+      "mojarra para freir",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-042",
+    "termino": "Filete de Pescado",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "filete de mojarra",
+      "filete de basa",
+      "filete blanco"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "filete de pescado",
+      "filete de mojarra",
+      "filete de basa",
+      "filete blanco",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-043",
+    "termino": "Camarones",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "camaron",
+      "camarones con cabeza",
+      "camaron pacotilla",
+      "camaron cristal"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "camarones",
+      "camaron",
+      "camarones con cabeza",
+      "camaron pacotilla",
+      "camaron cristal",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-044",
+    "termino": "Huachinango",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "huachinango fresco",
+      "pargo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "huachinango",
+      "huachinango fresco",
+      "pargo",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-045",
+    "termino": "Pulpo y Calamar",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "pulpo",
+      "calamar",
+      "tentaculos"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "pulpo y calamar",
+      "pulpo",
+      "calamar",
+      "tentaculos",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-046",
+    "termino": "Mariscos Mixtos",
+    "subgiro_id": "pescaderia",
+    "subgiro_nombre": "Pescadería y Marisquería en Crudo",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "sopa de mariscos",
+      "jaiba",
+      "ostiones",
+      "almejas"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "mariscos mixtos",
+      "sopa de mariscos",
+      "jaiba",
+      "ostiones",
+      "almejas",
+      "pescadería y marisquería en crudo",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-047",
+    "termino": "Queso Oaxaca",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "queso de hebra",
+      "quesillo",
+      "queso oaxaqueño"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "queso oaxaca",
+      "queso de hebra",
+      "quesillo",
+      "queso oaxaqueño",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-048",
+    "termino": "Queso Panela",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "panela",
+      "queso canasto"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "queso panela",
+      "panela",
+      "queso canasto",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-049",
+    "termino": "Queso Manchego",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "manchego",
+      "queso para fundir"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "queso manchego",
+      "manchego",
+      "queso para fundir",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-050",
+    "termino": "Crema de Rancho",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "crema",
+      "crema ácida",
+      "crema fresca",
+      "crema de vaca"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "crema de rancho",
+      "crema",
+      "crema ácida",
+      "crema fresca",
+      "crema de vaca",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-051",
+    "termino": "Leche Entera",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "leche",
+      "litro de leche",
+      "leche bronca",
+      "leche pasteurizada"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "leche entera",
+      "leche",
+      "litro de leche",
+      "leche bronca",
+      "leche pasteurizada",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-052",
+    "termino": "Jamón de Pierna / Pavo",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "jamon",
+      "jamon virginia",
+      "salchichoneria"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "jamón de pierna / pavo",
+      "jamon",
+      "jamon virginia",
+      "salchichoneria",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-053",
+    "termino": "Salchichas",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "salchicha de pavo",
+      "salchicha vienesa",
+      "salchicha para hotdog"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "salchichas",
+      "salchicha de pavo",
+      "salchicha vienesa",
+      "salchicha para hotdog",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-054",
+    "termino": "Mantequilla",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "mantequilla de rancho",
+      "margarina"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "mantequilla",
+      "mantequilla de rancho",
+      "margarina",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-055",
+    "termino": "Requesón",
+    "subgiro_id": "cremeria_lacteos",
+    "subgiro_nombre": "Cremería, Quesería y Salchichonería",
+    "categoria_id": "CAT_ALIM_FRESCOS",
+    "categoria_nombre": "Alimentos Frescos y Perecederos",
+    "categoria_icono": "🥦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "requeson fresco",
+      "ricotta"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "requesón",
+      "requeson fresco",
+      "ricotta",
+      "cremería, quesería y salchichonería",
+      "alimentos frescos y perecederos"
+    ]
+  },
+  {
+    "id": "VOC-056",
+    "termino": "Frijol Negro y Pinto",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "frijol",
+      "frijoles",
+      "frijol flor de mayo",
+      "frijol peruano"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "frijol negro y pinto",
+      "frijol",
+      "frijoles",
+      "frijol flor de mayo",
+      "frijol peruano",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-057",
+    "termino": "Arroz Blanco",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "arroz",
+      "arroz super extra",
+      "kilo de arroz"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "arroz blanco",
+      "arroz",
+      "arroz super extra",
+      "kilo de arroz",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-058",
+    "termino": "Aceite Comestible",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "aceite",
+      "aceite 1-2-3",
+      "aceite nutrioli",
+      "aceite vegetal"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "aceite comestible",
+      "aceite",
+      "aceite 1-2-3",
+      "aceite nutrioli",
+      "aceite vegetal",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-059",
+    "termino": "Azúcar",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "azucar estandar",
+      "azucar morena",
+      "azucar refinada"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "azúcar",
+      "azucar estandar",
+      "azucar morena",
+      "azucar refinada",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-060",
+    "termino": "Sal de Mesa",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "sal fina",
+      "sal de grano",
+      "sal la fina"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "sal de mesa",
+      "sal fina",
+      "sal de grano",
+      "sal la fina",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-061",
+    "termino": "Atún en Lata",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "atun",
+      "lata de atun",
+      "atun dolores",
+      "atun en agua",
+      "atun en aceite"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "atún en lata",
+      "atun",
+      "lata de atun",
+      "atun dolores",
+      "atun en agua",
+      "atun en aceite",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-062",
+    "termino": "Pastas para Sopa",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "sopas de pasta",
+      "fideo",
+      "espagueti",
+      "letritas",
+      "coditos"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "pastas para sopa",
+      "sopas de pasta",
+      "fideo",
+      "espagueti",
+      "letritas",
+      "coditos",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-063",
+    "termino": "Café Soluble y Molido",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "cafe",
+      "nescafe",
+      "cafe legal",
+      "frasco de cafe"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "café soluble y molido",
+      "cafe",
+      "nescafe",
+      "cafe legal",
+      "frasco de cafe",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-064",
+    "termino": "Mayonesa y Cátsup",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "mayonesa mc cormick",
+      "catsup",
+      "mostaza"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "mayonesa y cátsup",
+      "mayonesa mc cormick",
+      "catsup",
+      "mostaza",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-065",
+    "termino": "Papel Higiénico",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "papel de baño",
+      "rollo de papel",
+      "servilletas",
+      "kleenex"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "papel higiénico",
+      "papel de baño",
+      "rollo de papel",
+      "servilletas",
+      "kleenex",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-066",
+    "termino": "Jabón de Lavar",
+    "subgiro_id": "tienda_abarrotes",
+    "subgiro_nombre": "Tienda de Abarrotes, Miscelánea y Minisúper",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "jabon zote",
+      "zote rosa",
+      "jabon foca",
+      "detergente roma"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "jabón de lavar",
+      "jabon zote",
+      "zote rosa",
+      "jabon foca",
+      "detergente roma",
+      "tienda de abarrotes, miscelánea y minisúper",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-067",
+    "termino": "Tortillas de Maíz",
+    "subgiro_id": "tortilleria_molino",
+    "subgiro_nombre": "Tortillería y Molino de Nixtamal",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "tortilla",
+      "tortillas",
+      "kilo de tortillas",
+      "tortillas calientes"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "tortillas de maíz",
+      "tortilla",
+      "tortillas",
+      "kilo de tortillas",
+      "tortillas calientes",
+      "tortillería y molino de nixtamal",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-068",
+    "termino": "Masa de Nixtamal",
+    "subgiro_id": "tortilleria_molino",
+    "subgiro_nombre": "Tortillería y Molino de Nixtamal",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "masa",
+      "masa para tamales",
+      "masa para tortillas",
+      "nixtamal"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "masa de nixtamal",
+      "masa",
+      "masa para tamales",
+      "masa para tortillas",
+      "nixtamal",
+      "tortillería y molino de nixtamal",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-069",
+    "termino": "Totopos y Tostadas",
+    "subgiro_id": "tortilleria_molino",
+    "subgiro_nombre": "Tortillería y Molino de Nixtamal",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "totopos",
+      "tostadas de maiz",
+      "tostadas raspadas"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "totopos y tostadas",
+      "totopos",
+      "tostadas de maiz",
+      "tostadas raspadas",
+      "tortillería y molino de nixtamal",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-070",
+    "termino": "Tortillas de Harina",
+    "subgiro_id": "tortilleria_molino",
+    "subgiro_nombre": "Tortillería y Molino de Nixtamal",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "tortilla de harina",
+      "tortillinas"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "tortillas de harina",
+      "tortilla de harina",
+      "tortillinas",
+      "tortillería y molino de nixtamal",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-071",
+    "termino": "Bolillo y Telera",
+    "subgiro_id": "panaderia_expendio",
+    "subgiro_nombre": "Panadería Tradicional y Expendio de Pan",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "bolillo",
+      "bolillos",
+      "telera",
+      "teleras",
+      "pan blanco"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "bolillo y telera",
+      "bolillo",
+      "bolillos",
+      "telera",
+      "teleras",
+      "pan blanco",
+      "panadería tradicional y expendio de pan",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-072",
+    "termino": "Pan de Dulce",
+    "subgiro_id": "panaderia_expendio",
+    "subgiro_nombre": "Panadería Tradicional y Expendio de Pan",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "pan dulce",
+      "panaderia",
+      "pan tradicional"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "pan de dulce",
+      "pan dulce",
+      "panaderia",
+      "pan tradicional",
+      "panadería tradicional y expendio de pan",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-073",
+    "termino": "Conchas",
+    "subgiro_id": "panaderia_expendio",
+    "subgiro_nombre": "Panadería Tradicional y Expendio de Pan",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "concha de vainilla",
+      "concha de chocolate"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "conchas",
+      "concha de vainilla",
+      "concha de chocolate",
+      "panadería tradicional y expendio de pan",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-074",
+    "termino": "Cuernitos y Orejas",
+    "subgiro_id": "panaderia_expendio",
+    "subgiro_nombre": "Panadería Tradicional y Expendio de Pan",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "cuernito",
+      "oreja",
+      "bisquet",
+      "dona"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "cuernitos y orejas",
+      "cuernito",
+      "oreja",
+      "bisquet",
+      "dona",
+      "panadería tradicional y expendio de pan",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-075",
+    "termino": "Cocoles y Pan de Pueblo",
+    "subgiro_id": "panaderia_expendio",
+    "subgiro_nombre": "Panadería Tradicional y Expendio de Pan",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "cocol",
+      "cocoles con anis",
+      "pan de feria",
+      "pan de muerto",
+      "rosca de reyes"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "cocoles y pan de pueblo",
+      "cocol",
+      "cocoles con anis",
+      "pan de feria",
+      "pan de muerto",
+      "rosca de reyes",
+      "panadería tradicional y expendio de pan",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-076",
+    "termino": "Chiles Secos (Guajillo, Ancho, Pasilla)",
+    "subgiro_id": "semillas_chiles_granos",
+    "subgiro_nombre": "Semillas, Chiles Secos, Granos y Especias",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "chile guajillo",
+      "chile ancho",
+      "chile pasilla",
+      "chile chipotle seco",
+      "chile cascabel",
+      "chile de arbol"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "chiles secos (guajillo, ancho, pasilla)",
+      "chile guajillo",
+      "chile ancho",
+      "chile pasilla",
+      "chile chipotle seco",
+      "chile cascabel",
+      "chile de arbol",
+      "semillas, chiles secos, granos y especias",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-077",
+    "termino": "Mole Poblano y Almendrado",
+    "subgiro_id": "semillas_chiles_granos",
+    "subgiro_nombre": "Semillas, Chiles Secos, Granos y Especias",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "mole",
+      "pasta de mole",
+      "mole verde",
+      "pipian",
+      "adobo"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "mole poblano y almendrado",
+      "mole",
+      "pasta de mole",
+      "mole verde",
+      "pipian",
+      "adobo",
+      "semillas, chiles secos, granos y especias",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-078",
+    "termino": "Semillas y Frutos Secos",
+    "subgiro_id": "semillas_chiles_granos",
+    "subgiro_nombre": "Semillas, Chiles Secos, Granos y Especias",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "pepitas",
+      "nuez",
+      "almendras",
+      "cacahuates crudos",
+      "ajonjoli",
+      "semillas de girasol"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "semillas y frutos secos",
+      "pepitas",
+      "nuez",
+      "almendras",
+      "cacahuates crudos",
+      "ajonjoli",
+      "semillas de girasol",
+      "semillas, chiles secos, granos y especias",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-079",
+    "termino": "Especias y Hierbas de Olor",
+    "subgiro_id": "semillas_chiles_granos",
+    "subgiro_nombre": "Semillas, Chiles Secos, Granos y Especias",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "canela en raja",
+      "pimienta gorda",
+      "comino",
+      "oregano seco",
+      "laurel",
+      "clavo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "especias y hierbas de olor",
+      "canela en raja",
+      "pimienta gorda",
+      "comino",
+      "oregano seco",
+      "laurel",
+      "clavo",
+      "semillas, chiles secos, granos y especias",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-080",
+    "termino": "Granos y Cereales (Avena, Chía, Lentejas)",
+    "subgiro_id": "semillas_chiles_granos",
+    "subgiro_nombre": "Semillas, Chiles Secos, Granos y Especias",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "avena a granel",
+      "chia",
+      "lentejas a granel",
+      "garbanzo",
+      "haba seca"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "granos y cereales (avena, chía, lentejas)",
+      "avena a granel",
+      "chia",
+      "lentejas a granel",
+      "garbanzo",
+      "haba seca",
+      "semillas, chiles secos, granos y especias",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-081",
+    "termino": "Dulces y Confitería",
+    "subgiro_id": "dulceria_botanas",
+    "subgiro_nombre": "Dulcería, Confitería y Botanas",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "dulces",
+      "dulceria",
+      "paletas",
+      "chocolates",
+      "gomitas",
+      "mazapan"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "dulces y confitería",
+      "dulces",
+      "dulceria",
+      "paletas",
+      "chocolates",
+      "gomitas",
+      "mazapan",
+      "dulcería, confitería y botanas",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-082",
+    "termino": "Botanas y Frituras",
+    "subgiro_id": "dulceria_botanas",
+    "subgiro_nombre": "Dulcería, Confitería y Botanas",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "papas fritas",
+      "cacahuates japoneses",
+      "chicharrones preparados",
+      "platanitos"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "botanas y frituras",
+      "papas fritas",
+      "cacahuates japoneses",
+      "chicharrones preparados",
+      "platanitos",
+      "dulcería, confitería y botanas",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-083",
+    "termino": "Garrafón de Agua Purificada",
+    "subgiro_id": "purificadora_agua",
+    "subgiro_nombre": "Purificadora de Agua y Venta de Hielo",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "garrafon",
+      "relleno de garrafon",
+      "agua de garrafon",
+      "purificadora"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "garrafón de agua purificada",
+      "garrafon",
+      "relleno de garrafon",
+      "agua de garrafon",
+      "purificadora",
+      "purificadora de agua y venta de hielo",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-084",
+    "termino": "Bolsa de Hielo",
+    "subgiro_id": "purificadora_agua",
+    "subgiro_nombre": "Purificadora de Agua y Venta de Hielo",
+    "categoria_id": "CAT_ABARROTES_CANASTA",
+    "categoria_nombre": "Abarrotes, Materias Primas y Canasta Básica",
+    "categoria_icono": "🥫",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "hielo",
+      "cubos de hielo",
+      "barra de hielo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "bolsa de hielo",
+      "hielo",
+      "cubos de hielo",
+      "barra de hielo",
+      "purificadora de agua y venta de hielo",
+      "abarrotes, materias primas y canasta básica"
+    ]
+  },
+  {
+    "id": "VOC-085",
+    "termino": "Tacos al Pastor",
+    "subgiro_id": "taqueria",
+    "subgiro_nombre": "Taquería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "pastor",
+      "taco al pastor",
+      "tacos de trompo",
+      "gringa de pastor"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "tacos al pastor",
+      "pastor",
+      "taco al pastor",
+      "tacos de trompo",
+      "gringa de pastor",
+      "taquería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-086",
+    "termino": "Tacos de Suadero",
+    "subgiro_id": "taqueria",
+    "subgiro_nombre": "Taquería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "suadero",
+      "taco de suadero"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "tacos de suadero",
+      "suadero",
+      "taco de suadero",
+      "taquería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-087",
+    "termino": "Tacos de Carnitas",
+    "subgiro_id": "taqueria",
+    "subgiro_nombre": "Taquería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "carnitas",
+      "maciza",
+      "surtida",
+      "costilla carnitas",
+      "cuerito"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "tacos de carnitas",
+      "carnitas",
+      "maciza",
+      "surtida",
+      "costilla carnitas",
+      "cuerito",
+      "taquería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-088",
+    "termino": "Barbacoa de Borrego",
+    "subgiro_id": "taqueria",
+    "subgiro_nombre": "Taquería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "barbacoa",
+      "tacos de barbacoa",
+      "consome de barbacoa",
+      "pancita"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "barbacoa de borrego",
+      "barbacoa",
+      "tacos de barbacoa",
+      "consome de barbacoa",
+      "pancita",
+      "taquería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-089",
+    "termino": "Tacos de Cabeza y Tripa",
+    "subgiro_id": "taqueria",
+    "subgiro_nombre": "Taquería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "tripa dorada",
+      "tacos de tripa",
+      "cabeza",
+      "lengua",
+      "sesos"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "tacos de cabeza y tripa",
+      "tripa dorada",
+      "tacos de tripa",
+      "cabeza",
+      "lengua",
+      "sesos",
+      "taquería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-090",
+    "termino": "Birria de Res",
+    "subgiro_id": "taqueria",
+    "subgiro_nombre": "Taquería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "birria",
+      "quesabirrias",
+      "consome de birria"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "birria de res",
+      "birria",
+      "quesabirrias",
+      "consome de birria",
+      "taquería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-091",
+    "termino": "Quesadillas de Comal",
+    "subgiro_id": "antojitos_mexicanos",
+    "subgiro_nombre": "Antojitos Mexicanos y Garnachas",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "quesadillas",
+      "quesadilla de queso",
+      "quesadilla de tinga",
+      "quesadilla de huitlacoche",
+      "quesadilla de flor"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "quesadillas de comal",
+      "quesadillas",
+      "quesadilla de queso",
+      "quesadilla de tinga",
+      "quesadilla de huitlacoche",
+      "quesadilla de flor",
+      "antojitos mexicanos y garnachas",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-092",
+    "termino": "Gorditas de Chicharrón",
+    "subgiro_id": "antojitos_mexicanos",
+    "subgiro_nombre": "Antojitos Mexicanos y Garnachas",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "gorditas",
+      "gordita frita",
+      "gordita de chicharron prensado"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "gorditas de chicharrón",
+      "gorditas",
+      "gordita frita",
+      "gordita de chicharron prensado",
+      "antojitos mexicanos y garnachas",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-093",
+    "termino": "Sopes y Huaraches",
+    "subgiro_id": "antojitos_mexicanos",
+    "subgiro_nombre": "Antojitos Mexicanos y Garnachas",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "sopes",
+      "huaraches",
+      "huarache con bistec",
+      "tlacoyos",
+      "tlacoyo de frijol"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "sopes y huaraches",
+      "sopes",
+      "huaraches",
+      "huarache con bistec",
+      "tlacoyos",
+      "tlacoyo de frijol",
+      "antojitos mexicanos y garnachas",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-094",
+    "termino": "Pambazos",
+    "subgiro_id": "antojitos_mexicanos",
+    "subgiro_nombre": "Antojitos Mexicanos y Garnachas",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "pambazo",
+      "pambazos de papa con chorizo"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "pambazos",
+      "pambazo",
+      "pambazos de papa con chorizo",
+      "antojitos mexicanos y garnachas",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-095",
+    "termino": "Flautas y Tostadas",
+    "subgiro_id": "antojitos_mexicanos",
+    "subgiro_nombre": "Antojitos Mexicanos y Garnachas",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "flautas de pollo",
+      "flautas ahogadas",
+      "tostadas de tinga",
+      "tostadas de pata"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "flautas y tostadas",
+      "flautas de pollo",
+      "flautas ahogadas",
+      "tostadas de tinga",
+      "tostadas de pata",
+      "antojitos mexicanos y garnachas",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-096",
+    "termino": "Chilaquiles y Enchiladas",
+    "subgiro_id": "antojitos_mexicanos",
+    "subgiro_nombre": "Antojitos Mexicanos y Garnachas",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "chilaquiles verdes",
+      "chilaquiles con huevo",
+      "enchiladas suizas"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "chilaquiles y enchiladas",
+      "chilaquiles verdes",
+      "chilaquiles con huevo",
+      "enchiladas suizas",
+      "antojitos mexicanos y garnachas",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-097",
+    "termino": "Tamales (Verde, Mole, Rajas, Dulce)",
+    "subgiro_id": "tamales_atole",
+    "subgiro_nombre": "Puesto de Tamales y Atole",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "tamal",
+      "tamales",
+      "tamal verde",
+      "tamal de mole",
+      "tamal oaxaqueño"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "tamales (verde, mole, rajas, dulce)",
+      "tamal",
+      "tamales",
+      "tamal verde",
+      "tamal de mole",
+      "tamal oaxaqueño",
+      "puesto de tamales y atole",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-098",
+    "termino": "Guajolotas (Torta de Tamal)",
+    "subgiro_id": "tamales_atole",
+    "subgiro_nombre": "Puesto de Tamales y Atole",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "guajolota",
+      "torta de tamal"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "guajolotas (torta de tamal)",
+      "guajolota",
+      "torta de tamal",
+      "puesto de tamales y atole",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-099",
+    "termino": "Atole Caliente y Champurrado",
+    "subgiro_id": "tamales_atole",
+    "subgiro_nombre": "Puesto de Tamales y Atole",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "atole",
+      "champurrado",
+      "atole de arroz",
+      "atole de fresa",
+      "atole de chocolate"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "atole caliente y champurrado",
+      "atole",
+      "champurrado",
+      "atole de arroz",
+      "atole de fresa",
+      "atole de chocolate",
+      "puesto de tamales y atole",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-100",
+    "termino": "Comida Corrida (Fonda)",
+    "subgiro_id": "cocina_economica_fonda",
+    "subgiro_nombre": "Cocina Económica, Fonda y Comida Corrida",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "comida corrida",
+      "menu del dia",
+      "fonda",
+      "cocina economica",
+      "guisados"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "comida corrida (fonda)",
+      "comida corrida",
+      "menu del dia",
+      "fonda",
+      "cocina economica",
+      "guisados",
+      "cocina económica, fonda y comida corrida",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-101",
+    "termino": "Milanesa con Papas",
+    "subgiro_id": "cocina_economica_fonda",
+    "subgiro_nombre": "Cocina Económica, Fonda y Comida Corrida",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "milanesa de pollo empanizada",
+      "milanesa de res"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "milanesa con papas",
+      "milanesa de pollo empanizada",
+      "milanesa de res",
+      "cocina económica, fonda y comida corrida",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-102",
+    "termino": "Sopa y Consomé",
+    "subgiro_id": "cocina_economica_fonda",
+    "subgiro_nombre": "Cocina Económica, Fonda y Comida Corrida",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "sopa de fideo",
+      "arroz con huevo",
+      "consome con pollo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "sopa y consomé",
+      "sopa de fideo",
+      "arroz con huevo",
+      "consome con pollo",
+      "cocina económica, fonda y comida corrida",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-103",
+    "termino": "Tortas Calientes",
+    "subgiro_id": "torteria",
+    "subgiro_nombre": "Tortería y Lonchería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "torta",
+      "tortas",
+      "torteria",
+      "torta de milanesa",
+      "torta cubana",
+      "torta de pierna"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "tortas calientes",
+      "torta",
+      "tortas",
+      "torteria",
+      "torta de milanesa",
+      "torta cubana",
+      "torta de pierna",
+      "tortería y lonchería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-104",
+    "termino": "Esquites con Tuétano y Mayonesa",
+    "subgiro_id": "elotes_esquites_botaneros",
+    "subgiro_nombre": "Elotes, Esquites y Botanas Calientes",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "esquites",
+      "esquite",
+      "vaso de esquites",
+      "esquites con chile"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "esquites con tuétano y mayonesa",
+      "esquites",
+      "esquite",
+      "vaso de esquites",
+      "esquites con chile",
+      "elotes, esquites y botanas calientes",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-105",
+    "termino": "Elotes Hervidos y Asados",
+    "subgiro_id": "elotes_esquites_botaneros",
+    "subgiro_nombre": "Elotes, Esquites y Botanas Calientes",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "elote",
+      "elotes",
+      "elote con mayonesa y queso"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "elotes hervidos y asados",
+      "elote",
+      "elotes",
+      "elote con mayonesa y queso",
+      "elotes, esquites y botanas calientes",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-106",
+    "termino": "Jugos Naturales y Licuados",
+    "subgiro_id": "cafeteria_fuente_sodas",
+    "subgiro_nombre": "Cafetería, Fuente de Sodas, Juguería y Licuados",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "jugo verde",
+      "jugo de naranja",
+      "licuado de platano",
+      "licuados",
+      "jugueria"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "jugos naturales y licuados",
+      "jugo verde",
+      "jugo de naranja",
+      "licuado de platano",
+      "licuados",
+      "jugueria",
+      "cafetería, fuente de sodas, juguería y licuados",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-107",
+    "termino": "Café de Olla",
+    "subgiro_id": "cafeteria_fuente_sodas",
+    "subgiro_nombre": "Cafetería, Fuente de Sodas, Juguería y Licuados",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "cafe de olla",
+      "cafeteria"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "café de olla",
+      "cafe de olla",
+      "cafeteria",
+      "cafetería, fuente de sodas, juguería y licuados",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-108",
+    "termino": "Aguas Frescas (Horchata, Jamaica)",
+    "subgiro_id": "paleteria_helados",
+    "subgiro_nombre": "Paletería, Heladería y Nevería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "aguas frescas",
+      "agua de horchata",
+      "agua de jamaica",
+      "agua de limon con chia"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "aguas frescas (horchata, jamaica)",
+      "aguas frescas",
+      "agua de horchata",
+      "agua de jamaica",
+      "agua de limon con chia",
+      "paletería, heladería y nevería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-109",
+    "termino": "Helados y Paletas Artesanales",
+    "subgiro_id": "paleteria_helados",
+    "subgiro_nombre": "Paletería, Heladería y Nevería",
+    "categoria_id": "CAT_COMIDA_PREPARADA",
+    "categoria_nombre": "Alimentos Preparados, Bebidas y Antojitos",
+    "categoria_icono": "🌮",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "helado",
+      "paleta de hielo",
+      "nieve artesanal"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "helados y paletas artesanales",
+      "helado",
+      "paleta de hielo",
+      "nieve artesanal",
+      "paletería, heladería y nevería",
+      "alimentos preparados, bebidas y antojitos"
+    ]
+  },
+  {
+    "id": "VOC-110",
+    "termino": "Ropa Deportiva y Pants",
+    "subgiro_id": "venta_ropa",
+    "subgiro_nombre": "Venta de Ropa Nueva y Confección",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "ropa deportiva",
+      "pants",
+      "sudaderas",
+      "playeras deportivas",
+      "leggins"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "ropa deportiva y pants",
+      "ropa deportiva",
+      "pants",
+      "sudaderas",
+      "playeras deportivas",
+      "leggins",
+      "venta de ropa nueva y confección",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-111",
+    "termino": "Pantalones de Mezclilla",
+    "subgiro_id": "venta_ropa",
+    "subgiro_nombre": "Venta de Ropa Nueva y Confección",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "pantalones",
+      "jeans",
+      "mezclilla",
+      "pantalon para dama",
+      "pantalon para caballero"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "pantalones de mezclilla",
+      "pantalones",
+      "jeans",
+      "mezclilla",
+      "pantalon para dama",
+      "pantalon para caballero",
+      "venta de ropa nueva y confección",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-112",
+    "termino": "Playeras y Blusas",
+    "subgiro_id": "venta_ropa",
+    "subgiro_nombre": "Venta de Ropa Nueva y Confección",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "playeras",
+      "camisas",
+      "blusas",
+      "vestidos"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "playeras y blusas",
+      "playeras",
+      "camisas",
+      "blusas",
+      "vestidos",
+      "venta de ropa nueva y confección",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-113",
+    "termino": "Chamarras y Suéteres",
+    "subgiro_id": "venta_ropa",
+    "subgiro_nombre": "Venta de Ropa Nueva y Confección",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "chamarra",
+      "sueter",
+      "chaleco",
+      "abrigos"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "chamarras y suéteres",
+      "chamarra",
+      "sueter",
+      "chaleco",
+      "abrigos",
+      "venta de ropa nueva y confección",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-114",
+    "termino": "Tenis Deportivos y Casuales",
+    "subgiro_id": "zapateria_calzado",
+    "subgiro_nombre": "Zapatería, Calzado y Tenis",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "tenis",
+      "sneakers",
+      "calzado deportivo",
+      "tenis comodos"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "tenis deportivos y casuales",
+      "tenis",
+      "sneakers",
+      "calzado deportivo",
+      "tenis comodos",
+      "zapatería, calzado y tenis",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-115",
+    "termino": "Zapatos Escolares y de Vestir",
+    "subgiro_id": "zapateria_calzado",
+    "subgiro_nombre": "Zapatería, Calzado y Tenis",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "zapatos",
+      "calzado escolar",
+      "zapateria",
+      "zapatos de piel"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "zapatos escolares y de vestir",
+      "zapatos",
+      "calzado escolar",
+      "zapateria",
+      "zapatos de piel",
+      "zapatería, calzado y tenis",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-116",
+    "termino": "Sandalias y Botas",
+    "subgiro_id": "zapateria_calzado",
+    "subgiro_nombre": "Zapatería, Calzado y Tenis",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "sandalias",
+      "chanclas",
+      "botas",
+      "botas de trabajo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "sandalias y botas",
+      "sandalias",
+      "chanclas",
+      "botas",
+      "botas de trabajo",
+      "zapatería, calzado y tenis",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-117",
+    "termino": "Ropa de Paca Americana",
+    "subgiro_id": "ropa_paca_segunda",
+    "subgiro_nombre": "Ropa de Paca y Ropa de Segunda Mano",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "ropa de paca",
+      "paca",
+      "ropa americana",
+      "ropa usada de marca",
+      "vintage"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "ropa de paca americana",
+      "ropa de paca",
+      "paca",
+      "ropa americana",
+      "ropa usada de marca",
+      "vintage",
+      "ropa de paca y ropa de segunda mano",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-118",
+    "termino": "Calcetines y Ropa Interior",
+    "subgiro_id": "lenceria_boneteria",
+    "subgiro_nombre": "Bonetería, Lencería y Ropa Interior",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "calcetines",
+      "calcetas",
+      "tines",
+      "calzones",
+      "boxers",
+      "brasieres",
+      "boneteria"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "calcetines y ropa interior",
+      "calcetines",
+      "calcetas",
+      "tines",
+      "calzones",
+      "boxers",
+      "brasieres",
+      "boneteria",
+      "bonetería, lencería y ropa interior",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-119",
+    "termino": "Cobijas y Cobertores",
+    "subgiro_id": "telas_blancos",
+    "subgiro_nombre": "Telas, Blancos, Cobijas y Cortinas",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "cobijas",
+      "cobertores",
+      "cobija san marcos",
+      "edredones"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "cobijas y cobertores",
+      "cobijas",
+      "cobertores",
+      "cobija san marcos",
+      "edredones",
+      "telas, blancos, cobijas y cortinas",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-120",
+    "termino": "Sábanas y Toallas",
+    "subgiro_id": "telas_blancos",
+    "subgiro_nombre": "Telas, Blancos, Cobijas y Cortinas",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "sabanas",
+      "toallas de baño",
+      "manteles",
+      "cortinas"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "sábanas y toallas",
+      "sabanas",
+      "toallas de baño",
+      "manteles",
+      "cortinas",
+      "telas, blancos, cobijas y cortinas",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-121",
+    "termino": "Mochilas y Bolsas",
+    "subgiro_id": "bolsos_mochilas",
+    "subgiro_nombre": "Bolsos, Mochilas, Maletas y Accesorios",
+    "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+    "categoria_nombre": "Ropa, Calzado, Telas y Accesorios",
+    "categoria_icono": "👕",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "mochilas",
+      "mochila escolar",
+      "bolsas de mano",
+      "carteras",
+      "cinturones"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "mochilas y bolsas",
+      "mochilas",
+      "mochila escolar",
+      "bolsas de mano",
+      "carteras",
+      "cinturones",
+      "bolsos, mochilas, maletas y accesorios",
+      "ropa, calzado, telas y accesorios"
+    ]
+  },
+  {
+    "id": "VOC-122",
+    "termino": "Tornillos, Clavos y Taquetes",
+    "subgiro_id": "ferreteria_tlapaleria",
+    "subgiro_nombre": "Ferretería, Tlapalería y Materiales",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "tornillos",
+      "clavos",
+      "taquetes",
+      "tuercas",
+      "rondanas"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "tornillos, clavos y taquetes",
+      "tornillos",
+      "clavos",
+      "taquetes",
+      "tuercas",
+      "rondanas",
+      "ferretería, tlapalería y materiales",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-123",
+    "termino": "Herramientas de Mano",
+    "subgiro_id": "ferreteria_tlapaleria",
+    "subgiro_nombre": "Ferretería, Tlapalería y Materiales",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "martillo",
+      "desarmador",
+      "pinzas",
+      "llaves",
+      "segueta",
+      "taladro"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "herramientas de mano",
+      "martillo",
+      "desarmador",
+      "pinzas",
+      "llaves",
+      "segueta",
+      "taladro",
+      "ferretería, tlapalería y materiales",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-124",
+    "termino": "Focos y Material Eléctrico",
+    "subgiro_id": "ferreteria_tlapaleria",
+    "subgiro_nombre": "Ferretería, Tlapalería y Materiales",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "focos",
+      "foco led",
+      "cables",
+      "contactos",
+      "clavijas",
+      "cinta de aislar"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "focos y material eléctrico",
+      "focos",
+      "foco led",
+      "cables",
+      "contactos",
+      "clavijas",
+      "cinta de aislar",
+      "ferretería, tlapalería y materiales",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-125",
+    "termino": "Pintura y Brochas",
+    "subgiro_id": "ferreteria_tlapaleria",
+    "subgiro_nombre": "Ferretería, Tlapalería y Materiales",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "pintura",
+      "brochas",
+      "rodillos",
+      "thiner",
+      "sellador"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "pintura y brochas",
+      "pintura",
+      "brochas",
+      "rodillos",
+      "thiner",
+      "sellador",
+      "ferretería, tlapalería y materiales",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-126",
+    "termino": "Cloro y Desinfectantes a Granel",
+    "subgiro_id": "jarcieria_productos_limpieza",
+    "subgiro_nombre": "Jarciería y Productos de Limpieza a Granel",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "cloro",
+      "fabuloso",
+      "pino",
+      "detergente liquido",
+      "quimicos de limpieza"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "cloro y desinfectantes a granel",
+      "cloro",
+      "fabuloso",
+      "pino",
+      "detergente liquido",
+      "quimicos de limpieza",
+      "jarciería y productos de limpieza a granel",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-127",
+    "termino": "Escobas y Trapeadores",
+    "subgiro_id": "jarcieria_productos_limpieza",
+    "subgiro_nombre": "Jarciería y Productos de Limpieza a Granel",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "escoba",
+      "trapeador",
+      "jalador",
+      "jergas",
+      "franelas",
+      "jarcieria"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "escobas y trapeadores",
+      "escoba",
+      "trapeador",
+      "jalador",
+      "jergas",
+      "franelas",
+      "jarcieria",
+      "jarciería y productos de limpieza a granel",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-128",
+    "termino": "Tuppers y Artículos de Plástico",
+    "subgiro_id": "plasticos_enseres_hogar",
+    "subgiro_nombre": "Artículos de Plástico y Enseres para Cocina",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "tuppers",
+      "recipientes",
+      "botes",
+      "cubetas",
+      "trastes de plastico"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "tuppers y artículos de plástico",
+      "tuppers",
+      "recipientes",
+      "botes",
+      "cubetas",
+      "trastes de plastico",
+      "artículos de plástico y enseres para cocina",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-129",
+    "termino": "Sartenes y Ollas",
+    "subgiro_id": "plasticos_enseres_hogar",
+    "subgiro_nombre": "Artículos de Plástico y Enseres para Cocina",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "sartenes",
+      "ollas",
+      "vaporera",
+      "cucharas de madera",
+      "enseres de cocina"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "sartenes y ollas",
+      "sartenes",
+      "ollas",
+      "vaporera",
+      "cucharas de madera",
+      "enseres de cocina",
+      "artículos de plástico y enseres para cocina",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-130",
+    "termino": "Flores Frescas y Ramos",
+    "subgiro_id": "floreria_plantas",
+    "subgiro_nombre": "Florería, Flores Frescas y Plantas de Ornato",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "flores",
+      "rosas",
+      "girasoles",
+      "ramos de flores",
+      "floreria"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "flores frescas y ramos",
+      "flores",
+      "rosas",
+      "girasoles",
+      "ramos de flores",
+      "floreria",
+      "florería, flores frescas y plantas de ornato",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-131",
+    "termino": "Plantas de Ornato y Macetas",
+    "subgiro_id": "floreria_plantas",
+    "subgiro_nombre": "Florería, Flores Frescas y Plantas de Ornato",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "plantas",
+      "macetas",
+      "tierra para plantas",
+      "suculentas",
+      "cactus"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "plantas de ornato y macetas",
+      "plantas",
+      "macetas",
+      "tierra para plantas",
+      "suculentas",
+      "cactus",
+      "florería, flores frescas y plantas de ornato",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-132",
+    "termino": "Alimento para Perro y Gato (Croquetas)",
+    "subgiro_id": "mascotas_alimento",
+    "subgiro_nombre": "Mascotas, Peces de Ornato y Alimento Animal",
+    "categoria_id": "CAT_HOGAR_FERRETERIA",
+    "categoria_nombre": "Artículos del Hogar, Ferretería y Limpieza",
+    "categoria_icono": "🔨",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "croquetas",
+      "alimento para perro",
+      "comida de gato",
+      "croquetas a granel"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "alimento para perro y gato (croquetas)",
+      "croquetas",
+      "alimento para perro",
+      "comida de gato",
+      "croquetas a granel",
+      "mascotas, peces de ornato y alimento animal",
+      "artículos del hogar, ferretería y limpieza"
+    ]
+  },
+  {
+    "id": "VOC-133",
+    "termino": "Medicamentos Genéricos",
+    "subgiro_id": "farmacia_botica",
+    "subgiro_nombre": "Farmacia y Botica Tradicional",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": true,
+    "sinonimos": [
+      "farmacia",
+      "medicamentos",
+      "pastillas",
+      "paracetamol",
+      "ibuprofeno",
+      "aspirinas"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "medicamentos genéricos",
+      "farmacia",
+      "medicamentos",
+      "pastillas",
+      "paracetamol",
+      "ibuprofeno",
+      "aspirinas",
+      "farmacia y botica tradicional",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-134",
+    "termino": "Alcohol, Gasas y Botiquín",
+    "subgiro_id": "farmacia_botica",
+    "subgiro_nombre": "Farmacia y Botica Tradicional",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": true,
+    "sinonimos": [
+      "alcohol",
+      "gasas",
+      "curitas",
+      "vendas",
+      "termometro"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "alcohol, gasas y botiquín",
+      "alcohol",
+      "gasas",
+      "curitas",
+      "vendas",
+      "termometro",
+      "farmacia y botica tradicional",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-135",
+    "termino": "Plantas Medicinales y Tés",
+    "subgiro_id": "herbolaria_esoterismo",
+    "subgiro_nombre": "Herbolaria, Medicina Tradicional y Esoterismo",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "plantas medicinales",
+      "herbolaria",
+      "te de manzanilla",
+      "arnica",
+      "hierbas"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "plantas medicinales y tés",
+      "plantas medicinales",
+      "herbolaria",
+      "te de manzanilla",
+      "arnica",
+      "hierbas",
+      "herbolaria, medicina tradicional y esoterismo",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-136",
+    "termino": "Veladoras e Inciensos",
+    "subgiro_id": "herbolaria_esoterismo",
+    "subgiro_nombre": "Herbolaria, Medicina Tradicional y Esoterismo",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "veladoras",
+      "incienso",
+      "copal",
+      "sahumerio"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "veladoras e inciensos",
+      "veladoras",
+      "incienso",
+      "copal",
+      "sahumerio",
+      "herbolaria, medicina tradicional y esoterismo",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-137",
+    "termino": "Corte de Cabello y Tinte",
+    "subgiro_id": "estetica_peluqueria",
+    "subgiro_nombre": "Estética, Peluquería y Salón de Belleza",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "corte de cabello",
+      "estetica",
+      "peluqueria",
+      "tinte",
+      "despunte"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "corte de cabello y tinte",
+      "corte de cabello",
+      "estetica",
+      "peluqueria",
+      "tinte",
+      "despunte",
+      "estética, peluquería y salón de belleza",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-138",
+    "termino": "Barbería y Fade",
+    "subgiro_id": "barberia",
+    "subgiro_nombre": "Barbería y Cuidado Masculino",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "barberia",
+      "fade",
+      "perfilado de barba",
+      "corte caballero"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "barbería y fade",
+      "barberia",
+      "fade",
+      "perfilado de barba",
+      "corte caballero",
+      "barbería y cuidado masculino",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-139",
+    "termino": "Uñas Acrílicas y Gelish",
+    "subgiro_id": "unas_pestanas_cosmetologia",
+    "subgiro_nombre": "Aplicación de Uñas, Pestañas y Spa",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "uñas",
+      "gelish",
+      "uñas acrilicas",
+      "manicure",
+      "pestañas"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "uñas acrílicas y gelish",
+      "uñas",
+      "gelish",
+      "uñas acrilicas",
+      "manicure",
+      "pestañas",
+      "aplicación de uñas, pestañas y spa",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-140",
+    "termino": "Maquillaje y Cosméticos",
+    "subgiro_id": "cosmeticos_perfumeria",
+    "subgiro_nombre": "Cosméticos, Maquillaje y Perfumería",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "cosmeticos",
+      "maquillaje",
+      "labiales",
+      "rimel",
+      "perfumes"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "maquillaje y cosméticos",
+      "cosmeticos",
+      "maquillaje",
+      "labiales",
+      "rimel",
+      "perfumes",
+      "cosméticos, maquillaje y perfumería",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-141",
+    "termino": "Lentes Graduados y Armazones",
+    "subgiro_id": "optica_lentes",
+    "subgiro_nombre": "Óptica y Lentes Graduados",
+    "categoria_id": "CAT_SALUD_BELLEZA",
+    "categoria_nombre": "Salud, Cuidado Personal y Belleza",
+    "categoria_icono": "✂️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "lentes",
+      "optica",
+      "armazones",
+      "examen de la vista"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "lentes graduados y armazones",
+      "lentes",
+      "optica",
+      "armazones",
+      "examen de la vista",
+      "óptica y lentes graduados",
+      "salud, cuidado personal y belleza"
+    ]
+  },
+  {
+    "id": "VOC-142",
+    "termino": "Útiles Escolares y Cuadernos",
+    "subgiro_id": "papeleria_copias",
+    "subgiro_nombre": "Papelería, Artículos Escolares y Copias",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": true,
+    "sinonimos": [
+      "utiles escolares",
+      "cuadernos",
+      "libretas",
+      "lapices",
+      "plumas",
+      "colores"
+    ],
+    "peso": 100,
+    "tokens_busqueda": [
+      "útiles escolares y cuadernos",
+      "utiles escolares",
+      "cuadernos",
+      "libretas",
+      "lapices",
+      "plumas",
+      "colores",
+      "papelería, artículos escolares y copias",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-143",
+    "termino": "Copias e Impresiones",
+    "subgiro_id": "papeleria_copias",
+    "subgiro_nombre": "Papelería, Artículos Escolares y Copias",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": true,
+    "sinonimos": [
+      "copias",
+      "impresiones",
+      "engargolados",
+      "enmicados",
+      "papeleria"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "copias e impresiones",
+      "copias",
+      "impresiones",
+      "engargolados",
+      "enmicados",
+      "papeleria",
+      "papelería, artículos escolares y copias",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-144",
+    "termino": "Reparación de Celulares y Pantallas",
+    "subgiro_id": "reparacion_celulares",
+    "subgiro_nombre": "Reparación de Celulares y Accesorios Móviles",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "reparacion de celulares",
+      "cambio de pantalla",
+      "centro de carga",
+      "bateria celular"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "reparación de celulares y pantallas",
+      "reparacion de celulares",
+      "cambio de pantalla",
+      "centro de carga",
+      "bateria celular",
+      "reparación de celulares y accesorios móviles",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-145",
+    "termino": "Fundas, Micas y Cargadores",
+    "subgiro_id": "reparacion_celulares",
+    "subgiro_nombre": "Reparación de Celulares y Accesorios Móviles",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "fundas celular",
+      "micas",
+      "cargador",
+      "cables usb",
+      "audifonos bluetooth"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "fundas, micas y cargadores",
+      "fundas celular",
+      "micas",
+      "cargador",
+      "cables usb",
+      "audifonos bluetooth",
+      "reparación de celulares y accesorios móviles",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-146",
+    "termino": "Internet y Trámites (CURP, RFC)",
+    "subgiro_id": "ciber_internet_computo",
+    "subgiro_nombre": "Café Internet, Ciber y Soporte Digital",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "ciber",
+      "internet",
+      "impresion curp",
+      "tramites",
+      "escaneo"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "internet y trámites (curp, rfc)",
+      "ciber",
+      "internet",
+      "impresion curp",
+      "tramites",
+      "escaneo",
+      "café internet, ciber y soporte digital",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-147",
+    "termino": "Juguetes y Novedades",
+    "subgiro_id": "jugueteria_novedades",
+    "subgiro_nombre": "Juguetería, Novedades y Temporada",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "juguetes",
+      "carritos",
+      "muñecas",
+      "peluches",
+      "juegos de mesa"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "juguetes y novedades",
+      "juguetes",
+      "carritos",
+      "muñecas",
+      "peluches",
+      "juegos de mesa",
+      "juguetería, novedades y temporada",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-148",
+    "termino": "Aretes, Cadenas y Bisutería",
+    "subgiro_id": "regalos_bisuteria",
+    "subgiro_nombre": "Tienda de Regalos, Bisutería y Joyería",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "bisuteria",
+      "aretes",
+      "collares",
+      "pulseras",
+      "regalos",
+      "acero inoxidable"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "aretes, cadenas y bisutería",
+      "bisuteria",
+      "aretes",
+      "collares",
+      "pulseras",
+      "regalos",
+      "acero inoxidable",
+      "tienda de regalos, bisutería y joyería",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-149",
+    "termino": "Mercería y Manualidades",
+    "subgiro_id": "artesanias_manualidades",
+    "subgiro_nombre": "Artesanías, Manualidades y Mercería Creativa",
+    "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+    "categoria_nombre": "Papelería, Cómputo, Regalos y Juguetería",
+    "categoria_icono": "✏️",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "merceria",
+      "hilos",
+      "estambre",
+      "fieltro",
+      "listones",
+      "manualidades"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "mercería y manualidades",
+      "merceria",
+      "hilos",
+      "estambre",
+      "fieltro",
+      "listones",
+      "manualidades",
+      "artesanías, manualidades y mercería creativa",
+      "papelería, cómputo, regalos y juguetería"
+    ]
+  },
+  {
+    "id": "VOC-150",
+    "termino": "Reparación de Calzado y Suelas",
+    "subgiro_id": "reparacion_calzado",
+    "subgiro_nombre": "Reparación de Calzado y Artículos de Piel",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "reparacion de calzado",
+      "zapatero",
+      "cambio de suela",
+      "boleada",
+      "costura de tenis"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "reparación de calzado y suelas",
+      "reparacion de calzado",
+      "zapatero",
+      "cambio de suela",
+      "boleada",
+      "costura de tenis",
+      "reparación de calzado y artículos de piel",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-151",
+    "termino": "Cerrajería y Duplicado de Llaves",
+    "subgiro_id": "cerrajeria",
+    "subgiro_nombre": "Cerrajería y Duplicado de Llaves",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "cerrajeria",
+      "llaves",
+      "duplicado de llaves",
+      "apertura de chapas",
+      "candados"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "cerrajería y duplicado de llaves",
+      "cerrajeria",
+      "llaves",
+      "duplicado de llaves",
+      "apertura de chapas",
+      "candados",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-152",
+    "termino": "Ajuste de Ropa y Bastillas",
+    "subgiro_id": "taller_costura_sastreria",
+    "subgiro_nombre": "Taller de Costura, Sastrería y Maquila",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "costura",
+      "sastreria",
+      "bastillas",
+      "cambio de cierre",
+      "ajuste de pantalon"
+    ],
+    "peso": 90,
+    "tokens_busqueda": [
+      "ajuste de ropa y bastillas",
+      "costura",
+      "sastreria",
+      "bastillas",
+      "cambio de cierre",
+      "ajuste de pantalon",
+      "taller de costura, sastrería y maquila",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-153",
+    "termino": "Reparación y Refacciones de Bicicletas",
+    "subgiro_id": "taller_bicicletas",
+    "subgiro_nombre": "Taller y Refaccionaria de Bicicletas",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "taller de bicicletas",
+      "bici",
+      "parchado de llanta bici",
+      "frenos bici"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "reparación y refacciones de bicicletas",
+      "taller de bicicletas",
+      "bici",
+      "parchado de llanta bici",
+      "frenos bici",
+      "taller y refaccionaria de bicicletas",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-154",
+    "termino": "Reparación de Licuadoras y Hornos",
+    "subgiro_id": "reparacion_electrodomesticos",
+    "subgiro_nombre": "Reparación de Electrodomésticos y Refrigeración",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "reparacion de electrodomesticos",
+      "cople licuadora",
+      "reparacion de planchas",
+      "microondas"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "reparación de licuadoras y hornos",
+      "reparacion de electrodomesticos",
+      "cople licuadora",
+      "reparacion de planchas",
+      "microondas",
+      "reparación de electrodomésticos y refrigeración",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-155",
+    "termino": "Lavandería y Tintorería por Kilo",
+    "subgiro_id": "lavanderia_tintoreria",
+    "subgiro_nombre": "Lavandería, Tintorería y Planchaduría",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "lavanderia",
+      "tintoreria",
+      "lavado de ropa",
+      "planchaduria"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "lavandería y tintorería por kilo",
+      "lavanderia",
+      "tintoreria",
+      "lavado de ropa",
+      "planchaduria",
+      "lavandería, tintorería y planchaduría",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-156",
+    "termino": "Vulcanizadora y Talacha",
+    "subgiro_id": "vulcanizadora_llantas",
+    "subgiro_nombre": "Vulcanizadora y Talachera",
+    "categoria_id": "CAT_OFICIOS_SERVICIOS",
+    "categoria_nombre": "Oficios Tradicionales y Reparaciones",
+    "categoria_icono": "🪛",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "vulcanizadora",
+      "talacha",
+      "parche de llanta",
+      "inflado de llantas"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "vulcanizadora y talacha",
+      "vulcanizadora",
+      "talacha",
+      "parche de llanta",
+      "inflado de llantas",
+      "vulcanizadora y talachera",
+      "oficios tradicionales y reparaciones"
+    ]
+  },
+  {
+    "id": "VOC-157",
+    "termino": "Chácharas de Tianguis y Segunda Mano",
+    "subgiro_id": "chacharas_segunda_mano",
+    "subgiro_nombre": "Chácharas, Bazar y Segunda Mano",
+    "categoria_id": "CAT_BAZAR_CHACHARAS",
+    "categoria_nombre": "Chácharas, Segunda Mano y Comercio Mixto",
+    "categoria_icono": "📦",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "chacharas",
+      "chachara",
+      "segunda mano",
+      "bazar",
+      "usados",
+      "baratijas"
+    ],
+    "peso": 95,
+    "tokens_busqueda": [
+      "chácharas de tianguis y segunda mano",
+      "chacharas",
+      "chachara",
+      "segunda mano",
+      "bazar",
+      "usados",
+      "baratijas",
+      "chácharas, bazar y segunda mano",
+      "chácharas, segunda mano y comercio mixto"
+    ]
+  },
+  {
+    "id": "VOC-158",
+    "termino": "Libros Usados y Antigüedades",
+    "subgiro_id": "antiguedades_coleccionismo",
+    "subgiro_nombre": "Antigüedades, Coleccionables y Libros Usados",
+    "categoria_id": "CAT_BAZAR_CHACHARAS",
+    "categoria_nombre": "Chácharas, Segunda Mano y Comercio Mixto",
+    "categoria_icono": "📦",
+    "canasta_basica": false,
+    "mercomuna": false,
+    "sinonimos": [
+      "libros usados",
+      "antigüedades",
+      "discos de vinilo",
+      "coleccionables",
+      "revistas"
+    ],
+    "peso": 85,
+    "tokens_busqueda": [
+      "libros usados y antigüedades",
+      "libros usados",
+      "antigüedades",
+      "discos de vinilo",
+      "coleccionables",
+      "revistas",
+      "antigüedades, coleccionables y libros usados",
+      "chácharas, segunda mano y comercio mixto"
+    ]
+  },
+  {
+    "id": "VOC-159",
+    "termino": "Puestos Mixtos de Tianguis",
+    "subgiro_id": "comercio_mixto_general",
+    "subgiro_nombre": "Comercio Mixto, Tradicional y Abasto General",
+    "categoria_id": "CAT_BAZAR_CHACHARAS",
+    "categoria_nombre": "Chácharas, Segunda Mano y Comercio Mixto",
+    "categoria_icono": "📦",
+    "canasta_basica": true,
+    "mercomuna": true,
+    "sinonimos": [
+      "varios",
+      "puesto mixto",
+      "mercancia surtida",
+      "abasto general"
+    ],
+    "peso": 80,
+    "tokens_busqueda": [
+      "puestos mixtos de tianguis",
+      "varios",
+      "puesto mixto",
+      "mercancia surtida",
+      "abasto general",
+      "comercio mixto, tradicional y abasto general",
+      "chácharas, segunda mano y comercio mixto"
+    ]
+  }
+]

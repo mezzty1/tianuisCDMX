@@ -1,9 +1,13 @@
 import os
+import sys
 import json
 import re
 import unicodedata
 import shapefile
 import pandas as pd
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from scripts.build_compras_catalog import classify_space, build_search_vocabulary
 
 def clean_name(s):
     s = s.lower().strip()
@@ -294,8 +298,12 @@ def run():
                 cat_tamano = 'Barrial (<100 locales)'
                 radio = 6
 
+            nom_merc = str(row['mercado'])
+            giro_merc = str(row['giro']) if pd.notnull(row['giro']) else 'Mixto'
+            cls = classify_space('Mercado Público', giro_merc, nom_merc)
+
             mercados_list.append({
-                'nombre': str(row['mercado']),
+                'nombre': nom_merc,
                 'numero': str(row['numero']),
                 'alcaldia': str(row['alcaldia_mercado']),
                 'colonia': str(row['colonia_mercado']),
@@ -303,7 +311,12 @@ def run():
                 'superficie_m2': sup,
                 'categoria': cat_tamano,
                 'radio': radio,
-                'giro': str(row['giro']) if pd.notnull(row['giro']) else 'Mixto',
+                'giro': giro_merc,
+                'cats': cls['categorias'],
+                'subgiros': cls['subgiros'],
+                'canasta_basica': cls['canasta_basica'],
+                'mercomuna': cls['mercomuna'],
+                'tags': cls['popular_tags'],
                 'lat': float(row['latitud']),
                 'lon': float(row['longitud'])
             })
@@ -317,13 +330,20 @@ def run():
         if pd.isnull(row['Coor_GeogY']) or pd.isnull(row['Coor_GeogX']):
             continue
         try:
+            ruta_nom = str(row['Ruta'])
+            cls = classify_space('Mercado Sobre Ruedas', 'ABASTO POPULAR CANASTA BASICA', ruta_nom)
             msr_list.append({
-                'ruta': str(row['Ruta']),
+                'ruta': ruta_nom,
                 'dia': str(row['Día_Oper']).strip(),
                 'oferentes': int(row['Num_Oferen']) if pd.notnull(row['Num_Oferen']) else 0,
                 'direccion': str(row['Dirección']),
                 'alcaldia': str(row['Alcaldía']),
                 'colonia': str(row['Colonia']),
+                'cats': cls['categorias'],
+                'subgiros': cls['subgiros'],
+                'canasta_basica': cls['canasta_basica'],
+                'mercomuna': cls['mercomuna'],
+                'tags': cls['popular_tags'],
                 'lat': float(row['Coor_GeogY']),
                 'lon': float(row['Coor_GeogX']),
                 'radio': 9
@@ -338,19 +358,32 @@ def run():
         if pd.isnull(row['latitud']) or pd.isnull(row['longitud']):
             continue
         try:
+            col_tian = str(row['colonia']) if pd.notnull(row['colonia']) else ''
+            cls = classify_space('Tianguis', 'ABASTO POPULAR MIXTO', col_tian)
             tianguis_list.append({
                 'alcaldia': str(row['alcaldia']) if pd.notnull(row['alcaldia']) else '',
-                'colonia': str(row['colonia']) if pd.notnull(row['colonia']) else '',
+                'colonia': col_tian,
                 'ubicacion': str(row['ubicacion']) if pd.notnull(row['ubicacion']) else '',
                 'dia': str(row['dia']).strip().upper() if pd.notnull(row['dia']) else 'DESCONOCIDO',
                 'horario': str(row['horario']) if pd.notnull(row['horario']) else '8:00 A 17:00',
+                'cats': cls['categorias'],
+                'subgiros': cls['subgiros'],
+                'canasta_basica': cls['canasta_basica'],
+                'mercomuna': cls['mercomuna'],
+                'tags': cls['popular_tags'],
                 'lat': float(row['latitud']),
                 'lon': float(row['longitud'])
             })
         except Exception:
             continue
 
-    # Guardar en JSON bundle
+    # Cargar metadatos de categorías y subgiros para el frontend
+    with open('data/catalog/giros_catalogo.json', 'r', encoding='utf-8') as f:
+        catalog_raw = json.load(f)
+
+    vocab_compras = build_search_vocabulary()
+
+    # Guardar en JSON y JS bundle
     output_bundle = {
         'alcaldias': alcaldias_geo,
         'zmvm': zmvm_geo,
@@ -359,12 +392,27 @@ def run():
         'metrobus_stations': mb_stations_list,
         'mercados': mercados_list,
         'msr': msr_list,
-        'tianguis': tianguis_list
+        'tianguis': tianguis_list,
+        'catalog_categorias': catalog_raw['categorias'],
+        'catalog_subgiros': [{
+            'id': sg['id'],
+            'categoria_id': sg['categoria_id'],
+            'nombre': sg['nombre'],
+            'canasta_basica': sg.get('canasta_basica', False),
+            'mercomuna': sg.get('mercomuna', False)
+        } for sg in catalog_raw['subgiros']],
+        'vocabulario_compras': vocab_compras
     }
     
     with open('data/processed/map_bundle.json', 'w', encoding='utf-8') as f:
         json.dump(output_bundle, f, ensure_ascii=False)
-    print("Bundle enriquecido generado exitosamente.")
+
+    with open('data/processed/map_bundle.js', 'w', encoding='utf-8') as f:
+        f.write("window.MAP_DATA = ")
+        json.dump(output_bundle, f, ensure_ascii=False)
+        f.write(";\n")
+
+    print(f"Bundle enriquecido generado exitosamente: {len(mercados_list)} mercados, {len(tianguis_list)} tianguis, {len(msr_list)} MSR, {len(vocab_compras)} términos de compras.")
 
 if __name__ == '__main__':
     run()

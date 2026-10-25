@@ -98,11 +98,11 @@ graph TD
     - Mercado de La Viga (polo semimayorista histórico de pescados y mariscos)
     - Mercado de San Juan Pugibet (abasto semimayorista gourmet y carnes selectas)
     - Cada nodo incluye: ID, nombre, clave_nodo, alcaldía, colonia, dirección, lat, lng, giros, tipo_abasto, horario, relevancia logística y conectividad con la Red MI.
-- [ ] **1.6 Enriquecimiento de Padrón Comercial con Taxonomía de Giros y Productos** `[Depende de 1.1 y data/catalog] [Dificultad: Media]`
-  - Cruzar el padrón unificado (`directorio_comercio_popular`), `tianguis`, `mercados_publicos`, `concentraciones` y muestras de padrón detallado (FONDESO 86k registros, apoyos emergentes, Mercomuna) con el motor [`giro_classifier.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/giro_classifier.py) y [`giros_catalogo.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/giros_catalogo.json).
-  - Asignar a cada espacio comercial sus **Macro-Categorías** (1 a 9), **Subgiros específicos** (de los 67 del catálogo) y **Banderas de Canasta Básica / Mercomuna**.
-  - Derivar vocabulario y mapeo inverso de productos de consumo popular (desde términos desagregados: "aguacate", "huevo", "tacos", "pescado", "zapatos", "tornillos") hacia subgiros y macrocategorías.
-  - Integrar estas estructuras jerárquicas en [`scripts/compile_advanced_bundle.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/compile_advanced_bundle.py) y en el bundle del visor web.
+- [x] **1.6 Enriquecimiento de Padrón Comercial con Taxonomía de Giros y Productos** `[Hecho]`
+  - Cruzado el padrón unificado (`directorio_comercio_popular`), `tianguis`, `mercados_publicos`, `concentraciones` y muestras de padrón detallado (FONDESO 86k registros, apoyos emergentes, Mercomuna) con el motor [`giro_classifier.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/giro_classifier.py) y [`giros_catalogo.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/giros_catalogo.json).
+  - Asignadas a cada espacio comercial sus **Macro-Categorías** (1 a 9), **Subgiros específicos** (de los 67 del catálogo) y **Banderas de Canasta Básica / Mercomuna**.
+  - Generado el vocabulario maestro y mapeo inverso de productos de consumo popular (159 términos en [`data/catalog/vocabulario_compras.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/vocabulario_compras.json) y `.csv`, replicado en `data/processed/`) desde términos desagregados: "aguacate", "huevo", "tacos", "pescado", "zapatos", "tornillos" hacia subgiros y macrocategorías.
+  - Integradas estas estructuras jerárquicas en [`scripts/compile_advanced_bundle.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/compile_advanced_bundle.py) y en el bundle del visor web ([`data/processed/map_bundle.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/map_bundle.json) y `map_bundle.js`).
 
 ---
 
@@ -215,10 +215,10 @@ graph TD
   - Siguiendo la premisa del dossier (herramientas locales y ligeras): generación de fichas descargables o modo cacheado para consultar sin internet.
 - [ ] **7.4 Pitch Deck y Narrativa de Impacto Social** `[100% Independiente] [Dificultad: Baja]`
   - Demostrar que el proyecto no es "otro marketplace", sino una plataforma cívica de infraestructura viva que fortalece la soberanía alimentaria barrial y la movilidad sustentable.
-- [ ] **7.5 Filtro y Buscador Jerárquico de Compras en el Visor Web (De lo micro a lo macro)** `[Depende de 1.6 y 7.2] [Dificultad: Media]`
-  - Implementar en la interfaz de usuario de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) un sistema de filtros multinivel para compras:
+- [x] **7.5 Filtro y Buscador Jerárquico de Compras en el Visor Web (De lo micro a lo macro)** `[Hecho]`
+  - Implementado en la interfaz de usuario de [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) y compilador [`scripts/build_revamped_map.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/build_revamped_map.py) un sistema de filtros multinivel para compras:
     - **Nivel Macro (Categorías agregadas):** Barra interactiva de chips con íconos temáticos (🥦 Alimentos Frescos, 🥫 Abarrotes y Canasta, 🌮 Comida Preparada, 👕 Ropa y Calzado, 🔨 Hogar y Ferretería, ✂️ Salud y Belleza, ✏️ Papelería y Tecnología, 🪛 Oficios y Reparaciones, 📦 Bazar y Chácharas).
-    - **Nivel Meso (Subgiros / Giros específicos):** Menú cascada dinámico con los 67 subgiros estructurados (ej. dentro de Alimentos Frescos: Frutas y Verduras, Carnicería, Pescadería, Pollería, Cremería/Lácteos).
-    - **Nivel Micro (Búsqueda predictiva de productos concretos):** Entrada tipo *"¿Qué buscas comprar hoy? (ej. jitomate, barbacoa, tenis, clavos, útiles)"* con autocompletado en tiempo real que resuelve sinónimos hacia subgiros y macrocategorías.
+    - **Nivel Meso (Subgiros / Giros específicos):** Menú cascada dinámico con los 67 subgiros estructurados agrupados por categoría (`<optgroup>`), sincronizado automáticamente con la macro-categoría activa.
+    - **Nivel Micro (Búsqueda predictiva de productos concretos):** Entrada interactiva *"¿Qué quieres comprar hoy? (ej. jitomate, barbacoa, tenis, clavos, útiles...)"* con autocompletado predictivo en tiempo real sobre 159 términos populares y resolución de sinónimos hacia subgiros y macrocategorías.
     - **Filtros rápidos de política social:** Conmutadores para *"Canasta Básica SEDECO"* y *"Acepta Vales Mercomuna"*.
-    - **Reactividad geoespacial:** Actualización instantánea de clusters y marcadores de Leaflet, panel lateral detallado con oferta de giros por espacio y contadores dinámicos de oferta disponible.
+    - **Reactividad geoespacial:** Actualización instantánea de clusters y marcadores de Leaflet (mercados, tianguis, MSR), panel lateral detallado con oferta de giros por espacio, insignias oficiales y contadores dinámicos de oferta disponible con gestión de píldoras activas y botón de reseteo.

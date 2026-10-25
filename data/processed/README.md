@@ -8,7 +8,8 @@ Este directorio contiene los datasets limpios, estandarizados y estructurados li
 
 | Archivo Base | Formatos | Registros | Coordenadas Válidas | Descripción |
 | :--- | :--- | :---: | :---: | :--- |
-| **`directorio_comercio_popular`** | `.json` / `.csv` | **1,971** | **1,914 (97.1%)** | **Catálogo unificado maestro** de abasto popular: mercados públicos, tianguis, mercados sobre ruedas y concentraciones, con clasificación tipológica (`FIJO` vs. `MOVIL`), horarios numéricos y banderas por día. |
+| **`directorio_comercio_popular`** | `.json` / `.csv` | **1,971** | **1,914 (97.1%)** | **Catálogo unificado maestro** de abasto popular: mercados públicos, tianguis, mercados sobre ruedas y concentraciones, con clasificación tipológica (`FIJO` vs. `MOVIL`), horarios numéricos, 7 banderas por día, **categorías, subgiros, Canasta Básica y Mercomuna**. |
+| **`vocabulario_compras`** | `.json` / `.csv` | **159** | N/A (Vocabulario) | **Índice de Compras Populares (Nivel Micro)**: mapeo de términos de consumo barrial (jitomate, barbacoa, tenis, tornillos) a 67 subgiros, 9 macrocategorías y políticas de abasto. |
 | **`msr_rutas_itinerantes`** | `.json` / `.csv` | **13** | N/A (Agrupado) | **Trazabilidad de Rutas de Mercados Sobre Ruedas (MSR)**: itinerarios semanales ordenados de Lunes a Domingo, colonias, alcaldías y oferentes. |
 | **`msr_rutas_paradas_itinerantes`**| `.json` / `.csv` | **51** | **51 (100.0%)** | Paradas semanales de MSR en formato tabular plano GIS-ready con secuencia temporal, alcaldía, coordenadas y oferentes. |
 | **`centros_abasto_mayoristas`** | `.json` / `.csv` | **8** | **8 (100.0%)** | **Catálogo de Nodos de Abasto Mayoristas y Semimayoristas**: CEDA Iztapalapa, La Merced (Nave Mayor y Menor), Sonora, Jamaica, La Nueva Viga, La Viga y San Juan Pugibet. |

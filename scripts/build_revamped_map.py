@@ -1,3 +1,4 @@
+import os
 import json
 
 # Read data/processed/cierres_viales_por_dia.json if available to get exact numbers
@@ -9,14 +10,21 @@ try:
 except Exception as e:
     print("Notice: cierres_viales_por_dia.json error", e)
 
-# Read backup of html
-with open('mapa_comercio_movilidad_cdmx.html.bak', 'r', encoding='utf-8') as f:
+# Read base HTML to extract core theme styles
+html_source = 'mapa_comercio_movilidad_cdmx.html'
+with open(html_source, 'r', encoding='utf-8') as f:
     orig = f.read()
 
-# Extract existing style content
+# Base HTML leído
+
+# Extract existing style content up to UX/UI revamp marker
 start_style = orig.find('<style>') + len('<style>')
-end_style = orig.find('</style>')
-existing_style = orig[start_style:end_style]
+revamp_marker = orig.find('/* ==========================================================================\n       UX/UI REVAMP')
+if revamp_marker != -1 and revamp_marker > start_style:
+    existing_style = orig[start_style:revamp_marker].strip()
+else:
+    end_style = orig.find('</style>')
+    existing_style = orig[start_style:end_style].strip()
 
 # Compose extra styles
 extra_styles = """
@@ -510,6 +518,199 @@ extra_styles = """
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* ==========================================================================
+       FILTRO JERÁRQUICO DE COMPRAS (MICRO, MESO, MACRO & POLÍTICA SOCIAL)
+       ========================================================================== */
+    .badge-policy {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .badge-canasta {
+      background: #dcfce7;
+      color: #15803d;
+      border: 1px solid #86efac;
+    }
+    .badge-mercomuna {
+      background: #f3e8ff;
+      color: #7e22ce;
+      border: 1px solid #d8b4fe;
+    }
+    .badge-cat-mini {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+    }
+    .subgiro-pill {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.66rem;
+      font-weight: 600;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .macro-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+    .macro-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: #f8fafc;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .macro-chip:hover {
+      background: #e2e8f0;
+      border-color: #94a3b8;
+    }
+    .macro-chip.active {
+      background: #0f5953;
+      color: #ffffff;
+      border-color: #0f5953;
+      box-shadow: 0 2px 6px rgba(15,89,83,0.3);
+      font-weight: 700;
+    }
+    .subgiro-select-input {
+      width: 100%;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.74rem;
+      background: #ffffff;
+      color: #334155;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+    }
+    .subgiro-select-input:focus {
+      border-color: #0f5953;
+      box-shadow: 0 0 0 2px rgba(15,89,83,0.15);
+    }
+    .policy-toggle-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #475569;
+      font-size: 0.68rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .policy-toggle-btn:hover {
+      background: #f8fafc;
+    }
+    .policy-toggle-btn.active-canasta {
+      background: #ecfdf5;
+      color: #065f46;
+      border-color: #10b981;
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(16,185,129,0.2);
+    }
+    .policy-toggle-btn.active-mercomuna {
+      background: #faf5ff;
+      color: #6b21a8;
+      border-color: #a855f7;
+      font-weight: 800;
+      box-shadow: 0 1px 3px rgba(168,85,247,0.2);
+    }
+    .compras-autocomplete-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 2100;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.18);
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .compras-item {
+      padding: 7px 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.12s;
+    }
+    .compras-item:hover, .compras-item.selected {
+      background: #ecfdf5;
+    }
+    .compras-term-title {
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.78rem;
+    }
+    .compras-term-sub {
+      font-size: 0.68rem;
+      color: #64748b;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      margin-top: 2px;
+    }
+    .compras-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    .active-filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      border-radius: 12px;
+      padding: 2px 7px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .active-filter-pill .remove-pill {
+      cursor: pointer;
+      margin-left: 2px;
+      font-weight: 800;
+      color: #0284c7;
+    }
+    .active-filter-pill .remove-pill:hover {
+      color: #b91c1c;
+    }
 """
 
 html_head = f"""<!DOCTYPE html>
@@ -616,6 +817,17 @@ html_body = """<body>
           </div>
         </div>
 
+        <!-- Categorías y Banderas de Política Pública -->
+        <div id="panel-policy-badges" style="display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px;"></div>
+        
+        <!-- Subgiros y Oferta Comercial Disponibles -->
+        <div id="panel-subgiros-box" style="display:none; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:8px; margin-bottom:8px; font-size:0.73rem;">
+          <div style="font-weight:700; color:#0f5953; margin-bottom:4px; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.3px;">
+            🛍️ Oferta Comercial y Giros Disponibles:
+          </div>
+          <div id="panel-subgiros-content" style="display:flex; flex-wrap:wrap; gap:4px;"></div>
+        </div>
+
         <!-- Alerta de Cierre Vial -->
         <div id="panel-closure-box" style="display:none; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px; margin-bottom:8px; font-size:0.75rem; color:#92400e;">
           <div style="font-weight:700; margin-bottom:2px; display:flex; align-items:center; gap:4px;">
@@ -657,6 +869,70 @@ html_body = """<body>
           <button id="clear-search-btn" onclick="clearUnifiedSearch()" style="display:none; background:transparent; border:none; color:#94a3b8; cursor:pointer; padding:4px 8px; font-size:0.9rem;" title="Limpiar búsqueda">✕</button>
         </div>
         <div id="search-autocomplete-dropdown" class="search-autocomplete-dropdown" style="display:none;"></div>
+      </div>
+
+      <!-- Filtro Jerárquico de Compras Populares (Micro -> Meso -> Macro) -->
+      <div class="section-block" id="compras-filter-section" style="background:#ffffff; border:1px solid #d1fae5; border-radius:10px; padding:12px; margin-bottom:12px; box-shadow:0 2px 6px rgba(15,89,83,0.06);">
+        <div class="section-heading" style="margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="font-size:1.05rem;">🛒</span>
+            <span style="font-weight:800; color:#0f5953; font-size:0.85rem;">Filtro de Compras Barriales</span>
+          </div>
+          <span style="font-size:0.62rem; background:#ecfdf5; color:#047857; font-weight:800; padding:2px 6px; border-radius:4px; border:1px solid #a7f3d0;">3 NIVELES</span>
+        </div>
+
+        <!-- 1. NIVEL MICRO: Búsqueda predictiva de productos concretos -->
+        <div style="font-size:0.7rem; font-weight:700; color:#475569; margin-bottom:4px; display:flex; justify-content:space-between;">
+          <span>1. ¿QUÉ QUIERES COMPRAR HOY?</span>
+          <span style="color:#0f5953; font-size:0.65rem;">Nivel Micro</span>
+        </div>
+        <div class="search-input-box" style="position:relative; margin-bottom:8px;">
+          <svg class="search-icon-svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
+          <input type="text" id="compras-search-input" placeholder="Ej. jitomate, barbacoa, tenis, clavos, útiles..." autocomplete="off">
+          <button id="clear-compras-btn" onclick="clearComprasSearch()" style="display:none; background:transparent; border:none; color:#94a3b8; cursor:pointer; padding:4px 8px; font-size:0.9rem;" title="Limpiar término">✕</button>
+        </div>
+        <div id="compras-autocomplete-dropdown" class="compras-autocomplete-dropdown" style="display:none;"></div>
+
+        <!-- 2. NIVEL MACRO: 9 Macro-Categorías -->
+        <div style="font-size:0.7rem; font-weight:700; color:#475569; margin-bottom:4px; display:flex; justify-content:space-between;">
+          <span>2. MACRO-CATEGORÍAS</span>
+          <span style="color:#0f5953; font-size:0.65rem;">9 Sectores</span>
+        </div>
+        <div class="macro-chips-container" id="macro-chips-container"></div>
+
+        <!-- 3. NIVEL MESO: 67 Subgiros del Catálogo -->
+        <div style="font-size:0.7rem; font-weight:700; color:#475569; margin:8px 0 4px 0; display:flex; justify-content:space-between;">
+          <span>3. SUBGIRO ESPECÍFICO</span>
+          <span style="color:#0f5953; font-size:0.65rem;">67 Giros Oficiales</span>
+        </div>
+        <div style="position:relative; margin-bottom:8px;">
+          <select id="subgiro-select" class="subgiro-select-input" onchange="onSubgiroSelectChange(this.value)">
+            <option value="">Todos los subgiros comerciales...</option>
+          </select>
+        </div>
+
+        <!-- 4. CONMUTADORES DE POLÍTICA PÚBLICA -->
+        <div style="display:flex; flex-direction:column; gap:5px; margin-top:8px; padding-top:8px; border-top:1px dashed #e2e8f0;">
+          <div style="display:flex; gap:6px;">
+            <button class="policy-toggle-btn" id="btn-toggle-canasta" onclick="toggleFilterCanasta()">
+              <span class="p-icon">🛒</span>
+              <span class="p-txt">Canasta Básica SEDECO</span>
+            </button>
+            <button class="policy-toggle-btn" id="btn-toggle-mercomuna" onclick="toggleFilterMercomuna()">
+              <span class="p-icon">💳</span>
+              <span class="p-txt">Vales Mercomuna</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTADOR DE RESULTADOS Y ETIQUETAS ACTIVAS -->
+        <div id="compras-feedback-box" style="margin-top:10px; padding:6px 8px; background:#f8fafc; border-radius:6px; border:1px solid #e2e8f0;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span id="compras-results-counter" style="font-size:0.72rem; font-weight:800; color:#0f5953;">Mostrando 1,747 espacios</span>
+            <button id="compras-reset-all-btn" onclick="resetAllCommerceFilters()" style="display:none; background:#fee2e2; color:#b91c1c; border:none; border-radius:4px; padding:2px 6px; font-size:0.65rem; font-weight:700; cursor:pointer;">Limpiar Filtros ✕</button>
+          </div>
+          <div id="compras-active-pills" style="display:flex; flex-wrap:wrap; gap:4px; margin-top:4px;"></div>
+        </div>
       </div>
 
       <!-- Capas de Comercio Barrial -->
@@ -1305,50 +1581,9 @@ html_body = """<body>
           layers.metrobus_icons.addTo(map);
         }
 
-        // Mercados Públicos
-        if (data.mercados) {
-          data.mercados.forEach(m => {
-            const marker = L.circleMarker([m.lat, m.lon], {
-              radius: m.radio || 7,
-              fillColor: '#f59e0b',
-              color: '#ffffff',
-              weight: 2,
-              opacity: 1,
-              fillOpacity: 0.88
-            });
-            marker.on('click', () => {
-              currentSelectedTarget = { name: 'Mercado ' + m.nombre, lat: m.lat, lon: m.lon };
-              map.flyTo([m.lat, m.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-              showMarketInDetail(m);
-            });
-            layers.mercados.addLayer(marker);
-          });
-          layers.mercados.addTo(map);
-        }
-
-        // Mercados Sobre Ruedas
-        if (data.msr) {
-          data.msr.forEach(m => {
-            const marker = L.circleMarker([m.lat, m.lon], {
-              radius: m.radio || 6,
-              fillColor: '#10b981',
-              color: '#ffffff',
-              weight: 2,
-              opacity: 1,
-              fillOpacity: 0.88
-            });
-            marker.on('click', () => {
-              currentSelectedTarget = { name: 'MSR ' + m.ruta, lat: m.lat, lon: m.lon };
-              map.flyTo([m.lat, m.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-              showMSRInDetail(m);
-            });
-            layers.msr.addLayer(marker);
-          });
-          layers.msr.addTo(map);
-        }
-
-        // Tianguis
-        renderTianguisMarkers();
+        // Inicializar Filtro Jerárquico de Compras y desplegar marcadores reactivos
+        initCommerceFilters();
+        applyCommerceFilters();
 
         // Indexador para Buscador Unificado
         buildUnifiedSearchIndex(data);
@@ -1369,31 +1604,562 @@ html_body = """<body>
       }
     }
 
-    // Tianguis con filtrado por día
-    function renderTianguisMarkers(filterDay = null) {
-      if (!window.MAP_DATA || !window.MAP_DATA.tianguis) return;
-      layers.tianguis.clearLayers();
-      window.MAP_DATA.tianguis.forEach(t => {
-        if (!filterDay || (t.dia && t.dia.toUpperCase().includes(filterDay.toUpperCase()))) {
-          const marker = L.circleMarker([t.lat, t.lon], {
-            radius: 5.5,
-            fillColor: '#0f5953',
-            color: '#ffffff',
-            weight: 1.5,
-            opacity: 1,
-            fillOpacity: 0.85
+    // =========================================================================
+    // ESTADO Y SISTEMA DE FILTRADO JERÁRQUICO DE COMPRAS (MICRO, MESO, MACRO)
+    // =========================================================================
+    const filterState = {
+      macroCategory: null,
+      subgiro: null,
+      product: null,
+      canastaBasica: false,
+      mercomuna: false,
+      openToday: false
+    };
+
+    let COMPRAS_VOCAB = [];
+    let highlightedComprasIdx = -1;
+
+    function initCommerceFilters() {
+      if (!window.MAP_DATA) return;
+      COMPRAS_VOCAB = window.MAP_DATA.vocabulario_compras || [];
+
+      // 1. Render Macro Chips (9 Categorías)
+      const chipsContainer = document.getElementById('macro-chips-container');
+      if (chipsContainer && window.MAP_DATA.catalog_categorias) {
+        chipsContainer.innerHTML = '';
+        window.MAP_DATA.catalog_categorias.forEach(c => {
+          const chip = document.createElement('button');
+          chip.className = 'macro-chip';
+          chip.id = 'macro-chip-' + c.id;
+          const shortName = c.nombre.split(',')[0];
+          chip.innerHTML = `<span>${c.icono}</span> <span>${shortName}</span>`;
+          chip.title = `${c.nombre}: ${c.descripcion || ''}`;
+          chip.onclick = () => toggleMacroCategory(c.id);
+          chipsContainer.appendChild(chip);
+        });
+      }
+
+      // 2. Poblar selector de 67 Subgiros agrupados por categoría
+      const subgiroSel = document.getElementById('subgiro-select');
+      if (subgiroSel && window.MAP_DATA.catalog_subgiros && window.MAP_DATA.catalog_categorias) {
+        subgiroSel.innerHTML = '<option value="">Todos los subgiros comerciales (67 opciones)...</option>';
+        window.MAP_DATA.catalog_categorias.forEach(c => {
+          const optGroup = document.createElement('optgroup');
+          optGroup.label = `${c.icono} ${c.nombre}`;
+          const subgiros = window.MAP_DATA.catalog_subgiros.filter(sg => sg.categoria_id === c.id);
+          subgiros.forEach(sg => {
+            const opt = document.createElement('option');
+            opt.value = sg.id;
+            opt.textContent = (sg.canasta_basica ? '🛒 ' : '') + sg.nombre;
+            optGroup.appendChild(opt);
           });
-          marker.on('click', () => {
-            currentSelectedTarget = { name: 'Tianguis ' + t.colonia, lat: t.lat, lon: t.lon };
-            map.flyTo([t.lat, t.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
-            showTianguisInDetail(t);
-          });
-          layers.tianguis.addLayer(marker);
+          subgiroSel.appendChild(optGroup);
+        });
+      }
+
+      // 3. Listeners de Búsqueda Predictiva Nivel Micro
+      const comprasInput = document.getElementById('compras-search-input');
+      const comprasDropdown = document.getElementById('compras-autocomplete-dropdown');
+      const clearBtn = document.getElementById('clear-compras-btn');
+
+      if (comprasInput && comprasDropdown) {
+        comprasInput.addEventListener('input', (e) => {
+          const query = e.target.value.trim();
+          if (!query) {
+            comprasDropdown.style.display = 'none';
+            if (clearBtn) clearBtn.style.display = 'none';
+            if (filterState.product) {
+              filterState.product = null;
+              applyCommerceFilters();
+            }
+            return;
+          }
+          if (clearBtn) clearBtn.style.display = 'block';
+          renderComprasAutocompleteDropdown(query);
+        });
+
+        comprasInput.addEventListener('focus', (e) => {
+          const query = e.target.value.trim();
+          if (query) renderComprasAutocompleteDropdown(query);
+        });
+
+        comprasInput.addEventListener('keydown', (e) => {
+          const items = comprasDropdown.querySelectorAll('.compras-item');
+          if (items.length === 0 || comprasDropdown.style.display === 'none') return;
+
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedComprasIdx = (highlightedComprasIdx + 1) % items.length;
+            updateHighlightedCompras(items);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedComprasIdx = (highlightedComprasIdx - 1 + items.length) % items.length;
+            updateHighlightedCompras(items);
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedComprasIdx >= 0 && highlightedComprasIdx < items.length) {
+              items[highlightedComprasIdx].click();
+            }
+          } else if (e.key === 'Escape') {
+            comprasDropdown.style.display = 'none';
+          }
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('#compras-filter-section')) {
+            comprasDropdown.style.display = 'none';
+          }
+        });
+      }
+    }
+
+    function updateHighlightedCompras(items) {
+      items.forEach((el, idx) => {
+        if (idx === highlightedComprasIdx) {
+          el.classList.add('selected');
+          el.scrollIntoView({ block: 'nearest' });
+        } else {
+          el.classList.remove('selected');
         }
       });
-      if (!map.hasLayer(layers.tianguis)) {
-        layers.tianguis.addTo(map);
+    }
+
+    function renderComprasAutocompleteDropdown(query) {
+      const dropdown = document.getElementById('compras-autocomplete-dropdown');
+      if (!dropdown || !COMPRAS_VOCAB.length) return;
+
+      const normQ = query.toLowerCase().trim();
+      const tokens = normQ.split(/\\s+/).filter(Boolean);
+
+      const matches = [];
+      COMPRAS_VOCAB.forEach(item => {
+        let matched = false;
+        let score = item.peso || 50;
+
+        const termLower = item.termino.toLowerCase();
+        if (termLower.startsWith(normQ)) score += 40;
+        else if (termLower.includes(normQ)) score += 20;
+
+        const allTokens = item.tokens_busqueda || [];
+        const matchesAll = tokens.every(t => allTokens.some(tok => tok.includes(t)));
+        if (matchesAll) {
+          matched = true;
+          if (item.canasta_basica) score += 5;
+          if (item.mercomuna) score += 5;
+          matches.push({ item, score });
+        }
+      });
+
+      matches.sort((a, b) => b.score - a.score);
+      const topMatches = matches.slice(0, 8).map(m => m.item);
+
+      if (topMatches.length === 0) {
+        dropdown.innerHTML = `
+          <div style="padding:10px; font-size:0.75rem; color:#64748b; text-align:center;">
+            No se encontró el producto "<b>${query}</b>". Prueba con jitomate, barbacoa, tenis, clavos, útiles...
+          </div>
+        `;
+        dropdown.style.display = 'block';
+        return;
       }
+
+      dropdown.innerHTML = topMatches.map((m, idx) => `
+        <div class="compras-item" onclick="selectComprasItem('${m.id}')" data-idx="${idx}">
+          <div>
+            <div class="compras-term-title">${m.termino}</div>
+            <div class="compras-term-sub">
+              <span>${m.categoria_icono}</span>
+              <span>${m.subgiro_nombre}</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
+            ${m.canasta_basica ? '<span class="compras-badge badge-canasta">🛒 Canasta Básica</span>' : ''}
+            ${m.mercomuna ? '<span class="compras-badge badge-mercomuna">💳 Mercomuna</span>' : ''}
+          </div>
+        </div>
+      `).join('');
+
+      dropdown.style.display = 'block';
+      highlightedComprasIdx = -1;
+    }
+
+    function selectComprasItem(itemId) {
+      const item = COMPRAS_VOCAB.find(v => v.id === itemId);
+      if (!item) return;
+
+      filterState.product = item;
+      filterState.subgiro = item.subgiro_id;
+      filterState.macroCategory = item.categoria_id;
+
+      const input = document.getElementById('compras-search-input');
+      if (input) input.value = item.termino;
+      const clearBtn = document.getElementById('clear-compras-btn');
+      if (clearBtn) clearBtn.style.display = 'block';
+      const dropdown = document.getElementById('compras-autocomplete-dropdown');
+      if (dropdown) dropdown.style.display = 'none';
+
+      // Sincronizar select de subgiro y chip de macro-categoría
+      const subgiroSel = document.getElementById('subgiro-select');
+      if (subgiroSel) subgiroSel.value = item.subgiro_id;
+
+      updateMacroChipsUI();
+      applyCommerceFilters();
+      showToast(`Filtrando por: ${item.termino} (${item.categoria_icono} ${item.subgiro_nombre})`, 'success', 3000);
+    }
+
+    function clearComprasSearch() {
+      const input = document.getElementById('compras-search-input');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('clear-compras-btn');
+      if (clearBtn) clearBtn.style.display = 'none';
+      const dropdown = document.getElementById('compras-autocomplete-dropdown');
+      if (dropdown) dropdown.style.display = 'none';
+
+      filterState.product = null;
+      applyCommerceFilters();
+    }
+
+    function toggleMacroCategory(catId) {
+      if (filterState.macroCategory === catId) {
+        filterState.macroCategory = null;
+      } else {
+        filterState.macroCategory = catId;
+      }
+      if (filterState.subgiro && filterState.macroCategory && window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
+        const sg = window.MAP_DATA.catalog_subgiros.find(s => s.id === filterState.subgiro);
+        if (sg && sg.categoria_id !== filterState.macroCategory) {
+          filterState.subgiro = null;
+          const subgiroSel = document.getElementById('subgiro-select');
+          if (subgiroSel) subgiroSel.value = '';
+        }
+      }
+      filterState.product = null;
+      const input = document.getElementById('compras-search-input');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('clear-compras-btn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
+      updateMacroChipsUI();
+      applyCommerceFilters();
+    }
+
+    function updateMacroChipsUI() {
+      const chips = document.querySelectorAll('.macro-chip');
+      chips.forEach(chip => {
+        const cid = chip.id.replace('macro-chip-', '');
+        if (filterState.macroCategory === cid) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+    }
+
+    function onSubgiroSelectChange(subgiroId) {
+      if (!subgiroId) {
+        filterState.subgiro = null;
+      } else {
+        filterState.subgiro = subgiroId;
+        if (window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
+          const sg = window.MAP_DATA.catalog_subgiros.find(s => s.id === subgiroId);
+          if (sg) {
+            filterState.macroCategory = sg.categoria_id;
+            updateMacroChipsUI();
+          }
+        }
+      }
+      filterState.product = null;
+      const input = document.getElementById('compras-search-input');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('clear-compras-btn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
+      applyCommerceFilters();
+    }
+
+    function toggleFilterCanasta() {
+      filterState.canastaBasica = !filterState.canastaBasica;
+      const btn = document.getElementById('btn-toggle-canasta');
+      if (btn) {
+        btn.classList.toggle('active-canasta', filterState.canastaBasica);
+      }
+      applyCommerceFilters();
+      showToast(filterState.canastaBasica ? '🛒 Canasta Básica SEDECO: Activado' : 'Canasta Básica: Desactivado', 'info', 2000);
+    }
+
+    function toggleFilterMercomuna() {
+      filterState.mercomuna = !filterState.mercomuna;
+      const btn = document.getElementById('btn-toggle-mercomuna');
+      if (btn) {
+        btn.classList.toggle('active-mercomuna', filterState.mercomuna);
+      }
+      applyCommerceFilters();
+      showToast(filterState.mercomuna ? '💳 Vales Mercomuna: Activado' : 'Vales Mercomuna: Desactivado', 'info', 2000);
+    }
+
+    function resetAllCommerceFilters() {
+      filterState.macroCategory = null;
+      filterState.subgiro = null;
+      filterState.product = null;
+      filterState.canastaBasica = false;
+      filterState.mercomuna = false;
+      filterState.openToday = false;
+
+      const input = document.getElementById('compras-search-input');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('clear-compras-btn');
+      if (clearBtn) clearBtn.style.display = 'none';
+
+      const sel = document.getElementById('subgiro-select');
+      if (sel) sel.value = '';
+
+      const btnCanasta = document.getElementById('btn-toggle-canasta');
+      if (btnCanasta) btnCanasta.classList.remove('active-canasta');
+
+      const btnMercomuna = document.getElementById('btn-toggle-mercomuna');
+      if (btnMercomuna) btnMercomuna.classList.remove('active-mercomuna');
+
+      const chipHoy = document.getElementById('chip-dia-hoy');
+      if (chipHoy) chipHoy.classList.remove('active');
+
+      updateMacroChipsUI();
+      applyCommerceFilters();
+      showToast('Filtros de compras restablecidos.', 'info', 2000);
+    }
+
+    function removeProductFilter() {
+      filterState.product = null;
+      const input = document.getElementById('compras-search-input');
+      if (input) input.value = '';
+      const clearBtn = document.getElementById('clear-compras-btn');
+      if (clearBtn) clearBtn.style.display = 'none';
+      applyCommerceFilters();
+    }
+
+    function removeSubgiroFilter() {
+      filterState.subgiro = null;
+      const sel = document.getElementById('subgiro-select');
+      if (sel) sel.value = '';
+      applyCommerceFilters();
+    }
+
+    function removeCategoryFilter() {
+      filterState.macroCategory = null;
+      updateMacroChipsUI();
+      applyCommerceFilters();
+    }
+
+    function applyCommerceFilters() {
+      if (!window.MAP_DATA) return;
+
+      const days = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
+      const today = days[new Date().getDay()];
+
+      let matchingMercados = [];
+      let matchingTianguis = [];
+      let matchingMSR = [];
+
+      // 1. Mercados
+      if (window.MAP_DATA.mercados) {
+        window.MAP_DATA.mercados.forEach(m => {
+          if (filterState.macroCategory && (!m.cats || !m.cats.includes(filterState.macroCategory))) return;
+          if (filterState.subgiro && (!m.subgiros || !m.subgiros.includes(filterState.subgiro))) return;
+          if (filterState.product && (!m.subgiros || !m.subgiros.includes(filterState.product.subgiro_id))) return;
+          if (filterState.canastaBasica && !m.canasta_basica) return;
+          if (filterState.mercomuna && !m.mercomuna) return;
+          matchingMercados.push(m);
+        });
+      }
+
+      // 2. Tianguis
+      if (window.MAP_DATA.tianguis) {
+        window.MAP_DATA.tianguis.forEach(t => {
+          if (filterState.macroCategory && (!t.cats || !t.cats.includes(filterState.macroCategory))) return;
+          if (filterState.subgiro && (!t.subgiros || !t.subgiros.includes(filterState.subgiro))) return;
+          if (filterState.product && (!t.subgiros || !t.subgiros.includes(filterState.product.subgiro_id))) return;
+          if (filterState.canastaBasica && !t.canasta_basica) return;
+          if (filterState.mercomuna && !t.mercomuna) return;
+          if (filterState.openToday && (!t.dia || !t.dia.toUpperCase().includes(today))) return;
+          matchingTianguis.push(t);
+        });
+      }
+
+      // 3. MSR
+      if (window.MAP_DATA.msr) {
+        window.MAP_DATA.msr.forEach(m => {
+          if (filterState.macroCategory && (!m.cats || !m.cats.includes(filterState.macroCategory))) return;
+          if (filterState.subgiro && (!m.subgiros || !m.subgiros.includes(filterState.subgiro))) return;
+          if (filterState.product && (!m.subgiros || !m.subgiros.includes(filterState.product.subgiro_id))) return;
+          if (filterState.canastaBasica && !m.canasta_basica) return;
+          if (filterState.mercomuna && !m.mercomuna) return;
+          if (filterState.openToday && (!m.dia || !m.dia.toUpperCase().includes(today))) return;
+          matchingMSR.push(m);
+        });
+      }
+
+      // Render Mercados en Cluster
+      layers.mercados.clearLayers();
+      matchingMercados.forEach(m => {
+        const marker = L.circleMarker([m.lat, m.lon], {
+          radius: m.radio || 7,
+          fillColor: '#f59e0b',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.88
+        });
+        marker.on('click', () => {
+          currentSelectedTarget = { name: 'Mercado ' + m.nombre, lat: m.lat, lon: m.lon };
+          map.flyTo([m.lat, m.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
+          showMarketInDetail(m);
+        });
+        layers.mercados.addLayer(marker);
+      });
+      if (!map.hasLayer(layers.mercados)) layers.mercados.addTo(map);
+
+      // Render Tianguis en Cluster
+      layers.tianguis.clearLayers();
+      matchingTianguis.forEach(t => {
+        const marker = L.circleMarker([t.lat, t.lon], {
+          radius: 5.5,
+          fillColor: '#0f5953',
+          color: '#ffffff',
+          weight: 1.5,
+          opacity: 1,
+          fillOpacity: 0.85
+        });
+        marker.on('click', () => {
+          currentSelectedTarget = { name: 'Tianguis ' + t.colonia, lat: t.lat, lon: t.lon };
+          map.flyTo([t.lat, t.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
+          showTianguisInDetail(t);
+        });
+        layers.tianguis.addLayer(marker);
+      });
+      if (!map.hasLayer(layers.tianguis)) layers.tianguis.addTo(map);
+
+      // Render MSR
+      layers.msr.clearLayers();
+      matchingMSR.forEach(m => {
+        const marker = L.circleMarker([m.lat, m.lon], {
+          radius: m.radio || 6,
+          fillColor: '#10b981',
+          color: '#ffffff',
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.88
+        });
+        marker.on('click', () => {
+          currentSelectedTarget = { name: 'MSR ' + m.ruta, lat: m.lat, lon: m.lon };
+          map.flyTo([m.lat, m.lon], Math.max(map.getZoom(), 15), { duration: 0.8 });
+          showMSRInDetail(m);
+        });
+        layers.msr.addLayer(marker);
+      });
+      if (!map.hasLayer(layers.msr)) layers.msr.addTo(map);
+
+      const total = matchingMercados.length + matchingTianguis.length + matchingMSR.length;
+      updateFilterCounterAndPills(total, matchingMercados.length, matchingTianguis.length, matchingMSR.length);
+    }
+
+    function updateFilterCounterAndPills(total, countM, countT, countMSR) {
+      const counterEl = document.getElementById('compras-results-counter');
+      const resetBtn = document.getElementById('compras-reset-all-btn');
+      const pillsContainer = document.getElementById('compras-active-pills');
+
+      if (counterEl) {
+        counterEl.innerHTML = `Mostrando <b>${total.toLocaleString()}</b> espacios (${countM} merc, ${countT} tian, ${countMSR} MSR)`;
+      }
+
+      const isAnyActive = filterState.macroCategory || filterState.subgiro || filterState.product || filterState.canastaBasica || filterState.mercomuna || filterState.openToday;
+
+      if (resetBtn) {
+        resetBtn.style.display = isAnyActive ? 'inline-block' : 'none';
+      }
+
+      if (pillsContainer) {
+        let pillsHtml = '';
+        if (filterState.product) {
+          pillsHtml += `<span class="active-filter-pill">🛍️ ${filterState.product.termino} <span class="remove-pill" onclick="removeProductFilter()" title="Quitar">✕</span></span>`;
+        }
+        if (filterState.subgiro && window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
+          const sg = window.MAP_DATA.catalog_subgiros.find(s => s.id === filterState.subgiro);
+          const sgName = sg ? sg.nombre.split(',')[0] : filterState.subgiro;
+          pillsHtml += `<span class="active-filter-pill">⚙️ ${sgName} <span class="remove-pill" onclick="removeSubgiroFilter()" title="Quitar">✕</span></span>`;
+        }
+        if (filterState.macroCategory && window.MAP_DATA && window.MAP_DATA.catalog_categorias) {
+          const cat = window.MAP_DATA.catalog_categorias.find(c => c.id === filterState.macroCategory);
+          const catName = cat ? `${cat.icono} ${cat.nombre.split(',')[0]}` : filterState.macroCategory;
+          pillsHtml += `<span class="active-filter-pill">${catName} <span class="remove-pill" onclick="removeCategoryFilter()" title="Quitar">✕</span></span>`;
+        }
+        if (filterState.canastaBasica) {
+          pillsHtml += `<span class="active-filter-pill" style="background:#ecfdf5; color:#065f46; border-color:#86efac;">🛒 Canasta Básica <span class="remove-pill" onclick="toggleFilterCanasta()" title="Quitar">✕</span></span>`;
+        }
+        if (filterState.mercomuna) {
+          pillsHtml += `<span class="active-filter-pill" style="background:#faf5ff; color:#6b21a8; border-color:#d8b4fe;">💳 Mercomuna <span class="remove-pill" onclick="toggleFilterMercomuna()" title="Quitar">✕</span></span>`;
+        }
+        if (filterState.openToday) {
+          pillsHtml += `<span class="active-filter-pill" style="background:#fef3c7; color:#92400e; border-color:#fde68a;">📅 Abierto Hoy <span class="remove-pill" onclick="filterByToday()" title="Quitar">✕</span></span>`;
+        }
+        pillsContainer.innerHTML = pillsHtml;
+      }
+    }
+
+    function renderDetailPolicyAndSubgiros(item) {
+      const policyBox = document.getElementById('panel-policy-badges');
+      const subgirosBox = document.getElementById('panel-subgiros-box');
+      const subgirosContent = document.getElementById('panel-subgiros-content');
+      if (!policyBox || !subgirosContent) return;
+
+      // 1. Badges de políticas y categorías
+      let badgesHtml = '';
+      if (item.canasta_basica) {
+        badgesHtml += '<span class="badge-policy badge-canasta">🛒 Canasta Básica Oficial SEDECO</span>';
+      }
+      if (item.mercomuna) {
+        badgesHtml += '<span class="badge-policy badge-mercomuna">💳 Acepta Vales Mercomuna</span>';
+      }
+
+      // Macro-categorías presentes
+      if (item.cats && window.MAP_DATA && window.MAP_DATA.catalog_categorias) {
+        const catMap = {};
+        window.MAP_DATA.catalog_categorias.forEach(c => { catMap[c.id] = c; });
+        item.cats.forEach(cid => {
+          const c = catMap[cid];
+          if (c) {
+            badgesHtml += `<span class="badge-cat-mini" title="${c.nombre}">${c.icono} ${c.nombre.split(',')[0]}</span>`;
+          }
+        });
+      }
+      policyBox.innerHTML = badgesHtml;
+
+      // 2. Subgiros disponibles
+      if (item.subgiros && window.MAP_DATA && window.MAP_DATA.catalog_subgiros) {
+        subgirosBox.style.display = 'block';
+        const sgMap = {};
+        window.MAP_DATA.catalog_subgiros.forEach(s => { sgMap[s.id] = s; });
+        let subHtml = '';
+        const displaySg = item.subgiros.slice(0, 10);
+        displaySg.forEach(sid => {
+          const s = sgMap[sid];
+          if (s) {
+            subHtml += `<span class="subgiro-pill">${s.canasta_basica ? '🛒 ' : ''}${s.nombre}</span>`;
+          }
+        });
+        if (item.subgiros.length > 10) {
+          subHtml += `<span class="subgiro-pill" style="background:#f1f5f9; color:#64748b;">+${item.subgiros.length - 10} giros más...</span>`;
+        }
+        subgirosContent.innerHTML = subHtml;
+      } else {
+        subgirosBox.style.display = 'none';
+      }
+    }
+
+    // Tianguis con filtrado por día (retrocompatibilidad)
+    function renderTianguisMarkers(filterDay = null) {
+      if (filterDay) {
+        filterState.openToday = true;
+      }
+      applyCommerceFilters();
     }
 
     // =========================================================================
@@ -1539,7 +2305,7 @@ html_body = """<body>
 
     function renderAutocompleteDropdown(query) {
       if (!SEARCH_INDEX || SEARCH_INDEX.length === 0) return;
-      const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+      const terms = query.toLowerCase().split(/\\s+/).filter(Boolean);
 
       const matches = [];
       for (let item of SEARCH_INDEX) {
@@ -1585,10 +2351,10 @@ html_body = """<body>
 
     function highlightMatch(text, query) {
       if (!query) return text;
-      const terms = query.split(/\s+/).filter(Boolean);
+      const terms = query.split(/\\s+/).filter(Boolean);
       let res = text;
       terms.forEach(t => {
-        const reg = new RegExp('(' + t.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') + ')', 'gi');
+        const reg = new RegExp('(' + t.replace(/[-\\/\\\\^$*+?.()|[\\]{}]/g, '\\\\$&') + ')', 'gi');
         res = res.replace(reg, '<span class="autocomplete-highlight">$1</span>');
       });
       return res;
@@ -1663,6 +2429,7 @@ html_body = """<body>
       document.getElementById('panel-lbl2').innerText = 'Superficie';
 
       document.getElementById('panel-closure-box').style.display = 'none';
+      renderDetailPolicyAndSubgiros(m);
 
       // Conexión calculada con estación de metro más cercana
       const nearest = findClosestMetro(m.lat, m.lon);
@@ -1722,6 +2489,7 @@ html_body = """<body>
         <b>Vía ocupada:</b> ${t.ubicacion || 'Tramo barrial asignado'}<br>
         <span style="font-size:0.71rem; color:#78350f;">⚠️ Reducción y corte de circulación vehicular en día de tianguis.</span>
       `;
+      renderDetailPolicyAndSubgiros(t);
 
       // Conexión calculada
       const nearest = findClosestMetro(t.lat, t.lon);
@@ -1775,6 +2543,7 @@ html_body = """<body>
       document.getElementById('panel-lbl2').innerText = 'Oferentes';
 
       document.getElementById('panel-closure-box').style.display = 'none';
+      renderDetailPolicyAndSubgiros(m);
 
       document.getElementById('panel-conn').innerHTML = `
         <b>Circuito Itinerante SEDECO:</b> Se traslada diariamente de colonia para llevar abasto a precio accesible.
@@ -1786,6 +2555,11 @@ html_body = """<body>
     function showMetroStationInDetail(st) {
       const card = document.getElementById('detail-card');
       card.style.display = 'block';
+
+      const pol = document.getElementById('panel-policy-badges');
+      if (pol) pol.innerHTML = '';
+      const sgBox = document.getElementById('panel-subgiros-box');
+      if (sgBox) sgBox.style.display = 'none';
 
       document.getElementById('panel-tag').innerText = st.tipo || 'ESTACIÓN RED MI';
       document.getElementById('panel-tag').style.background = st.color || '#ef4444';
@@ -1914,10 +2688,13 @@ html_body = """<body>
     }
 
     function filterByToday() {
+      filterState.openToday = !filterState.openToday;
+      const chip = document.getElementById('chip-dia-hoy');
+      if (chip) chip.classList.toggle('active', filterState.openToday);
+      applyCommerceFilters();
       const days = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
       const today = days[new Date().getDay()];
-      renderTianguisMarkers(today);
-      showToast(`Filtro activo: mostrando tianguis que abren hoy (${today}).`, 'success', 4000);
+      showToast(filterState.openToday ? `Filtro activo: mostrando espacios que abren hoy (${today}).` : 'Filtro de día desactivado.', 'info', 3000);
     }
 
     // =========================================================================
