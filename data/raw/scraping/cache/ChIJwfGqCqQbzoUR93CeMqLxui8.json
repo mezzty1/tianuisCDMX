@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJwfGqCqQbzoUR93CeMqLxui8",
+  "status": "ok",
+  "nombre_maps": "Mercado Mixquic",
+  "rating": 4.0,
+  "total_reviews": 1011,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 3 meses",
+      "texto": "En el local 100 se encuentra una dulceria, esta bien surtida, tiene variedad de productos, cada mes saca buenas ofertas!!\n100% recomendable!!"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Gran variedad en frutas y verduras así como en carnes y lacteos"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es un mercado pequeño con pocos locales y la oferta de productos es limitada."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 5 años",
+      "texto": "En el local 55 un matrimonio de adultos mayores venden unas quesadillas, tlacoyitos, de masa azul deliciosas... Y a buen precio. Y las  aguas de aún lado local 56 muy ricas. Apoyemos a los señores!"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 6 años",
+      "texto": "Excelente lugar para visitar a conocer con exactitud la tradición d m día de muertos"
+    }
+  ],
+  "snippets": [
+    "En cuanto comida pocas opciones, la verdura y fruta muy fresca",
+    "Mercado tradicional, los domingos se pone el de la barbacoa está deliciosa",
+    "Un lugar muy bonito en donde se respira frescura y tradiciones."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc6tKrqBEfnjm2ST1jhUwaVH9T_omkBMWZ2f3nJWkB-qQCsngKTUG-vSlN2ug4S7XWa-XJDaPeLAto35TSAVjaCdfAQpnieGhcJzvwdnQiuXnKFIPAjymXw6kngtnzz9o0m7tbMmw=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJO9qsqYL_0YURrcW2BKqVoXs",
+  "status": "ok",
+  "nombre_maps": "Tianguis Estadio",
+  "rating": 4.2,
+  "total_reviews": 26,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Buenos precios de frutas y verduras.\nEso sí, el primer local de comida que está llegando por avenida san Antonio y Carolina que venden quesadillas y tacos ya está muy decadente.\nSiempre pido tacos de suadero y la última vez era puro hueso y pellejo. Una vergüenza, además de que se tardan mucho en servir y subieron los precios.\nLa paca está bien, encuentras buenas cosas."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Aún para ir al tianguis los viene viene te piden por anticipado.\nSi no les das te agreden, un desayuno con tu familia puede acabar en tragedia.\n\nFui y casi termino agolpes con los viene viene porque me no me dejaba estacionar.\n\nNo se arriesguen."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy rica la cochinita"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "Muy buenas opciones para comer"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente lugar hay unos tacos muy ricos enfrente de las crepas eh igual las crepas super ricas deberían venir a probarlas el tianguis solo se pone en día jueves"
+    }
+  ],
+  "snippets": [
+    "La paca está bien, encuentras buenas cosas.",
+    "Si no les das te agreden, un desayuno con tu familia puede acabar en tragedia.",
+    "Muy rica la cochinita"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/07crc'], 'tacos', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzA3Y3Jj', '2ahUKEwjVtaei6NWXAxU65MkDHbNeC6wQ1bMEKCl6BAgAEHY', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeU0mc8vNcVbftLj60UoYB0YgIKLus2LXavlNYuwCICotc6VjduCuHH--KonD-2B8llU_UA1v_1YosXvvGtkGKU0iB7a94AP5EbrmgGQ4RFJcaJ0UYZopV4bYGwNMcell8gz1HD=w800-h600-k-no"
+  ]
+}

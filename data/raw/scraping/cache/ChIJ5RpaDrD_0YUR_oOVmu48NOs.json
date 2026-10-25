@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJ5RpaDrD_0YUR_oOVmu48NOs",
+  "status": "ok",
+  "nombre_maps": "Tianguis de Chacharas del Mercado Hidalgo",
+  "rating": 3.8,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen lugar para conseguir antigüedades"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Mucha variedad..."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdx_O4OiM9Oa-o_Wmb3R-RLnSR61H1fA3MZ8YvA4dkCiRj37So1xYRrvfDuGs-bL44DkIJjymQuFk3cNkOafwVJlDkB3TLLU7xxbviJJ7uo0nvpq5ciGZNhyZJyw5NjX2GbJNQ=w800-h600-k-no"
+  ]
+}

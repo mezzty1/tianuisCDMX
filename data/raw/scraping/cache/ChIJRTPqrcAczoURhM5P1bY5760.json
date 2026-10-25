@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJRTPqrcAczoURhM5P1bY5760",
+  "status": "ok",
+  "nombre_maps": "Mercado San Jose",
+  "rating": 4.2,
+  "total_reviews": 1186,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente lugar para las compras del diario, calidad y buen precio"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "En  la comida corrida del mercado atienden bien feo, súper grosera una chica y pésimo trato no recomiendo la comida corrida 👎🏻"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "El lugar es bueno pero son pocos locales para comprar solo tiene lo básico para realizar comprar de primer necesidad ,la carnicería ahí es muy buena ,lo que para nada recomiendo es el área de comida no son muy buenas que digamos"
+    },
+    {
+      "stars": 5,
+      "fecha": "Las 5 estrellas son porque vivo cerca y me queda al chingazo. Pero en tiempo de lluvias las calles de al rededor se inundan y si te quedas adentro es un problema salir jajjaa los locales están limpios y venden lo básico. La mayoría de los locales siempre están abiertos. La comida de las cocinas no la recomiendo. Los baños siempre están limpios.",
+      "texto": "Las 5 estrellas son porque vivo cerca y me queda al chingazo. Pero en tiempo de lluvias las calles de al rededor se inundan y si te quedas adentro es un problema salir jajjaa los locales están limpios y venden lo básico. La mayoría de los locales siempre están abiertos. La comida de las cocinas no la recomiendo. Los baños siempre están limpios."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un mercado local muy limpio, surtido y organizado. Con la pandemia ha funcionado maravillosamente. Siempre hay alguien en la entrada para aplicar gel, tomar temperatura. Los locales son limpios en general. La calidad de la fruta, verdura, carnes, etc. es muy buena."
+    }
+  ],
+  "snippets": [
+    "La fruta super fresca y de buena calidad",
+    "Bien, buena atención, extenso surtido y condiciones de higiene adecuadas!",
+    "Es un lugar tranquilo y cálido, sus locatarios tienen un trato amable."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfANh1NL9IRR69L1JlI0l5fS6B19dfh-8dZRDNWj-7VOwlrlkScIpC_CV1h8bQjmNqEIhGiC5hUEx-K0LFqo2n3vlH5J82tAeAnWdQqGYHZM0OkacNoE9pHV5DEmF0nytKgEFw-=w800-h600-k-no"
+  ]
+}

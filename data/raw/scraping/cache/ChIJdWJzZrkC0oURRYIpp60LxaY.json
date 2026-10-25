@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJdWJzZrkC0oURRYIpp60LxaY",
+  "status": "ok",
+  "nombre_maps": "Tianguis de la Clínica 33",
+  "rating": 4.3,
+  "total_reviews": 93,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bien, una gran variedad, de productos. Y a muy buen precio"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Bien sitio para comprar nuevo y de segunda mano"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "El tianguis abarca aproximadamente tres cuadras, en dónde se pueden comprar una gran cantidad de artículos de primera necesidad, los precios varían dependiendo de la calidad del producto, no cuentan con ninguna medida de seguridad sanitaria por lo que considero es una zona de alto riesgo de contagio. Si se visita se tienen que tomar medidas de seguridad adecuadas."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El tianguis cumple, tiene más de un puesto para comprar fruta, verdura, carne, pollo, pescado chicharrón. En el caso de querer comer puedes disfrutar de tacos de carnitas, semitas, mixiote, etc. Lo que por ahora me gustan son los de Barbacoa cerca por la Av 3 Culturas."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es un buen tianguis, está grande y se puede encontrar casi de todo. También es un buen sitio para ir a comer ya que cuenta con muchos puestos para hacerlo.\nEn este tianguis puede encontrar ropa, frutas y verduras, comida, artículos para niños, mochilas, tennis y demás."
+    }
+  ],
+  "snippets": [
+    "Buena ubicación, mercancía fresca y precios accesibles",
+    "Muy buenos precios y buena calidad!!",
+    "Está muy bueno para comprar la verdura la fruta"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdq3OthVQ7qKrM1UzsifAhzTLDPRID1LjKDp3--JMgae1JgfgsLzoVHPetk_hylS3z7N_i--xi6hkEiwSL6a9JlipWbyFJsyb5ih51XON9aPlZoico0XGUiUIKhp84jwBPe-tc-uQ=w800-h600-k-no"
+  ]
+}

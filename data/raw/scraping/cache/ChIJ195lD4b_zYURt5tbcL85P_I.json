@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJ195lD4b_zYURt5tbcL85P_I",
+  "status": "ok",
+  "nombre_maps": "Mercado de la 8 del jueves",
+  "rating": 4.4,
+  "total_reviews": 123,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es bueno, encuentras de todo, aunque los precios varían. Hay veces que te quieren dar precio de tienda o aún más caros. Se oasan"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Una vez fui a comprar al tianguis, y un loco pensó que yo lo estaba siguiendo, no se por que la verdad, me asustó un poco"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Encuentras de todo un poco pero los tacos de cecina son muy buenos, los machetes y los frutos rojos los encuentras a buen precio y buena calidad"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Super Precios y Amplio Surtido de productos."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy enorme surtido. Lo malo es el desma cuál q ocasiona"
+    }
+  ],
+  "snippets": [
+    "Unos buenos machetes con bistec y de postre una ración de frutos rojos mmm",
+    "Está muy bien surtido y hay mucha variedad de cosas tanto nuevas como usadas .!!",
+    "Hay veces que te quieren dar precio de tienda o aún más caros."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc_Zd6EdoQ-gctZ2RwIT4ff2JDeIroircltgea9tZEPutYgELARJgz_KMUvHCxoyGZYFaWLog3bhINXd3RBgEj83sIOZZ9wa-4hty409DEzYXwGWCrilfmkR8G_t7qURdXBkBf_BA=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "place_id": "ChIJ2WLvCyj50YURBVYruGueOmY",
+  "status": "ok",
+  "nombre_maps": "Tianguis Monumento de La Madre",
+  "rating": 3.8,
+  "total_reviews": 11,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy ricos los mixiotes del tianguis y los esquimos, venden mucha ropa y su mayoría es ropa de paca americana."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muchísima variedad de fruta y verdura los domingos 🤩"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Cuenta con algunos lugares realmente buenos para comer"
+    },
+    {
+      "stars": 5,
+      "fecha": "Fui a comer las mejores tapas españolas ahi",
+      "texto": "Fui a comer las mejores tapas españolas ahi"
+    }
+  ],
+  "snippets": [
+    "Muchísima variedad de fruta y verdura los domingos 🤩",
+    "Fui a comer las mejores tapas españolas ahi"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcBnRlK4fvtf9sbBwqzvC5AFAkqvhcc6cfzVGZ6soTTqucI9FQFJWjHrdlLTdFb_wYhBtucOCZb8XFocQ8NQ8Lk_nG-7LUwehL-TQgHYPeBg1dAFvkuucdqJc2tfnqXzyL2XgE82Q=w800-h600-k-no"
+  ]
+}

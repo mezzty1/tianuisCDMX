@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJP9CpwLP50YURWI41c8EYq0k",
+  "status": "ok",
+  "nombre_maps": "Mi mercado 3 estrellas",
+  "rating": 4.2,
+  "total_reviews": 86,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Pollo, carne, frutas y verduras frescas, cuenta con área de comedor a buen precio la comida corrida.\nLos precios de verduras y frutas están elevados.\nTiene zona de papeleria, boneteria, artículos de limpieza, salón de belleza, venta de tortillas, salchichonería...\nTiene área de pilares con actividades por las mañanas."
+    },
+    {
+      "stars": 3,
+      "fecha": "Hace un año",
+      "texto": "Un mercado pequeño, bien surtido, sus precios un poco elevados en comparación a otros, limpio."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Todo muy bien solo la qué vende jarceria casi saliendo no le compren da gato x liebre todo lo demás esta muy bien"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Ya se ve muy vacion y los productos ya no son tan de buena calidad"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Consigues casi de todo, los vecinos son muy amables buenos precios buena calidad conveniente"
+    }
+  ],
+  "snippets": [
+    "Compro fruta buena y barata muy rica.",
+    "Interior del mercado ay una taquería muy ricos sus tacos",
+    "Ya se ve muy vacion y los productos ya no son tan de buena calidad"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfLTzuADG1S9v-Ajz2KOfwhi1xSTAj8gJUXQLta79wHaFNWHoFqy7eVuHv3Rh-FFC-EakwQysFHKFaJ-23gw7oAbpOAAJrl3_AVut-sKyTPN_QMBQnr5v8YbTDvqFfhb7Xj3Ttn6iinKT1J=w800-h600-k-no"
+  ]
+}

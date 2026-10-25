@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJm6iYdwD50YURP-BeVOklsVk",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Patera- Playa\".",
+  "rating": 3.8,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Es un tianguis que instalan los Martes en un horario aproximado de 8:30 am a 5:00 pm.\nEstá a lo largo de la calle de Playa, e inicia en la calzada Vallejo y termina en la av. Miguel Otón de Mendizábal o viceversa.\nEs pequeño en relación con otros tianguis pero vas a encontrar lo básico que cualquier tianguis ofrece.\nTienen buenos precios y atención amable."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Si encontré lo básico para mí despensa."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcUZ-WMMfDqjk15vzK_mDd-ZgwHl03oh4aaBmHrIBT3y30_S6Da6hOJkVJZVYqfx6QpoU7hxD5bClYtjr4O_674KevwEunBExdR3NvcvRKR53H0WQN3JCLpLJLmiiPWrZTGYmM=w800-h600-k-no"
+  ]
+}

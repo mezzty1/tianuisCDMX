@@ -1,0 +1,40 @@
+{
+  "place_id": "ChIJF0nPF3370YURhISH5KVOhXE",
+  "status": "ok",
+  "nombre_maps": "Tianguis Ermilo Abreu",
+  "rating": 3.8,
+  "total_reviews": 18,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "En realidad es un pequeñisimo puñado de puestos... No lo recomiendo"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "El martes es el mejor día, hay varios puestos de comida, venta de fruta y venta de muchas cosas mas. El miércoles y el viernes también se pone pero con pocos puestos."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Saben a qué hora entregan los lugares"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Ya le faltan varios puestos... 😔"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Bastante bien"
+    }
+  ],
+  "snippets": [
+    "Ya le faltan varios puestos...",
+    "Saben a qué hora entregan los lugares"
+  ],
+  "temas_frecuentes": [],
+  "fotos": []
+}

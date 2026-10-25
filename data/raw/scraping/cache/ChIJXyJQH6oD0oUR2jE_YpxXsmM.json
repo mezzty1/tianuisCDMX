@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJXyJQH6oD0oUR2jE_YpxXsmM",
+  "status": "ok",
+  "nombre_maps": "Tianguis de los lunes la preciosa",
+  "rating": 3.8,
+  "total_reviews": 10,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Pequeño tiene de todo un poco, ya no les recomiendo comer en el puesto de tacos donde venden cecina, apenas me estoy recuperando después de ir al doctor y medicamentos, sobre todos los de cecina de res son los que están en mal estado, aparte de caros $35 por tacos, para que te haga daño mejor no",
+      "texto": "Pequeño tiene de todo un poco, ya no les recomiendo comer en el puesto de tacos donde venden cecina, apenas me estoy recuperando después de ir al doctor y medicamentos, sobre todos los de cecina de res son los que están en mal estado, aparte de caros $35 por tacos, para que te haga daño mejor no"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El tianguis es pequeño pero hay buenos productos, sobre todo de alimentos\nRecomiendo ir temprano para poder elegir de lo mejor"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es un pequeño tianguis donde casi hay lo básico, no hay de todo pero si cosas básicas, solo si compras frutas y versuras debes fijarte lo que compras, hay veces que te ponen piszas podridas entre las buenas ; los precios, de a cuerdo a la carestía qué se vive en todo el país."
+    },
+    {
+      "stars": 4,
+      "fecha": "Tiene buen surtido, desde tacos hasta despensa, tenía más de 10 años sin visitar ese tianguis, las frutas y verduras muy buenas",
+      "texto": "Tiene buen surtido, desde tacos hasta despensa, tenía más de 10 años sin visitar ese tianguis, las frutas y verduras muy buenas"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Igual que todos, solo le falta un poco más de variedad en si solo hay comida frutas y verduras, carnes etc de la despensa básica y uno que otro puesto"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/07crc'], 'tacos', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzA3Y3Jj', '2ahUKEwjz1caf6NWXAxWz_skDHS2mEF4Q1bMEKB16BAgAEDo', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": []
+}

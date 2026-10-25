@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJiVwt0x4AzoUR1Xbvpi5uQ1c",
+  "status": "ok",
+  "nombre_maps": "Mercado Copilco",
+  "rating": 4.1,
+  "total_reviews": 1100,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un establecimiento donde se encuentran variedad de puestos ya se  carnicería,fondas,verduleria,cremeria,y otros .En lo personal visito con gran frecuencia el punto de verduleria donde me atiende un señor y siempre nos brinda un buen servicio y precio asequibles para mis compras (100% recomendable)"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente lugar para hacer la despensa y buscar otras cosas para el hogar o ir a comer."
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 4 años",
+      "texto": "Recomiendo la Carnicería de Don Juan ,buenos precios buena carne y muy buena atencion"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 3 años",
+      "texto": "Surtido y variedad de productos. Excelente servicio para surtir la despensa y para comer antojitos."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Un mercado no económico pero la comida en especial mariscos recomiendo demasiado económico y sabor casero"
+    }
+  ],
+  "snippets": [
+    "Mercado surtido, lo mejor losn tacos de Barbacoa de Chava",
+    "Buenos precios, excelente trato con los vendedores",
+    "Buena fruta y verdura, locatarios muy atentos"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfEwdCc3T6uglQcM3iAtFZaoQVb94yD7E-oTmgmS_BWWQEby_rZxS0ZoyPKV41pLizP3yMJyzuCC7Gmy5-MCrecsPySw5fX6Fj-DQ4c99atgwOM7vTX2bwTTCdbcYkLkK3s0u2zWUPrzDtl=w800-h600-k-no"
+  ]
+}

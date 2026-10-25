@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJgXkIDG0CzoUR5upPheXESF8",
+  "status": "ok",
+  "nombre_maps": "Tianguis Bilbao Martes",
+  "rating": 4.2,
+  "total_reviews": 550,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Tiene mucha variedad. Si pueden vayan a este puesto de garnachas a comer."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "La mayoría de los puestos de frutas y verduras no pesan correctamente sus productos, es decir pesan menos del kilo.\nProcuren comprar en aquellos puestos que les ofrezcan peso exacto."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es un buen tianguis pero por seguridad no lleven su celular, hay rateros que navajean las bolsas y sólo sacan el celular, ya me tocó ver 2 veces, una a un familiar y en otra ocasión a una chava que se dio cuenta que le navajearon la bolsa de mandado y empezó a preguntar a la gente si habían visto algo. De ahí en fuera un buen lugar para ir a comprar la fruta, verdura, en mi caso me gusta ir a comprar ropa en puestos o paca pero obviamente hay que saber buscar porque hay de distintas calidades. También hay mucha gente que va a comer, hay de todo y también comida para llevar."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy buen tianguis, pero tengan cuidado. Hay una banda de delincuentes que se dedica a bolsear a la gente. Actúan dos señoras, una se te acerca demasiado para distraerte y la otra detrás de ti revisa tu bolsa y van más sobre carteras y celulares"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy variado y a precios accesibles. Muy buena calidad de los productos. Amo este tianguis"
+    }
+  ],
+  "snippets": [
+    "Carne de res muy fresca, croquetas para perro baratas.",
+    "Las croquetas para perros y gatos a buen precio además de bien pesadas.",
+    "Buenos precios, alimentos frescos, encuentras un poco de todo."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLe59ZK72ayFmhyH4kFr0JEi2ZhzywtTaXGsHFFK0jnzkWdLMnwHtJ-fVKdzR5DxDG06snthNbJVkMnSxWzY7iEv8NRAgD3cZwm7hw71QAv2miNkE-ydnwL4-aLprXyoI5-klAnI=w800-h600-k-no"
+  ]
+}

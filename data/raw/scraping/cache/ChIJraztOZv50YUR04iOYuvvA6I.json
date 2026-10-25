@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJraztOZv50YUR04iOYuvvA6I",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Zacatenco\".",
+  "rating": 4.4,
+  "total_reviews": 39,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 9 meses",
+      "texto": "Se encuentra de todo y a un muy muy buen precio . Lo. Que me gustó es que hay gente que viene de pueblos a vender su mercancía , osea que es algo así como antes se vendían las cosas, osea no de la central de abastos"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 7 meses",
+      "texto": "Mucha variedad. Siempre voy con la chica que vende flores después del deportivo. Es muy amable, da buenos precios y las flores están siempre frescas"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "El mejor tianguis de la zona los miércoles\nSe encuentra todo lo que requieras desde chacharas  ,comida, verdura, traste ,comida y muchas cosas más."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy vareado y cosas frescas"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un burn tianguis , hay muy buenos precios y amplio surtido en frutas y verduras ,carnes  de res , cerdo , pollo y pescado , asi como ropa , chicharron  abarrotes etc...muy variado !!"
+    }
+  ],
+  "snippets": [
+    "Tianguis de barrio, muy surtido y con buenos precios.",
+    "Muy tranquilo y encuentras de todo",
+    "Es muy amable, da buenos precios y las flores están siempre frescas"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02xwb'], 'frutas', None, [None, None, None, None, 3, 3, 5], 'CgoKCC9tLzAyeHdi', '2ahUKEwjt_o-06NWXAxUl4skDHQdeDBcQ1bMEKCF6BAgAEFA', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeznBM670Gi4866prtFXi5tk9heVq-BytWcd4DTPaqTyq0mk3kOewsA1bBrtJISmttxTNjXgxuHmDVwr3ZEn14nqcCWxcISwH9Eb4CVA1TV_ufssXorkMYsiNRllCK4g1cK-vU=w800-h600-k-no"
+  ]
+}

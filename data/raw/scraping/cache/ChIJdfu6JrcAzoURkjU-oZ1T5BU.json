@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJdfu6JrcAzoURkjU-oZ1T5BU",
+  "status": "ok",
+  "nombre_maps": "Mercado De San Andres Totoltepec",
+  "rating": 4.1,
+  "total_reviews": 1488,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Tiene baños y estacionamiento accesible. Yo solo voy a comprar dulces.",
+      "texto": "Tiene baños y estacionamiento accesible. Yo solo voy a comprar dulces."
+    },
+    {
+      "stars": 4,
+      "fecha": "Es un mercadito muy pequeño en el pueblo de San Andrés pero con ese aroma y ese entorno pueblerino los jueves se hace el tianguis y se encuentra comida de todo muy rico y barato",
+      "texto": "Es un mercadito muy pequeño en el pueblo de San Andrés pero con ese aroma y ese entorno pueblerino los jueves se hace el tianguis y se encuentra comida de todo muy rico y barato"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Abundante en vegetales, pero solo los jueves hay vendimia total"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Hay mucha variedad de productos, solo que hay horas pico en lass que la gente se aglomera"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Mucha gente, poco espacio para moverse. Venden todo. Limpieza buena."
+    }
+  ],
+  "snippets": [
+    "Muy bonito ,la verdura muy fresca,encuentras de todo.",
+    "Le falta surtido como pescado y mariscos, viceras de res.",
+    "Ricos nopalitos cosidos, arroz, salsas etc."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLda9vu4_54hF1dHZl3M8yk65NZTD7k9H16Q01iH9h9fIksgwpbTZ23rF9gDGX_pciH2mLLzzCtmz5wav907-fnD1K9n9CW0gFD9w8BMs78HGJ7zl0_iWu1YVjdnTOHYzI-dj0qu3A=w800-h600-k-no"
+  ]
+}

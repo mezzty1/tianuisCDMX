@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJBZ2IGIgAzoURB8K_TpILcWE",
+  "status": "ok",
+  "nombre_maps": "La Comer Tlalpan",
+  "rating": 4.0,
+  "total_reviews": 3443,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "Hace 2 meses",
+      "texto": "El pan estaba lleno de moscas, se le avisó al personal del área y comentó que ya estaba reportado, pero nunca hacen nada los encargados de la comer, que es un problema normal y que están al tanto."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es una buena tienda, siempre tienen descuentos y muy amables, lo único que no me gusta es que los de tarjetas de crédito te acosan por todo el lugar para que saques una tarjeta"
+    },
+    {
+      "stars": 1,
+      "fecha": "Hace 6 años",
+      "texto": "Algunas empleadas son groseras. Los carritos todos viejos, destartalados, no hay canastillas de mano, ni canastillas rodantes y las pocas que hay están mugrosas y uno tiene que andar buscando caja por caja a ver si hay alguna. Los productos perecederos se hechan a perder en dos o tres días. Parece que va uno a pedirles regalado o fiado, no se preocupan por atender bien y cuidar a sus clientes. Merecemos los elementos como los carritos y canastillas nuevas y limpias y buena atención."
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "El del estacionamiento brilla por su ausencia. Me quedé 15 minutos esperando en la pluma a que abriera y tuve que ir a servicio a cliente dos veces a reportar que nadie me abría por una falla en su sistema..."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Tiene todo lo que requiero. Limpieza personal amable estacionamiento cómodo"
+    }
+  ],
+  "snippets": [
+    "Muy surtido, limpio, poca afluencia, precios razonables, productos frescos.",
+    "Con la remodelación que hicieron apenas, quedaron amplios los pasillos",
+    "La fruta y verdura están frescos, la carne y el pollo también."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLditlWpZcg0UQYJQRCSruQJEQRmjbKmUkFDQ_lBLsiYwiRW8QigU07BHCQbXmHAfTzbLR0PSPY83kentWH9k7RFFC1LyFcHvoMekAM-KkZMCA1WB-RJVmkzfJh5L9wTj6ShUbk=w800-h600-k-no"
+  ]
+}

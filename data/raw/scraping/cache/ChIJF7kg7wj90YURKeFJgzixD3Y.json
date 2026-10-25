@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJF7kg7wj90YURKeFJgzixD3Y",
+  "status": "ok",
+  "nombre_maps": "Remates para el tianguis Suc. Iztapalapa",
+  "rating": 4.1,
+  "total_reviews": 51,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Son bodegas de productos que funcionan porque siempre tienen ofertas. Aveces puedes encontrar lo que buscas en específico y otras tantas aprovechas para comprar productos ( como cremas, cereales, jabones, harinas para pasteles, hot cakes, galletas, etc abarrotes) y hasta ropa para niños y adultos a muy bajos precios. Son saldos de tiendas departamentales conocidas."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Para llegar a comprar ahí mentalizate que es un tianguis no esperes una sonrisa del vendedor mas bien parecen oficinistas de hospital público ( la mayoría 80%) si lo nesecitas y quieres mas barato, aguanta el mal trato y lo déspotas que son(fué mi experiencia)"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Dejo de ser buena opción mucho producto caducado. Los precios son los mismos que en los centros comerciales, y cremas y shampo y productos de ese tipo parecen piratas"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "En algunos productos ay buenos precios en otros productos es el mismo precio que en una tienda la atención regular an los locales de alado son muy prepotentes"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Disculpan la molestia ,aquí puedo comprar productos de Jafra ,Avon ,Arabela merma .\nGracias"
+    }
+  ],
+  "snippets": [
+    "Excelentes precios y muy surtido..",
+    "Dejo de ser buena opción mucho producto caducado.",
+    "Buenos precios,mejor que en tiendas"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/080d1js'], 'ofertas', None, [None, None, None, None, 2, 0, 2], None, '2ahUKEwiKheTC6NWXAxU35ckDHU7dIDkQ1bMEKCF6BAgAEEo', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdzGvr-JFJYm6V5WLWXA_mPcusYSM7M4C4kLhmGn2gAO7rOAWIfOOUeJqMRzWxZZdGhNnIV0cucbEyjoz6dbEJECA27x4DIBBrNvRyFLZYIipFJ24t8KZRRWVEnVD26plEX2kE=w800-h600-k-no"
+  ]
+}

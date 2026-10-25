@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJPwjarSj_0YURjOm8DUc28jI",
+  "status": "ok",
+  "nombre_maps": "Tianguis de Miravalle Día Domingo",
+  "rating": 4.8,
+  "total_reviews": 14,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "35 años viniendo a este tianguis. Uno de los más limpios de la ciudad. Las quesadillas que están casi en la esquina de presidentes son imperdibles. Variedad de puestos de frutas y verduras, lácteos, materias primas e insumos para el hogar."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "El tianguis me agrado mucho, no me habia tocado ir a un tinguis donde lo tubieran tan limpio, mi esposo y yo acudimos a comer enchiladas de dos ordenes fueron $120 las cuales estuvieron muy sabrosas y compramos dos aguas de litro las cuales eran 100% naturales y fueron $50 de las dos, si recomiendo este lugar"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Garna variedad. Excelente opciones para comer"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El mejor “tiangui” de Benito Juárez"
+    },
+    {
+      "stars": 5,
+      "fecha": "Lo que más extraño tras mudarme a Querétaro. Era parte de mi vida. Hay de todo con calidad y muy buenos precios.",
+      "texto": "Lo que más extraño tras mudarme a Querétaro. Era parte de mi vida. Hay de todo con calidad y muy buenos precios."
+    }
+  ],
+  "snippets": [
+    "Una gran excelente atención de los vendedores",
+    "Uno de los más limpios de la ciudad.",
+    "Tianguis pequeño pero muy completo, calidad y buenos precios."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/01593g'], 'calidad', None, [None, None, None, None, 2, 0, 2], None, '2ahUKEwiOk6Wj6NWXAxXhmysGHewPE2oQ1bMEKCF6BAgAEFI', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeFyrX2UV24twncikGx4sStZuw0tGcLJ5kDfHui17uCgW8HxcjcWuTTRg9bohwzaDsy4advdRFRAspht9ijMBHbILsIelKMwpQbK_ely_LNwKEKh8BfXFXcpSoRfXDOdeAdZCWtoQ=w800-h600-k-no"
+  ]
+}

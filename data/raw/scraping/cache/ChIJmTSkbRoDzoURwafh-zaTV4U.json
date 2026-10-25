@@ -1,0 +1,27 @@
+{
+  "place_id": "ChIJmTSkbRoDzoURwafh-zaTV4U",
+  "status": "ok",
+  "nombre_maps": "Tianguis",
+  "rating": 2.3,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Obviamente no hay tianguis ya que es una tienda de ropa, sepan leer y diferenciar no como no como la p\nndja de Yoni"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "No saben distinguir entre tienda de ropa y tianguis. Esto no es un tianguis"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Hoy martes vine a este tianguis y no hay nadaaa mentira , no vengan no hay nada hoy martes"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

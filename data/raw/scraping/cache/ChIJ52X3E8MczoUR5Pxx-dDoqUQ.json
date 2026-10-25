@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJ52X3E8MczoUR5Pxx-dDoqUQ",
+  "status": "ok",
+  "nombre_maps": "Mercado Ampliación Selene",
+  "rating": 3.7,
+  "total_reviews": 225,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "No tiene nada de nada, la verdad le hacen falta muchas cosas, muchas veces por lo solo que está los locales nadie te atiende porque no están o los encargan, mil veces mejor el mercado de la selene"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 8 meses",
+      "texto": "Un gran lugar"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Dentro de los puestos que hay es buena la atención y la calidad, pero definitivamente faltan agregar muchos puestos y como ambiente a ese mercado, si llegas a encontrar solo es lo básico.\nTambién agregaría que faltan más puestos de variedad fuera de este para que se  complementará."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "No hay mucha variedad"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Lo escencial ,una o 2 carnicerías,pollerías ,tienda de regalos ,cremería ,tlapaleria,materias primas ,tortillería , papelería y creo es todo ,falta negocios de comida rápida ,barbacoa ,taquerías nada de eso"
+    }
+  ],
+  "snippets": [
+    "Pasen a la cocina económica Isabella, todo muy rico y barato ☺️",
+    "Le faltan locales está muy vacio",
+    "Muy pequeño, con buen trato"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/01593g'], 'calidad', None, [None, None, None, None, 2, 0, 2], None, '2ahUKEwiQpe3O6NWXAxXalCsGHfz_IwAQ1bMEKCV6BAgAEFY', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcT_EP-JD0s1zGc_o9aonm2M40AW4bxKJmMnZ4XucAeYqijOrDigMgoyfjgDdWxual5S_FB5tDIL97CJlKu4uU9Tc7jRHxxxd3xh6JIeChoJ-FBvZSGbEW-eeZzCDCDP7QzBIt1=w800-h600-k-no"
+  ]
+}

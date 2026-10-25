@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJ1VrVQQD50YURv8PJtKpUQ2k",
+  "status": "ok",
+  "nombre_maps": "Tianguis Lago Xochimilco",
+  "rating": 5.0,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras de todo y a buen precio.\nEl lunes es pequeño pero los viernes abarcan casi toda la calle.\nLos tacos de Mixiote muy buenos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es el mejor mercado y tianguis de los lunes y viernes, variedad de productos y comida hecha y frutas y verduras."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdoo-FOc_VnYkcjRYBR4fM-ob41lPmTmEOX8svlAdn2aePWtceKRXVL2-iOUbUsChlp-c5ZjyL0oTaXRg06g_kfnqIEWWwvB0mpbbH1EGoxiA9iB3PDe_iiSisnvlJimkktyYMhRI8jHOO1=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJBRRnXdT_0YURvaiIb9-5c40",
+  "status": "ok",
+  "nombre_maps": "Tianguis Asturias",
+  "rating": 4.7,
+  "total_reviews": 7,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hay un montón de puestos de comida, y puedes encontrar desde quesadillas hasta choripanes. Hay de todo, creo que jamás había visitado un tianguis que rodeada todo un parque, esta cerca de mi trabajo así que es una buena opción para comer los días miércoles.",
+      "texto": "Hay un montón de puestos de comida, y puedes encontrar desde quesadillas hasta choripanes. Hay de todo, creo que jamás había visitado un tianguis que rodeada todo un parque, esta cerca de mi trabajo así que es una buena opción para comer los días miércoles."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy ricos los tacos de bistec, moringa, hígado y campechanos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bueno y bien organizado para encontrar lo que de desea"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen lugar para abastecer su canasta basica"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Pequeño mercado ambulante, solo opera los lunes"
+    }
+  ],
+  "snippets": [
+    "Muy ricos los tacos de bistec, moringa, hígado y campechanos",
+    "Buen lugar para abastecer su canasta basica",
+    "Muy bueno y bien organizado para encontrar lo que de desea"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfP8NwNko9ntAZUWFLqzknDmOOJFVEUU5IhIiNvE_aLIGw2g90fTc7jC8uK3z5eezVNXqt5qL0DKCoaZQci3hTR3kKIBB_4OJygGEf5YmujoqRDo88boBExeyJT6dsZPLwNRFE4=w800-h600-k-no"
+  ]
+}

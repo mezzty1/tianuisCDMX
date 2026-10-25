@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJV2sVt1b-0YURy0qK-t1Efbs",
+  "status": "ok",
+  "nombre_maps": "Mi Mercado N° 29 Lago",
+  "rating": 4.2,
+  "total_reviews": 1133,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace 6 años",
+      "texto": "Mercado muy cuidado, desde su fachada luce, de ladrillo rojo barnizado, muy buen cuidado.\nEn interior muy limpio y con pisos en buenas condiciones, los puestos con toda su mercancía bien acomodada.\nEncuentras buena calidad de frutas, verduras, carnes, pescados y uno que otro local de servicios."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 8 años",
+      "texto": "La nueva remodelacion del Mercado quedó increíble, con un aspecto colonial, todo se ve muy limpio, agradable a la vista.\nLos sopes del segundo piso volvieron a tener su sabor increíble."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buena y accesible  la carne en el local 24 con el güero sobre todo fresca"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "Muy pintoresco y surtido. Grandes trabajos hechos a mano por verdaderos artistas."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buen surtido y calidad desde el acuario hasta las ferreterías pasando por una muy buena oferta en alimentos preparados"
+    }
+  ],
+  "snippets": [
+    "Gran variedad, aquí encuentras de todo, verdura, fruta, carne, pollo y Mariscos.",
+    "Los sopes de tortilla de la cocina económica son muy ricos !!!",
+    "Recién remodelado, atención muy atenta, buen surtido y frescura"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLd37KTsAnV-EL6KUCVHywWh0bHhHSiX0WBp-O-jUs8XrMDJwXCYkSENGwP3SVYq_lRNoBb48iZojzxMQg9UsY1aa79Mg98TI6xTx-QbWTO_UzxULzL6xqlNBvw6UWmnitt2njM=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJO08RFs4B0oURl5o5QdpYWS0",
+  "status": "ok",
+  "nombre_maps": "MERCADO CRISTO REY Nº 173",
+  "rating": 4.1,
+  "total_reviews": 4366,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "La tienda está muy espaciosa, limpia y siempre el personal muy atentos. Tiene una cafetería que se localiza entre frutas y verduras. Además te atienden mega especial y eso es lo valioso"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen mercado de barrio, encuentras tiendas, pollerías, estéticas, papelería y comida entre otras cosas accesible buenos precios y calidad"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "Excelente lugar para hacer el mandado , pequeño pero limpio y bien surtido, hay muy buenos desayunos y comidas"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Muy limpio y con buen servicio, bueno la verdad cada quien plática como le va en la feria..."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El mercado de Cristo Rey es una tradición Porque ofrece productos de excelente calidad a buenos precios y es un lugar agradable para comprar y para consumir alimentos"
+    }
+  ],
+  "snippets": [
+    "Aquí venden unos cócteles de fruta bien ricos y baratos.",
+    "Es un buen lugar para desayunar o comer a precios accesibles, y de buena calidad",
+    "El local de pescados y mariscos tiene burritos de camarón muy recomendables."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeOYEOnEeAhKLLLPt5RVAVsIxI5SqxaC84uiDTibpuExKUydTu08JI0QR2nGJWFCOKfwh3GG0CnPdTNDMPt3n6z0Vmx9wZV-Dxkz0MbLdayZpd14WYWsdPdt07ct7QaZ6hw3gnYrw=w800-h600-k-no"
+  ]
+}

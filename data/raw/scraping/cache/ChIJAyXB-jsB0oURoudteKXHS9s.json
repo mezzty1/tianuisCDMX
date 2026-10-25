@@ -1,0 +1,46 @@
+{
+  "place_id": "ChIJAyXB-jsB0oURoudteKXHS9s",
+  "status": "ok",
+  "nombre_maps": "MERCADO DE PALO SOLO",
+  "rating": 4.3,
+  "total_reviews": 51,
+  "reviews": [
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "La mayoría de los locales están cerrados y el único puesto de frutas y verduras dan caro... Aunque amables si son. Espero que pronto haya más locatarios atendiendo los puestos que están cerrados para que tengamos la opción de escoger."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente calidad 👌👌 👍 en carne y frutas y verduras también en los diversos locales que lo confirman y gastan poco se ahorran algo de dinero 🤑"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Chiquito pero funcional. La carniceria, el area de frutas y verduras, y el local donde venden mole, muy completos y buen servicio."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen lugar gente trabajadora excelente comida corrida por si buscas algo bueno"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Lugar emblemático de la zona, pero requiere remodelarse"
+    }
+  ],
+  "snippets": [
+    "Muy rico todo muchas gracias",
+    "Excelente ambiente y buen trato los comensales",
+    "Comida tradicional deliciosa, precios accesibles."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/01d_1l'], 'precio', None, [None, None, None, None, 2, 0, 2], None, '2ahUKEwj4rPff6NWXAxWkGoYAHf1BJ0kQ1bMEKB96BAgAEEQ', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": []
+}

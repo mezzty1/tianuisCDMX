@@ -1,0 +1,34 @@
+{
+  "place_id": "ChIJiWIcpRsDzoURtqnXsw_lX1g",
+  "status": "ok",
+  "nombre_maps": "Bazar Elias Salomonis",
+  "rating": 4.1,
+  "total_reviews": 14,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "He estado desde vendiendo asta comprando en el bazar está bien si quieres pasearte por la noche en familia"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen lugar, pero hacen falta más puestos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente comida"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Buena atención."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdoTawKFXnAJBTd6fzpAmXKyDDNe_44eT4mspoVUYblnfDiUcMya6-_RsugtEyf7AjQGuoIbFkcN11Nw1sJZ3_Ead-jslFlob8EH5MFmEPgJPBlIra85kvWXBg6tBCvbrbDBLum=w800-h600-k-no"
+  ]
+}

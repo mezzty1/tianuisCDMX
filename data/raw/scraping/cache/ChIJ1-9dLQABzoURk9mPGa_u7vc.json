@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJ1-9dLQABzoURk9mPGa_u7vc",
+  "status": "ok",
+  "nombre_maps": "Tianguis de la Lupita",
+  "rating": 4.2,
+  "total_reviews": 6,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Los días lunes esté tianguis nos muestra una nueva forma de adquirir productos de primera necesidad a precios accesibles."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Fue una experiencia bonita y agradable es uno de los lugares donde puedes encontrar ropa de paca a un precio muy accesible claramente volveré a ir"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcCJjn2CvJurtVCzK7K7Z4vzOYIrPY4GmZdOCfVKxphx8UJsikEOpx1btusYLghzVmstQeiZUneRrQvFYNtRh-cNlPAXooRNcKAEzhWhR113tfkVwcvfaN3-JLlE6UWddsNyrK2bg=w800-h600-k-no"
+  ]
+}

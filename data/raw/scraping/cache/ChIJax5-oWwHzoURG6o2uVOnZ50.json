@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJax5-oWwHzoURG6o2uVOnZ50",
+  "status": "ok",
+  "nombre_maps": "Tianguis San mateo",
+  "rating": 4.5,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es un tianguis mediano con venta de chacharas y productos para el hogar a precios muy accesibles"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buen lugar para comprar tus verduras 🍅🍅🍅🍆🍆"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcfTXUHZbaG_tI9IaYldhewM8zYrvJODHKvF2GpHwboyie-JBVxrl_zyZ1TlAkNaU2MGAAyAAUD08i1-_MgYmfnNe9Z2AlL8FIKMsGrEQXfUfqx27p41t3qcc3ERjvxNsKNZ6es=w800-h600-k-no"
+  ]
+}

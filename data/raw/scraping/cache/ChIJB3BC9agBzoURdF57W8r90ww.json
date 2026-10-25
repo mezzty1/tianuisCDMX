@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJB3BC9agBzoURdF57W8r90ww",
+  "status": "ok",
+  "nombre_maps": "Mercado de Comidas Fuentes Brotantes",
+  "rating": 4.4,
+  "total_reviews": 925,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 6 meses",
+      "texto": "Excelente lugar para comer quesadillas y antónimos mexicanos. Está dentro de la alcaldía Tlalpan y puedes acceder en coche o transporte público."
+    },
+    {
+      "stars": 1,
+      "fecha": "Hace 3 meses",
+      "texto": "No recomiendo el rincón de quetzalcoatl, el café está muy dulce, la sopa de hongos no tiene buen sabor, los sopes muy grasosos y sin sabor, las enchiladas de mole terribles"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 4 meses",
+      "texto": "Muy lindo! Recomiendo llevar comida para patos o comprar en la tiendita"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 10 meses",
+      "texto": "Es un lugar hermoso donde pasar momentos agradables y en calma. Comida deliciosa con buen precio en CABAÑA LAS FUENTES súper recomendado, nieves deliciosas  , regresare mucho a estos lugares."
+    },
+    {
+      "stars": 5,
+      "fecha": "Baños",
+      "texto": "Comida en las Chenchas, agradable. Ambiente sencillo. Nieves de enfrente buenas. Tiramisu y bayles. Bosque bonito. Lago"
+    }
+  ],
+  "snippets": [
+    "Afuera del local hay un puesto de nieves y helados, también muy ricos y baratos.",
+    "Buen surtido buena atención, solo falta un poquito de sazón",
+    "Queso fundido, carne asada, mole con pollo, barbacoa ó carnitas."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeI7P-MOGQy3TtkEWQh2df05HwEN0mNzoWLpEeufJlktyzsC-pbjJ1TSbqozNl2XD_3X_HLGqeDPQEaHYsYKLK00vtg9tVcVUp8eDh6PNhUDxM7zBf7yLWOk9OqkqqudN4MZTY=w800-h600-k-no"
+  ]
+}

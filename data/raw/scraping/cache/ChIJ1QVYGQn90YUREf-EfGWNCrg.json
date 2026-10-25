@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJ1QVYGQn90YUREf-EfGWNCrg",
+  "status": "ok",
+  "nombre_maps": "Mercado Los Frentes",
+  "rating": 4.0,
+  "total_reviews": 2075,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buenas el puesto de pancita recomendable"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Excelente lugar para encontrar lo que necesitas para tus mascotas"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es muy variado lo que ofrecen en su interior, atención amable..\nEncuentras de todo.\nSolo ten cuidado con los alrededores, si llevas moto, no dejes tu casco lejos de ti 🐀"
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Es bastante grande, sin embargo carece de mantenimiento y seguridad. A un costado hay unas \"unidades\" en las cuales se meten algunos rateros. En una ocasión vi como uno de ellos asalto a un muchacho y para amedrentar, comenzó a tirar balazos al aire."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "En este mercadito encuentras de todo, muy tradicional en la colonia. Martes y domingo afuera se pone un tianguis con mucha variedad. Hay muy buenos lugares de comida por si no quieres cocinar. No cuenta con estacionamiento lo tienes que dejar sobre la avenida."
+    }
+  ],
+  "snippets": [
+    "Verdura y fruta fresca económica .",
+    "Encuentras surtido en productos frescos y preparados a muy buen precio.",
+    "Venden una Barbacoa riquisima me encanto irq"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfOEDyY8F-oXv7eYdmn5vY24UNfMIGZl3Yqyut10oqy_NIUbPGyU4zHgLZCa1VL514doIFnnSbO2OukjqK2bZPPZaWeGy-1oxdRz0QWvTDwrvU-N8hwKYtvsJigxKakLFGBemWsMQ=w800-h600-k-no"
+  ]
+}

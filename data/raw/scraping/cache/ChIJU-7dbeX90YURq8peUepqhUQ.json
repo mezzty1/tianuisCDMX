@@ -1,0 +1,39 @@
+{
+  "place_id": "ChIJU-7dbeX90YURq8peUepqhUQ",
+  "status": "ok",
+  "nombre_maps": "Mercado Balbuena",
+  "rating": 2.9,
+  "total_reviews": 12,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace un año",
+      "texto": "Hay un zapatero ahi, jamás vayan. De verdad evítese la pena de que le hagan mal trabajo. Llevo dos pares de zapatos nuevos a pintar y los dejo horribles, mal hecho, llenos de polvo y pelis pegados. Y aun asi me cobró!!!! Pésimo servicio. Y ya no le tome foto al otro par."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Está muerto ese mercado"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Limpio y bonito pero muy vacío. Ojalá se recupere y vengan más personas."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Siempre está cerrado, los demás no pueden vender hilos sólo porque a estos flojos se enojan por que vendan hilos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mercado está limpio buena atención la fruta está muy buena con los güeros los bisteces de res con el señor de hasta el fondo a la derecha las verduras también con los güeros les recomiendo mucho este mercado es muy limpio"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfyjcFXL8uzpiqHvx2OQpNJrWHQeLQL3ZV16KUQt7U0vUr1GUKVEWU_Jn_-EFqkzNuMVwwQenZTTNRpbn2WH_m23s3ysVY5U9RapU4P9ZrVfC8u_jJYSbOlZqgyzBbcChxpLjhd_N17W_YS=w800-h600-k-no"
+  ]
+}

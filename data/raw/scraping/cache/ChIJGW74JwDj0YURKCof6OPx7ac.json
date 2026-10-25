@@ -1,0 +1,32 @@
+{
+  "place_id": "ChIJGW74JwDj0YURKCof6OPx7ac",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Pensador Mexicano\".",
+  "rating": 5.0,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Es un tianguis 👕 que instalan los Domingos en un horario aproximado de 9:00 am a 5 pm.\nLo que noté es que en esta parte del tianguis está más enfocado en vender ropa, tenis 👟, chucherías y comida ya preparada.\nLo comento por qué este mismo día, atravesando del otro lado del metro está otro tianguis pero venden lo normal de cualquier tianguis como frutas 🍓, verduras, botanas, también comida preparada etc.\nEn ambos tianguis los precios son accesibles y son amables los comerciantes."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "De este tianguis me gusta la variedad de ropa que tienen y sus buenos precios."
+    }
+  ],
+  "snippets": [
+    "De este tianguis me gusta la variedad de ropa que tienen y sus buenos precios.",
+    "En ambos tianguis los precios son accesibles y son amables los comerciantes."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/09j2d'], 'ropa', None, [None, None, None, None, 2, 8, 2], 'CgoKCC9tLzA5ajJk', '2ahUKEwjUn8_G6NWXAxVyoisGHa3oLssQ1bMEKB56BAgAEEk', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeHAp8UCCpjnFom0A23elIrC7Jw4yUOCCNj8ghhiU610uaYZXoMGdX5U_v3GRafMpFE0tHCaxNrlRQOraY1LYDMwr5sjmpsbHo4oWOCm99ZTbTLH7GCFXkcsL98XNX8Hk2VMWmiJA=w800-h600-k-no"
+  ]
+}

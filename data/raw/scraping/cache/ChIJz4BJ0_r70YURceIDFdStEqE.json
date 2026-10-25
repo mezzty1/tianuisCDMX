@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJz4BJ0_r70YURceIDFdStEqE",
+  "status": "ok",
+  "nombre_maps": "Mercado Aquiles Serdán",
+  "rating": 4.1,
+  "total_reviews": 2136,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "He comprado un par de veces. Y los productos como verduras son de buena calidad y de buen tamaño. Creo que los precios son los justos",
+      "texto": "He comprado un par de veces. Y los productos como verduras son de buena calidad y de buen tamaño. Creo que los precios son los justos"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Cuenta con los puestos necesarios para hacer un mandado básico. Los precios son muy accesibles (casi como tianguis), en dónde he llegado a comprar carne, pollo, verduras, etc., pesan lo que es, por eso me agrada más que el mercado de la Rubio"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buen lugar para compras del día, limpio y buen precio"
+    },
+    {
+      "stars": 3,
+      "fecha": "Hace un año",
+      "texto": "De todo un poco encontrarás pero no está muy surtido."
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 7 años",
+      "texto": "Un lugar para buscar cosas basicas, para preparar comida. Accesible los precio remodelaron el mercado se ve muy bien"
+    }
+  ],
+  "snippets": [
+    "Excelente lugar para ir a desayunar una deliciosa barbacoa",
+    "Excelente ubicación surtido variado buenos precios",
+    "Hay perros en los pasillos, puestos cerrados, buena atención la de juguetes."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc3TR_GsAqFwlEEdl1JTmWzPkt9pjNSJD6g7KSdI6YiDOo6gby7c44fgqnL_l53DEbz4G0fz9GdUkNItrCDJuGB2AEB1Url5DGuNAawpcx6sddEHWxxL0YVbTOw1dxFTNovWdbQ=w800-h600-k-no"
+  ]
+}

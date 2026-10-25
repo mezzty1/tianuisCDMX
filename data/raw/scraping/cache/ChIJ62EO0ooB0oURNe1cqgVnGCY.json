@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJ62EO0ooB0oURNe1cqgVnGCY",
+  "status": "ok",
+  "nombre_maps": "Mercado Prado Norte",
+  "rating": 4.2,
+  "total_reviews": 1613,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 2 meses",
+      "texto": "Mucha opción de flores. No es económico pero resuelven bien. Yo fui a una mercería y me dieron a $25 pesos el metro de listón, caro ¿no? Pero en fin es la zona. Muy amables eso siempre."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Todo carisimo, obviamente por el tipo de gente que compra ahi, donde si se pasan es en las carnicerías, ahi si exageran los precios, $900 por 800gr de cecina de res"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 8 años",
+      "texto": "Vengan a visitar el mercado ,es un mercado muy limpio tranquilo donde puede hacer sus compras, mandado y hay cosinas ,flores ,carnicerías ,pollerías,mercería ,Yerberia, disfraces,sodas,radiotecnico ,chiles secos,piñatas etc..."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Los tacos de carnitas están muuuy bien servidos y a precio razonable! $30 (junio 2026)"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "No es broma, 400 pesos por 4 frutas. UN ROBO"
+    }
+  ],
+  "snippets": [
+    "Un mercado con mucha variedad y todo organizado en secciones Excelente servicio",
+    "Me encanta, encuentras fruta, verdura y carnes de excelente calidad",
+    "Amplio surtido de arreglos florales, frutas frescas de la estacion."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeOIPYJ_TcrtrALqe6aPfzMmxyM1lmZKGMZbSIdGx_ZRacyoQqyC1Fhn4vAQ6UhqQ8cExsV9Pbbsx_v37VdyngZR_V4iCAzT1KRWWHZ7WtYF3c5IN33W6QZQBG0Md7Z6BziT10C6WuwWJ0=w800-h600-k-no"
+  ]
+}

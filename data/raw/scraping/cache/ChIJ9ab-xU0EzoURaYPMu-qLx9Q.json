@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJ9ab-xU0EzoURaYPMu-qLx9Q",
+  "status": "ok",
+  "nombre_maps": "Mercado (Tianquizco) San Bartolome Xicomulco",
+  "rating": 3.8,
+  "total_reviews": 52,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "La verdad todo muy rico en las quesadillas de la señora Arely y uff con la muchacha que atiende,la chaparrita 😍\nY su cosina económica de la señora Arely súper delicioso 😋\nTodo muy limpio y buen servicio\nY lo mejor un estacionamiento seguro 🔐"
+    },
+    {
+      "stars": 4,
+      "fecha": "Muy limpio, el entorno muy bonito, rodeado de bosques cercanos, se come muy rico y económico al interior. Los baños están muy limpios, parece entraras a un centro comercial tipo Liverpool por el nivel de limpieza. Los fines de semana hay pancita y barbacoa. Hay un banco del bienestar al interior del estacionamiento.",
+      "texto": "Muy limpio, el entorno muy bonito, rodeado de bosques cercanos, se come muy rico y económico al interior. Los baños están muy limpios, parece entraras a un centro comercial tipo Liverpool por el nivel de limpieza. Los fines de semana hay pancita y barbacoa. Hay un banco del bienestar al interior del estacionamiento."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Bonito lugar ... Pero necesita más apoyo del gobierno creo que podrían hacerlo un lugar para visitar ya que es muy bonito el mercado"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buena la comida, vayan no se van a arrepentir"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es una lastima que esté mal aprovechado, hay muchos locales vacíos. Pero el área de comida de lo mejor todo delicioso y excelentes porciones y súper amables los que atienden. Todo súper limpio y cuenta con estacionamiento."
+    }
+  ],
+  "snippets": [
+    "Los fines de semana hay pancita y barbacoa.",
+    "Es un lugar bastante tranquilo Para poder desayunar con tu familia 👪",
+    "Comida rica y económica."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02g3bz'], 'quesadillas', None, [None, None, None, None, 2, 0, 2], 'CgsKCS9tLzAyZzNieg==', '2ahUKEwir0Y3L6NWXAxWLNIYAHTsVNjAQ1bMEKCB6BAgBEEk', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLf5TUR2yA27WzpGzei7LiI4blmKaEGfjYWXttcTFtaUTEkTr9yuYY0oTXTzBJXuIWAcvAMSK31GzGLLX8KcpCVHpvJdTjagbjPRzyEyfBoo7Kj7KtOQ-c_eko9lIOatYby5vsm6WA=w800-h600-k-no"
+  ]
+}

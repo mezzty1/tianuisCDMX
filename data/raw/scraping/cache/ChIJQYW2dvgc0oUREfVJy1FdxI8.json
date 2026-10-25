@@ -1,0 +1,41 @@
+{
+  "place_id": "ChIJQYW2dvgc0oUREfVJy1FdxI8",
+  "status": "ok",
+  "nombre_maps": "Tianguis Lázaro cardenas",
+  "rating": 4.2,
+  "total_reviews": 74,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es un mercado Con una gran variedad de productos, los precios son caros pata ser tianguis, están los Locales muy amontonados, no hay si fuente espacio para comprar agusto"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Encuentras de todo. Sólo que hay muchos clientes sin cubrebocas. Pero no es culpa de los locatarios."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Todo muy bien pero, no es muy viable pagar con tarjeta ya q se te cobra una comisión"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Excelente lugar para pasar un rato con la familia"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Cerca de la casa y encuentras de todo,visitenlo lo recomiendo mucho."
+    }
+  ],
+  "snippets": [
+    "Cerca de la casa y encuentras de todo,visitenlo lo recomiendo mucho.",
+    "Excelente lugar para pasar un rato con la familia",
+    "Precios muy accesibles, mejor que las bodegas."
+  ],
+  "temas_frecuentes": [],
+  "fotos": []
+}

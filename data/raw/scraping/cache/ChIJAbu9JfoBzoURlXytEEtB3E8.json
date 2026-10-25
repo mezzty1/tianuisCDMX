@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJAbu9JfoBzoURlXytEEtB3E8",
+  "status": "ok",
+  "nombre_maps": "El Bazar de la carcacha",
+  "rating": 4.1,
+  "total_reviews": 39,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 7 meses",
+      "texto": "Bien ambiente, me encanta cuando hay música en vivo y las figuras de colección padrísimas que he encontrado"
+    },
+    {
+      "stars": 1,
+      "fecha": "Hace 9 meses",
+      "texto": "El museo se encuentra temporalmente cerrado, es una lastima porque vengo de fuera y no tendré otra oportunidad en mucho tiempo. Se ve que tienen hermosos autos."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Pues esta muy X, casi la mayoría vende más de bocho, recomiendo mejor buscar en face y encontrarán más surtido.. pero si quieres ir a dar una vuelta y perder tiempo esta es la opción.."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 9 meses",
+      "texto": "Buenas refacciones\n\nBusquen al buen baratitos Volks precios muy bajos para sus proyectos y no quede en sueño"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "Extraño el museo del automóvil, las joyas eran los Stanley Steamer..."
+    }
+  ],
+  "snippets": [
+    "Las mismas chacharas las consigues en marketplace de facebook y más baratas.",
+    "Un bazar pequeño, mucha gente y poca variedad.",
+    "Excelente lugar y muy divertido"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/04rlf'], 'música', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzA0cmxm', '2ahUKEwij1dva6NWXAxUx1RoGHdhfBrsQ1bMEKCJ6BQgAEL8B', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLflBuxz42LR3eJhYk-uewYxuLdkfD9uWTJhtL9bpqyKBN_quSD8yeE_TSqxY40634f6R6pyZ0VwzFqCyJ6Cc0YjXmH6rE8FMfsjgTTAkUf6ByjWrAmmejpdUMKoBbzqoqdxfHnF=w800-h600-k-no"
+  ]
+}

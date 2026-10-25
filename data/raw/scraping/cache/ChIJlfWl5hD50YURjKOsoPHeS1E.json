@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJlfWl5hD50YURjKOsoPHeS1E",
+  "status": "ok",
+  "nombre_maps": "Tianguis",
+  "rating": 3.0,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Bueno deberían ayudarnos los vecinos visitando más el lugar"
+    },
+    {
+      "stars": 2,
+      "fecha": "español",
+      "texto": "Mas o menos"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLerlYqc8GAXHqlhkhz-_NrCWKZuhfyC7zgCZ6tM66_wMy4VqNNObnQwRdiw1cdMjRuh-E7iRso2iJAPi8P3Ss8dCt0RTx_e3cKkQekwWFVmLj1jSFQKdmhf6nJOMEaGcovWKYjPgg=w800-h600-k-no"
+  ]
+}

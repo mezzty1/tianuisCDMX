@@ -1,0 +1,29 @@
+{
+  "place_id": "ChIJF2CfLnUBzoURMii1zrDZpyE",
+  "status": "ok",
+  "nombre_maps": "Mercado sobre ruedas de Tenorios",
+  "rating": 4.0,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es bonito pero esta un poco sucio pero lo demás es bueno"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 9 meses",
+      "texto": "Viernes y domingos frente a la iglesia... Muyyyy barato todo"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Variedad de buenos articulos"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeUVtkiC3qH93ke-RnAbVfogN0kM0-GDsgeLqZVv8Y8YseUUo0TFduZERIl9z0WUDd9I5uzN6uPoyApOY0XH7DAkaxWSe_-t11woWKwyImDkUhU6dIuDdEor3kvr_dwSDYGRjo=w800-h600-k-no"
+  ]
+}

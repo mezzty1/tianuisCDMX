@@ -1,0 +1,27 @@
+{
+  "place_id": "ChIJgzJKLQAB0oURzFpX6EvwtPQ",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Mexicanos\".",
+  "rating": 5.0,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "🍓🌽🥬 Es un tianguis que lo instalan los 📆 jueves en un horario aproximado de 🕣 8:30 am a 🕔 5:00 pm.\n+ Está a lo largo de la calle Mexicanos entre las calles de Argentinos y 🛣️ Queretanos.\n+ No es muy grande pero encuentras lo más básico con💲precios ligeramente altos.\n+ Esta agradable, por lo que puedes visitarlo en 🚶🏻familia sin ningún problema."
+    },
+    {
+      "stars": 5,
+      "fecha": "Tianguis de tamaño regular pero con todo lo básico para la despensa.",
+      "texto": "Tianguis de tamaño regular pero con todo lo básico para la despensa."
+    }
+  ],
+  "snippets": [
+    "Tianguis de tamaño regular pero con todo lo básico para la despensa.",
+    "+ No es muy grande pero encuentras lo más básico con💲precios ligeramente altos."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfGcN4pdZWAVkMyBrACZnStJtJGJyMpkAdO4ZT_usazQOPcpT4NILkPmUC4wg6VR7ClBMl8pQWUMesQeeeVckI64cL4awx9K4ONwLOuNSsFXTHX_QXB55m6bsUVwPoLX4CARMrp=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJXZv4FSABzoURAFUMoNDMHMQ",
+  "status": "ok",
+  "nombre_maps": "Mercado de las Cosas Verdes \"Tianquiskilitl\"",
+  "rating": 4.9,
+  "total_reviews": 15,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace mucho tiempo que no había podido ir. Como siempre con productos frescos y deliciosos. Compre variedades kale y de lechugas, cacao molido y pan de masa madre. Todo muy recomendable.",
+      "texto": "Hace mucho tiempo que no había podido ir. Como siempre con productos frescos y deliciosos. Compre variedades kale y de lechugas, cacao molido y pan de masa madre. Todo muy recomendable."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 6 años",
+      "texto": "Excelente lugar, hay que hacer que crezca."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me encanta ir a comprar ahi, todo es fresco, orgánico y muy sano."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy ricos productos. El único detalle que tiene es que uno debe asegurarse que hayan contabilizado la comanda, porque si la traspapelan ya te quedaste sin productos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Increíble que podamos comer cosas realmente orgánicas sin las etiquetas hipster de la Condesa o Polanco. Esto es la neta!"
+    }
+  ],
+  "snippets": [
+    "Buen lugar, surtido.",
+    "Como siempre con productos frescos y deliciosos.",
+    "Muy ricos productos."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLd4uFRvzUh90Iv1Wg9Qsa8MbvLKDYSVqS86pIOC1DHuSebRymHHbQYTDY7o6GDhtuWJnR_28hcftuvDoWeXdATtNWaIRXDreZ2FCR-v7dKIlRlPvmVO69Zwv_4hx5mOXwRs5Do=w800-h600-k-no"
+  ]
+}

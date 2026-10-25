@@ -1,0 +1,41 @@
+{
+  "place_id": "ChIJtzViDV__0YURblisJcr2rsg",
+  "status": "ok",
+  "nombre_maps": "Tianguis de colorines",
+  "rating": 4.0,
+  "total_reviews": 17,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Muy mala calidad y kilos de 800 gramos o menos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "En este tianguis encuentras de todos"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muchos productos para surtir la canasta básica."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy ricos los tacos de colorines y Mieses"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Cumple, como todos los tianguis de la ciudad."
+    }
+  ],
+  "snippets": [
+    "Muy ricos los tacos de colorines y Mieses",
+    "Cumple, como todos los tianguis de la ciudad.",
+    "Muy mala calidad y kilos de 800 gramos o menos"
+  ],
+  "temas_frecuentes": [],
+  "fotos": []
+}

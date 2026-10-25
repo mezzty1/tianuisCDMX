@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJCXaWtl8AzoURrv6yXM_CpE0",
+  "status": "ok",
+  "nombre_maps": "mercado sobre ruedas coapa",
+  "rating": 4.2,
+  "total_reviews": 58,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Aceptable para verduras. Pero ahí qué es colonia cara tampoco tienen limpios los alimentos que ofrecen esos puestos de comida. Las pulgas solo unos dos objetos valen la pena comprar.  Las frutas están 4 veces más caras qué en Walmart."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es pequeño pero ofrece variedad de frutas, verduras, lácteos, pescado, dulces y varios puestos de ropa. Los tlacoyos son muy buenos.\nLos precios son caros por la Colonia.\nLos marchantes son amables."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Los tacos están geniales y la fruta muy fresca. El sr que vende dulces tiene un trato mejor que el de una tienda"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un mercadito muy chiquito pero bien surtido, además puedes vender tus antigüedades, eso sí las compran muy baratas, pero a veces es más fácil hacerlo así que tenerlas en la casa estorbando y guardando polvo."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El pescado que venden son de primera calidad con la Güera y su hija venden alimentos prescado y mariscos verdaderamente deliciosos, solo se ponen los jueves"
+    }
+  ],
+  "snippets": [
+    "Los tacos están geniales y la fruta muy fresca.",
+    "Buena atención a los clientes en gral.",
+    "Los precios son caros por la Colonia."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/07pbfj'], 'pescado', None, [None, None, None, None, 2, 0, 3], None, '2ahUKEwi3_IDR6NWXAxWi08MFHQ7gBpYQ1bMEKCF6BAgAEEo', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfB5qWWAJf5ciOPSTqwb1vgDFZb8PATUdX9_muJS0w2tX1kVn9_2V8Wa17epmk5dbqSNmUZD9d3tUvQlKSbMBiuo0xsKDR411Joj0aqK449i1DKmA6QOKtR_46hYTyOQ7pfh_ggmA=w800-h600-k-no"
+  ]
+}

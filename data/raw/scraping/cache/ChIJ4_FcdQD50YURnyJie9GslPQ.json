@@ -1,0 +1,29 @@
+{
+  "place_id": "ChIJ4_FcdQD50YURnyJie9GslPQ",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Cjon. Luna\".",
+  "rating": 4.0,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace un año",
+      "texto": "Es un tianguis que está a lo largo de la calle Callejón Luna, y está una calle antes del eje central Lázaro Cárdenas.\nLo instalan los Miércoles en un horario aproximado de 8:30 am a 5:00 pm.\nNo es muy muy grande y por lo mismo no tiene tanta variedad de productos a la venta.\nTienen precios accesibles y la atención es amable."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Hay 1 solo puesto para comprar verduras, es pequeño, me gustaria que hubiera mas puestos, pero en general esta bien"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Pequeño pero con lo suficiente para la despensa."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfz2qMxVPYP-KB5PGizMUvykDaWJjNAH27SjsqTOERsvga1Z1_E2HTxSD6OmWoufRd0WfpjfA8JGWC39tiMoVLr7gZqUQHZ_ZTzw03ZA-QklCFs4r2975Vm6EZ_FqJbaSOrKFNKneo4CqJT=w800-h600-k-no"
+  ]
+}

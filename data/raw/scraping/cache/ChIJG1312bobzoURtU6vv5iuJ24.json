@@ -1,0 +1,37 @@
+{
+  "place_id": "ChIJG1312bobzoURtU6vv5iuJ24",
+  "status": "ok",
+  "nombre_maps": "Tianguis",
+  "rating": 3.8,
+  "total_reviews": 29,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy buen lugar para adquirir productos de la canasta básica y la gente se comporta adecuadamente.\nAdemás cuando quitan los puestos barren y limpian su lugar."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Muy sucio y mucho borracho"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buena variedad y productos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un poco chico pero va mejorando"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buen servicio"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

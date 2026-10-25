@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJqSkPXrgD0oUR-lVwYRMdW0o",
+  "status": "ok",
+  "nombre_maps": "Mercado Sobre Ruedas Ruta 2",
+  "rating": 4.6,
+  "total_reviews": 66,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Hay variedad de productos. Nosotros ya tenemos nuestros marchantes. Aunque si debo decir que en varios puestos, no te dan el peso justo. Te quitan de 200  y hasta un cuarto de gramos en las verduras y frutas. Falta mas vigilancia de parte de los inspectores."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es un mercado bastante amplio ya aue ocupa toda la cuadra. Hay variedad de alimentos y distintos puestos en los que se puede comprar ropa o accesorios. Los precios en ocasiones varían dependiendo de los puestos, al igual que la calidad de los productos.\nLa mayoría de la gente usa cubrebocas durante la pandemia, sin embargo, debido a que es un mercado, no hay sana distancia."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Los puestos de comida, barbacoa, tacos, fritangas son limpios, la comida es sabrosa principalmente los de barbacoa.\nPero los puestos de frutas y verduras, algunos dan precios mas caros."
+    },
+    {
+      "stars": 4,
+      "fecha": "Un tianguis muy bueno. Encuentras mucha variedad de frutas y verduras. Para la carne manejan calidad pero se me hace cara.\n\n.",
+      "texto": "Un tianguis muy bueno. Encuentras mucha variedad de frutas y verduras. Para la carne manejan calidad pero se me hace cara.\n\n."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Tranquilo, aunq la mayoría de la gente no usa cubrebocas y el estacionamiento de repente se vuelve un conflicto con los camiones q pasan y los autos q se estacionan en batería"
+    }
+  ],
+  "snippets": [
+    "Encuentras muchas cosas , la fruta y verdura no tan caros",
+    "Encuentras mucha variedad de frutas y verduras.",
+    "Mucha gente pero hay de todo"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0gr7sr'], 'tianguis', None, [None, None, None, None, 4, 14, 4], 'CgsKCS9tLzBncjdzcg==', '2ahUKEwinrtWe6NWXAxXTNoYAHXIpN00Q1bMEKCF6BAgAEEo', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeYDjoe8iH8gkUNWn3kOOQldeDf0p3j5diDqUQ3sUzOVEkIBYCU2BTMOBRXbqtL7Ksg2cLx0vaVJmSmh9_EyJDE2VwBpA6Lj0H0HI-6suQF5u-76Sbi51szsR7GRNCfQ6T50R4L=w800-h600-k-no"
+  ]
+}

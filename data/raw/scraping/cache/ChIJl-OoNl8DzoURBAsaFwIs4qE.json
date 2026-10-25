@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJl-OoNl8DzoURBAsaFwIs4qE",
+  "status": "ok",
+  "nombre_maps": "MERCADO Del Carmen",
+  "rating": 3.4,
+  "total_reviews": 95,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me encanta más el área de afuera la tienda de abarrotes y la recauderia super amables"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Sólo cosas para necesidades básicas"
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Es un poco mugroso el piso pero los precioso son muy accesibles en caso de la tienda los preciosos están dentro de la media de todas las tiendas del rumbo"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es perfecto para realizar compras rápidas y sin tener que ir muy lejos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "👍🏼"
+    }
+  ],
+  "snippets": [
+    "Es un mercado pequeño pero tiene buen surtido",
+    "Los mejores tacos babacha",
+    "Un mercado pequeño donde encuentras lo básico a precios moderados"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdvxnrw1pIHSPsZuCjYTHoS0Jxh0DI1ypjuBSZEO3iCrq9oMHhpJu8wIqYC-uBOTwNqZHLdCbhbrcXiHRga4542-OFd1QmsSySqNh-xTp6P7hIykhYIsh2s3Dp1s78TpPiAPzsUww=w800-h600-k-no"
+  ]
+}

@@ -111,6 +111,15 @@ Relación detallada de todas las URLs, plataformas web, repositorios de datos ab
 
 ---
 
+### 1.9 Google Maps Places, Reseñas Ciudadanas y Galerías de Fotografías
+* **Google Maps Places Web Platform:** [`https://maps.google.com/`](https://maps.google.com/)
+* **Consultas directas por Feature ID y Place ID WGS84:** `https://maps.google.com/maps?q=place_id:{place_id}&hl=es&dg=es5`
+* **Endpoint de Previsualización y Metadatos de Fichas:** `https://www.google.com/maps/preview/place?authuser=0&hl=es&gl=mx&pb=...`
+* **Servidor de Fotografías de Alta Calidad de Usuarios:** `https://lh3.googleusercontent.com/` (enlaces públicos directos optimizados a resolución `=w800-h600-k-no`).
+* **Extracción:** 512 `place_id` únicos auditados para los 1,367 tianguis de la CDMX, obteniendo ratings, conteos de opiniones, comentarios de compradores, temas frecuentes ("ropa de paca", "carnitas", "barbacoa", "chácharas", "precios") y fotografías reales sin almacenamiento de datos personales.
+
+---
+
 ## 2. Inventario de Datasets Descargados y Procesados Localmente
 
 Todos los datasets base han sido descargados en `data/raw/` y normalizados bajo el estándar WGS84 en `data/processed/`.
@@ -129,6 +138,8 @@ Todos los datasets base han sido descargados en `data/raw/` y normalizados bajo 
 | **Directorio Maestro Unificado de Comercio Popular** | Compilación propia normalizada | JSON, CSV | 1,971 establecimientos | Esquema homogéneo de 26 campos enriquecido con categorías, subgiros, Canasta Básica Oficial y Mercomuna. | [`data/processed/directorio_comercio_popular.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/directorio_comercio_popular.json)<br>[`data/processed/directorio_comercio_popular.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/directorio_comercio_popular.csv) |
 | **Vocabulario Jerárquico de Compras Populares** | Compilación taxonómica Chilangatón 2026 | JSON, CSV | 159 términos | Vocabulario de productos de consumo popular (Nivel Micro) con mapeo directo a los 67 subgiros, 9 macrocategorías y sinónimos barriales. | [`data/catalog/vocabulario_compras.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/vocabulario_compras.json)<br>[`data/processed/vocabulario_compras.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/vocabulario_compras.csv) |
 | **Centros de Abasto Mayoristas CDMX** | Compilación estratégica | JSON, CSV | 8 nodos clave | CEDA Iztapalapa, Merced Nave Mayor/Menor, Sonora, Jamaica, La Nueva Viga, La Viga y San Juan Pugibet con coordenadas y giros. | [`data/processed/centros_abasto_mayoristas.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/centros_abasto_mayoristas.json)<br>[`data/processed/centros_abasto_mayoristas.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/centros_abasto_mayoristas.csv) |
+| **Reseñas y Fotografías de Tianguis en Google Maps** | Web Crawling y Places API (Chilangatón 2026 - Tarea 5.5) | JSON, CSV | 1,367 tianguis (512 fichas auditadas) | Ratings promedio, opiniones de compradores, citas destacadas, temas frecuentes y URLs directas de fotografías reales de tianguis. | [`data/processed/tianguis_reviews.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/tianguis_reviews.json)<br>[`data/processed/tianguis_reviews.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/tianguis_reviews.csv) |
+| **Especialidades y Vocaciones Comunitarias NLP** | Minería de Texto NLP & Vocabulario Barrial (Tarea 5.5) | JSON, CSV | 1,367 tianguis clasificados | Vocación comercial (Abasto Fresco, Antojitos, Ropa de Paca, Herramientas), redacción descriptiva humana, top 3-6 productos elogiados y fotos. | [`data/processed/tianguis_especialidades_nlp.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/tianguis_especialidades_nlp.json)<br>[`data/processed/tianguis_especialidades_nlp.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed/tianguis_especialidades_nlp.csv) |
 
 ---
 

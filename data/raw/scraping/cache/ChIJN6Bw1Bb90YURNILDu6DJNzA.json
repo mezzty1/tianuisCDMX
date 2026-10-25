@@ -1,0 +1,34 @@
+{
+  "place_id": "ChIJN6Bw1Bb90YURNILDu6DJNzA",
+  "status": "ok",
+  "nombre_maps": "Tianguis viernes",
+  "rating": 3.6,
+  "total_reviews": 5,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace 2 años",
+      "texto": "Tiene variedad de productos, mucha oferta de ropa y comida preparada para ahí atenderse, incluye tepaches, helados, mariscos y garnachas. Hay mercaderes honestos y otros con las básculas alteradas para mentir en el verdadero precio del producto. Algunos de ellos ya usan terminales para cobro con tarjeta bancaria.\nYa sobre la banqueta, a lo largo del tianguis se establecieron varias chelerías."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es bueno pero no hay chachara o muy poca"
+    },
+    {
+      "stars": 4,
+      "fecha": "Surtido y de buen tamaño",
+      "texto": "Surtido y de buen tamaño"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mis viernes no son viernes si no voy a este tianguis"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcsKSgtx_ZN040Fgg5g99I2McR4Hp-BsMIIbqHz4hEtL2_Eq-LgD9t4ATRvo3fstmbrJRSjjBFAtaB0GXd1Ze-uQbCabJyW817GA4TplGSHX6n449KIYUN70WxWbzMKqCV7-jAZ=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "place_id": "ChIJiRzGvHH30YURRhBj0M2uHJA",
+  "status": "ok",
+  "nombre_maps": "Tianguis zona escolar",
+  "rating": 4.1,
+  "total_reviews": 86,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es un tianguis grande, se puede encontrar comida rica, frutas y verduras y hasta ropa, eso sí cuiden sus bolsas porque hay ratas que te sacan el celular o te cortan la bolsa para robarte"
+    },
+    {
+      "stars": 1,
+      "fecha": "Vendemos desayunos zona escolar los días miércoles buen servicio",
+      "texto": "Vendemos desayunos zona escolar los días miércoles buen servicio"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Este tianguis tiene la particularidad de ser muy amplio, se encuentra casi de todo. Comida, vende buena verdura, buena fruta, pescado, carne, también hay herramientas, accesorios para lavar, en fin. Hay surtido y buenos precios."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es grande y encuentras casi todo lo que buscas, pero no es recomendable en los pesos ⚖️ te roban siempre más de un cuarto, en todas las frutas y verduras!!"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Los comerciantes dejan un pasillo muy chico para los clientes, mucho desorden, generan mucha basura, son muy groseros, prepotentes en especial los que venden tenis y ropa de paca. Gente muy grosera gritona en fin no vuelvo a ir a este sitio."
+    }
+  ],
+  "snippets": [
+    "Hay surtido y buenos precios.",
+    "Es muy concurrido y variado en precios.",
+    "Excelente lugar para surtir tu despensa el gin de semana"
+  ],
+  "temas_frecuentes": [],
+  "fotos": []
+}

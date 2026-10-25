@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJQWuO8jQd0oURPzao5gNgPok",
+  "status": "ok",
+  "nombre_maps": "Tianguis del Sábado en Paseo de San Francisco",
+  "rating": 4.4,
+  "total_reviews": 613,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 7 meses",
+      "texto": "Me encanta la vibra de este lugar. Es familiar, es divertido y es popular. Encuentras muchas cosas interesantes y gran variedad de frutas y verduras frescas.\n¡Amo lo esotérico!"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Bien surtido, buenos puestos de comida en particular Doña Viky y Mariscos SolOmar. Algunos puestos tienen mercancía única y difícil de conseguir. Recomendable para ir a desayunar y gastar dinero."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Ya basta del escandalero de los borrachos que se quedan tomando hasta tarde en los puestos, está bien que la gente venga a consumir pero se regresan a su casa y uno que vive aquí tiene que soportar a los borrachos con su escándalo y sus shows"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El tianguis se encuentra en una colonia muy tranquila ecuntras de todo  puestos  de comida de verduras ropa etc eso si la estaciona por los alrededores se llena"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mucha variedad, excelente trato de los comerciantes..."
+    }
+  ],
+  "snippets": [
+    "Encuentras de todo, buen ambiente, seguridad y precios accesibles.",
+    "Buen lugar para almorzar, comprar fruta y cachivaches",
+    "Buenos precios, los vendedores son muy atentos, la comida super rica..."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc7dX83Mz3yZAnYrB8ciHGKhlmGZcDZRdppvpSFf30AVbOSDBXNiNH2R5TgI9kowtuJWTGWz57z_7fq3XB7IVikwdsasjVpwtyWkmwLOQcZiI1Ac43R-EaYgLE_8ZoFTf1-PyEv=w800-h600-k-no"
+  ]
+}

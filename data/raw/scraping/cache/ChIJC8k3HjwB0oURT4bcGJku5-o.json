@@ -1,0 +1,47 @@
+{
+  "place_id": "ChIJC8k3HjwB0oURT4bcGJku5-o",
+  "status": "ok",
+  "nombre_maps": "Tianguis “La piloto”",
+  "rating": 4.8,
+  "total_reviews": 13,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bueno, es grande y encuentras ofertas en fruta en las tardes"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "En el puesto  de fruta que está enfrente de los tacos de carnitas en puerto tacaña te pesan muy mal la fruta, te ofrecen oferta de 3 kilos  y te dan 2 kilos, mucho ojo con esa gente tranza."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Gran variedad de productos.\nPara todos los gustos y de todas las calidades."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me encanta ir a desayunar los sábados al puesto de quesadillas y pambazos, muy atentos en el servicio, muy limpio y te despachan en muy poco tiempo"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras de todo"
+    }
+  ],
+  "snippets": [
+    "Muy bueno, es grande y encuentras ofertas en fruta en las tardes",
+    "Gran variedad de productos."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02xwb'], 'fruta', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzAyeHdi', '2ahUKEwj57oyZ6NWXAxUkN94AHVxSMn8Q1bMEKCB6BAgAEEk', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdL9UlmEFi-99RD--I6GsiQYuictHUazmvY0YNgBw5ovrNEpZVK1GHd0n83DWKXNXQo8TnmUNsyQMbkmbuRld35-F4iPviuvsnz9HtcHdDVb8OIOKfS8KYUEuKNrMrE735YRdo=w800-h600-k-no"
+  ]
+}

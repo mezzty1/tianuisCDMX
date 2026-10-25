@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJRwUk6ZH_0YURFKhdX86yoQM",
+  "status": "ok",
+  "nombre_maps": "CASA BONITO TIANGUIS",
+  "rating": 3.3,
+  "total_reviews": 21,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "Yo consumo productos orgánicos y agro ecológicos desde hace mucho. Estos precios son súper exagerados, en general el servicio es malo, la gente trata de forma grosera. Este es el típico lugar que busca gentrificar la zona y que aparenta ser amigable, pero realmente no lo es.",
+      "texto": "Yo consumo productos orgánicos y agro ecológicos desde hace mucho. Estos precios son súper exagerados, en general el servicio es malo, la gente trata de forma grosera. Este es el típico lugar que busca gentrificar la zona y que aparenta ser amigable, pero realmente no lo es."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Para describir el bonito tianguis uno tiene que pensar en las delicias que crecen en nuestra tierra sin olvidar las manos que la trabajan. Quique el creador del bonito tianguis es un promotor incansable del campo y la gastronomía y un gran aliado para los productores. Si quieren comprar productos naturales además de deliciosos de casi todo el país y ayudar a un comercio más justo, vengan a bonito tianguis."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Muy caro, el problema es que no lo vale, los productos están medio chafas."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "El concepto y la tienda son hermosos, no dudo que les compren muy barato a los productores, sin embargo los productos están viejos, carísimos y pésima atención un robo en despoblado!!!!"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Este lugar es maravilloso y deseo no desaparezca, supe que recortaron sus horarios y que solo estará abierto los miércoles de 9 a 9 pm, los sábados y los domingos.\nLos totopos azules, el huevo orgánico, la cajeta artesanal, el conseguir papel reciclado para las necesidades higiénicas. Saber que tú compra está apoyando al comercio justo y a diversas comunidades, no tiene desperdicio.\nRecomiendo mucho seguirlos en redes, y apoyar sus bazares y actividades especiales."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/07br0'], 'comercio', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzA3YnIw', '2ahUKEwiVp8Ch6NWXAxX2iisGHZV1LYUQ1bMEKB96BAgAEEc', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": []
+}

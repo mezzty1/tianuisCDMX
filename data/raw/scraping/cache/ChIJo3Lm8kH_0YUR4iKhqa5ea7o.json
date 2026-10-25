@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJo3Lm8kH_0YUR4iKhqa5ea7o",
+  "status": "ok",
+  "nombre_maps": "Tianguis de los Viernes",
+  "rating": 4.3,
+  "total_reviews": 326,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace 3 años",
+      "texto": "Me encanta este tianguis, hay un puesto de huaraches gigantes muy rico y económico"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "Es un muy buen tianguis de la CDMX encuentras de todo con muy buena calidad, en especial el pescado ahí puedes encontrar el pescado más fresco como Salmón atún Huauchinango Robalo y Camarones"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 6 años",
+      "texto": "Hay de todo de primera necesidad, frutas, verduras, quesos, pescados, carnes y puestos para comer"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Todo lo que se vende en este tianguis es muy bueno. La comida, las verduras, la fruta, El pan dulce del Sr. De la canasta espectacular. Los jugos recién exprimidos deliciosos. Las quesadillas azules espectaculares."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Recomiendo el puesto de tacos de cecina, hay cecina natural, enchilada, bistec y costilla, pero si no eres muy exigente y te gusta lo grasoso pide los de \"gordito\" solo que suele agotarse muy rápido, la salsita roja es de lo mejor solo que si suele estar picante"
+    }
+  ],
+  "snippets": [
+    "Los tacos de Barbacoa deliciosos.",
+    "Excelente fruta, venden unas quesadillas muy buenas",
+    "Lo mejor huevo orgánico en este tianguis puedes adquirir el huevo"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcVwvDn6XFXCNh-BqzUfNrdEo2ueHIFJhS-S1abGuAACxpOq8E8O1lUhqg3qWaTrCAbJ8CeVB0Y3Sk2bqETa1E7qX8qw4cX5EzDwiqM3fK0pf_K-uQQlbe4cBJP-19TukFnJeVewA=w800-h600-k-no"
+  ]
+}

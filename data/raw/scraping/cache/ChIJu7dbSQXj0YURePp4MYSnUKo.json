@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJu7dbSQXj0YURePp4MYSnUKo",
+  "status": "ok",
+  "nombre_maps": "Tianguis lunes y viernes",
+  "rating": 4.1,
+  "total_reviews": 17,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un tianguis muy bien surtido, encuentras ropa, frutas y verduras muy frescas, accesorios de temporada para día de muertos y navidad, carne de cerdo, pollo, pescado, maquillajes genéricos, accesorios para el pelo, helados, botanas, antojitos; la mayoría de los vendedores son muy amables y agradables"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Pequeño pero encuentras de todo para hacer de comer"
+    },
+    {
+      "stars": 4,
+      "fecha": "Está padre que también estuviera los sábados para aquellos que no trabajan esos días",
+      "texto": "Está padre que también estuviera los sábados para aquellos que no trabajan esos días"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buen tianguis surtido"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Había una rata 🥺 de coladera"
+    }
+  ],
+  "snippets": [
+    "Buen tianguis surtido",
+    "Pequeño pero encuentras de todo para hacer de comer"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcuOPXF_yQP4FgbD8hLd8SdEo07R2BAqzIZpEFZszbCbyUnzR4fxo6aNeVUcHgsf4GdYyu5mubtsTXcXivF3pjEvgFLyNTmeEUTScDWgo96Tyhj3dF6Oe1pfxCljt37YbpdkQSYmECf6GnU=w800-h600-k-no"
+  ]
+}

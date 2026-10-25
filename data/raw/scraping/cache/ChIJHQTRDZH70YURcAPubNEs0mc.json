@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJHQTRDZH70YURcAPubNEs0mc",
+  "status": "ok",
+  "nombre_maps": "Mercado San Juan de Aragón 3a. Sección",
+  "rating": 4.1,
+  "total_reviews": 1609,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace 4 años",
+      "texto": "Solo una observación, los baños dejan mucho q desear ...\nNormalmente cuando cobran $6 o  hasta $7 pesos, es x por q los  tiene muy bien, en todos los aspectos ...\nEs mi humilde punto de vista.\nSaludos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Toda la comida es deliciosa y las tostas que venden y a lado de dónde venden cócteles esta señora vende los garbanzos con chile muy frescos"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Mucho surtido, muy amable para atender 😃, Regalos Rosy siempre tiene muchas novedades hermosas de temporada"
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Es muy caro este mercado y no tiene nada.. se siente de las lomas por lo caro.. muy mal"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Esta un poco mojado por todas partes pero encuentras las cosas básicas"
+    }
+  ],
+  "snippets": [
+    "Buenos precios, calidad regular, no encuentras de todo.",
+    "Buen servicio, buen surtido y variada comida.",
+    "Muy buen lugar y muy buenos precios y atienden muy bien a la gente"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLerPqdNVFPxCtnwhrzPyWYOIrmUNaGUMhJ74WowkM2rJutCRyQhUdzg-XojQmZ-PXwGzo68BM-wC74PvwpYWQMey6ywuy_7M5MN82LNR8PmSfhYu3nwprHWxspkByX1gsgYqPbR3A=w800-h600-k-no"
+  ]
+}

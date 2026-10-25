@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJUbhaN5r_zYURZgdromhAs8o",
+  "status": "ok",
+  "nombre_maps": "Mercado Tihuatlán",
+  "rating": 4.1,
+  "total_reviews": 853,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Todo está bien en el mercado excepto unas cocinas dijo la comida está bien pero la carnitas saben desabridas y secas ,de la cocina de alado no hay mucho que decir te hacen caras y te tratan algo mal tienen sittas preferencias"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 7 años",
+      "texto": "La nueva imagen de los mercados en la CDMX está llegando con una nueva propuesta mucho más agradable a la vista y con mayor limpieza. Al parecer es un proyecto para todas las alcaldías de la ciudad. Encuentra locales de jugos, licuados, cocinas económicas, estética, verdulería, etc."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy buen mercado, pero muy pequeño"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 3 años",
+      "texto": "Remodelado recientemente, te da la sensación de estar en un pueblito mágico, variedad de articulos"
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Muy caro y muy mala calidad en todo"
+    }
+  ],
+  "snippets": [
+    "Deliciosas cocinas muy buenos menús y excelente atención",
+    "Pueden encontrar de todo, y deliciosos cócteles de fruta.",
+    "Siempre me ha gustado mucho la verdura, la carne y el queso ahí.."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfhyIHVbiI1icJj_OGw-txTWEYJ920fnXookvXnae-p-KuGR0aZe4pRiTIIoogkBxC41mIdAzRJJhgaAIKW3SKICwAsn8YTeZFxcAIUQK7QOzJ1chFlJLEWIsk0K7vdEauaUM6U=w800-h600-k-no"
+  ]
+}

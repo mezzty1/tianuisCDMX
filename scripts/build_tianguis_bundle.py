@@ -186,8 +186,20 @@ def run():
 
     print(f"  ✓ {len(stations)} estaciones cargadas para cálculo caminable.")
 
-    # 2. Cargar Tianguis Limpio (1,367 registros)
+    # 2. Cargar Tianguis Limpio (1,367 registros) y Enriquecimiento NLP (Tarea 5.5)
     print("• Procesando los 1,367 tianguis semanales...")
+    nlp_dict = {}
+    if os.path.exists('data/processed/tianguis_especialidades_nlp.json'):
+        with open('data/processed/tianguis_especialidades_nlp.json', 'r', encoding='utf-8') as f:
+            for item in json.load(f):
+                idx_val = item['idx']
+                nlp_dict[idx_val] = item
+                try:
+                    nlp_dict[f"TIANG-{int(idx_val)+1:04d}"] = item
+                except Exception:
+                    pass
+        print(f"  ✓ Especialidades y fotografías NLP cargadas.")
+
     with open('data/processed/tianguis_limpio.json', 'r', encoding='utf-8') as f:
         tianguis_raw = json.load(f)
 
@@ -203,6 +215,17 @@ def run():
         pname = clean_popular_name(t['nombre'], t.get('direccion', ''), t.get('colonia', ''))
         scale = classify_scale(oferentes)
         vocation = assign_vocation(pname, oferentes, t.get('giro', ''), t.get('colonia', ''))
+
+        # Enriquecimiento NLP de Tarea 5.5
+        nlp_info = nlp_dict.get(t['id'], {})
+        voc_nombre = nlp_info.get('vocacion_nombre') or vocation['nombre']
+        voc_desc = nlp_info.get('especialidad_comunitaria') or vocation['descripcion']
+        voc_icono = nlp_info.get('vocacion_icono') or '🧺'
+        top_art = nlp_info.get('top_articulos_mencionados') or vocation['tags'][:6]
+        fotos = nlp_info.get('fotos') or []
+        rating = nlp_info.get('rating_google')
+        total_rev = nlp_info.get('total_resenas', 0)
+        foto_main = nlp_info.get('foto_principal') or (fotos[0] if fotos else '')
 
         # Calcular estación más cercana si tiene coordenadas válidas
         transporte_info = {}
@@ -271,9 +294,16 @@ def run():
             'escala_nombre': scale['nombre'],
             'escala_badge': scale['badge_class'],
             'escala_icono': scale['icono'],
-            'vocacion_nombre': vocation['nombre'],
-            'vocacion_desc': vocation['descripcion'],
-            'tags': vocation['tags'],
+            'vocacion_nombre': voc_nombre,
+            'vocacion_desc': voc_desc,
+            'vocacion_icono': voc_icono,
+            'especialidad_comunitaria': voc_desc,
+            'top_articulos_mencionados': top_art,
+            'tags': list(set(vocation['tags'] + [a.lower() for a in top_art])),
+            'fotos': fotos,
+            'foto_principal': foto_main,
+            'rating_google': rating,
+            'total_resenas': total_rev,
             'transporte': transporte_info
         }
         tianguis_processed.append(tianguis_item)

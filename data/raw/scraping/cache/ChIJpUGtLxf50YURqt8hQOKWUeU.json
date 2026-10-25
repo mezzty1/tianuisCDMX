@@ -1,0 +1,47 @@
+{
+  "place_id": "ChIJpUGtLxf50YURqt8hQOKWUeU",
+  "status": "ok",
+  "nombre_maps": "Tianguis iztacala",
+  "rating": 4.2,
+  "total_reviews": 25,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Abre los lunes y martes entre las 8:00 a.m. y 5:00 p.m.\nEs muy buen tianguis si quieres encontrar cosas baratas, recomiendo que vayan los lunes porque hay más puestos y más variedad, si quieren encontrar ropa no les recomiendo porque no hay, pero para tu despensa está muy chingona y también la paca que solo se pone los lunes"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buenos precios y variedad en comida, frutas y verduras."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "La verdura y la fruta está muy bien en este lugar la atención super bien en donde yo compro nos tratan cómo princesas.\n🍉🍊🍋🍌🍍🥭🍎🍏🍐🍒🍓🥝\n🌽🌶️🥒🥬🥔🥕🍅"
+    },
+    {
+      "stars": 2,
+      "fecha": "Toman el pedido sin tenerlo en existencia y nadie informa nada hasta que uno pregunta,solo te dicen que tienen desabasto y si no quiere esperar le bonificamos de 5a 8 días.habiles.Pesima atención.",
+      "texto": "Toman el pedido sin tenerlo en existencia y nadie informa nada hasta que uno pregunta,solo te dicen que tienen desabasto y si no quiere esperar le bonificamos de 5a 8 días.habiles.Pesima atención."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Cuando se pone este tianguis?"
+    }
+  ],
+  "snippets": [
+    "Tiene de todo y muy buena calidad y frescura",
+    "Para compra de verduras, frutas, especias es muy buen tianguis, muy recomendable"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/01d_1l'], 'precio', None, [None, None, None, None, 3, 0, 3], None, '2ahUKEwj98u-06NWXAxW7MdAFHQX4AUoQ1bMEKB96BAgAEEA', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeHPz5jMaRUrgOZ6oibVwQajAptkoNf0JcN5CsJTDxGkIymrdre4ad7jcbsDriHmRiPNWYoudI67k1We0nTOFLJ2htu4Up6GnktDZw0qgW0dxG63SPVCBpeTk1qNWnyFGQhzo8W=w800-h600-k-no"
+  ]
+}

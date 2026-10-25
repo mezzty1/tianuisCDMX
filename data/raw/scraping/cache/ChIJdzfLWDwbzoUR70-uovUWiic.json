@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJdzfLWDwbzoUR70-uovUWiic",
+  "status": "ok",
+  "nombre_maps": "MERCADO JUAREZ TECOMiTL",
+  "rating": 3.9,
+  "total_reviews": 529,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Renovado, hay de todo lo que se espera de un mercadito, comida, frutas, verduras, carnes y lácteos, etc. Limpio y con gente con vocación de servicio. Hay detallitos que les faltó a los contratistas por terminar en esa obra pero es funcional."
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace un año",
+      "texto": "Ahora remodelado y mejorando, un mercadito pequeño pero completo, en la planta baja el área de vegetales, carnes, tortillería, semillas, abarrotes, cremería y locales de alimentos preparados en el primer piso. Acceso para sillas de ruedas, sanitarios públicos. No hay estacionamiento propio. Recomiendo las quesadillas y taquitos de la señora del segundo piso que está dando a la calle."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "A pesar de que son pocos los negocios que se encuentran abiertos si hay variedad de cosas, en la planta alta hay cocinas económicas y negocios de antojitos  como quesadillas, se observa limpio y la comida que he podido probar es rica"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras de todo y a buen precio!!"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy limpio ,encuentras todo lo que buscas ,fruta y verduras frescas ,área de comida muy limpio ,carnicerías ,tiendas de abarrotes tortilleria"
+    }
+  ],
+  "snippets": [
+    "Son deliciosos los helados y los trabajadores son muy amables",
+    "Excelente servicio en los alimentos como peces y verduras",
+    "Me vine a desayunar nos atendieron bien"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLf5xdlTV9-U51EJvm5xOPpLQ4cpDAqGZXHCkPHotyoivjoDDcScxqXsnodi_gXQvYZ_bZm18-KVIRN-ytHKF7lE6anpeD6_QukjgjCAmauPtIjy88nc_0byeKICUxAM12-gJxBA2Q=w800-h600-k-no"
+  ]
+}

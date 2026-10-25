@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJg3bTuX7j0YURvIQQUjL239c",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Av. Texcoco\"",
+  "rating": 4.4,
+  "total_reviews": 513,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Este tianguis siempre me ha gustado mucho. Cuando era pequeña venía con mi abuelo y ahora que ya no está entre nosotros, sigo asistiendo con mi mamá. Aunque con el tiempo han aparecido caras nuevas, mantiene la misma esencia: siempre hay mucha variedad, buenos precios y cosas novedosas por descubrir. Es un lugar al que me gusta regresar porque, además de encontrar buenas compras, me trae muy buenos recuerdos"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 3 años",
+      "texto": "El tianguis dominical de San Juan, Av. Texcoco, Nezahualcóyotl. Uno de lo más grandes de la ciudad de México hay todo tipo de Comida y artículos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras de todo, yo voy por los tacos de tripa dorado también de \" el chino\"\nY a comprar chácharas bien vara."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Hay de todo en este tianguis, los mayoristas llegan a las 4am! Ahí venden por mayoreo por ejemplo tenis y pacas de ropa así como herramienta y otros tipos de productos.\nMuchos de los compradores se ponen más tarde ahí mismo o van a trabajar a otros tianguis cercanos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente lugar hay casi de todo"
+    }
+  ],
+  "snippets": [
+    "Deliciosos tacos de tripa y muchas verduras a buen precio",
+    "Excelente lugar, venden cosas muy frescas.",
+    "Hay mucha variedad de productos de muy buena calidad y hay muy buenos precios"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfe5LY-ORGv0hGECMVNUSEOypx7p5EjH-DT-bFBy-vr3c3EeauPpT0BbxTJ1Q3oDGOytLY4INGjfmJszwkIsWjBBWYiWQ1JaYeOaX9fB_AeZr6UHeGcCvdcr6eBZf0Hw75SoEM0Mg=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "place_id": "ChIJZ-EkCOf50YURf47gPjn4rAU",
+  "status": "ok",
+  "nombre_maps": "Tianguis de los miércoles en La laguna Ticomán",
+  "rating": 4.7,
+  "total_reviews": 7,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace 4 años",
+      "texto": "Este tianguis lo conocí porque estuve de visita en esa alcaldía y solo se pone los miércoles desde las 7:00am hasta las 5 o 6 de la tarde.\nNo es muy grande, pero encuentras casi de todo y a buen precio.\nLo único que no me gustó fue que en algunos puestos de frutas y verduras no te dejan escoger y tampoco te venden por menos de un kilo.😕"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras de todo, no cuenta con lugar de estacionamiento, pero puedes buscar estacionarte en calles cercanas, gran variedad de productos, buenos precios y bien pesado."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Hay una señora que viene de Jilotepec y trae muy buenos productos. Por ella voy a ese tianguis"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un buen lugar y buen desayuno"
+    }
+  ],
+  "snippets": [
+    "Un buen lugar y buen desayuno",
+    "No es muy grande, pero encuentras casi de todo y a buen precio.",
+    "Hay una señora que viene de Jilotepec y trae muy buenos productos."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc5Ld6mZY5G3tFi8nJLDv4aknSTHfoR2OadYP_8hBw43KSLpq4CU_WXZ8H9nnPTsdQ8a1sDMGoF7hl64jyPFaLdqn4kt4TAjau4Sm0xNV7DV4jpISsuYHXD0M4t_M6D9nFixLWrag=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "place_id": "ChIJbU8xYnT_0YURjW8rzKsFyAk",
+  "status": "ok",
+  "nombre_maps": "Tianguis de los miércoles",
+  "rating": 1.5,
+  "total_reviews": 2,
+  "reviews": [
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Muy malo!\nTal vez sirva para que la gente compre el mandado, pero la comida, (tacos y quesadillas), son caros y muy insípidos."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Está diminuto"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

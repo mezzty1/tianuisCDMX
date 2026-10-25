@@ -1,0 +1,32 @@
+{
+  "place_id": "ChIJV8nxDBX_0YURt8ZvpoLygvE",
+  "status": "ok",
+  "nombre_maps": "Tianguis Cultural Condesa",
+  "rating": 3.0,
+  "total_reviews": 6,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "Muy buen lugar para beber con amigos. Los mojitos son muy buenos."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "No existe tal tianguis; al menos, hoy, miércoles."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "No existe Tianguis"
+    },
+    {
+      "stars": 1,
+      "fecha": "español",
+      "texto": "definitely not open on thursdays"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

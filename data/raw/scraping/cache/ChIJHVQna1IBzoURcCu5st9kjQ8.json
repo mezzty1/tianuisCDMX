@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJHVQna1IBzoURcCu5st9kjQ8",
+  "status": "ok",
+  "nombre_maps": "Tianguis de ejido",
+  "rating": 4.2,
+  "total_reviews": 119,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buenos precios, gente amable, zona peligrosona."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me encanta ver y comparar precios, hay mucha variedad"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Está bien el mercadito chiquito pero casi encuentras todo, saludos."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "De todo un poco, recomiendo a la carnicería de este tianguis"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es el tianguis de los más económicos de la zona, un poco problemático por no tener donde estacionarse, pero cuenta con buenos productos y a buen precio."
+    }
+  ],
+  "snippets": [
+    "Encuentras tu verdura fresca",
+    "Deliciosos chamorros y excelente servicio",
+    "Venden cosas baratas y buenas"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/g/121dvs7_'], 'surtido', None, [None, None, None, None, 4, 0, 4], None, '2ahUKEwjcnIXb6NWXAxVHnysGHSvQB6kQ1bMEKCF6BAgAEEo', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcZ-bxKbpqUElT_NxLfMAoOWB_bvdhzjHHBd9fRWpUvVGfSLCCyfZI2RVn2mvsmTxQ8wDVgpEvOvpPyIOlSj1M7PkqHDb4Y3rn8C2d7Lcg8WpVzm8BBLL9lWaj2R7WL47-CgvSn=w800-h600-k-no"
+  ]
+}

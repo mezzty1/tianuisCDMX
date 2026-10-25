@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJB2wfYW780YURMb1ngJSwKkk",
+  "status": "ok",
+  "nombre_maps": "Mercado Adolfo López Mateos",
+  "rating": 4.2,
+  "total_reviews": 1412,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "De maravilla su atención de todos los dependientes de negocios\nY ahora con la mejor las mejoras que le han hecho a la plaza cívica se ve espectacular\nCon áreas para hacer ejercicio juegos de niños puente colorido y todo enrejado con mucha seguridad"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "Un mercado normal de barrio, afuera hay comida, canchas de fut, bàsquet y un pequeño espacio para los perritos, buen lugar."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "La pintaron\nHay locales que si están abiertos y temprano y otros no (el área de verduras)"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bonito pero le falda que sus locatarios pongan de su parte para que se vea más animado y atractivo."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Lugar muy limpio, tranquilo, y la decoración temática que le ponen esta increíble, lugar maravilloso para ir con los peques o en pareja, muy seguro y limpio."
+    }
+  ],
+  "snippets": [
+    "Los mariscos muy ricos muy bien servido las meseras excelente servicio",
+    "Muy buenos lugares para comer y fruta muy fresca y surtida",
+    "Riquísima salsa roja con los que venden la barbacoa"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcJYU0qObX4ErmFTyBgWF9IUKBuq29x8FnG0NmGqhyS2b9qJ2q92GmSVtgWJVKEQHazAy0lWRQ3X-kLMu-_YRzWKw7_Er7bJJFx-cBkAMpv30sI8CCHB60Py_nfDsenXM5cWhAk=w800-h600-k-no"
+  ]
+}

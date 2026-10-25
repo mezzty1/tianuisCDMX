@@ -1,0 +1,47 @@
+{
+  "place_id": "ChIJL0KQntz_0YURA_0_Mbxtklc",
+  "status": "ok",
+  "nombre_maps": "Tianguis de los sabados",
+  "rating": 5.0,
+  "total_reviews": 5,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mi favorito para ir a desayunar, desde la barbacoa, el menudo, las aguas naturales y jugos, los huaraches y los raspados y esquimos me encanta pero en cuanto a lo demás, no es muy grande ni surtido, algunos puestos dan caro asi que diré que es perfecto para ir a desayunar o comer"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es muy muy pequeño. Solo es ideal para ir a desayunar o comer.  No hay muchos puestos pero si se ve organizado y limpio"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bueno, está ordenado, organizado y todo lo que venden es de calidad."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Los mejores tlacoyos de la cuidad"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras de todo"
+    }
+  ],
+  "snippets": [
+    "Muy bueno, está ordenado, organizado y todo lo que venden es de calidad.",
+    "Solo es ideal para ir a desayunar o comer."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0hz4q'], 'desayunar', None, [None, None, None, None, 2, 120, 3], 'CgoKCC9tLzBoejRx', '2ahUKEwjt04jV6NWXAxXx2BoGHTsxAEUQ1bMEKCl6BAgBEHI', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdZpcTRhSXD0O5R35oh4AJjk3h4j1bJ2KQNvOd_pIuf043gwNhTGyj5HZmgTgIkgFy3m6-sDu4E6CZQWRArtHsXqbnulIn4-RwIQaMW52BNd9mwzLxuL9ROO2sT17t7zGNvye9rSw=w800-h600-k-no"
+  ]
+}

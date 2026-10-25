@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJGzgGnjYAzoURRRidVFoEuqs",
+  "status": "ok",
+  "nombre_maps": "MERCADO LA CRUZ",
+  "rating": 4.0,
+  "total_reviews": 71,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace 7 años",
+      "texto": "Un mercado popular muy pequeño, pero concurrido, sobre todo en su área de comida preparada, se puede encontrar muy buenos mariscos y pescados. La comida corrida en algunos locales además de completa y económica, con muy buen sabor y atención amable.\nTambién hay locales de pollo,carne de cerdo y vacuno, frutas y legumbres, y alguno que otro de papelería, ferretería."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Aquí en este puesto de tortas, es el lugar más sucio del mercado de la Cruz, con solo ver su lona de presentación y su ventilador te darás cuenta que nunca lo lavan, imagínate como está su cocina. Fuchi."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Excelente para comprar carne para tacos cabeza,tripa ,lengua precosidos salen con buen sabor"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "En lo personal llego a 3 o 4 locales o negocio y t atiende bien lo que buscas que no t atiendan de mala gana  es con actitud"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "La comida es rica y económica el personal es atento"
+    }
+  ],
+  "snippets": [
+    "Los mejores pescados y mariscos del rumbo!!",
+    "Productos frescos y siguen el protocolo de sanidad",
+    "Cada que visito a mi abue me gusta pasar al mercado para recordar!"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLciqutXS661JHKPkr21IlCJg17L0KgYscxTSNOEfVSLfTxrAyulCa65Ykbig08g_VP7JiSyFC_SMmWfwGl_tHO29W8qyMPdVzmv5KsNt5O1jphCRnm8eO3ZdPrj10UKGZiWXAbh=w800-h600-k-no"
+  ]
+}

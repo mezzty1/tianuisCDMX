@@ -1083,6 +1083,14 @@
       </div>
 
       <div class="sidebar-body">
+        <!-- FOTOGRAFÍA Y RATING GOOGLE MAPS (TAREA 5.5) -->
+        <div class="sidebar-photo-container" id="side-photo-box" style="margin-bottom: 12px; position: relative; border-radius: 12px; overflow: hidden; background: var(--slate-100); height: 160px; display: none;">
+          <img id="side-photo-img" src="" alt="Fotografía del Tianguis" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.parentElement.style.display='none';">
+          <div id="side-photo-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 4px;">
+            <span style="color: #fbbf24;">★</span> <span id="side-rating-text">4.2 (1,048 reseñas)</span>
+          </div>
+        </div>
+
         <!-- ESTATUS EN VIVO -->
         <div class="status-card" id="side-status-card">
           <div class="status-indicator-dot"></div>
@@ -1092,12 +1100,16 @@
           </div>
         </div>
 
-        <!-- ESPECIALIDAD / VOCACIÓN -->
+        <!-- ESPECIALIDAD / VOCACIÓN COMUNITARIA NLP -->
         <div class="detail-section">
-          <span class="detail-label">Especialidad y Vocación</span>
+          <span class="detail-label">Vocación y Especialidad Comunitaria</span>
           <div class="detail-value-bold" id="side-vocation-title">Ropa de Paca, Herramientas y Chácharas</div>
-          <div class="detail-value" id="side-vocation-desc">Megatianguis emblemático de segunda mano, antigüedades y antojitos.</div>
-          <div class="product-tags-cloud" id="side-product-tags"></div>
+          <div class="detail-value" id="side-vocation-desc" style="font-size: 12.5px; line-height: 1.5; color: var(--slate-700); margin-top: 4px;">Megatianguis emblemático de segunda mano, antigüedades y antojitos.</div>
+          
+          <div style="margin-top: 10px;">
+            <span style="font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--slate-500);">Artículos más elogiados por visitantes:</span>
+            <div class="product-tags-cloud" id="side-product-tags" style="margin-top: 4px;"></div>
+          </div>
         </div>
 
         <!-- TRANSPORTE MÁS CERCANO A PIE (SIN LÍNEAS ESTORBOSAS) -->
@@ -1520,26 +1532,48 @@
         escalaBadge.className = `badge-escala ${t.escala_badge || 'badge-barrial'}`;
         document.getElementById('side-oferentes-count').textContent = `~${t.oferentes.toLocaleString()} oferentes / puestos`;
 
+        // Fotografía y Rating Google Maps (Tarea 5.5)
+        const photoBox = document.getElementById('side-photo-box');
+        const photoImg = document.getElementById('side-photo-img');
+        const ratingText = document.getElementById('side-rating-text');
+        const fotoUrl = t.foto_principal || (t.fotos && t.fotos.length ? t.fotos[0] : '');
+        
+        if (fotoUrl) {
+          photoImg.src = fotoUrl;
+          photoBox.style.display = 'block';
+        } else {
+          photoBox.style.display = 'none';
+        }
+
+        if (t.rating_google) {
+          const revCount = (t.total_resenas) ? `${t.total_resenas.toLocaleString()} reseñas` : 'Google Maps';
+          ratingText.textContent = `${Number(t.rating_google).toFixed(1)} (${revCount})`;
+        } else {
+          ratingText.textContent = 'Verificado en territorio';
+        }
+
         // Estatus en vivo
         const statusCard = document.getElementById('side-status-card');
         statusCard.className = `status-card ${status.cssClass}`;
         document.getElementById('side-status-headline').textContent = status.headline;
         document.getElementById('side-status-subline').textContent = status.subline;
 
-        // Vocación
-        document.getElementById('side-vocation-title').textContent = t.vocacion_nombre || 'Abasto Popular Barrial';
-        document.getElementById('side-vocation-desc').textContent = t.vocacion_desc || 'Abasto barrial de alimentos frescos y enseres.';
+        // Vocación y Especialidad Comunitaria NLP
+        document.getElementById('side-vocation-title').textContent = `${t.vocacion_icono || '🧺'} ${t.vocacion_nombre || 'Abasto Popular Barrial'}`;
+        document.getElementById('side-vocation-desc').textContent = t.especialidad_comunitaria || t.vocacion_desc || 'Abasto barrial de alimentos frescos y enseres.';
 
-        // Tags de productos
+        // Tags de artículos más elogiados
         const tagsContainer = document.getElementById('side-product-tags');
         tagsContainer.innerHTML = '';
-        if (t.tags && t.tags.length) {
-          t.tags.forEach(tag => {
+        const displayArticles = t.top_articulos_mencionados || t.tags || [];
+        if (displayArticles && displayArticles.length) {
+          displayArticles.forEach(tag => {
+            const cleanTag = String(tag).replace(/^#/, '');
             const chip = document.createElement('span');
             chip.className = 'product-tag-chip';
-            chip.textContent = `#${tag}`;
+            chip.textContent = `#${cleanTag}`;
             chip.addEventListener('click', () => {
-              applyProductFilter(tag);
+              applyProductFilter(cleanTag);
             });
             tagsContainer.appendChild(chip);
           });

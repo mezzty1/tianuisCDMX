@@ -1,0 +1,39 @@
+{
+  "place_id": "ChIJm1sFGnID0oURLooe1P3-bmY",
+  "status": "ok",
+  "nombre_maps": "Mercado sobre Ruedas: Lunes",
+  "rating": 4.5,
+  "total_reviews": 11,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 3 años",
+      "texto": "Tianguis de lunes,los tacos,las flautas,barbacoa,quesadillas y bebidas son muy ricas y deliciosos, vale la pena probar"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "Económico y delicioso, ampliamente recomendado solamente los días lunes"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "al inicio del tianguis se encuentra un señor que venden nieves y helados, recomiendo totalmente\nlos precios están entre 50-80 por persona (por la zona)"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente comida y variedad de productos."
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 8 años",
+      "texto": "Económico y rescatable, lo mejor son sus flautas"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdnOp1TzmdwlKviOJf38f1aSX_pJu9aOlqMYqkyn1NECEmj1ZgeW6jHNap9qzPLIgQvaldD1ZMV11BKfR7c1AAoAkuLf80MbXbjdWGdIBnFkTV_Hmvfm8N2fv0NFex1hfjckW2A=w800-h600-k-no"
+  ]
+}

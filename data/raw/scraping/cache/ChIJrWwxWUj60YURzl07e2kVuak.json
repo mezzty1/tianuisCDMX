@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJrWwxWUj60YURzl07e2kVuak",
+  "status": "ok",
+  "nombre_maps": "Mercado San Felipe de Jesús",
+  "rating": 4.3,
+  "total_reviews": 9925,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Un mercado muy limpio, excelentes calidad de productos, surtido amplio, comercios aledaños con productos variados, comerciantes muy amables, lo malo? No vayas en auto porque no hay donde estacionarse.",
+      "texto": "Un mercado muy limpio, excelentes calidad de productos, surtido amplio, comercios aledaños con productos variados, comerciantes muy amables, lo malo? No vayas en auto porque no hay donde estacionarse."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen mercado encuentras de todo , productos frescos  buena competencia y buenos precios"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Un buen mercado donde hay de todo a precios muy razonables. Se puede comer bien, y en general hay buen ambiente."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy surtido y fresco.\nEn general los locatarios son muy atentos."
+    },
+    {
+      "stars": 5,
+      "fecha": "Variedad de productos, aunque los pasillos son muy estrechos y la zona de comida está muy aislada, los baños están bien",
+      "texto": "Variedad de productos, aunque los pasillos son muy estrechos y la zona de comida está muy aislada, los baños están bien"
+    }
+  ],
+  "snippets": [
+    "Muy buenos tacos de cecina y mariscos baratos y sabrosos",
+    "También venden pescado empanizado, tostadas, caldo, empanadas, etc.",
+    "Encuentras de todo ,siempre verdura y fruta fresca"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcCjcRVXttBhWdqnY2CFfl5FkH4-cAbTQxAyWyU_zujA9vgKVi2hufb3g58G0sJR6VkJ4lvtnx2XUAjPqvsva0gBhuykqira3kcFnY47WoRKomWHVtX8QcIvpff5tpg4P9DcOz-3TZRjfg=w800-h600-k-no"
+  ]
+}

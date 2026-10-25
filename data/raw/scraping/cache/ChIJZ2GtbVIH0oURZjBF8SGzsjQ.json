@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJZ2GtbVIH0oURZjBF8SGzsjQ",
+  "status": "ok",
+  "nombre_maps": "Mercado San Mateo Tlaltenango",
+  "rating": 3.7,
+  "total_reviews": 379,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buenos precios, variedad de muebles para todos los bolsillos, muy amables"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "El mercado la verdad que está herido jajaja\n\nPero San Mateo es increíble, lo amo"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mercado pequeño pero con gran variedad de productos, hay local de costura, papelería, abarrotes. Cocina económica y otros más."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Bueno es el mercado del pueblo. Pero aún siendo el único es pequeño y cuenta con una cosina para poder comer ,tienda de abarrotes,tienda donde te venden uniformes de las escuelas de la comida, papelería,dulceria .etc no tiene muchas cosas pero podrías encontrar algo de lo que andes buscando"
+    },
+    {
+      "stars": 1,
+      "fecha": "Una lástima está Colonia! Unos 15 o 20 años atrás, era de las más limpias y seguras... ahora solo es un recuerdo!",
+      "texto": "Una lástima está Colonia! Unos 15 o 20 años atrás, era de las más limpias y seguras... ahora solo es un recuerdo!"
+    }
+  ],
+  "snippets": [
+    "Le faltan muchas cosas a los negocios pero atienden muy bien",
+    "Es un buen lugar pero no tiene mucha variedad ni hay verdulería",
+    "Muy buena atención pero le falta más afluencia de gente"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/06zdj'], 'escolar', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzA2emRq', '2ahUKEwjb8Y-n6NWXAxX35MkDHY7YEgEQ1bMEKC56BAgAEHc', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcZh7K8qc4HFAnVJdoi3bvrQhuAxJOoM3wtWCHbO_jLc_Xa7WpN9p2SLiNfn-YC9_6n1jc1NF4LJRw0lkBpVql0v6M0gIO12T839cVtWXgM3wotIImibq2hxL16hWFWHyL-wexL=w800-h600-k-no"
+  ]
+}

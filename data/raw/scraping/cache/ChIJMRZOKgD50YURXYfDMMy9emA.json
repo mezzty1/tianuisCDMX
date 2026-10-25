@@ -1,0 +1,32 @@
+{
+  "place_id": "ChIJMRZOKgD50YURXYfDMMy9emA",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Buenavista - Atepehuacan\".",
+  "rating": 4.3,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace un año",
+      "texto": "Es un tianguis pequeño que esta sobre la calle de Buenavista, que está a un costado del parque de San Bartolo Atepehuacan.\nLo instalan los Martes en un horario aproximado de 8:30 am a 5:00 pm.\nEstá pequeño y solo cuentan con lo más básico y se me hizo un tanto costoso algunos productos como las frutas y verduras.\nCuentan además con comida preparada que está muy buena."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mercado tradicional, pequeño. Fui buscando tacos de mixiote para desayunar y acabe en la barbacoa que esta muy buena"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Algunos productos están más cistosos que en otros tianguis pero tienen lo más básico para la despensa."
+    }
+  ],
+  "snippets": [
+    "Cuentan además con comida preparada que está muy buena.",
+    "Mercado tradicional, pequeño."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLelqtqTaYEHANMj3esacNax5hNWoAR3t4ZsxVCJNseDeO6cV81H52PI-5EfpxFmGjKd_W8--l2lq91ZyLRPiW6BuQzMEIC8Al2hh-aOnqmGRN_AfgYU82SNcVvScRwB-W5_Cw0=w800-h600-k-no"
+  ]
+}

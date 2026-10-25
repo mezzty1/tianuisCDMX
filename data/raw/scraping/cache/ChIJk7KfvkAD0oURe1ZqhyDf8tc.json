@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJk7KfvkAD0oURe1ZqhyDf8tc",
+  "status": "ok",
+  "nombre_maps": "Tianguis las Vias",
+  "rating": 4.1,
+  "total_reviews": 38,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es una buena opción para chacharear ,te encuentras con buenos productos y cosas originales... Lleven cambio siempre, se los recomiendo."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "En su mayoría se vende chácharas y ropa de segunda mano, están ricas las gorditas de carnitas que venden y la gente es amable, cuando gusten pueden visitar mi puesto de accesorios para bebe y cositas de Kitty nos ponemos los domingos de 9 am 3 pm"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es pequeño pero encuentras ropa de segundo uso, zapatos, juguetes y herramienta, asi como muchas otras cosas usadas en muy buen estado"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Si te gusta chacharear, es una buena opción... Es muy pequeño pero próximamente podría crecer y ser un buen lugar para el desestres, además está lleno de gente atenta y conocida que te brinda seguridad..."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "encuentras cosas usadas y nuevas...buen ambiente ..es un lugar popular y seguro"
+    }
+  ],
+  "snippets": [
+    "Encuentras cosas usadas y nuevas...buen ambiente ..es un lugar popular y seguro",
+    "Esta pequeño pero esta entretenido para ir a chacharear o desayunar",
+    "Si te gusta chacharear, es una buena opción..."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0985p5'], 'carnitas', None, [None, None, None, None, 2, 0, 2], 'CgsKCS9tLzA5ODVwNQ==', '2ahUKEwi2gOie6NWXAxU54MkDHUTBIbIQ1bMEKCF6BAgAEEk', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeSf0-OvAO43dflSZZxp1MwIRTfNT1Ie4htw4ydN0RknUtk7oDE-9eelMF_TFemYNwisZUGn-lujXpvxvlUToDD2oS_yZgQeSGy5yn5A-QuIUaar7hB70gRJGmXT2PwWucmoDws=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJbUqaAKkDzoURG6GmCdEyzNI",
+  "status": "ok",
+  "nombre_maps": "Mercado De La Colonia Del Mar",
+  "rating": 4.1,
+  "total_reviews": 1576,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 7 años",
+      "texto": "Creó es un buen momento para apoyar a los mercados públicos y a todos los pequeños negocios y disfrutar su calidez humana y comprar en las tiendas de la colonia  así impulsar la economía de nuestro gran país mi México"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Fácil de llegar,solo que encontré pocos locales abiertos ya que abren tarde."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Venden de todo y te atienden muy bien"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 3 años",
+      "texto": "Muy buen mercado, algo complicado para llegar sin auto. Vamos a los mariscos y son muy buenos, la atención increíble."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 6 años",
+      "texto": "Me agrada este mercado es muy limpio y espacioso"
+    }
+  ],
+  "snippets": [
+    "Los pescados y mariscos súper frescos y ricos",
+    "Las tortillas están más baratas,está muy bien surtido",
+    "Excelente lugar para adquirir diversas cosas, buen precio y muy buena atención."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcmPithfqsAeAwOdob6Gnzzv2sRoPmONAEuoAc9KkNkRVN4rqlPHG65a-cQh0zZyMr7J-cP0DLxbpZtiV2D6gvLwwSJqg47aiRkShDCn9OrMuLJOAnNDmvm0YVS7QaNS_-j26lakg=w800-h600-k-no"
+  ]
+}

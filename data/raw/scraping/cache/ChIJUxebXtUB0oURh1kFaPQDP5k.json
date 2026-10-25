@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJUxebXtUB0oURh1kFaPQDP5k",
+  "status": "ok",
+  "nombre_maps": "Mercado José María Pino Suárez",
+  "rating": 4.1,
+  "total_reviews": 444,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace 3 años",
+      "texto": "Aparte de lo esperado en un mercado es buena opción para la compra de souvenirs y para desayunar a precios accesibles"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 6 años",
+      "texto": "Deliciosa la comida de Cocina Juanita y Paola 👌👌👌super accesible, sabor casero..... 🤤"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Las personas son amables y encuentro lo que busco, a veces caro; pero hay. Lo último que encontré y me gustó fue un local el 160, donde venden artículos de cristal y cosas para regalo, tambien encontre el local  183. Donde reparan apartos electeonicos, muy profesional y buen seevicio; Sin duda lo recomiendo."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un mercado pequeño pero tiene de todo, su tlapareria esta muy bien surtida y dan a muy buen precio"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen mercado con gran variedad de locales desde un par de tiendas varias carnicerías y locales de ventas de frutas y verduras además de una pastelería pequeña dos papelerías un expendio de venta de ropa y zapatos además de un molino donde venden harina preparada o sin preparar para hacer tamales también dos costureras y un técnico en reparación de electrónicos una paleteria una estética y una ferretería en treotros locales y varias cosinas donde venden una muy rica comida"
+    }
+  ],
+  "snippets": [
+    "Los postres y pasteles q venden en este lugar son deliciosos....",
+    "No hay mucha gente y abren tarde tal vez por la pandemia,pero buen servicio",
+    "Buen lugar para comer garnacha muy deliciosas e higiene"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc_9XUi9VMPd2KJVGAzxUiK3Yan8V5ZXCCE0tuLNAxaAbs1a-iRCUEVqr6W9_WV4juo_x68MNg1eDGUD4rKecsLit1jXOL0aXMr5JoZqjK0b4Nyir7If9Cn6O3JL0bQcwCke8oGtQ=w800-h600-k-no"
+  ]
+}

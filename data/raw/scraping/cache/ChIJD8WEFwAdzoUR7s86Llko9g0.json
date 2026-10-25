@@ -1,0 +1,32 @@
+{
+  "place_id": "ChIJD8WEFwAdzoUR7s86Llko9g0",
+  "status": "ok",
+  "nombre_maps": "Mercado de Ixtlahuacan (Real)",
+  "rating": 4.3,
+  "total_reviews": 10,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mercado surtido, encuentras varios productos, chicharrón recién hecho sabroso 😋, atención buena 👌 recomendable"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Los locatarios tienen buenos productos y son muy amables algunos te dejan escoger la fruta y verdura."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Carniceria saavedra tiene buen producto y variedad\nLa recomiendo"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Bueno aunque su horario en un poco tarde"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

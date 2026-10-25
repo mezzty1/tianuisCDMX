@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJufYbPmv50YURtpLqdB35vkE",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"María del Carmen\".",
+  "rating": 4.7,
+  "total_reviews": 10,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 10 meses",
+      "texto": "La comida taiwanesa que venden ahí muy recomendable, la señora es súper amable.\nSi andas por la zona y en el tianguis no dudes en probar cualquier cosa"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "🍉🥑 Este tianguis lo instalan los 📆 Miércoles en un horario aproximado de 🕣8:30 am a 5 pm🕔.\n+ En el venden desde comida preparada🍜, carne de pollo🍗 y res🍖, frutas🍐, verduras 🍅, juguetes 🎲, aparatos eléctricos🔌, botanas y bebidas.\n+ En general se encuentran cosas variadas a buenos 💲 precios y atención amable."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen surtido de frutas fritanga 👌"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Recuerdo que estas agrupaciones de comerciantes eran conocidas como \"mercado sobre ruedas\"\nUna alternativa a el surtido de la despensa de víveres perecederos y frescos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Prueben la paella, esta exquisita!!!"
+    }
+  ],
+  "snippets": [
+    "Prueben la paella, esta exquisita!!!",
+    "Buen surtido de frutas fritanga 👌",
+    "+ En general se encuentran cosas variadas a buenos 💲 precios y atención amable."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02xwb'], 'frutas', None, [None, None, None, None, 2, 4, 4], 'CgoKCC9tLzAyeHdi', '2ahUKEwicytmx6NWXAxUiGtAFHQqdLRUQ1bMEKCJ6BAgAEFc', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdKRDGpieVLFud92J0VBLUUIS7isp4y7eVU-CoBWq7nz0WjlJ6uXRzBt6XIZgklK7hohC0Im8s4qVMgWl5aC-G8Khn9OPFEzAjeBtj5SWycNlCyhHBRCWsK1fi2-xiWxp5Nvzmb=w800-h600-k-no"
+  ]
+}

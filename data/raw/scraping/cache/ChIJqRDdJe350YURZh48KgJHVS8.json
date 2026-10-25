@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJqRDdJe350YURZh48KgJHVS8",
+  "status": "ok",
+  "nombre_maps": "Tianguis Martes en Fausto Romero",
+  "rating": 4.4,
+  "total_reviews": 30,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "🍅🥕 Es un tianguis que ya tiene muchos años aquí, lo instalan los 📆 Martes en un horario aproximado de 🕗 8:30 am a 🕔 5:00 pm.\n+ Tiene poca variedad en cuanto a los productos que venden 🎁🌮 ya que es un tianguis pequeño, ya que solo abarca 2 cuadras pequeñas.\n+ Y en cuanto a precios💲me parece que están más elevados que en otros tianguis.\n+ Lugar recomendable para visitar en familia."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "BUEN MERCADO SOBRE RUEDAS  , BUENA ATENCION DE LOS COMERCIANTES , COMO SON EL DE FRUTAS Y VERDURAS ARI , LA SRA. NATALY EXCELENTES SOPES , EL SR. DE LAS PELICULAS AMABLE . LO UNICO MALO QUE YA NO VIENE EL DE LA BARBACOA .  Y A LOS COSTADOS HAY UNA PIÑATERIA A BUEN PRECIO . SOLO UNA CORRECION SOLO ES DIA DE MERCADO LOS MARTES ."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Solo se pone los martes, desde temprano y se anda quitando como a las 7 ya completamente, hay locales muy buenos, buenos precios y excelentes productos, si debería ser mas grande e ir mas locatarios pero no es muy conocido"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "La mejor fruta es con Jaime, las quesadillas de enfrente de su puesto, de chicharrón, son las mejores, la verdura con el.señor entrando por Moctezuma."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hay una doña que hace unos sopes muy ricos con mucho quesillo",
+      "texto": "Hay una doña que hace unos sopes muy ricos con mucho quesillo"
+    }
+  ],
+  "snippets": [
+    "Hay una doña que hace unos sopes muy ricos con mucho quesillo",
+    "Buenos productos a buen precio sobre todo fruta y verduras",
+    "Buen lugar para comer"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02xwb'], 'fruta', None, [None, None, None, None, 3, 1, 4], 'CgoKCC9tLzAyeHdi', '2ahUKEwiwstWx6NWXAxWy6ckDHb2BKgoQ1bMEKCF6BAgAEFI', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfJxTyyGaK-yGIo6hI9dYJSSpcidTESrsB6Lps_Q3tdmf7R46JEnRSPZbj66bhLIVzmEvNj-7qkJLG4dNQdgwvr8VJKY_E8ZSS9wOb_sDJCZLp8QcVp48QcG2xCG9_2zZcK17FhRg=w800-h600-k-no"
+  ]
+}

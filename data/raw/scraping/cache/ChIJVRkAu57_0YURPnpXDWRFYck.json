@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJVRkAu57_0YURPnpXDWRFYck",
+  "status": "ok",
+  "nombre_maps": "Tianguis",
+  "rating": 4.3,
+  "total_reviews": 139,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "Algo grandecito el tianguis, hay variedad y de todo un poco, bueno a mi parecer le hace falta la ropa de paca, los precios son algo elevados creo que dependiendo del vendedor."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "De lujo las quesadillas y gorditas, para desayunar. A la hora de la comida, los tacos de carnitas y los de cecina de Yecapixtla, te van a poner a pensar. Ricos pasteles y dulces de 100 grs (taponcitos, gomitas de azúcar, etc) son la Y para el postre!!"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me encanta ir a ese tianguis tanto la comida me gustan los tacos de cochinita pibil sobre todo la salsa de chile habanero.\nAsí como la ropa y en general todo lo q venden está súper bien"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es en su mayoría de pura comida... la ropa es cara y nones de tan buen calidad... pjito allí..."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buen surtido de muchos productos, frutas y verduras  muy caros, sale más barato y a las tiendas departamentales"
+    }
+  ],
+  "snippets": [
+    "Todo muy limpio y de buena calidad, un poquito exagerados sus precios",
+    "La barbacoa está deliciosa y las carnitas de junto también",
+    "Recomiendo los tacos de pechuga con queso y los de chile relleno"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLehXVbAChkpRKhW7ioDifEzqkTLeG_rkMKzAoLNwXkdV9rFYAZ2PO_ws_3Os2I-XnmoV8XLHQZ0D1lGOPRQGlx4yMjNWUXvES889LBioutI40xf_nx0rECWjA6JUQkRVwLUhVw=w800-h600-k-no"
+  ]
+}

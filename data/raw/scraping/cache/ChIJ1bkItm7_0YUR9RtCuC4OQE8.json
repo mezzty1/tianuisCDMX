@@ -1,0 +1,19 @@
+{
+  "place_id": "ChIJ1bkItm7_0YUR9RtCuC4OQE8",
+  "status": "ok",
+  "nombre_maps": "Tianguis de Sagredo",
+  "rating": 4.8,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Los tacos de carnitas de este puesto son una delicia"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeVNXM83bXrBLh86D0cIJ2Sf0SVFqAvcu3brkG4C65NN3DBsolbqDFqM9uUMQkPMrsnwHZiHPar-eXWC9nrcC2lXZIOPtO80Yfc4O5l9t3idVjQexT1pxCm_rrJgQ9Zvig1pME=w800-h600-k-no"
+  ]
+}

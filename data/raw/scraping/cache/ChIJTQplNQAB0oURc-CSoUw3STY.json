@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJTQplNQAB0oURc-CSoUw3STY",
+  "status": "ok",
+  "nombre_maps": "Tianguis de Doña Lenta (Enojada)",
+  "rating": 4.8,
+  "total_reviews": 6,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Buenos puesto de comida"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un tianguis muy pequeño, en su mayoría de comida, hay variedad y los postres son una delicia 😋"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcuzPoql-SaMp7UrdGAoq0gjH5XDR1_LyI6C2wc0NpVBui8MZlE-6SXhH3eBmaOOH2e-9gbv9KQ0Oi3eWcQF65Q6LPJaXRuPLRqOnizygA7us3lcI6Hr_6m9U-nwNcrEb2lx5GpvfcvDoKO=w800-h600-k-no"
+  ]
+}

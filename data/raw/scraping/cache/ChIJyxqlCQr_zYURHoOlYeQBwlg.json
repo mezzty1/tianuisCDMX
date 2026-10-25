@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJyxqlCQr_zYURHoOlYeQBwlg",
+  "status": "ok",
+  "nombre_maps": "Mercado 384 Contreras la cruz",
+  "rating": 4.1,
+  "total_reviews": 2624,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "La mejor pancita de Contreras..la verdad no hay otra igual...el pozole rojo una delicia...dense la oportunidad de venir a probar"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Todo muy fresco y a buen precio"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Fui por un arreglo de flores y quedé encantado, la atención de la srita es insuperable y sus consejos en el arreglo fueron exactos"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 5 años",
+      "texto": "Excelente mercado, muy rico encontrarás frutas, verduras, carnes, semillas, área de comidas, murales y más. Visita el segundo  piso. Este mercado cuenta con estacionamiento!!"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Esta tranquilo solo que hay cosas que no hay"
+    }
+  ],
+  "snippets": [
+    "Los tacos de cecina con longaniza muy buenos con una salsa sólo para valientes!",
+    "Cómo cualquier mercado tradicional, encuentras básicos y baños semi limpios",
+    "Compré unas flores, más o menos regular el ramo, el precio decente."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfSlN3nPjPOI1JOYbO_6ATJ8VxMVaeL5dM7kMFtLdaoQEJNW9mbzHno1W1Hkmw_8twCXi_1UYgmTfKIfeFcMybqsP-b-8KeB9Zl3Qnjs5FOmwHOVnjEDafq0_xujNjiIOJBKTZaPA=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "place_id": "ChIJFxWwwQT_0YURqKQk9ZQZ8Rs",
+  "status": "ok",
+  "nombre_maps": "Tianguis Nativitas",
+  "rating": 4.1,
+  "total_reviews": 13,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Tacos muy sabrosos, la.mejor fruta y verdura de la zona..., hay dos puestos muy surtidos de cosas para perros...y lo mejor es el puesto de ropa , pregunten por Santy, súper precios....yo ya no compro en palacio de hierro o liverpool, mejor con Santi....solo les pido no me ganen la ropa, jajaj"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Fui un domingo y no existe (agosto 2025)"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bueno y bien surtido de fruta y verdura,\ndeliciosa comida mexicana y muy buenos quesos, tortillas, erc"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Se encuentra de todo para la comida"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Ya hay muy poquitos puestos"
+    }
+  ],
+  "snippets": [
+    "Excelente atención y surtido",
+    "Fui un domingo y no existe (agosto 2025)"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02xwb'], 'fruta', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzAyeHdi', '2ahUKEwijw4Kh6NWXAxVPrysGHRhkBncQ1bMEKCR6BAgAEEk', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": []
+}

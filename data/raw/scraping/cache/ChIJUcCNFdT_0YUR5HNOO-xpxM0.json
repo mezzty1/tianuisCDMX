@@ -1,0 +1,22 @@
+{
+  "place_id": "ChIJUcCNFdT_0YUR5HNOO-xpxM0",
+  "status": "ok",
+  "nombre_maps": "Tianguis Granjas Mexico",
+  "rating": 3.0,
+  "total_reviews": 2,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Solo hay un lugar de barbacoa y la calle está destruida, en realidad no hay nada"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Esta super padre"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

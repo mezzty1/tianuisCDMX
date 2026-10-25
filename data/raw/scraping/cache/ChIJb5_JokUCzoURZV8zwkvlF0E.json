@@ -1,0 +1,32 @@
+{
+  "place_id": "ChIJb5_JokUCzoURZV8zwkvlF0E",
+  "status": "ok",
+  "nombre_maps": "TIANGUIS UNIDOS POR LA CRUZ",
+  "rating": 3.8,
+  "total_reviews": 9,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buenas cosa puedes encontrar 😉"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bien"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "No hay tianguis."
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": ",no me justa"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

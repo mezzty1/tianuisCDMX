@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJ-40rFOr_0YUR8NgZp3Vn7KM",
+  "status": "ok",
+  "nombre_maps": "Bazar Reto La Viga",
+  "rating": 4.2,
+  "total_reviews": 11,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Gran variedad de chácharas, ropa calzado electrodomésticos y gran surtido de muebles nuevos 100% madera de pino de muy buena calidad y bonitos acabados 👍🏽"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 4 meses",
+      "texto": "Excelente atención y variedad de productos.\n\nRecomendable"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente lugar para chacharear, muebles vintage súper padres y a muy buen precio"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy atentos los chavos y se encuentran cosas muy interesantes sólo que sí hay que buscar y verificar la calidad."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente atención, amables y la labor que realizan es estupenda"
+    }
+  ],
+  "snippets": [
+    "Buena atención y buenos precios",
+    "Excelente atención, amables y la labor que realizan es estupenda",
+    "Fui el sábado alas 5 y estaba cerrado que pongan reales sus horarios 😒"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/01593g'], 'calidad', None, [None, None, None, None, 2, 0, 2], None, '2ahUKEwjRpbW66NWXAxUP4ckDHZhqCTkQ1bMEKCV6BAgBEG4', None, None, None, [[3]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeAOQb0l5xr37ZD9xl3rE9h0WKpOBMuuhQN9q4Q00TMmffWcuy7a1e6JLvjnbfhL9NP0xH0oxS5arwG9Yyj3HUB7OVzrk68ZrgHLNsiBYEYIQLIacAuo2gefmgUF5V5kJ4GjykILQOEDycQ=w800-h600-k-no"
+  ]
+}

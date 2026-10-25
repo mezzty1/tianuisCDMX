@@ -1,0 +1,39 @@
+{
+  "place_id": "ChIJmQ00JZb_0YURNJeD3Xa9CeU",
+  "status": "ok",
+  "nombre_maps": "Tianguis Físicos",
+  "rating": 4.0,
+  "total_reviews": 9,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "fácil acceso a pié, encontré lo que necesite, hay variedad de puestos"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Tianguis muy pequeño pero con variedad de fruta, verdura, carne, pollo y demás cosas para hacer el mandado. Igualmente es muy cómodo para los vecinos encontrar barbacoa, carnitas, mariscos, mixiotes y cochinita pibil listos para comer y de buen sabor."
+    },
+    {
+      "stars": 5,
+      "fecha": "Me encanta este tianguis. Se pone solo los días domingos y aunque es pequeño encuentras bueno bonito barato y mucha variedad",
+      "texto": "Me encanta este tianguis. Se pone solo los días domingos y aunque es pequeño encuentras bueno bonito barato y mucha variedad"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Hoy martes vine y en la dirección que manda no hay nada , esta un par de cuadras más arriba lado izquierda,  explorar bien la dirección"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Encuentras una gran variedad de productos."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcmpvn7kFR6QnhgUXfWPbkEYeJGfoVXQRdJXsWlk6Wjs91EUhIYAdKOQBvVaZsjuLsBFvZawbhaqaTSDcoNQ0m8pX5sUaqAEmZuHRiXeeGjV2GoBvr_Sfoq1jA8cXNobQz6xeJrxw=w800-h600-k-no"
+  ]
+}

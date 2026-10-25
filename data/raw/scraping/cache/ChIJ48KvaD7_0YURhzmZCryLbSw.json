@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJ48KvaD7_0YURhzmZCryLbSw",
+  "status": "ok",
+  "nombre_maps": "Mercado Medellín",
+  "rating": 4.4,
+  "total_reviews": 16960,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 10 meses",
+      "texto": "Es un excelente mercado de vecindario con todo desde puestos de flores, y hasta vísceras. El ambiente esta agradable sin que los locatarios estén amonestado los consumidores.\nHay varias opciones para comer, incluyendo puestos de tacos y comida peruana."
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 6 meses",
+      "texto": "Muy buena comida, pero los precios ya están bastante gentrificados, unas sabrías te pueden llegar a costar 50 pesos mexicanos, hay buena variedad pero ya dejo de ser un mercado para mexicanos, una pena para los colombianos, pues aquí se encuentran la mayoría de los productos de allá pero a precios exorbitantes. Recomendable mejor caminar a los rededores y encontrar casi las mismas cosas pero más barato"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 8 meses",
+      "texto": "El Mercado Medellín es una joya multicultural. Lo que más me gusta es que puedes encontrar productos extranjeros difíciles de ver en otros lados: desde auténtico café y harina pan de Colombia y Venezuela, hasta refrescos de Cuba y dulces de Argentina. Es el lugar perfecto para encontrar esos 'sabores de casa' si eres de Sudamérica o el Caribe. ¡La vibra es increíble y la comida preparada es deliciosa!"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 7 meses",
+      "texto": "Me encanta este lugar, si quieres buscar productos e ingredientes foráneos para tus comidas es el indicado y de paso te comes un antojito peruano o colombiano. En mi caso compro aquí el platáno verde y todo muy bien. El viene viene súper amable, le dejas la llave de tu auto si está full, pero igual respetuoso y honesto 10/10"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 meses",
+      "texto": "Muy variado todo tienen frutas y verduras frescas y una cantidad bastante grande de plantas 💕"
+    }
+  ],
+  "snippets": [
+    "Productos muy frescos, fruta, verdura, pescado, queso.",
+    "Fui a la comida peruana muy buena el sabor muy rico y buena atención",
+    "Mucha variedad, buenos precios competitivos, encuentras de todo."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc7y5Us5mDW7IKXyFweZUB0wdk2mD2mcIkCoTJ8JV9hHYk8FyW-B5HMRQaWWr0Jyw7ieRN13COmfjSbRIgtKawqcugD61xhZVqiPCRFizyRdROgqEMsKtyG_ntuRlhmilkrSVeUKFdDEepN=w800-h600-k-no"
+  ]
+}

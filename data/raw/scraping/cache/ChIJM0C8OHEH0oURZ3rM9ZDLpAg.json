@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJM0C8OHEH0oURZ3rM9ZDLpAg",
+  "status": "ok",
+  "nombre_maps": "Tianguis de la Retama",
+  "rating": 4.8,
+  "total_reviews": 8,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Los esperamos todos los días lunes con buenas ofertas",
+      "texto": "Los esperamos todos los días lunes con buenas ofertas"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Este Tianguis es un Lugar excelente buenos precios"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Les recomiendo el productos oaxaqueños muy feescos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un tianguis para ir por la fruta para los pequeños del hogar"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente!\nBueno bonito y barato\nRecomendado"
+    }
+  ],
+  "snippets": [
+    "Este Tianguis es un Lugar excelente buenos precios",
+    "Un tianguis para ir por la fruta para los pequeños del hogar"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLe4sH9WglI5IgLw2cHd9IRkZNz6ltXvVTds4oEpEyXgpJI9YwK5JcayVNhSvjPxuaDed8QOEZrkPGgfTUpzwNDSnC7GCZF9y_3Zwz0oLrgPnWrCaMMUQbItr1G7MULDNuQSpQ_4SQ=w800-h600-k-no"
+  ]
+}

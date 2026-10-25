@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJB1e7ja0DzoURBE8j5UXcZAs",
+  "status": "ok",
+  "nombre_maps": "Mercado el Molino",
+  "rating": 4.2,
+  "total_reviews": 861,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace 3 años",
+      "texto": "Mercado amplio donde compra de todo ya que hay variedad de productos, recomiendo la merceria, zona de comidas."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un mercado pequeño pero con gran variedad de productos, alimentos y servicios para realizar tus actividades cotidianas. Solo cuando realizan sus celebraciones de aniversario suele asistir mucha gente que ingiere alcohol y se suscitan peleas. Los sábados y domingos hay tianguis de segunda mano."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy agradable lugar muy seguro encuentras de todo"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "En este mercado encuentras varias cosas unas caras otras no tanto y es más o menos tranquilo y los sábados y domingos también en el tianguis hay dos tres cosas buenas saludos"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "En este mercado encuentras una gran gama de productos y servicios, comida sencilla asta exótica, amplio surtido de frutas y verduras, materiales para construcción, reparación de electrodomésticos, paletas deliciosas y exquisitas, además precios módicos y excelente atención."
+    }
+  ],
+  "snippets": [
+    "Surtido regular, precios altos",
+    "Me enacan la carne que venden por que es muy fresca y rica",
+    "Muy económico, mucha variedad, accesible y buenos precios."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLek66VxLOaIb9q4JNFKCjp8t8smN7sOCeKAV2qhDSNqGGYYGA94VxrEmAzBiRjuOtvFNiiPIsYnDe7gRq0MqwPRJTisE6alWHofz3Q14Xa8MSXflJ7iGdLB7PKEnBOy4QiZX4Y=w800-h600-k-no"
+  ]
+}

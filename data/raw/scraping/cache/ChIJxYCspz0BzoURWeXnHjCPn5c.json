@@ -1,0 +1,46 @@
+{
+  "place_id": "ChIJxYCspz0BzoURWeXnHjCPn5c",
+  "status": "ok",
+  "nombre_maps": "Mercado de los domingos",
+  "rating": 4.5,
+  "total_reviews": 14,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "En ocasiones complicado encontrar estacionamiento pero tiene buena variedad"
+    },
+    {
+      "stars": 3,
+      "fecha": "Hay de todo un poco,cosas que no.encuentras otro día de la semana",
+      "texto": "Hay de todo un poco,cosas que no.encuentras otro día de la semana"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buen surtido y encuentra uno todo lo q necesita"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "en especial mi marchanta de frutas y verduras"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen surtido de frutas y verduras en general y los costos son bastante accesibles, variedad de novedades y antojitos"
+    }
+  ],
+  "snippets": [
+    "Hay de todo un poco,cosas que no.encuentras otro día de la semana",
+    "Tienen casi de todo pero dejan los pasillos muy angostos",
+    "Muy buen surtido y encuentra uno todo lo q necesita"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02xwb'], 'de frutas', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzAyeHdi', '2ahUKEwjO5M_c6NWXAxX7HNAFHf0xPSAQ1bMEKCJ6BAgAEEc', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": []
+}

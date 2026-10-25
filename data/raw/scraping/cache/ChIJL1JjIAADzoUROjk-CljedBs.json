@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJL1JjIAADzoUROjk-CljedBs",
+  "status": "ok",
+  "nombre_maps": "Mercado de Abastos San Luis Tlaxialtemalco",
+  "rating": 4.1,
+  "total_reviews": 32,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un lugar encantado y encantador de todo y para todos"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "La Chona. Deliciosas quesadillas, pancita y taquitos de bistec. Muy buena atención y sabor delicioso. Las salsas son imperdibles."
+    },
+    {
+      "stars": 4,
+      "fecha": "Poco a poco sigue creciendo este lugar. Esperemos pronto sea tan concurrido como los de los pueblos aledaños",
+      "texto": "Poco a poco sigue creciendo este lugar. Esperemos pronto sea tan concurrido como los de los pueblos aledaños"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Comida casera muy rica, excelente atención y precios accesibles 👌🏻"
+    },
+    {
+      "stars": 3,
+      "fecha": "Ya falta la apertura, varios años a estado sin uso, sin embargo espero que ya vayan mejorando poco a poco.",
+      "texto": "Ya falta la apertura, varios años a estado sin uso, sin embargo espero que ya vayan mejorando poco a poco."
+    }
+  ],
+  "snippets": [
+    "Comida casera muy rica, excelente atención y precios accesibles 👌🏻",
+    "Deliciosas quesadillas, pancita y taquitos de bistec.",
+    "Muy baratas las plantas, pero el lugar es de dificil acceso."
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLd0kk9yLedeCjChxWmxiIsruuHQ2ZCKZZH0egiOlFcasykrG7EfO5_0mV5IVhFwB8YsvtDi0GhSQuB2aOcXCSr-zPExbEv3SgYuxfVjsPPxVqxU9GQWlhIBhwtN1oCPmE_KB9M=w800-h600-k-no"
+  ]
+}

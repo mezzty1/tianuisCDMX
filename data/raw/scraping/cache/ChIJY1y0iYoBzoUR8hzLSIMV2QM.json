@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJY1y0iYoBzoUR8hzLSIMV2QM",
+  "status": "ok",
+  "nombre_maps": "Tianguis Alternativo Tepepan",
+  "rating": 4.6,
+  "total_reviews": 30,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un lugar chiquito pero con muy buenas opciones de alimentos agro ecológicos, comida, etc.\nToda la gente es muy amable"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Si quieres encontrar productos orgánicos, artesanales, etc., este lugar tiene buena variedad de productos. Elaborados por productores locales. Puedes encontrar carnicos de conejo, verduras orgánicas, pan elaborado con masa madre, cacao, huevo de granja, quesos, repostería y galletas, tisanas, derivados de maíz tlacoyos, gorditas. Además artesanías , textiles de Oaxaca, bolsas, prendas de algodón. Etc. Un tianguis diferente...muy recomendable"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Este Tianguis Alternativo de Tepepan se pone el primero y tercer domingo de cada mes. La mayoría de los locatarios son fabricantes de productos orgánicos o representan a artesanos de la República Mexicana. Es una excelente opción para desayunar los domingos, comprar los vegetales de la quincena o hacer el súper de una forma distinta. A mi me encantaron las macetas de cemento con suculentas y cactus 🌵."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Excelente lugar para conseguir productos locales. Hay de todo, desde verduras orgánicas hasta productos de higiene personal Zero waste.\nLas mermeladas son deliciosas y el ambiente maravilloso para un domingo en familia."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Estuve en los tacos de mixiote que están de lunes a sábado desde las 9am. Están buenos y bien servidos. Se los recomiendo."
+    }
+  ],
+  "snippets": [
+    "Hay muy pocas cosa, pero lo que hay muy padre y los postres súper ricos",
+    "Estuve en los tacos de mixiote que están de lunes a sábado desde las 9am.",
+    "Un muy buen lugar para consumir local, excelentes productos."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0d685'], 'artesanales', None, [None, None, None, None, 4, 0, 4], None, '2ahUKEwjJyuXY6NWXAxXcjCsGHWhtMsYQ1bMEKCZ6BAgAEE8', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdQN6Er2X51RPCOhfeqTi8XeEhgw4MKCRLlj2p5InyNASf_aewn3BOvMTASFRWi8v2Gsf7j0astX6kFmQQS1Me7ZDC4MdRZI927_FKJ78g_7fNgjhz_rtFwvtBP7ewd0orbAnyk=w800-h600-k-no"
+  ]
+}

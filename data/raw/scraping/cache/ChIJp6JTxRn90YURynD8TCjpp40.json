@@ -1,0 +1,27 @@
+{
+  "place_id": "ChIJp6JTxRn90YURynD8TCjpp40",
+  "status": "ok",
+  "nombre_maps": "Tianguis circunvalacion",
+  "rating": 4.4,
+  "total_reviews": 12,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Tienen buena variedad y Buenos precios ,algunos dueños son medio déspotas ese sería el único pero"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Bien hay buenos productos frescis"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen tianguis"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

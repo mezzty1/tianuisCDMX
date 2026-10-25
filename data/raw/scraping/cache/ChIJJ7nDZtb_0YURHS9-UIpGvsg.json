@@ -1,0 +1,41 @@
+{
+  "place_id": "ChIJJ7nDZtb_0YURHS9-UIpGvsg",
+  "status": "ok",
+  "nombre_maps": "Tianguis de los Lunes",
+  "rating": 3.2,
+  "total_reviews": 5,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Los días sábado se coloca un tianguis que abarca ambas primarias Novoa y el kinder; tiene puestos de fruta, verdura, antojitos, pollo, queso, ropa y mucho mucho más.  Existe en la semana otro tianguis que se coloca los días Lunes, es muy pequeño y solo existe un puesto de pollo, uno de quesos, uno de cosas para el cabello, otro de celulares, dos de frutas y otros de mariscos, licuados y tacos. Pero su precio comparado con el tianguis del sábado es más caro. En mi opinión entorpecen un poco la fila de la salida del kinder.",
+      "texto": "Los días sábado se coloca un tianguis que abarca ambas primarias Novoa y el kinder; tiene puestos de fruta, verdura, antojitos, pollo, queso, ropa y mucho mucho más.  Existe en la semana otro tianguis que se coloca los días Lunes, es muy pequeño y solo existe un puesto de pollo, uno de quesos, uno de cosas para el cabello, otro de celulares, dos de frutas y otros de mariscos, licuados y tacos. Pero su precio comparado con el tianguis del sábado es más caro. En mi opinión entorpecen un poco la fila de la salida del kinder."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "En este mismo espacio hay dos tianguis. El de los sábados da la vuelta a la manzana y es promedio en precios y calidad de los productos, sus antojitos no son muy buenos. El de los lunes es un poco más caro y solo son 10 puestos. Pero la calidad es mejor, el puesto de mixiotes que se pone es riquísimo y la fruta es excelente"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "No es tianguis es mercado sobre ruedas según ellos."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Muy buenos desayunos para todos los gustos"
+    }
+  ],
+  "snippets": [
+    "Muy buenos desayunos para todos los gustos",
+    "No es tianguis es mercado sobre ruedas según ellos.",
+    "Pero su precio comparado con el tianguis del sábado es más caro."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0f7yn'], 'sábado', None, [None, None, None, None, 2, 0, 2], None, '2ahUKEwjY4Yah6NWXAxU_hSsGHXMDB2IQ1bMEKCF6BAgAEEY', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": []
+}

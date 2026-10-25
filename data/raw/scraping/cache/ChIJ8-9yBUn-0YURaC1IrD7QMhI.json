@@ -1,0 +1,29 @@
+{
+  "place_id": "ChIJ8-9yBUn-0YURaC1IrD7QMhI",
+  "status": "ok",
+  "nombre_maps": "Tianguis De Los Jueves",
+  "rating": 5.0,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy variao’ y abundante"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es muy variado el surtido que puedes encontrar aquí, me encanta la ropa, es de excelente calidad!!!"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 2 meses",
+      "texto": "Venden joyeria de novedad, de buena calidad, preciosa, buen gusto y el trato super amables de los chicos. 100% recomendable."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLe_jtGr3YOP2W1H3wAkWStk7DYlwZss6OcxCxFtXu_76G18JvqZQBIwhbtnM9rD5Z7-H292qIgi__XZfClT_prKbzYiXefVjIqHq2cyWxjju5cQyNhOildLbTaX_FkT4-PY1EtteoZ6tGNJ=w800-h600-k-no"
+  ]
+}

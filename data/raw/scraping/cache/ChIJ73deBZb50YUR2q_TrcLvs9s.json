@@ -1,0 +1,47 @@
+{
+  "place_id": "ChIJ73deBZb50YUR2q_TrcLvs9s",
+  "status": "ok",
+  "nombre_maps": "Tianguis",
+  "rating": 4.5,
+  "total_reviews": 20,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Es un tianguis  pequeño pero hay muchas cosas. Los precios son muy accesibles y casi todos te atienden de buena forma."
+    },
+    {
+      "stars": 4,
+      "fecha": "Todos los miercoles del año.\nEs un tianguis pequeño, pero no por eso no encuentras de casi todo, precios variados desde lo económico y bueno hasta cosas sobrevaluadas.\nEl inconveniente es que obstruyen la circulacion vehicular desde las 7 hrs.y hasta las 20 hrs.",
+      "texto": "Todos los miercoles del año.\nEs un tianguis pequeño, pero no por eso no encuentras de casi todo, precios variados desde lo económico y bueno hasta cosas sobrevaluadas.\nEl inconveniente es que obstruyen la circulacion vehicular desde las 7 hrs.y hasta las 20 hrs."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Los precios de fruta y verduras son más caros comparado con tianguis del viernes en Salesiano, y kilos de 870 gramos. Lo rescatable es los puestos de comida."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Gran variedad de productos y precios, varios lugares donde preparan alimentos para consumir o llevar."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Tienen buenos productos, pero lo que compro ahí, son los quesos, pescados preparados que están muy buenos y chicharrón con la señora que está casi frente a los pescados"
+    }
+  ],
+  "snippets": [
+    "Los precios son muy accesibles y casi todos te atienden de buena forma.",
+    "No les recomiendo la barbacoa"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/01d_1l'], 'precios', None, [None, None, None, None, 4, 0, 4], None, '2ahUKEwiskN_J6NWXAxXU48kDHetuMQUQ1bMEKCB6BAgAEEk', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcaF8hKBx-AARrvqJgPNFUEjxv83lffIhoIw4Za_rdBwTDSAVpDqv-UT3_EokUGkvqOcuf-kbl_TcpQcxCsaIudxAKZf8wZGsZfeoMmQooaXiBOutKjNZSoW9bTecroUZv4X3I=w800-h600-k-no"
+  ]
+}

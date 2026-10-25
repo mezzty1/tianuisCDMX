@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJJ8P3xh8BzoURpuCN-bJeNng",
+  "status": "ok",
+  "nombre_maps": "Tianguis de la Ruíz Cortínez",
+  "rating": 4.7,
+  "total_reviews": 17,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buenos precios accesibles ya bajo el jitomate a 18 pesos rico para desayunar unos sopes con atole y otros antojitos como tacos, quesadillas etcétera."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 3 años",
+      "texto": "Muchos productos, mucha comida, mucho sol, mucho ruido y mucha gente."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Voy ahí desde que tengo memoria\nExcelente lugar y la gente igual"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy buen tianguis encuentras de todo y al precio"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 2 años",
+      "texto": "Tiene lo básico"
+    }
+  ],
+  "snippets": [
+    "Voy ahí desde que tengo memoria Excelente lugar y la gente igual",
+    "Muy buen tianguis encuentras de todo y al precio"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdgz2dSeXg9mk8JAgVhcGmUgiGQhhBnMX5bOrgpWhNYv7liu6VOVaSM43HVecAbt6v4WnzMinKq0qpjKUT-rLf_TucxXS5Zuv_U6-LTgyJJ7pJ7VruBwzjRQAhNPppY5aiZ7C8i=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJE90H0qcdzoURNQ5URvgRZIk",
+  "status": "ok",
+  "nombre_maps": "Mercado Santa Catarina",
+  "rating": 3.8,
+  "total_reviews": 420,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Los puestos son con variedad de mercancia, la verdura fresca todo locque buscas encuentras"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Está muy pequeño, solo una cocina económica y pocos negocios"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Se ve pequeño y sencillo pero tiene buenos puestos."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Hay locales con excelente atención como Sr.  Beto de carniceria, Moles, verduras, jugos y chicharrón. Y como entodo mercado también mala atención"
+    },
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Todo caro muy pocos locales"
+    }
+  ],
+  "snippets": [
+    "Venden muy ricos cócteles de fruta",
+    "Buen surtido de productos, trato amable y buenos precios"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfhBv7aRFMwvPEMbyIU5QHiVcbqMkuaT4FH9CbPjpFXSXo2zGdTrmfOPBUoyRYCtZMVQPxaORfpAA1cvBwnbtmoXemi1wEa7zERyf-jXHOdMmmNaxz9ZF9hz0nR2Jv_x7mp8KxgLQ=w800-h600-k-no"
+  ]
+}

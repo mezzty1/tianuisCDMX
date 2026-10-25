@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJUd7B4RUAzoURnDDkz-RdOi4",
+  "status": "ok",
+  "nombre_maps": "Mercado Santo Domingo Los Reyes",
+  "rating": 4.2,
+  "total_reviews": 129,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Vende de casi de todo los locatarios son muy amables"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Alguien sabra el número de teléfono de la carnicería del fondo??"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bien"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es pequeño pero con lo esencial y varado en varias de sus áreas"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me gusta mucho ir, el servicio de lis duferentes puestos es muy bueno, son muy amables, y la barbacoa el sabado y domingo, esta para chuparse los dedos, me encanta ir a desayunar, todo está a precio accesible"
+    }
+  ],
+  "snippets": [
+    "Compré pollo y siempre es de buena calidad",
+    "Buenos precios y buena atención, solo que no tienen estacionamiento.",
+    "Buen servicio y buen surtido, la carne es de primera calidad y es económico!"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0hz4q'], 'desayunar', None, [None, None, None, None, 2, 0, 2], 'CgoKCC9tLzBoejRx', '2ahUKEwiiwa3c6NWXAxUMtysGHeWeOwkQ1bMEKCF6BAgAEEk', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLf9RlfWtkbqgRJWrwzE_yXAEmZaUm2OnacKXFx7dM9YxoUO_jmSgOZi98-Q_TWWr68f9w6Tlo3SlW6jR-CwFh2Xx_7TZjcV2-Y66EpacDRoKPVZPQbP5D6ytLQ9Tpe3TcUN7WpZZg=w800-h600-k-no"
+  ]
+}

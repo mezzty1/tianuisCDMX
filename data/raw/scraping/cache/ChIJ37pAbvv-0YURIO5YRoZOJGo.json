@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJ37pAbvv-0YURIO5YRoZOJGo",
+  "status": "ok",
+  "nombre_maps": "Tianguis Toledo Alamos",
+  "rating": 4.3,
+  "total_reviews": 39,
+  "reviews": [
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Los puesto se ponen para vender como hasta las 10 am"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Me gusta mucho hacer mis compras aquí. Aunque el mercado de la colonia es grande y está bien surtido, también es muy práctico tener el tianguis de los lunes. Está muy bien surtido (fruta, verdura, carnes, jarciería, plantas, ropa, comida preparada…) y es suficientemente chico como para recorrerlo rápido."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es un mercado compacto, pero las quesadillas y tacos son muy buenas, hay unas gorditas de suadero muy ricas.\nY al terminar uno puede probar un eskimo,  chamoyada o frappé de sabores algo exoticos.\nLo malo es que bloquea la calle de Toledo y hay que dar una vuelta de un par cuadras más"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Hay artículos que no encuentro en otros lugares como marcos para fotos mu sencillos y de madera a precios económicos o comida preparada para llevar co o chiles rellenos y capeados o paquetes de tlacoyos. O curiosidades además ee verduras vegetales y carnes."
+    },
+    {
+      "stars": 3,
+      "fecha": "Un tianguis de mediano tamaño, por lo que no hay muchas opciones para comparar precios y tener mejor oferta.\nEs una opción para salir del paso, nada extraordinario.",
+      "texto": "Un tianguis de mediano tamaño, por lo que no hay muchas opciones para comparar precios y tener mejor oferta.\nEs una opción para salir del paso, nada extraordinario."
+    }
+  ],
+  "snippets": [
+    "Aunque es muy pequeño encuentras lo necesario y cumple la función de Tianguis...",
+    "Los puesto se ponen para vender como hasta las 10 am",
+    "Super limpio,comida rica y comida fresca"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0f4s2w'], 'vegetales', None, [None, None, None, None, 2, 0, 2], 'CgsKCS9tLzBmNHMydw==', '2ahUKEwiatcWj6NWXAxUrtysGHaHSDVEQ1bMEKCF6BAgAEEo', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLc4VVZvUNI67_tMEMQ40E7sEZsFR1XZWrVft-6ScJPWTpGfK6p319nBNu49IHTb_7TLzn9dlNfCf2-XcGAEoVJ7PkpAKmvf3qELrRy3076Tz3pSECsLb-8Yr61si9YikyLe42bySQ=w800-h600-k-no"
+  ]
+}

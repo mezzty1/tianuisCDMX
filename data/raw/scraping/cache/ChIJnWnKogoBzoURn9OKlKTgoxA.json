@@ -1,0 +1,38 @@
+{
+  "place_id": "ChIJnWnKogoBzoURn9OKlKTgoxA",
+  "status": "ok",
+  "nombre_maps": "Tianguis Bachilleres 4",
+  "rating": 4.6,
+  "total_reviews": 7,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Es un mercado bastante tranquilo, encuentras de todo. Se pone domingos y lunes, los domingos es 100% mejor. Por favor no obstruyan entradas!!!"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Este mercado está lleno de gente buena, cariñosa y trabajadora! Es necesario contribuir al consumo local!"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Recomiendo el de los domingos es más  gde  y mejor surtido."
+    },
+    {
+      "stars": 4,
+      "fecha": "Es los días lunes",
+      "texto": "Es los días lunes"
+    }
+  ],
+  "snippets": [
+    "Recomiendo el de los domingos es más gde y mejor surtido.",
+    "Es un mercado bastante tranquilo, encuentras de todo.",
+    "Este mercado está lleno de gente buena, cariñosa y trabajadora!"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLd_FwKuFXaDpMNb5mS9eTpdwTzq2OMh_1GduUcaJZxifbxF-jgSNLWW7D7kVMxETnx9meh-fmpVCZtPiB1wNO9CSE2utUb6a9mjjmCGRr_zJ-yfmveWJdA4T46hrKg6iCjDKtAuNw=w800-h600-k-no"
+  ]
+}

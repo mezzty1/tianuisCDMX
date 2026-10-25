@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJjyfTC1wdzoURuuO2yigoUNM",
+  "status": "ok",
+  "nombre_maps": "Mercado Miravalle",
+  "rating": 3.9,
+  "total_reviews": 221,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "En general el servicio es bueno en los locales que se encuentran en servicio, hay varios locales abiertos, aunque también hay otros cerrados. En algunos negocios como el de carnes el costo es más elevado. Recomiendo los negocios de comida si no todos la mayoría son buenos. Encuentras insumos de la canasta basica. El mercado al parecer se encuentra en crecimiento."
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 4 años",
+      "texto": "Nos encontramos en el local #85 tenemos ropa para toda la familia aceptamos pagos con tarjeta, transferencias y contamos también con sistema de apartado"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Mercado cuenta con locales de todo para surtir lo del día a día"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "U. Mercado excelente con variedad en frutos  y verduras.carnicerias ,pollerías , pescadería, tortillerías,cremerías mercerías,paleterias,.hierberias dulcerías y botanas ,ropa y zapaterías y muchísimo más .papaleria ,reparación de calzado,tlapalería,cocinas económicas comida corrida .venta de juguetes, cerámica,joyería y productos de belleza ..ect..etc"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 5 años",
+      "texto": "Muy buen lugar para compras"
+    }
+  ],
+  "snippets": [
+    "La tlapaleria bien , lo demas , regular",
+    "Tradición y buen trato",
+    "Esta mas o menos pero hay mucho perro y bagos tamvien"
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/02g3bz'], 'quesadillas', None, [None, None, None, None, 2, 0, 2], 'CgsKCS9tLzAyZzNieg==', '2ahUKEwidu-PG6NWXAxXB38kDHZrbB1EQ1bMEKCh6BQgAELEB', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLeozdXFdCMqYiGmK45II9oQeQyO5K79rySqgcwxu65w4n33Lek9rsPMgzHBu8rnDZEk1Jjj7FtIxMbxDa3Fe2ofAOMp7Pr12mvtc03SefGy5M-iTR6U0GD56PQWFpF9EnSOVoNB=w800-h600-k-no"
+  ]
+}

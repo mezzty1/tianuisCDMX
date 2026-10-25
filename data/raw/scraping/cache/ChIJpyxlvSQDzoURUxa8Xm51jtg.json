@@ -1,0 +1,22 @@
+{
+  "place_id": "ChIJpyxlvSQDzoURUxa8Xm51jtg",
+  "status": "ok",
+  "nombre_maps": "Tianguis la conchita",
+  "rating": 4.0,
+  "total_reviews": 5,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Encuentras desde frutas y verduras hasta cháchara, además de abarrotes, comida para llevar, sandalias, tenis... un sin fin de artículos a muy buen precio y con una excelente atención. PD. Hay una báscula en donde pueden cerciorarse de que les den kilos de verdad.\nMuy buen tianguis."
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Muy sucio y la mercadería de mala calidad"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": []
+}

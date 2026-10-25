@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJU-0fOwH_0YURvft56T8SL_4",
+  "status": "ok",
+  "nombre_maps": "Tianguis Del Martes",
+  "rating": 4.2,
+  "total_reviews": 19,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 10 meses",
+      "texto": "El tianguis está ubicado sobre José Martí entre prosperidad y sindicalismo, encuentras variedad de comida deliciosa, postres, fruta, verdura, joyería, artículos para el hogar, ropa... Aunque es pequeño encuentras de todo! Hay estacionamiento público cercano y en algunos puestos aceptan transferencia"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Tianguis típico de colonia lugar seguro con lo básico de un tianguis."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdsPV3EhT8ZeD9wby_65RgSmn9Z8fj4iX7fVzlGsJY5dsyvPLX5lC5c7p_diU7vN_X9v21TbHVgaVqR_WBoOgZaW6Y3qBEc3WJbxI-bk607_1HX69_SB_bByrH6kBmUiU0hM3MVeA=w800-h600-k-no"
+  ]
+}

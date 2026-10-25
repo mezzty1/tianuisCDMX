@@ -1,0 +1,27 @@
+{
+  "place_id": "ChIJX9wYAQD_0YURSGoeqJL8muo",
+  "status": "ok",
+  "nombre_maps": "Tianguis agroecológico Flor de Azahar",
+  "rating": 5.0,
+  "total_reviews": 2,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Una gran opción para conseguir productos orgánicos, sanos y deliciosos!\n\nLos miércoles cada 2 semanas.",
+      "texto": "Una gran opción para conseguir productos orgánicos, sanos y deliciosos!\n\nLos miércoles cada 2 semanas."
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy bonito y excelentes productos"
+    }
+  ],
+  "snippets": [
+    "Una gran opción para conseguir productos orgánicos, sanos y deliciosos!",
+    "Muy bonito y excelentes productos"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLd7m5ygODTIALorZPmb0GOFpOxG48vszNOSmpOZjVuoyrBu3OAEMZ7_EVBFUOku1IUZqCLn7MmzGEzJacgHuRrVaNLGx98q6v_aH-Y3jost-59MF0X3BpKqTgL0vJlsWi-l6JHqIIwVF5s1=w800-h600-k-no"
+  ]
+}

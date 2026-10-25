@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJ5UzQMKgdzoURS-6yNHz9HgU",
+  "status": "ok",
+  "nombre_maps": "Tianguis santa Cecilia los viernes",
+  "rating": 4.3,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buen lugar solo deben\nBuenos precios\nUno que otro vendedor necesita revición de báscula"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Buen tianguis"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLdCUnc34Tk4flV3PHdMDADD6efT1Pdq8_uyQRL45XJdx7o0l7mroWTsE51WLWFqxdTqFCMccBn7KIn7vCNIZdhHoUfHfhKjVk_KqzYRqRjfTLnMxCKQ9kdYkFP3jolPHjkLje0=w800-h600-k-no"
+  ]
+}

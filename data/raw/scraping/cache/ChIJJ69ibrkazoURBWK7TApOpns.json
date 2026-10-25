@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJJ69ibrkazoURBWK7TApOpns",
+  "status": "ok",
+  "nombre_maps": "Mercado Santa Ana Tlacotenco",
+  "rating": 3.9,
+  "total_reviews": 888,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Verduras, elotes, nopales, flores,etc super frescos, orgánicos  y baratos\nChiles en nogada, mole de olla, esquites, pan de elote, flan de elote, nieves, etc. Todo delicioso a precios accesibles\nLa feria empezó el sábado 6 de septiembre y todo el día hay espectáculos gratis"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Un lugar muy pequeño, afuera comimos unas quesadillas muy ricas de tortilla azul hechas a mano. Y pasamos a los sanitarios, muy limpios y con excelente servicio."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Pequeño pero funcional para el día a día"
+    },
+    {
+      "stars": 5,
+      "fecha": "Es un poblado lleno de tradiciones y costumbres.\nAl igual que todos los poblados de la alcaldía Milpa Alta (situada al sur de la Ciudad de México),  tiene una vista maravillosa hacia todos los horizontes.\nEs un lugar muy especial, adornado por toda su flora y fauna muy característica de todos los poblados de Milpa Alta.\nEstá lleno de gente amable y muy trabajadora.\nMuy recomendado para un fin de semana relajante. Con aires de provincia, aún estando dentro de la gran Ciudad de México.",
+      "texto": "Es un poblado lleno de tradiciones y costumbres.\nAl igual que todos los poblados de la alcaldía Milpa Alta (situada al sur de la Ciudad de México),  tiene una vista maravillosa hacia todos los horizontes.\nEs un lugar muy especial, adornado por toda su flora y fauna muy característica de todos los poblados de Milpa Alta.\nEstá lleno de gente amable y muy trabajadora.\nMuy recomendado para un fin de semana relajante. Con aires de provincia, aún estando dentro de la gran Ciudad de México."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Es difícil el acceso y hay poco lugar para estacionarse. Yo lo visite en la feria del elote pero está muy mal organizado"
+    }
+  ],
+  "snippets": [
+    "Verdura muy fresca y de buena calidad y a buen precio pequeño pero agradable",
+    "Y pasamos a los sanitarios, muy limpios y con excelente servicio.",
+    "El pulque es buenísimo y unos tacos de nopales exquisitos mata hambres 😁😁😁"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLf-ZEturd8ZFpT2C1-yMKVn7dEosK5owbqbAVHGoJOSLdfCS9OnAFLjJy1YvPzK7NcLA-Xw4MsjXtIQY3WM2SsuIp2yG7YsBgYY8rXKatez_aqCK2MqRDNoGV9KkThAuMbhGYo=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJqwBMoff_0YURR0KHmox1Sas",
+  "status": "ok",
+  "nombre_maps": "Tianguis de Nenis",
+  "rating": 4.0,
+  "total_reviews": 2,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace 3 años",
+      "texto": "Los sábados, a una cuadra del metro chabacano, dirección norte"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 2 años",
+      "texto": "Buena opción para intercambio o para recoger cosas"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcuoshi9DxYnsnZ4CcMlYrz1nwLIW2pcXTsJjqLWR_KEEmaniQ16AXAmw6tdCtsfrlS_h1R_n8ooKzSrhCB1345RRdZEYLoEfjnVUVRy92u8vucgkMgOUlwfeYn-CgymCXv4-ltJA=w800-h600-k-no"
+  ]
+}

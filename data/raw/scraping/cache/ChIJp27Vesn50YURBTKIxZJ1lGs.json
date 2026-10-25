@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJp27Vesn50YURBTKIxZJ1lGs",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Norte 9\".",
+  "rating": 4.0,
+  "total_reviews": 3,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace un año",
+      "texto": "Es un tianguis que está en la explanada del Mercado de la colonia Panamericana.\nLo instalan los Domingos en un horario aproximado de 8:30 am a 5:00 pm.\nVas a encontrar chácharas, ropa, juguetes, comida preparada y algo de frutas y verduras.\nSino encuentras lo que necesitas en el tianguis lo puedes conseguir dentro del Mercado de la \"Pana\"."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Esta pequeño, pero tiene lo básico y precios accesibles."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLcS-i7Cxqywb8MtdUj_RGHYuIG-rtoWKcocbgk5EpPB-63Dm4bL_6eXv01TT66AxvDYw6b9PPnZniWwHCzNwhcGmF4MWZWmvnfe0eLImxzKYDocj003JuBnA9efmcGgQm3reE9PVKxnGts=w800-h600-k-no"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJsx3aRQD50YURwzEfU36cnLo",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"Zoltan Kodaly\".",
+  "rating": 3.5,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 4,
+      "fecha": "Hace un año",
+      "texto": "Es un tianguis que instalan los viernes en un horario aproximado de 8:30 am a 5:00 pm.\nRealmente está muy pequeño y no tiene de todo, hay un puesto de frutas y verduras, ropa, puestos de comida preparada y varias chácharas y regalitos.\nEl tianguis inicia en la Calzada San Simón y termina en la calle de Neptuno, es decir, solo dos cuadras.\nSi vienes en transporte público cerca hay un Metrobús."
+    },
+    {
+      "stars": 3,
+      "fecha": "Hace 5 meses",
+      "texto": "Hoy que pasé veo que cada vez hay menos variedad de productos, hay mucho espacio vacío."
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfxgsKl8sHZhJeYGdjxb5zZrgvYPXegjEC1ZCQG9uJsbNcMt4uDShPPSAmVmD-mF29f11-611qbephYLqk4A6-bqd0nmy8oh6Ene2XV_Dhm4_ynTxXVAlGHPXoQIuyWj0MaoBtwjA=w800-h600-k-no"
+  ]
+}

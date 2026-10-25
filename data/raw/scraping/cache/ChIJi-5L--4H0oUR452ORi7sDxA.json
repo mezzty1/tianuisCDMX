@@ -1,0 +1,29 @@
+{
+  "place_id": "ChIJi-5L--4H0oUR452ORi7sDxA",
+  "status": "ok",
+  "nombre_maps": "Tianguis Cuajimalpa",
+  "rating": 3.8,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 5 meses",
+      "texto": "Este tianguis en específico se pone en la fecha de semana santa en Cuajimalpa, tengo entendido que también le llaman tianguis de barro. Dura una semana y vale la pena enormemente por todo el tipo de comida que venden. Este 2026 hubo tacos hasta de cocodrilo y jabalí, además de disfrutar de la feria. Lo recomiendo bastante 👌"
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "Algunos precios son muy altos"
+    },
+    {
+      "stars": 2,
+      "fecha": "",
+      "texto": "Hay es donde me robaron mi dinero"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLe-3OSCdQrLMaPkkXV0zy08wI33YyQXnc3XudiyK5gMeN_Xa34VmQvEkYeqXV6yM-UASzUvZBqlbAPaIRi2cmnF0DJ2gcvBDFtnrcTwl2Kd_Nz6odqqxMkDeq6A74ZiVEjJTNlO=w800-h600-k-no"
+  ]
+}

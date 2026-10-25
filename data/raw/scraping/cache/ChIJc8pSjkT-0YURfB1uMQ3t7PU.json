@@ -1,0 +1,42 @@
+{
+  "place_id": "ChIJc8pSjkT-0YURfB1uMQ3t7PU",
+  "status": "ok",
+  "nombre_maps": "Mercado San Andrés Tetepilco",
+  "rating": 4.0,
+  "total_reviews": 2457,
+  "reviews": [
+    {
+      "stars": 3,
+      "fecha": "Hace 6 años",
+      "texto": "Buen mercado, tradicional en la zona.\nBuen surtido en frutas y verduras, todas muy frescas. Carnes de todo tipo (res, cerdo, carnero, pollo, pescado y algunas más exóticas). Muy buenos precios.\nZona de comida preparada amplia, varios locales y comida muy sabrosa. Buen precio.\nAdemás de los locales de comida hay de arreglo personal, de enmarcado, papelerías, electricista, plomería..\nEstacionamiento en calles aledañas"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 5 años",
+      "texto": "Es un mercado con extensa variedad en productos, y precios, los cuales en su mayoría son buenos a diferencia de otros mercados.\nHay locales de ropa, bonetería, marcos, frutas, verduras, semillas, abarrotes, carnicerías, florería, y de más.\nSus pasillos son amplios, solo algunos locales  se encuentran cerrados."
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "Buena calidad de productos algo abandonado pero es sobre todo la fruta muy buena"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Necesita mejoras pero en general un buen lugar para ir a comer"
+    },
+    {
+      "stars": 4,
+      "fecha": "",
+      "texto": "En general es bueno, productos de carne, pollo, cremería de buena calidad, encuentras un poquito de todo"
+    }
+  ],
+  "snippets": [
+    "Buena atención, buen surtido de mercancía, precios accesibles, pasillos limpios",
+    "Los vendedores te quieren vender lo q ellos quieren , no dejan escoger !!!"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLec5cVSIm2GsVu93EGhy5wvlMAtFoZTZL3N-2178qqPBvreQ7vHdCkfNH2sftkhUx7RzKuz-EyMY3MMTzzBR9Bc1SKQnRDz9qIthmTHk95JZxhrCAXRjAqn8QAN5rx7nStLGJoSNA=w800-h600-k-no"
+  ]
+}

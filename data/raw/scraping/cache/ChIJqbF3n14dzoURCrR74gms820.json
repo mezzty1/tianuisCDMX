@@ -1,0 +1,24 @@
+{
+  "place_id": "ChIJqbF3n14dzoURCrR74gms820",
+  "status": "ok",
+  "nombre_maps": "Tianguis \"La Habana\" Sabados",
+  "rating": 3.5,
+  "total_reviews": 4,
+  "reviews": [
+    {
+      "stars": 1,
+      "fecha": "",
+      "texto": "Un tianguis muy escaso pocos puestos y menos gente no recomendable"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Los mejores precios del mercado"
+    }
+  ],
+  "snippets": [],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLf4tIzIcigraDAN4whUMtuESj2rF_6O8o53GEBVmDWKiKRTZg8_IABh2fVAlWAFW34kE9sk2iCBcvwDL5m2JlVVft3LKgvDl0o3UFdPCGAnI62KOXBdAoozU3vdRc_kQnpUQUwh=w800-h600-k-no"
+  ]
+}

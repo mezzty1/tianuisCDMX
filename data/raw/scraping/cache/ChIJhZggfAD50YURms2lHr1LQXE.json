@@ -1,0 +1,48 @@
+{
+  "place_id": "ChIJhZggfAD50YURms2lHr1LQXE",
+  "status": "ok",
+  "nombre_maps": "Tianguis sullivan",
+  "rating": 4.1,
+  "total_reviews": 16,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 10 meses",
+      "texto": "Mi día favorito es el domingo la fruta es muy buena y hay gran variedad de productos, algo que les recomiendo es la comida me encantan los puestos les recomiendo mucho el de carnitas se llama el italiano, la verdad son los mejores tacos de carnitas que he probado cuerito con maciza es una joya (90 pesos por dos tacos muy bien servidos y un refresco pidan mundet roja en vidrio)"
+    },
+    {
+      "stars": 1,
+      "fecha": "Hace 9 meses",
+      "texto": "Los puestos ambulantes de la esquina, avientan jabón y agua sucia con grasa de las carnitas a la calle donde pasan moto icletas y bicicletas, patines eléctricos, poniendo en riesgo la vida. Al igual son muy sucios tiran basura o agua sucia de lo que lavan a las jardineras."
+    },
+    {
+      "stars": 3,
+      "fecha": "",
+      "texto": "No conocí el tianguis como tal, solo pare ahí por un rico tejuino de Fili"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace un año",
+      "texto": "Recomiendo ampliamente a la Sra Mercedes que vende perfumes. Muy buenos precios y muy buena calidad. Los identifican porque son frasquitos genéricos, pero no le piden nada nada a los perfumes originales. Está en una de las puntas del mercado, cerca de la calle Gabino Barreda"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Muy atentoa todos los servidores y los productos muy frescos. Todo muy limpio."
+    }
+  ],
+  "snippets": [
+    "Muy buenos precios y muy buena calidad.",
+    "Muy atentoa todos los servidores y los productos muy frescos.",
+    "Este monito queria me quitara xel lugar donde me estacione en la calle."
+  ],
+  "temas_frecuentes": [
+    {
+      "tema": "[['/m/0985p5'], 'carnitas', None, [None, None, None, None, 2, 1, 2], 'CgsKCS9tLzA5ODVwNQ==', '2ahUKEwj8_dan6NWXAxWlNoYAHdcpIWoQ1bMEKCV6BAgAEGA', None, None, None, [[2]]]",
+      "menciones": 1
+    }
+  ],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLfakaBOZmsyAcrGxXQNMCh1hCgOtoEmfLUaeEAF__6STNFPG9meMYBLRUEEBjm0i61MLZF1rsMeYJQPP12mPun5sUg9smN7VMoy7mDv3ZSPgNvo_ZvGCiM09LY4QFejK-5xEUBSblm6Q3cQ=w800-h600-k-no"
+  ]
+}

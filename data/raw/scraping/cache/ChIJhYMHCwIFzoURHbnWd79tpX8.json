@@ -1,0 +1,43 @@
+{
+  "place_id": "ChIJhYMHCwIFzoURHbnWd79tpX8",
+  "status": "ok",
+  "nombre_maps": "Mercado San Pedro",
+  "rating": 4.2,
+  "total_reviews": 1298,
+  "reviews": [
+    {
+      "stars": 5,
+      "fecha": "Hace 3 años",
+      "texto": "Este mercado, en San Pedro Actopan, me encanta .\nEstá muy bonito y limpio!\nLos baños públicos súper limpios y sin olores feos.\nLa comida de la cocina Marina , muy rica !"
+    },
+    {
+      "stars": 4,
+      "fecha": "Hace 4 años",
+      "texto": "Es un mercado muy bonito y tradicional. Parece estar en un pueblo mágico pero dentro de la cdmx. Yo sólo fui a comer y la experiencia fue muy agradable y que la comida fue sabrosa y a muy buen precio.\nDense una vuelta si van a comprar ingredientes para sus moles"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 7 años",
+      "texto": "Como siempre! Un placer comer ahí! La gente muy amable! Precios algo elevados! Pero vale la pena! Mucha vendimia! Clima extraordinario! Y yo sugiero que vayan temprano! Más tarde el tráfico se ve cañón! Ya reciben pago con tarjeta! Y estarán hasta el 27 de octubre!"
+    },
+    {
+      "stars": 5,
+      "fecha": "Hace 5 años",
+      "texto": "Mercado limpio y sus cocinas económicas con un buen sazón. Si eres amante de los moles en el pueblo y en la calle principal encontrarás diferentes tipos de moles a buen precio, vale la pena visitar ese lugar"
+    },
+    {
+      "stars": 5,
+      "fecha": "",
+      "texto": "Lugar amplio y con muchos vendedores. Y hay área de juegos afuera del mercado."
+    }
+  ],
+  "snippets": [
+    "Mercado muy bonito para salir a pasear y desayunar algo muy rico",
+    "Precios muy buenos, la mercancía siempre fresca",
+    "Que ricos tacos venden ai"
+  ],
+  "temas_frecuentes": [],
+  "fotos": [
+    "https://lh3.googleusercontent.com/grass-cs/AABkmLemUZQhzth72Go2DUN9sdYFX7pxI4jo01T5oHL226uCMrN_cOH7WqTrEzbwztgZ3PXM31XpTAcwWU9HFp05crppbZr9z99XYW2eve-q-STQmmkwbPIykEFNGDh2UKKYTiKfC4odWg=w800-h600-k-no"
+  ]
+}
