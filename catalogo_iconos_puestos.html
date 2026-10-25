@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Visual de Íconos de Puestos de Tianguis por Giro | CDMX</title>
+  <style>
+    :root {
+      --cdmx-green-primary: #004d40;
+      --cdmx-green-dark: #00251a;
+      --cdmx-green-accent: #059669;
+      --cdmx-green-light: #e6f3f1;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--slate-100);
+      color: var(--slate-800);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--cdmx-green-primary) 0%, #064e3b 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-title h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-subtitle {
+      font-size: 14px;
+      color: #a7f3d0;
+      margin-top: 6px;
+    }
+
+    .header-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .controls-panel {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .control-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-group {
+      display: flex;
+      background: var(--slate-100);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--slate-200);
+    }
+
+    .btn-toggle {
+      border: none;
+      background: transparent;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--slate-600);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-toggle.active {
+      background: #ffffff;
+      color: var(--cdmx-green-primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .icon-card {
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border-color: var(--slate-300);
+    }
+
+    .icon-preview-box {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid var(--slate-200);
+      transition: background 0.3s ease;
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    /* Background Modes */
+    .bg-light {
+      background: #ffffff;
+    }
+    .bg-dark {
+      background: #1e293b;
+    }
+    .bg-checkered {
+      background-color: #ffffff;
+      background-image: linear-gradient(45deg, #e2e8f0 25%, transparent 25%),
+                        linear-gradient(-45deg, #e2e8f0 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #e2e8f0 75%),
+                        linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    }
+    .bg-map {
+      background: #e5e7eb url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" opacity="0.3"><path d="M0 20 L60 20 M20 0 L20 60 M0 40 L60 40 M40 0 L40 60" stroke="%239ca3af" stroke-width="1"/></svg>');
+    }
+
+    .icon-preview-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+      transition: transform 0.25s ease;
+    }
+
+    .icon-card:hover .icon-preview-box img {
+      transform: scale(1.05);
+    }
+
+    .icon-info {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .icon-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .color-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .sector-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--slate-100);
+      color: var(--slate-600);
+      border: 1px solid var(--slate-200);
+    }
+
+    .icon-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .icon-desc {
+      font-size: 13px;
+      color: var(--slate-500);
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .icon-meta-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: var(--slate-50);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      margin-bottom: 14px;
+      border: 1px solid var(--slate-200);
+    }
+
+    .meta-item strong {
+      color: var(--slate-700);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .meta-item span {
+      color: var(--slate-500);
+      font-family: monospace;
+    }
+
+    .icon-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      flex: 1;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-download {
+      background: var(--cdmx-green-primary);
+      color: #ffffff;
+      border: 1px solid transparent;
+    }
+
+    .btn-download:hover {
+      background: #00362c;
+    }
+
+    .btn-copy-code {
+      background: #ffffff;
+      color: var(--slate-700);
+      border: 1px solid var(--slate-300);
+    }
+
+    .btn-copy-code:hover {
+      background: var(--slate-100);
+    }
+
+    /* Section divider */
+    .section-divider {
+      margin: 40px 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-divider h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--slate-800);
+    }
+
+    .section-divider::after {
+      content: "";
+      flex-grow: 1;
+      height: 1px;
+      background: var(--slate-300);
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--slate-900);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <h1>🎪 Sistema Visual de Íconos de Puestos de Tianguis CDMX</h1>
+      <div class="header-subtitle">Catálogo cromático por giro comercial, sector normativo SEDECO y canasta básica popular</div>
+    </div>
+    <div class="header-badges">
+      <span class="badge">Chilangatón 2026</span>
+      <span class="badge">Reto 1: Comercio Popular</span>
+      <span class="badge">WGS84 / Leaflet Ready</span>
+      <span class="badge">10 Giros + 5 Sectores</span>
+    </div>
+  </header>
+
+  <div class="controls-panel">
+    <div class="control-group">
+      <span class="control-label">Fondo de Previsualización:</span>
+      <div class="btn-group">
+        <button class="btn-toggle active" onclick="setBackground('light', this)">⚪ Claro</button>
+        <button class="btn-toggle" onclick="setBackground('dark', this)">⚫ Pizarra Oscura</button>
+        <button class="btn-toggle" onclick="setBackground('checkered', this)">🏁 Damero Transparente</button>
+        <button class="btn-toggle" onclick="setBackground('map', this)">🗺️ Mapa Cartográfico</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Resolución:</span>
+      <div class="btn-group">
+        <button class="btn-toggle active" onclick="setSize('master', this)">Master HD (903px)</button>
+        <button class="btn-toggle" onclick="setSize('256', this)">256px</button>
+        <button class="btn-toggle" onclick="setSize('128', this)">128px</button>
+        <button class="btn-toggle" onclick="setSize('64', this)">64px</button>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">Filtrar Sector:</span>
+      <div class="btn-group">
+        <button class="btn-toggle active" onclick="filterSector('all', this)">Todos</button>
+        <button class="btn-toggle" onclick="filterSector('basico', this)">Básicos</button>
+        <button class="btn-toggle" onclick="filterSector('complementario', this)">Complementarios</button>
+        <button class="btn-toggle" onclick="filterSector('alimentos_preparados', this)">Comida</button>
+        <button class="btn-toggle" onclick="filterSector('servicios', this)">Servicios</button>
+        <button class="btn-toggle" onclick="filterSector('mixto', this)">Mixtos</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <h2>1. Variantes Cromáticas por Macro-Categoría de Giro Comercial</h2>
+  </div>
+
+  <div class="grid-container" id="grid-giros">
+    <!-- Se inyecta dinámicamente con JavaScript -->
+  </div>
+
+  <div class="section-divider">
+    <h2>2. Íconos Canónicos por Sector SEDECO / Gaceta Oficial CDMX</h2>
+  </div>
+
+  <div class="grid-container" id="grid-sectores">
+    <!-- Se inyecta dinámicamente con JavaScript -->
+  </div>
+
+  <div id="toast">
+    <span>✓</span>
+    <span id="toast-text">Código Leaflet copiado al portapapeles</span>
+  </div>
+
+  <script>
+    let currentBg = 'light';
+    let currentSize = 'master';
+    let currentSectorFilter = 'all';
+    let catalogData = null;
+
+    async function loadCatalog() {
+      try {
+        const res = await fetch('assets/icons/puestos/iconos_catalogo.json');
+        catalogData = await res.json();
+        renderGallery();
+      } catch (e) {
+        console.error('Error cargando catálogo:', e);
+      }
+    }
+
+    function getImagePath(item, size) {
+      if (size === 'master') return item.archivos.master_hd;
+      if (size === '256') return item.archivos['256px'];
+      if (size === '128') return item.archivos['128px'];
+      if (size === '64') return item.archivos['64px'];
+      return item.archivos.master_hd;
+    }
+
+    function renderGallery() {
+      if (!catalogData) return;
+
+      const containerGiros = document.getElementById('grid-giros');
+      containerGiros.innerHTML = '';
+
+      catalogData.variantes_giros.forEach(item => {
+        if (currentSectorFilter !== 'all' && item.sector_sedeco !== currentSectorFilter) return;
+
+        const imgPath = getImagePath(item, currentSize);
+        const card = document.createElement('div');
+        card.className = 'icon-card';
+        card.innerHTML = `
+          <div class="icon-preview-box bg-${currentBg}">
+            <img src="${imgPath}" alt="${item.nombre_giro}" loading="lazy">
+          </div>
+          <div class="icon-info">
+            <div class="icon-header-row">
+              <span class="color-pill" style="background:${item.hex_color}">
+                ● ${item.hex_color}
+              </span>
+              <span class="sector-tag">${item.sector_sedeco}</span>
+            </div>
+            <div class="icon-title">${item.nombre_giro}</div>
+            <div class="icon-desc">${item.descripcion}</div>
+            <div class="icon-meta-details">
+              <div class="meta-item">
+                <strong>Categoría ID</strong>
+                <span>${item.categoria_id}</span>
+              </div>
+              <div class="meta-item">
+                <strong>Hue Toldo</strong>
+                <span>${item.target_hue_deg}°</span>
+              </div>
+            </div>
+            <div class="icon-actions">
+              <a href="${item.archivos.master_hd}" download class="btn-action btn-download">
+                ⬇ HD PNG
+              </a>
+              <button onclick="copyLeafletSnippet('${item.id}', '${item.archivos['128px']}')" class="btn-action btn-copy-code">
+                📋 Leaflet Icon
+              </button>
+            </div>
+          </div>
+        `;
+        containerGiros.appendChild(card);
+      });
+
+      // Sectores SEDECO
+      const containerSectores = document.getElementById('grid-sectores');
+      containerSectores.innerHTML = '';
+
+      catalogData.sectores_sedeco.forEach(sec => {
+        const imgPath = getImagePath(sec, currentSize);
+        const card = document.createElement('div');
+        card.className = 'icon-card';
+        card.innerHTML = `
+          <div class="icon-preview-box bg-${currentBg}">
+            <img src="${imgPath}" alt="${sec.sector_nombre}" loading="lazy">
+          </div>
+          <div class="icon-info">
+            <div class="icon-header-row">
+              <span class="color-pill" style="background:${sec.hex_color}">
+                ● ${sec.hex_color}
+              </span>
+              <span class="sector-tag">SEDECO</span>
+            </div>
+            <div class="icon-title">${sec.sector_nombre}</div>
+            <div class="icon-desc">Ícono oficial para la tipología normativa de puestos y tianguis de la CDMX.</div>
+            <div class="icon-meta-details">
+              <div class="meta-item">
+                <strong>Sector ID</strong>
+                <span>${sec.sector_id}</span>
+              </div>
+              <div class="meta-item">
+                <strong>Variante Base</strong>
+                <span>${sec.source_variant_id}</span>
+              </div>
+            </div>
+            <div class="icon-actions">
+              <a href="${sec.archivos.master_hd}" download class="btn-action btn-download">
+                ⬇ HD PNG
+              </a>
+              <button onclick="copyLeafletSnippet('${sec.sector_id}', '${sec.archivos['128px']}')" class="btn-action btn-copy-code">
+                📋 Leaflet Icon
+              </button>
+            </div>
+          </div>
+        `;
+        containerSectores.appendChild(card);
+      });
+    }
+
+    function setBackground(bgName, btn) {
+      currentBg = bgName;
+      document.querySelectorAll('.controls-panel .control-group:nth-child(1) .btn-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.icon-preview-box').forEach(el => {
+        el.className = `icon-preview-box bg-${bgName}`;
+      });
+    }
+
+    function setSize(sizeName, btn) {
+      currentSize = sizeName;
+      document.querySelectorAll('.controls-panel .control-group:nth-child(2) .btn-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGallery();
+    }
+
+    function filterSector(secName, btn) {
+      currentSectorFilter = secName;
+      document.querySelectorAll('.controls-panel .control-group:nth-child(3) .btn-toggle').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGallery();
+    }
+
+    function copyLeafletSnippet(id, iconUrl) {
+      const code = `const iconTianguis_${id} = L.icon({
+  iconUrl: '${iconUrl}',
+  iconSize: [48, 50],
+  iconAnchor: [24, 48],
+  popupAnchor: [0, -42],
+  className: 'marker-tianguis-puesto'
+});`;
+
+      navigator.clipboard.writeText(code).then(() => {
+        showToast(`Código L.icon('${id}') copiado`);
+      });
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    loadCatalog();
+  </script>
+</body>
+</html>

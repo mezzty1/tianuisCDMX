@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "autor": "Chilangotón 2026 - Reto 1: Comercio Popular y Barrial",
+    "fecha": "2026-10-25",
+    "dimensiones_master": [
+      903,
+      952
+    ],
+    "resoluciones_adicionales": [
+      256,
+      128,
+      64
+    ],
+    "formato": "PNG RGBA (Transparente)"
+  },
+  "variantes_giros": [
+    {
+      "id": "original_rojo",
+      "categoria_id": "CAT_ALIM_FRESCOS",
+      "sector_sedeco": "basico",
+      "nombre_giro": "Puesto Tradicional Rojo (Canasta Básica Oficial)",
+      "hex_color": "#DC2626",
+      "target_hue_deg": 358.4,
+      "descripcion": "Lona roja emblemática del abasto tradicional en tianguis y mercados sobre ruedas.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_original_rojo.png",
+        "256px": "assets/icons/puestos/256/puesto_original_rojo_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_original_rojo_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_original_rojo_64px.png"
+      }
+    },
+    {
+      "id": "alim_frescos_verde",
+      "categoria_id": "CAT_ALIM_FRESCOS",
+      "sector_sedeco": "basico",
+      "nombre_giro": "Alimentos Frescos y Perecederos (Recaudería / Frutas y Verduras)",
+      "hex_color": "#059669",
+      "target_hue_deg": 142.0,
+      "descripcion": "Verde esmeralda fresco característico de verdulerías, recauderías y legumbres.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_alim_frescos_verde.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_alim_frescos_verde_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_alim_frescos_verde_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_alim_frescos_verde_64px.png"
+      }
+    },
+    {
+      "id": "abarrotes_canasta_ambar",
+      "categoria_id": "CAT_ABARROTES_CANASTA",
+      "sector_sedeco": "basico",
+      "nombre_giro": "Abarrotes, Materias Primas y Canasta Básica",
+      "hex_color": "#D97706",
+      "target_hue_deg": 38.0,
+      "descripcion": "Ámbar dorado y color maíz para granos, semillas, chiles secos, huevo y abarrotes secos.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_abarrotes_canasta_ambar.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_abarrotes_canasta_ambar_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_abarrotes_canasta_ambar_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_abarrotes_canasta_ambar_64px.png"
+      }
+    },
+    {
+      "id": "comida_preparada_naranja",
+      "categoria_id": "CAT_COMIDA_PREPARADA",
+      "sector_sedeco": "alimentos_preparados",
+      "nombre_giro": "Alimentos Preparados, Bebidas y Antojitos",
+      "hex_color": "#EA580C",
+      "target_hue_deg": 22.0,
+      "descripcion": "Naranja cempasúchil / garnacha para taquerías, antojitos, fondas y aguas frescas.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_comida_preparada_naranja.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_comida_preparada_naranja_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_comida_preparada_naranja_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_comida_preparada_naranja_64px.png"
+      }
+    },
+    {
+      "id": "ropa_calzado_azul",
+      "categoria_id": "CAT_ROPA_CALZADO_TEXTIL",
+      "sector_sedeco": "complementario",
+      "nombre_giro": "Ropa, Calzado, Telas y Accesorios",
+      "hex_color": "#2563EB",
+      "target_hue_deg": 218.0,
+      "descripcion": "Azul rey vibrante para puestos de ropa nueva, ropa de paca, tenis, calzado y blancos.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_ropa_calzado_textil_azul.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_ropa_calzado_textil_azul_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_ropa_calzado_textil_azul_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_ropa_calzado_textil_azul_64px.png"
+      }
+    },
+    {
+      "id": "hogar_ferreteria_cian",
+      "categoria_id": "CAT_HOGAR_FERRETERIA",
+      "sector_sedeco": "complementario",
+      "nombre_giro": "Artículos del Hogar, Ferretería y Limpieza",
+      "hex_color": "#0891B2",
+      "target_hue_deg": 188.0,
+      "descripcion": "Cian turquesa para jarciería, artículos de limpieza, herramientas, plásticos y enseres.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_hogar_ferreteria_cian.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_hogar_ferreteria_cian_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_hogar_ferreteria_cian_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_hogar_ferreteria_cian_64px.png"
+      }
+    },
+    {
+      "id": "salud_belleza_rosa",
+      "categoria_id": "CAT_SALUD_BELLEZA",
+      "sector_sedeco": "servicios",
+      "nombre_giro": "Salud, Cuidado Personal y Belleza",
+      "hex_color": "#DB2777",
+      "target_hue_deg": 336.0,
+      "descripcion": "Rosa mexicano tradicional para cosméticos, barbería, estética, uñas y cuidado personal.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_salud_belleza_rosa.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_salud_belleza_rosa_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_salud_belleza_rosa_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_salud_belleza_rosa_64px.png"
+      }
+    },
+    {
+      "id": "papeleria_tecnologia_morado",
+      "categoria_id": "CAT_PAPELERIA_TECNOLOGIA",
+      "sector_sedeco": "complementario",
+      "nombre_giro": "Papelería, Cómputo, Regalos y Juguetería",
+      "hex_color": "#7C3AED",
+      "target_hue_deg": 268.0,
+      "descripcion": "Morado eléctrico para tecnología, accesorios de celular, juguetes, novedades y papelería.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_papeleria_tecnologia_morado.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_papeleria_tecnologia_morado_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_papeleria_tecnologia_morado_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_papeleria_tecnologia_morado_64px.png"
+      }
+    },
+    {
+      "id": "oficios_servicios_olivo",
+      "categoria_id": "CAT_OFICIOS_SERVICIOS",
+      "sector_sedeco": "servicios",
+      "nombre_giro": "Oficios Tradicionales y Reparaciones",
+      "hex_color": "#65A30D",
+      "target_hue_deg": 82.0,
+      "descripcion": "Verde olivo / artesanal para cerrajería, reparación de calzado, afiladores y sastrería.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_oficios_servicios_olivo.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_oficios_servicios_olivo_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_oficios_servicios_olivo_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_oficios_servicios_olivo_64px.png"
+      }
+    },
+    {
+      "id": "bazar_chacharas_terracota",
+      "categoria_id": "CAT_BAZAR_CHACHARAS",
+      "sector_sedeco": "mixto",
+      "nombre_giro": "Chácharas, Segunda Mano y Comercio Mixto",
+      "hex_color": "#9F1239",
+      "target_hue_deg": 348.0,
+      "descripcion": "Terracota / vino tinto barrial para chácharas, antigüedades, curiosidades y bazares mixtos.",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_cat_bazar_chacharas_terracota.png",
+        "256px": "assets/icons/puestos/256/puesto_cat_bazar_chacharas_terracota_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_cat_bazar_chacharas_terracota_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_cat_bazar_chacharas_terracota_64px.png"
+      }
+    }
+  ],
+  "sectores_sedeco": [
+    {
+      "sector_id": "SECTOR_BASICOS",
+      "sector_nombre": "Productos Básicos (Alimentos Frescos y Abarrotes)",
+      "source_variant_id": "alim_frescos_verde",
+      "hex_color": "#059669",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_sector_basicos.png",
+        "256px": "assets/icons/puestos/256/puesto_sector_basicos_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_sector_basicos_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_sector_basicos_64px.png"
+      }
+    },
+    {
+      "sector_id": "SECTOR_COMPLEMENTARIOS",
+      "sector_nombre": "Productos Complementarios (Ropa, Calzado y Novedades)",
+      "source_variant_id": "ropa_calzado_azul",
+      "hex_color": "#2563EB",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_sector_complementarios.png",
+        "256px": "assets/icons/puestos/256/puesto_sector_complementarios_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_sector_complementarios_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_sector_complementarios_64px.png"
+      }
+    },
+    {
+      "sector_id": "SECTOR_ALIMENTOS_PREPARADOS",
+      "sector_nombre": "Alimentos Preparados (Comida Caliente y Antojitos)",
+      "source_variant_id": "comida_preparada_naranja",
+      "hex_color": "#EA580C",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_sector_alimentos_preparados.png",
+        "256px": "assets/icons/puestos/256/puesto_sector_alimentos_preparados_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_sector_alimentos_preparados_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_sector_alimentos_preparados_64px.png"
+      }
+    },
+    {
+      "sector_id": "SECTOR_SERVICIOS",
+      "sector_nombre": "Servicios (Belleza, Oficios y Reparaciones)",
+      "source_variant_id": "salud_belleza_rosa",
+      "hex_color": "#DB2777",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_sector_servicios.png",
+        "256px": "assets/icons/puestos/256/puesto_sector_servicios_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_sector_servicios_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_sector_servicios_64px.png"
+      }
+    },
+    {
+      "sector_id": "SECTOR_MIXTOS_CHACHARAS",
+      "sector_nombre": "Mercancías Mixtas y Chácharas (Segunda Mano y Bazar)",
+      "source_variant_id": "bazar_chacharas_terracota",
+      "hex_color": "#9F1239",
+      "archivos": {
+        "master_hd": "assets/icons/puestos/puesto_sector_mixtos_chacharas.png",
+        "256px": "assets/icons/puestos/256/puesto_sector_mixtos_chacharas_256px.png",
+        "128px": "assets/icons/puestos/128/puesto_sector_mixtos_chacharas_128px.png",
+        "64px": "assets/icons/puestos/64/puesto_sector_mixtos_chacharas_64px.png"
+      }
+    }
+  ]
+}

@@ -19,6 +19,8 @@ CATEGORIAS = [
         "nombre": "Alimentos Frescos y Perecederos",
         "descripcion": "Productos perecederos no procesados de la canasta básica: carnes, aves, pescados, frutas, verduras, lácteos y huevo.",
         "icono": "🥦",
+        "color_hex": "#059669",
+        "icono_png": "assets/icons/puestos/puesto_cat_alim_frescos_verde.png",
         "tipo_mercado_cdmx": "basico",
         "mercomuna_default": True,
         "canasta_basica_default": True
@@ -28,6 +30,8 @@ CATEGORIAS = [
         "nombre": "Abarrotes, Materias Primas y Canasta Básica",
         "descripcion": "Comercio de alimentos secos, granos, semillas, tortillas, panadería tradicional y abastos de primera necesidad.",
         "icono": "🥫",
+        "color_hex": "#D97706",
+        "icono_png": "assets/icons/puestos/puesto_cat_abarrotes_canasta_ambar.png",
         "tipo_mercado_cdmx": "basico",
         "mercomuna_default": True,
         "canasta_basica_default": True
@@ -37,6 +41,8 @@ CATEGORIAS = [
         "nombre": "Alimentos Preparados, Bebidas y Antojitos",
         "descripcion": "Venta de comida elaborada para consumo inmediato en el local o para llevar: antojitos mexicanos, tacos, fondas, tortas y bebidas.",
         "icono": "🌮",
+        "color_hex": "#EA580C",
+        "icono_png": "assets/icons/puestos/puesto_cat_comida_preparada_naranja.png",
         "tipo_mercado_cdmx": "alimentos_preparados",
         "mercomuna_default": False,
         "canasta_basica_default": False
@@ -46,6 +52,8 @@ CATEGORIAS = [
         "nombre": "Ropa, Calzado, Telas y Accesorios",
         "descripcion": "Prendas de vestir nuevas o de paca, calzado formal y deportivo, blancos, telas y artículos personales de moda.",
         "icono": "👕",
+        "color_hex": "#2563EB",
+        "icono_png": "assets/icons/puestos/puesto_cat_ropa_calzado_textil_azul.png",
         "tipo_mercado_cdmx": "complementario",
         "mercomuna_default": False,
         "canasta_basica_default": False
@@ -55,6 +63,8 @@ CATEGORIAS = [
         "nombre": "Artículos del Hogar, Ferretería y Limpieza",
         "descripcion": "Insumos para mantenimiento de vivienda, herramientas, jarciería, enseres de cocina, muebles, plantas y mascotas.",
         "icono": "🔨",
+        "color_hex": "#0891B2",
+        "icono_png": "assets/icons/puestos/puesto_cat_hogar_ferreteria_cian.png",
         "tipo_mercado_cdmx": "complementario",
         "mercomuna_default": False,
         "canasta_basica_default": False
@@ -64,6 +74,8 @@ CATEGORIAS = [
         "nombre": "Salud, Cuidado Personal y Belleza",
         "descripcion": "Medicamentos genéricos, cosmética, estética, barbería, uñas, herbolaria tradicional y cuidado corporal.",
         "icono": "✂️",
+        "color_hex": "#DB2777",
+        "icono_png": "assets/icons/puestos/puesto_cat_salud_belleza_rosa.png",
         "tipo_mercado_cdmx": "servicios",
         "mercomuna_default": False,
         "canasta_basica_default": False
@@ -73,6 +85,8 @@ CATEGORIAS = [
         "nombre": "Papelería, Cómputo, Regalos y Juguetería",
         "descripcion": "Artículos escolares, de oficina, copias, telefonía celular, novedades, juguetería, artesanías y regalos.",
         "icono": "✏️",
+        "color_hex": "#7C3AED",
+        "icono_png": "assets/icons/puestos/puesto_cat_papeleria_tecnologia_morado.png",
         "tipo_mercado_cdmx": "complementario",
         "mercomuna_default": False,
         "canasta_basica_default": False
@@ -82,6 +96,8 @@ CATEGORIAS = [
         "nombre": "Oficios Tradicionales y Reparaciones",
         "descripcion": "Servicios barriales técnicos, manuales y artesanales: cerrajería, costura, zapateros, mecánica, carpintería y herrería.",
         "icono": "🪛",
+        "color_hex": "#65A30D",
+        "icono_png": "assets/icons/puestos/puesto_cat_oficios_servicios_olivo.png",
         "tipo_mercado_cdmx": "servicios",
         "mercomuna_default": False,
         "canasta_basica_default": False
@@ -91,6 +107,8 @@ CATEGORIAS = [
         "nombre": "Chácharas, Segunda Mano y Comercio Mixto",
         "descripcion": "Artículos usados, antigüedades, bazares, chácharas y puestos tradicionales de abasto y mercancía combinada.",
         "icono": "📦",
+        "color_hex": "#9F1239",
+        "icono_png": "assets/icons/puestos/puesto_cat_bazar_chacharas_terracota.png",
         "tipo_mercado_cdmx": "mixto",
         "mercomuna_default": False,
         "canasta_basica_default": False
