@@ -1,0 +1,2502 @@
+[
+  {
+    "id": "MERCOM-0001",
+    "nombre": "LA GÜERA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JALALPA EL GRANDE",
+    "direccion": "2da de Casitas EXT. Mz 36 INT. Lt 14 C.P. 01377",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0002",
+    "nombre": "ARTÍCULOS VAZQUEZ VARIOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA MARIA NONOALCO",
+    "direccion": "Girardon EXT. 31 INT. 86 C.P. 01420",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0003",
+    "nombre": "CARNICERIA LA SORPRESA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JILGUERO EXT. 0 INT. LOCAL 8 C.P. 01140",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0004",
+    "nombre": "CARNICERIA DANIEL SR CARNE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "REACOMODO VALENTIN GOMEZ FARIA",
+    "direccion": "Avenida centenario EXT. 1329 C.P. 01569",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0005",
+    "nombre": "MINI SUPER MEDINA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Independencia EXT. 34 C.P. 01770",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0006",
+    "nombre": "COCINA CHAVITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 121 C.P. 01408",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0007",
+    "nombre": "ABARROTES Y PAPELERÍA LIZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA LUCIA",
+    "direccion": "Moctezuma EXT. 141 C.P. 01500",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0008",
+    "nombre": "MISCELANEA EL PARAISO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAMPAMPANO DEL PUEBLO TETELP",
+    "direccion": "Titzupan EXT. M.4 INT. L.15 C.P. 01780",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0009",
+    "nombre": "ABARROTES MINIMINI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GOLONDRINAS 1A SECCION",
+    "direccion": "Golondrina de las riveras EXT. Mz34 lt26 C.P. 01270",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0010",
+    "nombre": "REGALOS CHARLY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HIDALGO",
+    "direccion": "Av. Observatorio EXT. 457 INT. 37 C.P. 01120",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0011",
+    "nombre": "ESPERANZA MINI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JALALPA EL GRANDE",
+    "direccion": "Higuera EXT. Mz 62 INT. Lt31 C.P. 01377",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0012",
+    "nombre": "ESTÉTICA ROSY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BALCONES DE CEHUAYO",
+    "direccion": "Punta de cehuayo EXT. 33 C.P. 01540",
+    "giro": "ESTETICA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0013",
+    "nombre": "PANADERÍA ALFA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "2O REACOMODO TLACUITLAPA",
+    "direccion": "Callapos EXT. 17 INT. 19 C.P. 01650",
+    "giro": "PANADERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0014",
+    "nombre": "ABARROTES YAZPEER",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUERTA GRANDE",
+    "direccion": "Calle principal EXT. 19 C.P. 01630",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0015",
+    "nombre": "CARNICERÍA MARTINEZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA FE",
+    "direccion": "Av. Vasco de Quiroga EXT. 162 INT. 44 C.P. 01210",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0016",
+    "nombre": "PROSPERIDAD",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GOLONDRINAS 1A SECCION",
+    "direccion": "Marco polo EXT. Mz 24 lt 1 INT. 3 C.P. 01270",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0017",
+    "nombre": "LUNA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TORRES DE POTRERO",
+    "direccion": "AVENIDA JOSÉ MARÍA MORELOS Y PAVÓN EXT. MZ 39 INT. LT 6 C.P. 01840",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0018",
+    "nombre": "JARCERIA DARIEN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 167 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0019",
+    "nombre": "PRODUCTOS DE LIMPIEZA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE BECERRA",
+    "direccion": "Avenida Chicago EXT. 44 C.P. 01279",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0020",
+    "nombre": "ABARROTES ARY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Vicente Guerrero EXT. Mz 539 INT. Lt3 C.P. 01860",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0021",
+    "nombre": "FERRETERÍA JB",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SAN BARTOLO AMEYALCO",
+    "direccion": "Vicente Guerrero EXT. 21 B C.P. 01800",
+    "giro": "FERRETERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0022",
+    "nombre": "ABARROTES VULCANO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE ROSAS",
+    "direccion": "ROSA VULCANO EXT. 55 C.P. 01470",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0023",
+    "nombre": "EL SAUCE Y LA PALMA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TLAPECHICO",
+    "direccion": "Estragón EXT. Mz 1 INT. Lt 10 C.P. 01230",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0024",
+    "nombre": "ABARROTES CRISOL",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Puerto Yavaros EXT. 26 A INT. 20 C.P. 01290",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0025",
+    "nombre": "ABARROTES Y CREMERIA LA CRUZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Av 29 de Octubre esq. Lázaro Cardenas EXT. S/N C.P. 01860",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0026",
+    "nombre": "JUGUETERIA CHONITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P. URUCHURTU EXT. 181 INT. LOCAL 125 C.P. 01408",
+    "giro": "JUGUETERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0027",
+    "nombre": "COCINA CONCHITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Centenario EXT. 138 C.P. 01600",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0028",
+    "nombre": "PAPELERÍA MICHELIN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TORRES DE POTRERO",
+    "direccion": "Av José María Morelos y Pavón EXT. Mz61 INT. Lt25 C.P. 01840",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0029",
+    "nombre": "CREMERIA Y ABARROTES PUERTA GRANDE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HERON PROAL",
+    "direccion": "Principal EXT. 21 C.P. 01640",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0030",
+    "nombre": "MI TIENDITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OCOTILLOS DEL PUEBLO TETELPAN",
+    "direccion": "Prolongación Ocotillos EXT. 129 C.P. 01700",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0031",
+    "nombre": "ABARROTES LA NUEVA ERA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA ROSA XOCHIAC",
+    "direccion": "RAFAEL CHECA EXT. 14 C.P. 01830",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0032",
+    "nombre": "LA ANTORCHA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BALCONES DE CEHUAYO",
+    "direccion": "José santos chocano EXT. Mz 3 INT. Lt 18 C.P. 01540",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0033",
+    "nombre": "LA SOBERANA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA MARIA NONOALCO",
+    "direccion": "Van dick EXT. 118 INT. B107 C.P. 01420",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0034",
+    "nombre": "EL BUEN POLLO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA MARTINICA",
+    "direccion": "AV CENTENARIO EXT. 1020 INT. 19 C.P. 01619",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0035",
+    "nombre": "LOS LALITOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 181 INT. LOCAL 55 Y C.P. 01408",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0036",
+    "nombre": "ACCESORIOS PARA CELULARES Y CONSOLAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 181 INT. LOCAL 147 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0037",
+    "nombre": "BOUTIQUE UNIKA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "DOLORES DEL RIO EXT. 91 C.P. 01408",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0038",
+    "nombre": "TECNOLEOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HIDALGO",
+    "direccion": "Av. Observatorio EXT. 457 INT. Carreta 2 C.P. 01120",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0039",
+    "nombre": "CARNICERIA Y TOCINERIA LA FAMA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 4 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0040",
+    "nombre": "ABARROTES LIRO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "Primer andador de canoa EXT. 50 INT. 2 C.P. 01090",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0041",
+    "nombre": "ABARROTES EL GALLO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Av centenario EXT. 169 C.P. 01600",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0042",
+    "nombre": "REPARADORA DE CALZADO STON",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA MARTINICA",
+    "direccion": "AV CENTENARIO EXT. 1020 INT. 68 C.P. 01619",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0043",
+    "nombre": "LA PRINCESA MICHOACANA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Av 5 de Mayo EXT. 155 C.P. 01600",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0044",
+    "nombre": "CASA MÁGICO CHAMUL",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "CUEVITAS",
+    "direccion": "CAMINO REAL A TOLUCA EXT. 1150 INT. 120 C.P. 01220",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0045",
+    "nombre": "EL NOVILLERO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "EL PIRU SANTA FE",
+    "direccion": "Av.vasco de Quiroga EXT. 1680 INT. S/N C.P. 01230",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0046",
+    "nombre": "CARNICERIA JARDIN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JARDIN EXT. 38 C.P. 01140",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0047",
+    "nombre": "INTERNET CONDOR",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LAS AGUILAS",
+    "direccion": "Condor EXT. 562 C.P. 01710",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0048",
+    "nombre": "ABARROTES MEDINA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Oyametla EXT. Mz532 INT. Lt10 C.P. 01860",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0049",
+    "nombre": "PAO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Calle 6 EXT. MZ5 lt11 C.P. 01600",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0050",
+    "nombre": "LA SELVA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA PALMITA",
+    "direccion": "Nicaragüense EXT. 41 C.P. 01260",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0051",
+    "nombre": "LOS 4 PRIMOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "RINCONADA LAS CUEVITAS",
+    "direccion": "AV ROSAL EXT. MZ A INT. LT 31 C.P. 01550",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0052",
+    "nombre": "LA PALOMA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GOLONDRINAS 2A SECCION",
+    "direccion": "AVENIDA RIO SAN BORJA EXT. MANZANA 9 INT. LOTE 2 C.P. 01270",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0053",
+    "nombre": "LOS SOCIOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Calle 2 EXT. MZ5 LT1 C.P. 01600",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0054",
+    "nombre": "CAFETERÍA CASTELLO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Av.centenario EXT. 55 C.P. 01600",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0055",
+    "nombre": "JULIANCITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 142 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0056",
+    "nombre": "SAUZ ABARROTES",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Presa la angostura EXT. 99 C.P. 01770",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0057",
+    "nombre": "BOUTIQUE CLAUDIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Av Diaz ordaz EXT. 288 C.P. 01290",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0058",
+    "nombre": "CARNICERIA VALERIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Av Benito Juárez EXT. 60 C.P. 01410",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0059",
+    "nombre": "LOS BETOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE SANTO DOMINGO",
+    "direccion": "SANTA CLARA EXT. #16 C.P. 01130",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0060",
+    "nombre": "PALETERIA LA TERESITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P uruchurtu EXT. (comercio INT. Local 107 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0061",
+    "nombre": "GOYA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 1A SECCION",
+    "direccion": "4 EXT. 2 C.P. 01400",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0062",
+    "nombre": "CREMERÍA LEO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA MARIA NONOALCO",
+    "direccion": "Girardon EXT. 31 INT. 61 C.P. 01420",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0063",
+    "nombre": "ABARROTES LA ESPERANZA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TLACOYAQUE",
+    "direccion": "4Ta Cerrada de Francisco Villa EXT. Mz12 INT. Lt10 C.P. 01859",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0064",
+    "nombre": "FRUTAS Y VERDURAS YESSY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P uruchurtu EXT. S/N INT. Interior d C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0065",
+    "nombre": "FARMACIA DE GENÉRICOS Y PATENTES SANTA ELENA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Agustín Lara EXT. 70-a C.P. 01408",
+    "giro": "FARMACIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0066",
+    "nombre": "ABARROTES RIVERA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA FE",
+    "direccion": "Vasco de Quiroga y primavera EXT. 162 C.P. 01210",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0067",
+    "nombre": "ABARROTES \"LA PASADITA\"",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUENTE COLORADO",
+    "direccion": "RIO GUADALUPE EXT. 14 C.P. 01730",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0068",
+    "nombre": "L A PATRONA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TETELPAN",
+    "direccion": "Calzada Desierto de los leones EXT. 4990 C.P. 01700",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0069",
+    "nombre": "LA GÜERA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA MARTINICA",
+    "direccion": "Avenida centenario EXT. 1020 INT. Local 69 C.P. 01619",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0070",
+    "nombre": "CARNICERIA EL FARO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 1A SECCION",
+    "direccion": "Ernesto P Uruchurtu dentro del mercado EXT. S/n INT. Loc 7 C.P. 01400",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0071",
+    "nombre": "PURIFICADORA PURITECH",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Av Benito juarez EXT. 72 C.P. 01410",
+    "giro": "AGUA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0072",
+    "nombre": "SEMILLA DE MOSTAZA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "San Luis Potosí EXT. 67 INT. 109 C.P. 01090",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0073",
+    "nombre": "MISCELANEA ALEXIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OCOTILLOS DEL PUEBLO TETELPAN",
+    "direccion": "Ocotillos EXT. 11 C.P. 01700",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0074",
+    "nombre": "FLORERÍA CAPRICORNIO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PRESIDENTES",
+    "direccion": "Adolfo de la Huerta EXT. 35 C.P. 01290",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0075",
+    "nombre": "MERCERÍA LUPITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P. Uruchurtu EXT. 181 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0076",
+    "nombre": "EL TIO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA MARIA NONOALCO",
+    "direccion": "Girardon EXT. 31 INT. 103 C.P. 01420",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0077",
+    "nombre": "PAPELERIA DE DIOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "2A AMPLIACION PRESIDENTES",
+    "direccion": "HACIENDA OJO DE AGUA EXT. MZA 10 INT. LOTE 15 C.P. 01299",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0078",
+    "nombre": "ABARROTES LA ALBORADA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "RIO TACUBAYA EXT. 61 C.P. 01140",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0079",
+    "nombre": "CREMERÍA EL MONARCA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "ESTADO DE HIDALGO",
+    "direccion": "Cantil EXT. 12 C.P. 01520",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0080",
+    "nombre": "ABARROTES GABY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "FRANCISCO VILLA",
+    "direccion": "3ra cerrada de minas EXT. 1 C.P. 01280",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0081",
+    "nombre": "DIANA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OCOTILLOS DEL PUEBLO TETELPAN",
+    "direccion": "Ocotillos EXT. 3 C.P. 01700",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0082",
+    "nombre": "DANIELOS PIZZA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JALALPA EL GRANDE",
+    "direccion": "Av jalalpa sur EXT. Mz56 INT. Lt5 C.P. 01377",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0083",
+    "nombre": "MICELANEA EL LLANO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LLANO REDONDO",
+    "direccion": "LLANO DE LOS CIPRESES EXT. MZ 8 INT. LT 4 C.P. 01540",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0084",
+    "nombre": "TECNOLOGÍA INFORMATICA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 181 INT. LOCAL 172 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0085",
+    "nombre": "CARNICERÍA MI LUPITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P. Uruchurtu EXT. SN INT. Dentro del C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0086",
+    "nombre": "PAPELERÍA AMBAR",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HIDALGO",
+    "direccion": "El chico EXT. 38 INT. 4 C.P. 01120",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0087",
+    "nombre": "ABARROTES LALO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LOS ANGELES DEL PUEBL",
+    "direccion": "CALZADA DESIERTO DE LOS LEONES EXT. 4417 C.P. 01790",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0088",
+    "nombre": "GATO NEGRO BURGERS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BALCONES DE CEHUAYO",
+    "direccion": "Felipe Arguello EXT. 2 C.P. 01540",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0089",
+    "nombre": "ABARROTES CEHUAYO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUNTA DE CEHUAYA",
+    "direccion": "Emiliano zapata EXT. Núm 43 C.P. 01540",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0090",
+    "nombre": "ABARROTES JRM",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "ACUILOTLA",
+    "direccion": "Esteban flores EXT. 8 INT. 9 C.P. 01539",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0091",
+    "nombre": "REFACCIONARÍA SEGURA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Avenida Hidalgo EXT. 117 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0092",
+    "nombre": "ABARROTES Y CROQUETAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE ROSAS",
+    "direccion": "Rosa blanca EXT. S/n INT. Local 9 C.P. 01470",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0093",
+    "nombre": "FARMACIA PATY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GARCIMARRERO",
+    "direccion": "Abedull EXT. 43 C.P. 01510",
+    "giro": "FARMACIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0094",
+    "nombre": "LA VENTANITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LIBERALES DE 1857",
+    "direccion": "SUDAFRICANOS EXT. MZ 34 INT. LT 2 C.P. 01110",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0095",
+    "nombre": "EL COMIENZO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Av hidalgo 180 EXT. 180 INT. Loc 1 esqu C.P. 01408",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0096",
+    "nombre": "VERDURAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 61 C.P. 01408",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0097",
+    "nombre": "PAPELERIA GENESIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Puerto Juarez EXT. 18 INT. 12 C.P. 01290",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0098",
+    "nombre": "MERCERIA CLARITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 181 INT. LOCAL 151 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0099",
+    "nombre": "BRANGUS MEAT",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GOLONDRINAS 2A SECCION",
+    "direccion": "Qutzal EXT. 33A C.P. 01270",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0100",
+    "nombre": "CARNICERÍA LA NUEVA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DEL CAPULIN",
+    "direccion": "Arboledas EXT. Mz343 INT. Lt10 C.P. 01863",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0101",
+    "nombre": "LAVANDERÍA MARIVI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "POSTES EXT. 52 C.P. 01140",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0102",
+    "nombre": "LA CONCHITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "MINA DE COBRE EXT. 7 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0103",
+    "nombre": "LA VENTANITA DE JUAN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "PUERTO PROGRESO EXT. Mz35 LT7 C.P. 01290",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0104",
+    "nombre": "DULCE REGALIN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "2A DEL MORAL DEL PUEBLO TETELP",
+    "direccion": "Magnolia EXT. 4 C.P. 01700",
+    "giro": "DULCERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0105",
+    "nombre": "FRUTAS Y LEGUMBRES 115",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JILGUERO EXT. 0 INT. LOCAL 115 C.P. 01140",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0106",
+    "nombre": "MISCELANEA LOPEZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "DESARROLLO URBANO",
+    "direccion": "CHIAPAS EXT. MZ 25 INT. LT 6 C.P. 01278",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0107",
+    "nombre": "MICELANEA LA FÉ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "Primera cerrada de popotla EXT. 10 C.P. 01090",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0108",
+    "nombre": "JARCERIA FAMILIA CRUZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P.URUCHURTU EXT. 181 INT. LOCAL 132 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0109",
+    "nombre": "CARNICERÍA Y TOCINERIA FRANCO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "8 de Mayo EXT. Mz 241 INT. Lt 3 21 C.P. 01860",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0110",
+    "nombre": "PAPE MARTITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUENTE COLORADO",
+    "direccion": "Río Nautla EXT. S/N INT. Esquina pu C.P. 01730",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0111",
+    "nombre": "CAFETERIA VAINILLA ROSA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Avenida sta lucia EXT. Calle 32 INT. 83 C.P. 01408",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0112",
+    "nombre": "LOCAL 155",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 155 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0113",
+    "nombre": "EL SEÑOR DEL CLORO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SAN BARTOLO AMEYALCO",
+    "direccion": "16 de septiembre EXT. Mz11 INT. Lt29 C.P. 01800",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0114",
+    "nombre": "PANADERÍA LA EXQUISITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "CORPUS CHRISTY",
+    "direccion": "San Luis EXT. 83 C.P. 01530",
+    "giro": "PANADERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0115",
+    "nombre": "CARNITAS EL VALLESANO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 1A SECCION",
+    "direccion": "Calle 14 EXT. 75 C.P. 01400",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0116",
+    "nombre": "ZAID",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TLACOYAQUE",
+    "direccion": "19 de febrero EXT. 39 INT. 2 C.P. 01859",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0117",
+    "nombre": "ABARROTES YUMI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LOS CEDROS",
+    "direccion": "Avenida México 68 EXT. Mz 188 INT. Lt4 C.P. 01870",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0118",
+    "nombre": "BLUE POINT LAVANDERIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TORRES DE POTRERO",
+    "direccion": "José María Morelos y Pavón EXT. Mz61 INT. Int. 20c C.P. 01840",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0119",
+    "nombre": "UNIFORMES ESCOLARES EL GALLO 2",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Avenida Puerto Mazatlán EXT. 0.20833333 INT. 0 C.P. 01290",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0120",
+    "nombre": "JARCIERIS CHAYO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "San Luis potodi EXT. 34 INT. Local 113 C.P. 01090",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0121",
+    "nombre": "PASTELERÍA DAVINCII",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "2O REACOMODO TLACUITLAPA",
+    "direccion": "Prol centenario lt20 EXT. 20 C.P. 01650",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0122",
+    "nombre": "EL POLLITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SAN CLEMENTE NORTE",
+    "direccion": "JACARANDAS EXT. MZ 17 INT. LT 12 C.P. 01740",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0123",
+    "nombre": "Q ABARROTES ROSI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TORRES DE POTRERO",
+    "direccion": "Av de las rosas EXT. 36 INT. 4 C.P. 01840",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0124",
+    "nombre": "ERITNEAL",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Del río EXT. 1 C.P. 01770",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0125",
+    "nombre": "VERDULERÍA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Av 29 de octubre EXT. 47 INT. 2 C.P. 01860",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0126",
+    "nombre": "ABARROTES EL LEÓNCITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Antigua vía a la venta EXT. Mz15 INT. Lt9 C.P. 01160",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0127",
+    "nombre": "MA SELENE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE SANTO DOMINGO",
+    "direccion": "AVE. SAN MARCOS EXT. MZ 37 INT. LT 16 C.P. 01130",
+    "giro": "FARMACIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0128",
+    "nombre": "LA CAMPANITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "CANUTILLO 2A SECCION",
+    "direccion": "Av centenario EXT. 1119 INT. K ENTRADA C.P. 01560",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0129",
+    "nombre": "ABARROTES MORALES",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BONANZA",
+    "direccion": "Mexicznos EXT. lote6 C.P. 01220",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0130",
+    "nombre": "LA ORUGA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Río San juan EXT. 72 INT. 16 C.P. 01770",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0131",
+    "nombre": "PAPELERIA MICH",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Calle 30 EXT. 64 C.P. 01408",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0132",
+    "nombre": "POLLERÍA LUPITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P. Uruchurtu EXT. (dentro de INT. Local 28, C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0133",
+    "nombre": "CARNICERÍA LA SORPRESA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P uruchurtu EXT. (comercio INT. Local 3 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0134",
+    "nombre": "ABARROTES DOÑA JUANA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Vicente Guerrero EXT. Mz 531 INT. Lt 3 C.P. 01860",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0135",
+    "nombre": "SUPER TOCINERIA LOLITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 40 4 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0136",
+    "nombre": "LA PONDEROSA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JALALPA TEPITO 2A AMPLIACION",
+    "direccion": "AVENIDA JALALPA EXT. Mz 15 INT. Lt 69 C.P. 01296",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0137",
+    "nombre": "ABARROTES SAN LEO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Del arbol EXT. 24 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0138",
+    "nombre": "CREMERIA CELESTE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Mina platino EXT. SN INT. Local 41 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0139",
+    "nombre": "ABARROTES BARA BARA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SAN JOSE DEL OLIVAR",
+    "direccion": "San Agustín EXT. 160 C.P. 01770",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0140",
+    "nombre": "LA CASA DEL PAN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TLAPECHICO",
+    "direccion": "Cilantro EXT. 4 INT. 10 C.P. 01230",
+    "giro": "PANADERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0141",
+    "nombre": "FRUTAS Y LEGUMBRES MARANATA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JILGUERO EXT. 0 INT. LOCAL 67 C.P. 01140",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0142",
+    "nombre": "PAPELERÍA Y REGALOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA FE",
+    "direccion": "Progreso EXT. 7 C.P. 01210",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0143",
+    "nombre": "ABARROTES MIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "CORPUS CHRISTY",
+    "direccion": "San Miguel EXT. 47 C.P. 01530",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0144",
+    "nombre": "MARE LINDO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE ROSAS",
+    "direccion": "Rosa Blanca EXT. 154 C.P. 01470",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0145",
+    "nombre": "FAMILIA FLORES",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "San Luis Potosí EXT. 67 INT. 59 C.P. 01090",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0146",
+    "nombre": "GEMINIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "ALFALFAR",
+    "direccion": "Rosa de Castillo EXT. 1-A C.P. 01470",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0147",
+    "nombre": "ROPA HECHA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 181 INT. LOCAL 139 C.P. 01408",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0148",
+    "nombre": "VIVIAN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA MARIA NONOALCO",
+    "direccion": "Girardon EXT. 31 INT. 3 C.P. 01420",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0149",
+    "nombre": "CARNICERÍA EL TORITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P uruchurtu EXT. (comercio INT. Local2 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0150",
+    "nombre": "PAPELERÍA KENIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Avenida Benito Juárez EXT. 131 C.P. 01410",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0151",
+    "nombre": "ABARROTES SAN CARLOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JILGUERO EXT. 57 C.P. 01140",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0152",
+    "nombre": "MEMO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "San Luis Potosí EXT. 67 INT. 106 C.P. 01090",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0153",
+    "nombre": "ANTOJITOS MEXICANOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "COOPERATIVA UNION OLIVOS",
+    "direccion": "Olivos EXT. 6 INT. 13 C.P. 01539",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0154",
+    "nombre": "TORTILLERÍA PANCHO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "Jilguero EXT. 1 C.P. 01140",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0155",
+    "nombre": "LA BODEGUITA DE CARI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Puerto Mazatlán EXT. 121 INT. 0 C.P. 01290",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0156",
+    "nombre": "ABARROTES MARIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LOS ANGELES DEL PUEBL",
+    "direccion": "CALLE 6 EXT. 27 C.P. 01790",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0157",
+    "nombre": "FRUTOS ROSI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA MARIA NONOALCO",
+    "direccion": "Girardon EXT. 31 INT. 13 C.P. 01420",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0158",
+    "nombre": "CREMERIA LUNA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "PADRE HIDALGO EXT. 186 C.P. 01408",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0159",
+    "nombre": "SUPER TIENDA KAREN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DEL CAPULIN",
+    "direccion": "Arboledas EXT. Mz6 INT. Lt4 C.P. 01863",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0160",
+    "nombre": "ABARROTES SOL Y LUNA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Cda del capulin EXT. Mz334 INT. Lt11 C.P. 01860",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0161",
+    "nombre": "EL PASO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TLACOYAQUE",
+    "direccion": "19 de febrero EXT. 60 INT. 26 C.P. 01859",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0162",
+    "nombre": "PAPELERÍA BERNAL",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Avenida Díaz Ordaz y Puerto Zapata EXT. 20 INT. 21 C.P. 01290",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0163",
+    "nombre": "GLORIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TIZAPAN",
+    "direccion": "San Luis Potosí EXT. 67 INT. 118 C.P. 01090",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0164",
+    "nombre": "ÓPTICA OASIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HIDALGO",
+    "direccion": "Av. Observatorio EXT. 457 INT. 12 C.P. 01120",
+    "giro": "OPTICA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0165",
+    "nombre": "ROPA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA FE",
+    "direccion": "Vasco de Quiroga EXT. 162 INT. 21 C.P. 01210",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0166",
+    "nombre": "POLLERIA EL ARBOL",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA LUCIA",
+    "direccion": "Guadalupe Victoria EXT. Mz5 Lt 24 C.P. 01500",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0167",
+    "nombre": "LA VENRANITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "PERLITAS EXT. LOTE 19 INT. manzana 5 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0168",
+    "nombre": "DULCHI-PECIAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE TARANGO",
+    "direccion": "Lo AVENIDA 5 DE MAYO EXT. 20 C.P. 01620",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0169",
+    "nombre": "DULCERIA PATY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PALMAS AXOTITLA",
+    "direccion": "Mina de azufre EXT. M2 INT. Lt23 C.P. 01650",
+    "giro": "DULCERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0170",
+    "nombre": "SAN JORGE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE SANTO DOMINGO",
+    "direccion": "Av rio Santo Domingo EXT. 37 C.P. 01130",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0171",
+    "nombre": "DULCERIA PATY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PALMAS AXOTITLA",
+    "direccion": "Minas de azufre EXT. M2 INT. Lt23 C.P. 01650",
+    "giro": "DULCERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0172",
+    "nombre": "JUANITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MOLINO DE SANTO DOMINGO",
+    "direccion": "SAN MARCOS EXT. SN INT. LOC 84 y 8 C.P. 01130",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0173",
+    "nombre": "POLLERÍA PIO PIO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Av 29 de octubre EXT. Mz248 INT. Lt53 C.P. 01860",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0174",
+    "nombre": "POLLERÍA Y RECAUDERIA PEDRAZA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BELLAVISTA",
+    "direccion": "CAMINO REAL A TOLUCA EXT. 33 C.P. 01140",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0175",
+    "nombre": "COCTELES JUGOS Y LICUADOS TOÑO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 110 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0176",
+    "nombre": "UN MUNDO DE FANTASÍAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Calle romanos EXT. lt 45 C.P. 01160",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0177",
+    "nombre": "COPIAS ESTREUS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DE LOS PADRES",
+    "direccion": "San agustin EXT. 159 INT. 4 C.P. 01780",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0178",
+    "nombre": "TLAPALERIA Y PINTURA SUAREZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JALALPA TEPITO",
+    "direccion": "Avenida Gustavo Diaz Ordaz EXT. Mz 20 INT. Lt 2 C.P. 01296",
+    "giro": "FERRETERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0179",
+    "nombre": "ABARROTES \"LA COMERCIAL\"",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LIBERALES DE 1857",
+    "direccion": "Ignacio Ramírez EXT. # 15 INT. 1 C.P. 01110",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0180",
+    "nombre": "PAPELERÍA SAMY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Av. Central EXT. 17 C C.P. 01160",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0181",
+    "nombre": "ABARROTES PAGUILLA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ARAÑA",
+    "direccion": "La araña EXT. Mz10 INT. Lte 12 C.P. 01510",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0182",
+    "nombre": "ANTOJITOS MEXICANOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUENTE COLORADO",
+    "direccion": "RIO CHICO Y RIO NAUTLA EXT. S/N INT. 9 C.P. 01730",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0183",
+    "nombre": "GUADALUPE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SANTA LUCIA CHANTEPEC",
+    "direccion": "Gardenia EXT. Mz 9 INT. Lt 1 C.P. 01650",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0184",
+    "nombre": "POLLERIA JUQUILITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUENTE COLORADO",
+    "direccion": "Calle Metlac EXT. 163 C.P. 01730",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0185",
+    "nombre": "ABARROTES LUPITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Yayahuits EXT. 186 C.P. 01770",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0186",
+    "nombre": "CARNICERÍA Y POLLERÍA VENEGAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LOS CEDROS",
+    "direccion": "Av México 68 EXT. Mz182 INT. Lt2 C.P. 01870",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0187",
+    "nombre": "MALI ACCESORIOS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BALCONES DE CEHUAYO",
+    "direccion": "José santos chocano EXT. 26 C.P. 01540",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0188",
+    "nombre": "TIENDA NATURISTA LA ESPIGA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SAN BARTOLO AMEYALCO",
+    "direccion": "Francisco I Madero EXT. 60 C.P. 01800",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0189",
+    "nombre": "SEMILLAS LUCERO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Pto Mazatlán EXT. Mz27lt62 C.P. 01290",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0190",
+    "nombre": "POLLERIA Y ABARROTES MARTÍNEZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE CAPULA",
+    "direccion": "Bartolomé F EXT. Mz23 LT 16 C.P. 01270",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0191",
+    "nombre": "EL FRIJOLITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "TORRES DE POTRERO",
+    "direccion": "AV JOSÉ MARÍA MORELOS Y PAVÓN EXT. MZ 68 INT. LT 11 C.P. 01840",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0192",
+    "nombre": "EL MEXICANITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "4 EXT. 33 C.P. 01160",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0193",
+    "nombre": "LAS VIKIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Romanos EXT. Mz1 INT. Lt12 C.P. 01160",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0194",
+    "nombre": "FRUTAS Y VERDURAS JACQUELINE",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JILGUERO EXT. 0 INT. LOCAL 60 C.P. 01140",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0195",
+    "nombre": "MOLINO DE CHILES SANTA ROSA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Francisco Villa EXT. 14 C.P. 01860",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0196",
+    "nombre": "POLLERÍA VALENTÍN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LIBERALES DE 1857",
+    "direccion": "Av Presidente Juárez EXT. MZ-23 LT-4 INT. Accesoria C.P. 01110",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0197",
+    "nombre": "SUPER POLLO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LIBERALES DE 1857",
+    "direccion": "Presidente Juárez EXT. Mz-10 Lt-1 C.P. 01110",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0198",
+    "nombre": "SONY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Av Puerto Mazatlán EXT. 134 INT. 0 C.P. 01290",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0199",
+    "nombre": "PAPELERIA GLORIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Calle 5 EXT. manza 38 INT. LOTE 59 C.P. 01410",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0200",
+    "nombre": "ALCOMEDI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MIGUEL HIDALGO",
+    "direccion": "Cristobal hidalgo EXT. Mz 1 INT. Lt 8 C.P. 01789",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0201",
+    "nombre": "POLLERIA Y VERDULERÍA EL GALLO FELIZ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JOSE MARIA PINO SUAREZ",
+    "direccion": "JILGUERO EXT. 1 BIS C.P. 01140",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0202",
+    "nombre": "INTEROBVI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Centenario EXT. 57 C.P. 01600",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0203",
+    "nombre": "LA BAJADITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Andador Benito Juárez EXT. 20 INT. 25 A C.P. 01410",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0204",
+    "nombre": "POLLERÍA CATITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "FRANCISCO VILLA",
+    "direccion": "Matagalpinos EXT. 24 C.P. 01280",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0205",
+    "nombre": "DON FORTIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Calle 5 EXT. Mz22 INT. Lt5 C.P. 01160",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0206",
+    "nombre": "STUDIO HM",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "SAN JOSE DEL OLIVAR",
+    "direccion": "San Agustín EXT. 131 C.P. 01770",
+    "giro": "ESTETICA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0207",
+    "nombre": "MISCELÁNEA LUCY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "AMPLIACION PILOTO ADOLFO LOPEZ",
+    "direccion": "PUERTO YUCALPETEN EXT. Mz50 LT 1A C.P. 01298",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0208",
+    "nombre": "ABARROTES EL CAPULÍN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LA ERA",
+    "direccion": "Av 29 de octubre EXT. 7 INT. 7 C.P. 01860",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0209",
+    "nombre": "MINI PET SHOP",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P. Uruchurtu EXT. 180 INT. Local 177 C.P. 01408",
+    "giro": "MASCOTAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0210",
+    "nombre": "DIANA Y KEVIN",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Mina platino EXT. SN INT. Local 53 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0211",
+    "nombre": "ABARROTES LA BAJADITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GOLONDRINAS 2A SECCION",
+    "direccion": "Av. Río San Borja EXT. MZ. 17 INT. Lt. 36 C.P. 01270",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0212",
+    "nombre": "CREMERIA Y SALCHICHONERIA LOS ANGELES",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LOS ANGELES DEL PUEBL",
+    "direccion": "CALZADA DESIERTO DE LOS LEONES EXT. M.5 INT. L.7 C.P. 01790",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0213",
+    "nombre": "MAXISUPER",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Río San juan EXT. 99 C.P. 01770",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0214",
+    "nombre": "CONSUMO ANGELA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "FLOR DE MARIA",
+    "direccion": "ROMULO O FARRIL EXT. 19 C.P. 01760",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0215",
+    "nombre": "FILETES LA PASADITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE BECERRA",
+    "direccion": "Avenida Chicago EXT. Mz 38b INT. LT. 6 C.P. 01279",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0216",
+    "nombre": "PLASTICOS BLANCAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 133 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0217",
+    "nombre": "CREACIONES ALELI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 180 INT. LOCAL 150 C.P. 01408",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0218",
+    "nombre": "CREMERIA LUPITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Adolfo lopez mateoz EXT. 34 C.P. 01410",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0219",
+    "nombre": "CREMERIA LA GUADALUPANA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "JALALPA TEPITO",
+    "direccion": "BENITA GALEANA EXT. MANZANA 19 INT. LOTE 2 C.P. 01296",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0220",
+    "nombre": "FRUTERÍA TINAJERO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Puerto Vallarta EXT. 0 INT. 50 C.P. 01290",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0221",
+    "nombre": "ZARIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTP P URUCHURTU EXT. 351 INT. LOCAL 2 C.P. 01408",
+    "giro": "ROPA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0222",
+    "nombre": "JUGOS Y TORTAS OASIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 1A SECCION",
+    "direccion": "Calle 22 EXT. 155 C.P. 01400",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0223",
+    "nombre": "ABARROTES PADILLA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PUENTE COLORADO",
+    "direccion": "Río Guadalupe EXT. MZ M LT 14 C.P. 01730",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0224",
+    "nombre": "EL NARANJITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P uruchurtu EXT. S/N INT. Interior d C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0225",
+    "nombre": "ANTOJITOS ROSY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Puerto juarez EXT. 16 INT. 15 C.P. 01290",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0226",
+    "nombre": "LA MINIATURA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Avenida Benito Juárez EXT. 27 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0227",
+    "nombre": "TOKOX",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PALMAS",
+    "direccion": "J Manuel Herrera EXT. 49 C.P. 01410",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0228",
+    "nombre": "POLLERIA \"LEO\"",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A AMPLIACION PRESIDENTES",
+    "direccion": "CLL JOHN F KENNEDY EXT. 9 INT. 2 C.P. 01299",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0229",
+    "nombre": "ABARROTES CAMILA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA ANGOSTURA",
+    "direccion": "Predio la angostura EXT. 99 C.P. 01770",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0230",
+    "nombre": "FRUTAS Y VERDURAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "Ernesto P uruchurtu EXT. S/N INT. Interior d C.P. 01408",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0231",
+    "nombre": "DESAYUNOS Y ALGO MÁS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "BARRIO NORTE",
+    "direccion": "Avenida Benito Juárez EXT. 131 C.P. 01410",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0232",
+    "nombre": "MATERIAS PRIMAS YESI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "2A DEL MORAL DEL PUEBLO TETELP",
+    "direccion": "Calzada desierto de los leones EXT. 4892 C.P. 01700",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0233",
+    "nombre": "CREMERÍA EDITH",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "PILOTO ADOLFO LOPEZ MATEOS",
+    "direccion": "Puerto vallarta EXT. 0 INT. 14 C.P. 01290",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0234",
+    "nombre": "LA TIENDITA DE BISHO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Calle 4 EXT. Mz9 lte 1 C.P. 01160",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0235",
+    "nombre": "RECAUDARÍA LA PASADITA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "MERCED GOMEZ",
+    "direccion": "Centenario EXT. 273 d C.P. 01600",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0236",
+    "nombre": "EL JAROCHO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE LOS ANGELES DEL PUEBL",
+    "direccion": "CALZADA DESIERTO DE LOS LEONES EXT. M.4 INT. L.34 C.P. 01790",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0237",
+    "nombre": "DON NIKO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "CRISTO REY",
+    "direccion": "Merc Cristo rey EXT. Puesto 2 C.P. 01150",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0238",
+    "nombre": "PAPELERÍA UN MUNDO DE FANTACIAS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Romanos EXT. Lt 45 C.P. 01160",
+    "giro": "PAPELERIA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0239",
+    "nombre": "LA SUPREMA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "4 EXT. Mz 20 lt 1 INT. 23 C.P. 01160",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0240",
+    "nombre": "TELAS Y COTINAS DEL OLIVAR",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 2A SECCION",
+    "direccion": "ERNESTO P URUCHURTU EXT. 181 INT. LOCAL 163 C.P. 01408",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0241",
+    "nombre": "CARNICERÍA LA PARROQUIA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE CAPULA",
+    "direccion": "Bartolomé F EXT. Mz23 LT 16 C.P. 01270",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0242",
+    "nombre": "MISCELÁNEA EL ARBOLITO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LA PALMITA",
+    "direccion": "Paso de la soledad EXT. Lt10 INT. Mz2 C.P. 01260",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0243",
+    "nombre": "LA HIGIÉNICA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "ABRAHAM M. GONZALEZ",
+    "direccion": "Camino real a Toluca 15 EXT. Local G2 C.P. 01170",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0244",
+    "nombre": "COCINA YAMI",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "OLIVAR DEL CONDE 1A SECCION",
+    "direccion": "CALLE 22 EXT. 54 C.P. 01400",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0245",
+    "nombre": "ABARROTES POLLERIA LULÚ",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "LOMAS DE PLATEROS",
+    "direccion": "Av CENTENARIO EXT. 478 INT. D C.P. 01480",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0246",
+    "nombre": "ANTÓJITOS LA NORMIS",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HIDALGO",
+    "direccion": "El chico EXT. 38 INT. Local 40 C.P. 01120",
+    "giro": "COMIDA",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0247",
+    "nombre": "CHARLY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "1A VICTORIA",
+    "direccion": "Calle romanos EXT. Mz 12 lt4 C.P. 01160",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0248",
+    "nombre": "RECAUDARÍA FANY",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "FRANCISCO VILLA",
+    "direccion": "Chiricanos EXT. 16 C.P. 01280",
+    "giro": "VERDURAS",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0249",
+    "nombre": "MAMA GOYA",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "HOGAR Y REDENCION",
+    "direccion": "Mario Moreno EXT. Mz 41 INT. Lt 01 C.P. 01450",
+    "giro": "ABARROTES",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  },
+  {
+    "id": "MERCOM-0250",
+    "nombre": "FRUTAS Y VERDURAS LEO",
+    "tipo_espacio": "Comercio Barrial Mercomuna",
+    "alcaldia": "ALVARO OBREGON",
+    "colonia": "GOLONDRINAS 1A SECCION",
+    "direccion": "Marco polo EXT. Mz22 LT 12 C.P. 01270",
+    "giro": "OTRO",
+    "fuente_original": "SEDECO / Alcaldía - Muestra Mercomuna"
+  }
+]

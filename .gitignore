@@ -1,0 +1,19 @@
+# Sistema operativo y temporales
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+
+# Archivos de caché binarios pesados opcionales
+data/processed/routing_graph.pickle
