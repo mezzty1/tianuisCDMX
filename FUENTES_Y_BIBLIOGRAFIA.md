@@ -278,6 +278,14 @@ Marco teórico para blindar el prototipo frente al extractivismo de datos y la d
 6. **Censos Económicos 2024 (Resultados Oportunos CDMX, INEGI 2025):**
    - 453,823 unidades económicas en la CDMX; 93.5% son microempresas que concentran apenas el 11.8% de los ingresos totales.
    - 87.8% de los negocios cobra exclusivamente en efectivo; solo 6.7% vendió por internet en 2023.
+7. **Gaceta Oficial de la Ciudad de México — Tarifas de Transporte Concesionado (SEMOVI):**
+   - Publicación del esquema tarifario oficial por distancia en microbuses y vagonetas ($6.00 hasta 5 km, $6.50 de 5 a 12 km, $7.50 más de 12 km; corredores $8.00 - $8.50) y recargo nocturno oficial de +20% (23:00 a 06:00 hrs).
+8. **Gaceta del Gobierno del Estado de México — Tarifas del Servicio Público Concesionado (Secretaría de Movilidad GEM):**
+   - Ajuste tarifario oficial para el transporte colectivo mexiquense (combis y microbuses): tarifa mínima de $14.00 MXN para los primeros 5 kilómetros y $0.25 MXN por cada kilómetro adicional, con impacto directo en rutas conurbadas hacia CETRAMs de la CDMX.
+9. **Tarifas Oficiales Red de Movilidad Integrada (MI) CDMX:**
+   - SEMOVI CDMX: Metro ($5.00), Metrobús ($6.00), Cablebús ($7.00), Trolebús ($4.00 general / $7.00 Elevado), Tren Ligero ($3.00), RTP ($2.00 ordinario / $4.00 expreso / $5.00 Ecobús / $7.00 Nochebús). Gratuidad social universal para personas mayores de 60 años con INAPAM y personas con discapacidad.
+10. **Secretaría de Infraestructura, Comunicaciones y Transportes (SICT) & Ferrocarriles Suburbanos:**
+    - Esquema tarifario oficial del Ferrocarril Suburbano de la ZMVM: Viaje corto (0 a 12.89 km) en $10.50 MXN; Viaje largo (12.90 a 25.59 km) en $24.50 MXN. Costo plástico de tarjeta inteligente recargable: $16.00 MXN.
 
 ---
 
@@ -304,9 +312,11 @@ Marco teórico para blindar el prototipo frente al extractivismo de datos y la d
 |---|:---:|---|
 | [`data/raw/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/raw) | Datasets Crudos | Archivos CSV, JSON, GeoJSON y Excel descargados directamente de portales abiertos gubernamentales. |
 | [`data/processed/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/processed) | Datasets Limpios | Datos estandarizados WGS84, horarios decimales, alcaldías canónicas y catálogo unificado (`directorio_comercio_popular.json`). |
-| [`data/catalog/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog) | Taxonomía de Giros | 9 Macro-Categorías, 67 Subgiros normalizados, `giro_classifier.py` con motor regex multi-etiqueta y atributos Mercomuna. |
+| [`data/catalog/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog) | Taxonomía y Tarifas | 9 Macro-Categorías, 67 Subgiros normalizados, `giro_classifier.py`, `vocabulario_compras.json` y catálogo maestro de tarifas y horarios (`tarifas_horarios_transporte.json` / `.csv`). |
 | [`data/docs/apis_cdmx.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/docs/apis_cdmx.md) | Catálogo de APIs | Guía técnica y pruebas de conectividad en vivo de CKAN Datastore, GeoServer WFS SIG CDMX, Ecobici GBFS y OSRM. |
+| [`docs/TARIFAS_Y_HORARIOS_TRANSPORTE.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/TARIFAS_Y_HORARIOS_TRANSPORTE.md) | Documentación Tarifaria | Estudio exhaustivo de la asimetría metropolitana CDMX vs Edomex, fórmulas de cobro por distancia, recargos nocturnos e impacto en comerciantes madrugadores. |
 | [`docs/RUTEO_MULTIMODAL_CDMX.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/RUTEO_MULTIMODAL_CDMX.md) | Documentación Técnica | Especificación del motor de ruteo multimodal (Metro + Metrobús + Trolebús + RTP + caminata hacia tianguis). |
+| [`scripts/schedule_pricing_engine.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/schedule_pricing_engine.py) | Motor de Horarios y Precios | Motor CLI y API Python para consulta dinámica de transporte abierto/cerrado por hora y cotización exacta tramo por tramo. |
 | [`TODO_PROYECTO.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/TODO_PROYECTO.md) | Backlog del Proyecto | Lista estructurada de 8 módulos de trabajo con dependencias, dificultad y estatus de ejecución en tiempo real. |
 | [`mapa_comercio_movilidad_cdmx.html`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/mapa_comercio_movilidad_cdmx.html) | Visor Web Integrado | Prototipo cartográfico interactivo que combina la capa de comercio popular con la Red de Movilidad Integrada. |
 | [`scripts/`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts) | Pipelines ETL y Build | Scripts en Python para descarga, compilación del grafo de ruteo, normalización de datos y generación del visor web. |

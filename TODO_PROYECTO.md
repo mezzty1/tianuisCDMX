@@ -112,12 +112,14 @@ graph TD
 
 - [x] **2.1 Descargar y estructurar catálogos geográficos de la Red MI** `[Hecho]`
   - Descargado paquete GTFS estático oficial de SEMOVI CDMX con Metro, Metrobús, Cablebús, Trolebús, Tren Ligero y Corredores Concesionados (`data/raw/transporte/gtfs/`).
-- [ ] **2.2 Crear matriz de Costos, Tarifas y Políticas de Transbordo** `[100% Independiente] [Dificultad: Muy Baja]`
-  - Documentar en formato estructurado (`tarifas_mi.json` / `tarifas_mi.csv`):
-    - Tarifa unitaria por subsistema (Metro $5, Metrobús $6, Cablebús $7, Trolebús $4/$7, Tren Ligero $3, RTP $2/$4/$5).
-    - Transbordos con Tarjeta MI y exenciones (adultos mayores +60, personas con discapacidad, menores).
-- [ ] **2.3 Crear catálogo de Horarios Oficiales de Operación** `[100% Independiente] [Dificultad: Baja]`
-  - Documentar horarios por subsistema para: días laborales (L-V), sábados, domingos y días festivos.
+- [x] **2.2 Crear matriz de Costos, Tarifas y Políticas de Transbordo** `[Hecho]`
+  - Implementado catálogo unificado en [`data/catalog/tarifas_horarios_transporte.json`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/tarifas_horarios_transporte.json) y [`data/catalog/tarifas_horarios_transporte.csv`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/data/catalog/tarifas_horarios_transporte.csv).
+  - Incluye los 15 subsistemas de la ZMVM: Metro ($5), Metrobús ($6), Cablebús ($7), Trolebús ($4/$7), Tren Ligero ($3), RTP ($2/$4/$5/$7 Nochebús), Mexibús ($9), Mexicable ($9) y Tren Suburbano ($10.50-$24.50).
+  - Políticas de gratuidad (+60 INAPAM, discapacidad, menores de 5 años) y ventanas de transbordo (2 horas en Metrobús, transbordos ilimitados en Metro).
+- [x] **2.3 Crear catálogo de Horarios Oficiales de Operación** `[Hecho]`
+  - Documentados horarios decimales y cadenas de apertura/cierre para: Lunes-Viernes, Sábados, Domingos y Días Festivos.
+  - Modeladas ventanas de servicio nocturno (Nochebús 00:00 - 05:00 hrs) y desfases de cierre de madrugada (Suburbano hasta 00:30 hrs).
+  - Motor funcional [`scripts/schedule_pricing_engine.py`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/scripts/schedule_pricing_engine.py) con función `consultar_transporte_por_hora(dia, hora)`.
 - [x] **2.4 Procesar GTFS de Movilidad Integrada CDMX** `[Hecho]`
   - Script `scripts/build_demo_data.py` extractor de shapes y routes compilado en `data/processed/map_bundle.json`.
 - [ ] **2.5 Catálogo de CETRAMs (Centros de Transferencia Modal)** `[100% Independiente] [Dificultad: Baja]`
@@ -134,10 +136,11 @@ graph TD
     - Rutas concesionadas tradicionales (Rutas 1 a 110).
     - Corredores viales concesionados nuevos (SAUSA, COAVENSA, ATROLSA, etc.).
     - Ramales, orígenes y destinos (ej. "Metro Tacubaya - Santa Fe").
-- [ ] **3.2 Estructura Tarifaria de Transporte Concesionado** `[100% Independiente] [Dificultad: Baja]`
-  - Documentar el esquema tarifario oficial por distancia:
-    - Microbuses/vagonetas: Primeros 5 km, de 5 a 12 km, más de 12 km.
-    - Autobuses de corredor: tarifa fija ordinaria y ejecutiva.
+- [x] **3.2 Estructura Tarifaria de Transporte Concesionado y Frontera Metropolitana** `[Hecho]`
+  - Documentado esquema oficial por distancia en CDMX (Microbús: $6.00 hasta 5 km, $6.50 de 5 a 12 km, $7.50 más de 12 km; Corredor: $8.00 - $8.50).
+  - Documentada tarifa conurbada del Estado de México (Combi: $14.00 base primeros 5 km + $0.25/km adicional) y reciprocidad en cruces hacia CETRAMs de CDMX.
+  - Recargo nocturno formal (+20% de 23:00 a 06:00 hrs) y motor dinámico `calcular_costo_tramo(sistema_id, distancia_km, hora, origen_edomex)`.
+  - Documentación técnica exhaustiva en [`docs/TARIFAS_Y_HORARIOS_TRANSPORTE.md`](file:///Users/williams/Documents/Proyectos%20en%20Docker/Comercio%20Popular%20y%20Barrial/docs/TARIFAS_Y_HORARIOS_TRANSPORTE.md).
 - [ ] **3.3 Padrón de Bases de Taxis y Taxis de Sitio** `[100% Independiente] [Dificultad: Media]`
   - Ubicación de bases autorizadas cercanas a mercados públicos y CETRAMs.
   - Tarifas: Banderazo taxi libre, sitio, radio-taxi, recargo nocturno (23:00 a 06:00).
