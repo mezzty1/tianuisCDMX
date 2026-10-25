@@ -1356,7 +1356,7 @@ def build_map_html():
           <option value="TODAS">📍 Todas las Alcaldías</option>
         </select>
         <select id="escala-select" class="filter-select">
-          <option value="TODAS">🎪 Cualquier escala</option>
+          <option value="TODAS">🧺 Cualquier escala</option>
           <option value="mega">Megatianguis (300+)</option>
           <option value="mediano">Mediano (100–300)</option>
           <option value="barrial">Barrial (<100)</option>
@@ -1386,7 +1386,7 @@ def build_map_html():
       <div class="sidebar-header">
         <div class="sidebar-title-group">
           <div class="sidebar-badge-row">
-            <span class="badge-escala" id="side-escala-badge">🎪 Megatianguis</span>
+            <span class="badge-escala" id="side-escala-badge">🧺 Megatianguis</span>
             <span style="font-size: 11px; color: var(--slate-500); font-weight: 600;" id="side-oferentes-count">~1,200 oferentes</span>
           </div>
           <h2 class="sidebar-popular-title" id="side-popular-name">Tianguis El Salado</h2>
@@ -1898,7 +1898,7 @@ def build_map_html():
             }
           }
 
-          const iconHtml = `<div class="marker-pin ${status.markerClass}" title="${escapeHtml(t.nombre_popular)}">${t.escala_icono || '🎪'}${govBadgeHtml}</div>`;
+          const iconHtml = `<div class="marker-pin ${status.markerClass}" title="${escapeHtml(t.nombre_popular)}">${t.escala_icono || '🧺'}${govBadgeHtml}</div>`;
           const customIcon = L.divIcon({
             html: iconHtml,
             className: 'tianguis-marker-icon',
@@ -1942,7 +1942,7 @@ def build_map_html():
 
         // Escala
         const escalaBadge = document.getElementById('side-escala-badge');
-        escalaBadge.textContent = `${t.escala_icono || '🎪'} ${t.escala_nombre}`;
+        escalaBadge.textContent = `${t.escala_icono || '🧺'} ${t.escala_nombre}`;
         escalaBadge.className = `badge-escala ${t.escala_badge || 'badge-barrial'}`;
         document.getElementById('side-oferentes-count').textContent = `~${t.oferentes.toLocaleString()} oferentes / puestos`;
 
@@ -2369,12 +2369,12 @@ def build_map_html():
 
         // Sección Tianguis
         if (matchTianguis.length > 0) {
-          html += `<div class="suggest-group-header">🎪 Tianguis y Mercados Móviles</div>`;
+          html += `<div class="suggest-group-header">🧺 Tianguis y Mercados Móviles</div>`;
           matchTianguis.forEach(t => {
             html += `
               <div class="suggest-item" data-type="tianguis" data-id="${t.id}">
                 <div class="suggest-item-main">
-                  <span class="suggest-item-icon">${t.escala_icono || '🎪'}</span>
+                  <span class="suggest-item-icon">${t.escala_icono || '🧺'}</span>
                   <div>
                     <div class="suggest-item-title">${t.nombre_popular}</div>
                     <div class="suggest-item-subtitle">${t.alcaldia} · Col. ${t.colonia} (${t.dias.join(', ')})</div>
@@ -2541,7 +2541,7 @@ def build_map_html():
         if (state.activeEscala !== 'TODAS') {
           hasFilter = true;
           const label = state.activeEscala === 'mega' ? 'Megatianguis' : (state.activeEscala === 'mediano' ? 'Mediano' : 'Barrial');
-          const chip = createChip(`🎪 ${label}`, () => {
+          const chip = createChip(`🧺 ${label}`, () => {
             state.activeEscala = 'TODAS';
             document.getElementById('escala-select').value = 'TODAS';
             renderMapMarkers();
