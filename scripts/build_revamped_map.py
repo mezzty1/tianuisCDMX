@@ -1328,9 +1328,9 @@ def build_map_html():
 
       <div class="sidebar-body">
         <!-- FOTOGRAFÍA Y RATING GOOGLE MAPS (TAREA 5.5) -->
-        <div class="sidebar-photo-container" id="side-photo-box" style="margin-bottom: 12px; position: relative; border-radius: 12px; overflow: hidden; background: var(--slate-100); height: 160px; display: none;">
-          <img id="side-photo-img" src="" alt="Fotografía del Tianguis" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.parentElement.style.display='none';">
-          <div id="side-photo-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: #fff; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 4px;">
+        <div class="sidebar-photo-container" id="side-photo-box" style="margin-bottom: 12px; position: relative; border-radius: 12px; overflow: hidden; background: #0f172a; height: 165px; display: block;">
+          <img id="side-photo-img" src="" referrerpolicy="no-referrer" loading="lazy" alt="Fotografía del Tianguis" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80';">
+          <div id="side-photo-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(4px); color: #fff; font-size: 11.5px; font-weight: 700; padding: 4px 9px; border-radius: 6px; display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.18);">
             <span style="color: #fbbf24;">★</span> <span id="side-rating-text">4.2 (1,048 reseñas)</span>
           </div>
         </div>
@@ -1402,6 +1402,15 @@ def build_map_html():
 
             <div class="product-tags-cloud" id="side-product-tags" style="margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px;"></div>
           </div>
+        </div>
+
+        <!-- RESEÑAS REALES DE VISITANTES (GOOGLE MAPS) -->
+        <div class="detail-section" id="side-reviews-section">
+          <div class="gov-header-row" style="margin-bottom: 6px;">
+            <span class="detail-label">💬 Lo que dice la gente (Google Maps)</span>
+            <span class="badge-epistemic badge-epistemic-confirmado" style="font-size: 9.5px;" id="side-reviews-count-badge">Opiniones</span>
+          </div>
+          <div id="side-reviews-list" style="display: flex; flex-direction: column; gap: 6px;"></div>
         </div>
 
         <!-- TRANSPORTE MÁS CERCANO A PIE (SIN LÍNEAS ESTORBOSAS) -->
@@ -1860,14 +1869,11 @@ def build_map_html():
         const photoBox = document.getElementById('side-photo-box');
         const photoImg = document.getElementById('side-photo-img');
         const ratingText = document.getElementById('side-rating-text');
-        const fotoUrl = t.foto_principal || (t.fotos && t.fotos.length ? t.fotos[0] : '');
+        const defaultTianguisPhoto = 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80';
+        const fotoUrl = t.foto_principal || (t.fotos && t.fotos.length ? t.fotos[0] : '') || defaultTianguisPhoto;
         
-        if (fotoUrl) {
-          photoImg.src = fotoUrl;
-          photoBox.style.display = 'block';
-        } else {
-          photoBox.style.display = 'none';
-        }
+        photoImg.src = fotoUrl;
+        photoBox.style.display = 'block';
 
         if (t.rating_google) {
           const revCount = (t.total_resenas) ? `${t.total_resenas.toLocaleString()} reseñas` : 'Google Maps';
@@ -1901,6 +1907,33 @@ def build_map_html():
             });
             tagsContainer.appendChild(chip);
           });
+        }
+
+        // Citas textuales de reseñas reales de Google Maps (Fase 1 y 2)
+        const reviewsSec = document.getElementById('side-reviews-section');
+        const reviewsList = document.getElementById('side-reviews-list');
+        const revBadge = document.getElementById('side-reviews-count-badge');
+        if (reviewsList && reviewsSec) {
+          reviewsList.innerHTML = '';
+          const citas = t.citas_resenas || [];
+          if (citas && citas.length > 0) {
+            reviewsSec.style.display = 'block';
+            if (revBadge) revBadge.textContent = `${citas.length} opiniones`;
+            citas.forEach(cita => {
+              const quoteCard = document.createElement('div');
+              quoteCard.style.cssText = 'background: #f8fafc; border-left: 3px solid #0f5953; padding: 7px 10px; border-radius: 6px; font-size: 11.5px; color: #334155; line-height: 1.45; font-style: italic; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 4px;';
+              quoteCard.innerHTML = `“${escapeHtml(cita)}”`;
+              reviewsList.appendChild(quoteCard);
+            });
+          } else if (t.total_resenas && t.total_resenas > 0) {
+            reviewsSec.style.display = 'block';
+            if (revBadge) revBadge.textContent = 'Google Maps';
+            reviewsList.innerHTML = `<div style="font-size: 11.5px; color: #64748b; font-style: italic; padding: 4px 0;">Calificado con ★ ${Number(t.rating_google).toFixed(1)} en Google Maps (${t.total_resenas.toLocaleString()} opiniones registradas).</div>`;
+          } else {
+            reviewsSec.style.display = 'block';
+            if (revBadge) revBadge.textContent = 'SEDECO';
+            reviewsList.innerHTML = `<div style="font-size: 11.5px; color: #64748b; font-style: italic; padding: 4px 0;">Tianguis barrial tradicional con registro oficial en la Gaceta CDMX. ¡Visítalo y comparte tu experiencia con tus vecinos!</div>`;
+          }
         }
 
         // Transporte a pie

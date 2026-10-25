@@ -1848,14 +1848,11 @@
         const photoBox = document.getElementById('side-photo-box');
         const photoImg = document.getElementById('side-photo-img');
         const ratingText = document.getElementById('side-rating-text');
-        const fotoUrl = t.foto_principal || (t.fotos && t.fotos.length ? t.fotos[0] : '');
+        const defaultTianguisPhoto = 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80';
+        const fotoUrl = t.foto_principal || (t.fotos && t.fotos.length ? t.fotos[0] : '') || defaultTianguisPhoto;
         
-        if (fotoUrl) {
-          photoImg.src = fotoUrl;
-          photoBox.style.display = 'block';
-        } else {
-          photoBox.style.display = 'none';
-        }
+        photoImg.src = fotoUrl;
+        photoBox.style.display = 'block';
 
         if (t.rating_google) {
           const revCount = (t.total_resenas) ? `${t.total_resenas.toLocaleString()} reseñas` : 'Google Maps';
@@ -1889,6 +1886,33 @@
             });
             tagsContainer.appendChild(chip);
           });
+        }
+
+        // Citas textuales de reseñas reales de Google Maps (Fase 1 y 2)
+        const reviewsSec = document.getElementById('side-reviews-section');
+        const reviewsList = document.getElementById('side-reviews-list');
+        const revBadge = document.getElementById('side-reviews-count-badge');
+        if (reviewsList && reviewsSec) {
+          reviewsList.innerHTML = '';
+          const citas = t.citas_resenas || [];
+          if (citas && citas.length > 0) {
+            reviewsSec.style.display = 'block';
+            if (revBadge) revBadge.textContent = `${citas.length} opiniones`;
+            citas.forEach(cita => {
+              const quoteCard = document.createElement('div');
+              quoteCard.style.cssText = 'background: #f8fafc; border-left: 3px solid #0f5953; padding: 7px 10px; border-radius: 6px; font-size: 11.5px; color: #334155; line-height: 1.45; font-style: italic; box-shadow: 0 1px 2px rgba(0,0,0,0.03); margin-bottom: 4px;';
+              quoteCard.innerHTML = `“${escapeHtml(cita)}”`;
+              reviewsList.appendChild(quoteCard);
+            });
+          } else if (t.total_resenas && t.total_resenas > 0) {
+            reviewsSec.style.display = 'block';
+            if (revBadge) revBadge.textContent = 'Google Maps';
+            reviewsList.innerHTML = `<div style="font-size: 11.5px; color: #64748b; font-style: italic; padding: 4px 0;">Calificado con ★ ${Number(t.rating_google).toFixed(1)} en Google Maps (${t.total_resenas.toLocaleString()} opiniones registradas).</div>`;
+          } else {
+            reviewsSec.style.display = 'block';
+            if (revBadge) revBadge.textContent = 'SEDECO';
+            reviewsList.innerHTML = `<div style="font-size: 11.5px; color: #64748b; font-style: italic; padding: 4px 0;">Tianguis barrial tradicional con registro oficial en la Gaceta CDMX. ¡Visítalo y comparte tu experiencia con tus vecinos!</div>`;
+          }
         }
 
         // Transporte a pie
